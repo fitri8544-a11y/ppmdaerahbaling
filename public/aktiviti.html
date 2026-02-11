@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Aktiviti | Persekutuan Pengakap Daerah Baling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 scroll-smooth min-h-screen flex flex-col">
+<div class="flex-grow">
+
+<header class="bg-green-900 text-white sticky top-0 z-50 shadow">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <div class="flex items-center gap-4">
+      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
+      <div>
+        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
+        <h1 class="font-bold text-lg md:text-xl">
+          Persekutuan Pengakap Daerah Baling
+        </h1>
+        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="/index.html" class="hover:text-yellow-300">Utama</a>
+      <a href="/pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
+      <a href="/ppmbaling.html" class="hover:text-yellow-300">PPM Baling</a>
+
+      <!-- MENU AKTIF -->
+      <a href="/aktiviti.html"
+         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
+         Aktiviti
+      </a>
+
+      <a href="/unit.html" class="hover:text-yellow-300">Unit Pengakap</a>
+      <a href="/muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
+      <a href="/hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+    </nav>
+
+    <button class="md:hidden text-2xl focus:outline-none" id="menuBtn">
+      ☰
+    </button>
+  </div>
+
+  <div id="mobileMenu"
+     class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
+  <a href="/index.html" class="block">Utama</a>
+  <a href="/pengenalan.html" class="block">Pengenalan</a>
+  <a href="/aktiviti.html" class="block font-semibold">Aktiviti</a>
+  <a href="/unit.html" class="block">Unit Pengakap</a>
+  <a href="/muatturun.html" class="block">Muat Turun</a>
+  <a href="/hubungi.html" class="block">Hubungi Kami</a>
+</div>
+
+</header>
+
+<!-- ================= TAJUK ================= -->
+<section class="bg-white mx-6 mt-6 rounded shadow p-8">
+  <h2 class="text-2xl font-bold text-green-900 mb-2">
+    Aktiviti
+  </h2>
+  <p class="text-gray-700 max-w-4xl">
+    Bahagian ini memaparkan segala aktiviti-aktiviti Pasukan Pengakap Daerah Baling
+  </p>
+</section>
+
+<!-- GRID -->
+<section class="max-w-7xl mx-auto px-6 pb-16">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <div class="bg-white rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition duration-300 p-4">
+      <img src="assets/activity1.jpg"
+           alt="Perkhemahan Daerah Baling 2026"
+           class="w-full h-40 object-cover rounded">
+
+      <h3 class="text-lg font-bold text-green-900 mt-3">
+        Perkhemahan Daerah Baling 2026
+      </h3>
+
+      <p class="text-sm text-gray-600 mt-1">20–22 Mac 2026</p>
+
+      <p class="text-sm text-gray-700 mt-2">
+        Aktiviti perkhemahan tahunan untuk semua ahli Pengakap Daerah Baling.
+      </p>
+
+      <button class="mt-3 bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+        Selengkapnya
+      </button>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+</div>  <!-- TUTUP flex-grow DI SINI -->
+
+<footer class="bg-green-900 text-white text-center text-sm py-6">
+  © 2026 Persekutuan Pengakap Daerah Baling
+</footer>
+
+<script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
+</body>
+</html>
