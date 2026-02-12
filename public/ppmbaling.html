@@ -54,20 +54,20 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
 
   <div class="grid md:grid-cols-2 gap-6">
 
-    <!-- Carta -->
+    <!-- Carta Organisasi -->
     <a href="#"
        class="bg-slate-900 text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition">
       <div class="flex items-center gap-4">
-        <div class="bg-slate-800 p-3 rounded-lg">📊</div>
+        <div class="bg-slate-800 p-3 rounded-lg text-xl">📊</div>
         <h3 class="text-lg font-semibold">Carta Organisasi PPM</h3>
       </div>
     </a>
 
-    <!-- Unit -->
+    <!-- Unit Pengakap -->
     <a href="#"
        class="bg-slate-900 text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition">
       <div class="flex items-center gap-4">
-        <div class="bg-slate-800 p-3 rounded-lg">🏕️</div>
+        <div class="bg-slate-800 p-3 rounded-lg text-xl">🏕️</div>
         <h3 class="text-lg font-semibold">Unit Pengakap Daerah</h3>
       </div>
     </a>
@@ -76,23 +76,23 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
     <a href="#"
        class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <div class="bg-gray-100 p-3 rounded-lg">👤</div>
+        <div class="bg-gray-100 p-3 rounded-lg text-xl">👤</div>
         <span class="font-medium">Senarai Pemimpin</span>
       </div>
       <span class="text-gray-400">›</span>
     </a>
 
-    <!-- Dokumen -->
+    <!-- Dokumen Rasmi -->
     <a href="#"
        class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <div class="bg-gray-100 p-3 rounded-lg">📂</div>
+        <div class="bg-gray-100 p-3 rounded-lg text-xl">📂</div>
         <span class="font-medium">Dokumen Rasmi</span>
       </div>
       <span class="text-gray-400">›</span>
     </a>
 
-    <!-- MAKLUMAT SEKOLAH (KLIK) -->
+    <!-- 🔥 Maklumat Sekolah (Trigger Firestore Section) -->
     <a href="#"
        onclick="showSection('maklumat-sekolah'); return false;"
        class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between md:col-span-2">
@@ -106,7 +106,9 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
     </a>
 
   </div>
+
 </section>
+
 
 
 <!-- ================= DASHBOARD MAKLUMAT SEKOLAH ================= -->
@@ -182,6 +184,11 @@ function showSection(id) {
   if (target) {
     target.classList.remove('hidden');
     target.scrollIntoView({ behavior: 'smooth' });
+
+    // 🔥 Load sekolah hanya bila buka section
+    if (id === "maklumat-sekolah") {
+      loadSekolah();
+    }
   }
 }
 
@@ -193,6 +200,94 @@ function hideSection(id) {
   }
 }
 </script>
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+import { getFirestore, collection, getDocs } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAU-mdQWJkF9tiyrl6ZxJeGTyfHG2TYSVU",
+  authDomain: "ppmdaerahbaling.firebaseapp.com",
+  projectId: "ppmdaerahbaling",
+  storageBucket: "ppmdaerahbaling.firebasestorage.app",
+  messagingSenderId: "336046440771",
+  appId: "1:336046440771:web:f26f1be4acc6ec265d6ff6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Make function global supaya boleh dipanggil dalam showSection
+window.loadSekolah = async function() {
+
+  const grid = document.getElementById("sekolah-grid");
+  if (!grid) return;
+
+  grid.innerHTML = `
+    <div class="text-center py-10 text-gray-500">
+      Memuatkan data sekolah...
+    </div>
+  `;
+
+  try {
+    const querySnapshot = await getDocs(collection(db, "sekolah"));
+
+    if (querySnapshot.empty) {
+      grid.innerHTML = `
+        <div class="text-center py-10 text-gray-400">
+          Tiada data sekolah dijumpai.
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = "";
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+
+      grid.innerHTML += `
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6">
+          <div class="flex items-center gap-4">
+            <img src="${data.logo || 'assets/logo.png'}"
+                 class="h-14 w-14 object-contain">
+            <div>
+              <h3 class="font-bold text-lg text-slate-800">
+                ${data.nama || '-'}
+              </h3>
+              <span class="text-xs bg-yellow-400 text-black px-2 py-1 rounded">
+                ${data.kod || '-'}
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-4 text-sm text-gray-700">
+            👤 ${data.pgb || '-'} <br>
+            📞 ${data.telefon || '-'}
+          </div>
+
+          <div class="mt-4 text-sm text-red-500">
+            📍 ${data.lokasi || '-'}, ${data.zon || '-'}
+          </div>
+        </div>
+      `;
+    });
+
+  } catch (error) {
+    grid.innerHTML = `
+      <div class="text-center py-10 text-red-500">
+        Ralat memuatkan data.
+      </div>
+    `;
+    console.error("Firestore Error:", error);
+  }
+};
+</script>
+
 
 </body>
 </html>
