@@ -2,7 +2,7 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
-  <title>Aktiviti | Persekutuan Pengakap Daerah Baling</title>
+  <title>PPM Baling | Persekutuan Pengakap Daerah Baling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicon -->
@@ -10,7 +10,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -32,50 +31,128 @@
       </div>
     </div>
 
-        <!-- MENU DESKTOP -->
     <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
       <a href="/index.html" class="hover:text-yellow-300">Utama</a>
       <a href="/pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
-     <a href="/ppmbaling.html"
-   class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-   PPM Baling
-</a>
+
+      <!-- MENU AKTIF -->
+      <a href="/ppmbaling.html"
+         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
+         PPM Baling
+      </a>
 
       <a href="/aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
+      <a href="/unit.html" class="hover:text-yellow-300">Unit Pengakap</a>
       <a href="/muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
       <a href="/hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
     </nav>
 
-    <button class="md:hidden text-2xl focus:outline-none" id="menuBtn">
-      ☰
-    </button>
   </div>
-
-  <div id="mobileMenu"
-     class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
-  <a href="/index.html" class="block">Utama</a>
-  <a href="/pengenalan.html" class="block">Pengenalan</a>
-  <a href="/aktiviti.html" class="block font-semibold">Aktiviti</a>
-  <a href="/unit.html" class="block">Unit Pengakap</a>
-  <a href="/muatturun.html" class="block">Muat Turun</a>
-  <a href="/hubungi.html" class="block">Hubungi Kami</a>
-</div>
-
 </header>
 
-<!-- ================= TAJUK ================= -->
-<section class="bg-white mx-6 mt-6 rounded shadow p-8">
-  <h2 class="text-2xl font-bold text-green-900 mb-2">
-    Pasukan Pengakap Daerah Baling
-  </h2>
-  <p class="text-gray-700 max-w-4xl">
-    Harap maklum. Halaman ini sedang dikemaskini, Sekian terima kasih.
-  </p>
+
+<!-- ================= HERO ================= -->
+<section class="bg-gradient-to-r from-green-800 to-emerald-600 text-white py-14 px-6 shadow">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-2">Persekutuan Pengakap Malaysia</h2>
+    <p class="text-lg opacity-90">Daerah Baling</p>
+    <p class="mt-3 text-sm opacity-80">
+      Struktur kepimpinan dan unit-unit Pengakap di bawah pentadbiran Daerah Baling.
+    </p>
+  </div>
 </section>
 
-</div>  <!-- TUTUP flex-grow DI SINI -->
+
+<!-- ================= PROFIL RINGKAS ================= -->
+<section class="max-w-6xl mx-auto px-6 py-12">
+  <div class="bg-white rounded-lg shadow p-8">
+    <h3 class="text-xl font-bold text-green-900 mb-4">
+      Profil PPM Daerah Baling
+    </h3>
+
+    <p class="text-gray-700 leading-relaxed">
+      Persekutuan Pengakap Malaysia Daerah Baling merupakan badan
+      penyelaras kepengakapan di peringkat daerah yang berfungsi
+      menyelia aktiviti, latihan dan pembangunan unit-unit Pengakap
+      sekolah rendah dan menengah di daerah ini.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================= CARTA ORGANISASI ================= -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="bg-white rounded-lg shadow p-8">
+
+    <h3 class="text-xl font-bold text-green-900 mb-6">
+      Carta Organisasi
+    </h3>
+
+    <!-- GANTI GAMBAR CARTA DI SINI -->
+    <div class="text-center">
+      <img src="assets/carta-organisasi.png"
+           alt="Carta Organisasi PPM Baling"
+           class="mx-auto rounded shadow-md max-w-full">
+
+      <p class="text-sm text-gray-500 mt-3">
+        *Sila kemaskini carta organisasi mengikut pelantikan semasa.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= UNIT PENGAKAP ================= -->
+<section class="max-w-6xl mx-auto px-6 pb-16">
+  <div class="bg-white rounded-lg shadow p-8">
+
+    <h3 class="text-xl font-bold text-green-900 mb-6">
+      Unit Pengakap Daerah Baling
+    </h3>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="border rounded p-4 bg-green-50">
+        <h4 class="font-semibold text-green-900">Pengakap Kanak-Kanak</h4>
+        <p class="text-sm text-gray-700 mt-1">
+          Unit sekolah rendah tahap awal.
+        </p>
+      </div>
+
+      <div class="border rounded p-4 bg-green-50">
+        <h4 class="font-semibold text-green-900">Pengakap Muda</h4>
+        <p class="text-sm text-gray-700 mt-1">
+          Unit sekolah menengah rendah.
+        </p>
+      </div>
+
+      <div class="border rounded p-4 bg-green-50">
+        <h4 class="font-semibold text-green-900">Pengakap Remaja</h4>
+        <p class="text-sm text-gray-700 mt-1">
+          Unit sekolah menengah atas.
+        </p>
+      </div>
+
+      <div class="border rounded p-4 bg-green-50">
+        <h4 class="font-semibold text-green-900">Pengakap Kelana</h4>
+        <p class="text-sm text-gray-700 mt-1">
+          Unit belia dan lepasan sekolah.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+</div>
 
 <!-- ================= FOOTER ================= -->
-<footer class="bg-green-900 text-white text-center text-sm p-4 mt-16">
+<footer class="bg-green-900 text-white text-center text-sm py-6">
   © 2026 Persekutuan Pengakap Daerah Baling
 </footer>
+
+</body>
+</html>
