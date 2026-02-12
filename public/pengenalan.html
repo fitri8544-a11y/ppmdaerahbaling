@@ -295,7 +295,7 @@
       </div>
     </div>
   </div>
-  
+
 </section>
 
 <section id="sejarah-malaysia" class="content-section hidden ...">
@@ -315,6 +315,22 @@
 <footer class="bg-green-900 text-white text-center text-sm py-6 mt-16">
   © 2026 Persekutuan Pengakap Daerah Baling
 </footer>
+
+<script>
+function showSection(id) {
+
+  // tutup semua section dulu
+  document.querySelectorAll('.content-section')
+    .forEach(sec => sec.classList.add('hidden'));
+
+  // buka section dipilih
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.remove('hidden');
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
 
 </body>
 </html>
