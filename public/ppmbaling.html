@@ -94,12 +94,80 @@
   </div>
 </section>
 
-<!-- ================= MAKLUMAT SEKOLAH ================= -->
-<section class="max-w-7xl mx-auto px-6 mt-16">
+<!-- ================= DASHBOARD MAKLUMAT SEKOLAH ================= -->
+<section id="maklumat-sekolah"
+  class="content-section hidden max-w-7xl mx-auto px-6 mt-16">
 
   <h3 class="text-2xl font-bold text-green-900 mb-8">
     Maklumat Sekolah Daerah Baling
   </h3>
+
+  <!-- Butang Tutup -->
+  <div class="mb-6">
+    <button onclick="hideSection('maklumat-sekolah')"
+      class="text-sm bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">
+      ← Kembali ke PPM Baling
+    </button>
+  </div>
+
+  <!-- STATISTIK -->
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+    <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-slate-800">
+      <h2 class="text-4xl font-bold text-slate-800">76</h2>
+      <p class="text-sm text-gray-600 mt-2 uppercase">Jumlah Keseluruhan</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-green-600">
+      <h2 class="text-4xl font-bold text-green-600">60</h2>
+      <p class="text-sm text-gray-600 mt-2 uppercase">Sekolah Rendah</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-blue-600">
+      <h2 class="text-4xl font-bold text-blue-600">16</h2>
+      <p class="text-sm text-gray-600 mt-2 uppercase">Sekolah Menengah</p>
+    </div>
+
+  </div>
+
+  <!-- GRID SEKOLAH (CONTOH SATU) -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+
+    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6">
+      <h3 class="font-bold text-lg text-slate-800">
+        MAKTAB MAHMUD BALING
+      </h3>
+
+      <div class="mt-4 text-sm text-gray-700">
+        👤 ROSMADI BIN HAMID <br>
+        📞 60194755671
+      </div>
+
+      <div class="mt-4 text-sm text-red-500">
+        📍 Bandar, Bayu
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MAKLUMAT SEKOLAH ================= -->
+<a href="#"
+   onclick="showSection('maklumat-sekolah'); return false;"
+   class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
+
+  <div class="flex items-center gap-4">
+    <div class="bg-gray-100 p-3 rounded-lg text-xl">
+      🏫
+    </div>
+    <span class="font-medium">Maklumat Zon & Sekolah</span>
+  </div>
+
+  <span class="text-gray-400">›</span>
+</a>
+
 
   <!-- STATISTIK -->
   <div class="grid md:grid-cols-3 gap-6 mb-10">
