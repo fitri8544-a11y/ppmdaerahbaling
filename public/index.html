@@ -32,7 +32,8 @@
     </div>
 
     <!-- MENU DESKTOP -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+    <nav id="menuDesktop"
+     class="hidden md:flex items-center gap-6 text-sm font-semibold">
       <a href="/index.html"
      class="hover:text-yellow-300 transition">
      Utama
@@ -150,6 +151,25 @@
   btn?.addEventListener("click", () => {
     menu.classList.toggle("hidden");
   });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const links = document.querySelectorAll("#menuDesktop a");
+  const currentPage = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    const linkPage = link.getAttribute("href").split("/").pop();
+
+    if (linkPage === currentPage || 
+       (currentPage === "" && linkPage === "index.html")) {
+
+      link.classList.add("text-yellow-300");
+    }
+  });
+
+});
 </script>
 
 </body>
