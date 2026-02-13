@@ -11,15 +11,13 @@
 
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
-  <main class="flex-grow">
-
+<main class="flex-grow">
 
 <!-- ================= HEADER ================= -->
 <header class="bg-green-900 text-white sticky top-0 z-50 shadow">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
     <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
+      <img src="assets/logo.png" class="h-14" alt="Logo">
       <div>
         <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
         <h1 class="font-bold text-lg md:text-xl">
@@ -28,72 +26,14 @@
         <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
       </div>
     </div>
-
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
-      <a href="index.html" class="hover:text-yellow-300">Utama</a>
-      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
-      <a href="ppmbaling.html"
-         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-         PPMD Baling
-      </a>
-      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
-      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
-    </nav>
   </div>
 </header>
 
-<!-- ================= TAJUK ================= -->
-<section class="max-w-7xl mx-auto px-6 mt-10">
-<h2 class="text-2xl font-bold text-green-900 mb-2">Pasukan Pengakap Malaysia Daerah Baling</h2>
-<p class="text-gray-600 mb-8 max-w-3xl">
-Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas kepengakapan.
-</p>
-
-<!-- ================= DASHBOARD GRID ================= -->
+<!-- ================= DASHBOARD ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
 
   <div class="grid md:grid-cols-2 gap-6">
 
-    <!-- Carta Organisasi -->
-    <a href="#"
-       class="bg-slate-900 text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition">
-      <div class="flex items-center gap-4">
-        <div class="bg-slate-800 p-3 rounded-lg text-xl">📊</div>
-        <h3 class="text-lg font-semibold">Carta Organisasi PPM</h3>
-      </div>
-    </a>
-
-    <!-- Unit Pengakap -->
-    <a href="#"
-       class="bg-slate-900 text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition">
-      <div class="flex items-center gap-4">
-        <div class="bg-slate-800 p-3 rounded-lg text-xl">🏕️</div>
-        <h3 class="text-lg font-semibold">Unit Pengakap Daerah</h3>
-      </div>
-    </a>
-
-    <!-- Senarai Pemimpin -->
-    <a href="#"
-       class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="bg-gray-100 p-3 rounded-lg text-xl">👤</div>
-        <span class="font-medium">Senarai Pemimpin</span>
-      </div>
-      <span class="text-gray-400">›</span>
-    </a>
-
-    <!-- Dokumen Rasmi -->
-    <a href="#"
-       class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="bg-gray-100 p-3 rounded-lg text-xl">📂</div>
-        <span class="font-medium">Dokumen Rasmi</span>
-      </div>
-      <span class="text-gray-400">›</span>
-    </a>
-
-    <!-- 🔥 Maklumat Sekolah (Trigger Firestore Section) -->
     <a href="#"
        onclick="showSection('maklumat-sekolah'); return false;"
        class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between md:col-span-2">
@@ -107,16 +47,9 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
     </a>
 
   </div>
-
 </section>
 
-<!-- ================= DASHBOARD MAKLUMAT SEKOLAH ================= -->
-
-<button id="importBtn"
-  class="hidden mb-6 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded shadow">
-  IMPORT DATA SEKOLAH (JSON)
-</button>
-
+<!-- ================= MAKLUMAT SEKOLAH ================= -->
 <section id="maklumat-sekolah"
   class="content-section hidden max-w-7xl mx-auto px-6 mt-16">
 
@@ -126,57 +59,56 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
 
   <button onclick="hideSection('maklumat-sekolah')"
     class="mb-6 text-sm bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">
-    ← Kembali ke PPM Baling
+    ← Kembali
   </button>
 
-  <!-- STATISTIK -->
+  <!-- ================= STATISTIK ================= -->
   <div class="grid md:grid-cols-3 gap-6 mb-10">
 
     <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-slate-800">
-      <h2 class="text-4xl font-bold text-slate-800">76</h2>
+      <h2 class="stat-total text-4xl font-bold text-slate-800">0</h2>
       <p class="text-sm text-gray-600 mt-2 uppercase">Jumlah Keseluruhan</p>
     </div>
 
     <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-green-600">
-      <h2 class="text-4xl font-bold text-green-600">60</h2>
+      <h2 class="stat-rendah text-4xl font-bold text-green-600">0</h2>
       <p class="text-sm text-gray-600 mt-2 uppercase">Sekolah Rendah</p>
     </div>
 
     <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-blue-600">
-      <h2 class="text-4xl font-bold text-blue-600">16</h2>
+      <h2 class="stat-menengah text-4xl font-bold text-blue-600">0</h2>
       <p class="text-sm text-gray-600 mt-2 uppercase">Sekolah Menengah</p>
     </div>
 
   </div>
 
-  <!-- FILTER -->
+  <!-- ================= FILTER ================= -->
   <div class="bg-white rounded-xl shadow p-6 mb-10">
     <input type="text"
-  id="searchInput"
-  placeholder="🔍 Cari Nama Sekolah, Kod atau PGB..."
-  class="w-full border rounded-lg px-4 py-2 mb-4">
+      id="searchInput"
+      placeholder="🔍 Cari Nama Sekolah, Kod atau PGB..."
+      class="w-full border rounded-lg px-4 py-2 mb-4">
 
-<div class="grid md:grid-cols-4 gap-4">
-  <select id="filterDun" class="border rounded-lg px-4 py-2">
-    <option value="">Semua DUN</option>
-  </select>
+    <div class="grid md:grid-cols-4 gap-4">
+      <select id="filterDun" class="border rounded-lg px-4 py-2">
+        <option value="">Semua DUN</option>
+      </select>
 
-  <select id="filterJenis" class="border rounded-lg px-4 py-2">
-    <option value="">Semua Jenis</option>
-  </select>
+      <select id="filterJenis" class="border rounded-lg px-4 py-2">
+        <option value="">Semua Jenis</option>
+      </select>
 
-  <select id="filterKategori" class="border rounded-lg px-4 py-2">
-    <option value="">Semua Kategori</option>
-  </select>
+      <select id="filterKategori" class="border rounded-lg px-4 py-2">
+        <option value="">Semua Kategori</option>
+      </select>
 
-  <select id="filterLokasi" class="border rounded-lg px-4 py-2">
-    <option value="">Semua Lokasi</option>
-  </select>
-</div>
-
+      <select id="filterLokasi" class="border rounded-lg px-4 py-2">
+        <option value="">Semua Lokasi</option>
+      </select>
+    </div>
   </div>
 
-  <!-- GRID SEKOLAH (🔥 PENTING) -->
+  <!-- ================= GRID ================= -->
   <div id="sekolah-grid"
        class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
   </div>
@@ -190,20 +122,32 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
   © 2026 Persekutuan Pengakap Daerah Baling
 </footer>
 
+<!-- ================= MODAL ================= -->
+<div id="modalDetail"
+     class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+  <div class="bg-white w-full max-w-lg rounded-xl shadow-lg p-6 relative">
+
+    <button onclick="tutupDetail()"
+      class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
+      ✕
+    </button>
+
+    <div id="detailContent"></div>
+
+  </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
 <script type="module">
+
 import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
-import { 
-  getFirestore, 
-  collection, 
-  getDocs, 
-  addDoc 
-} 
+import { getFirestore, collection, getDocs } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* ================= FIREBASE CONFIG ================= */
-
+/* FIREBASE CONFIG */
 const firebaseConfig = {
   apiKey: "AIzaSyAU-mdQWJkF9tiyrl6ZxJeGTyfHG2TYSVU",
   authDomain: "ppmdaerahbaling.firebaseapp.com",
@@ -217,13 +161,32 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 let semuaSekolah = [];
+window.sekolahFiltered = [];
+
+/* ================= SECTION ================= */
+
+window.showSection = function(id) {
+  document.querySelectorAll('.content-section')
+    .forEach(sec => sec.classList.add('hidden'));
+
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.remove('hidden');
+    target.scrollIntoView({ behavior: 'smooth' });
+    loadSekolah();
+  }
+};
+
+window.hideSection = function(id) {
+  document.getElementById(id).classList.add('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 /* ================= LOAD DATA ================= */
 
-window.loadSekolah = async function() {
+async function loadSekolah() {
 
   const grid = document.getElementById("sekolah-grid");
-  if (!grid) return;
 
   grid.innerHTML = `
     <div class="col-span-full text-center py-10 text-gray-500">
@@ -231,82 +194,53 @@ window.loadSekolah = async function() {
     </div>
   `;
 
-  try {
+  const snapshot = await getDocs(collection(db, "sekolah"));
 
-    const snapshot = await getDocs(collection(db, "sekolah"));
-    semuaSekolah = [];
+  semuaSekolah = [];
+  snapshot.forEach(doc => semuaSekolah.push(doc.data()));
 
-    snapshot.forEach(doc => {
-      semuaSekolah.push(doc.data());
-    });
+  isiDropdown();
+  paparSekolah();
+  kiraStatistik();
+}
 
-    isiDropdown();
-    paparSekolah();
-    kiraStatistik();
-
-  } catch (error) {
-    console.error(error);
-    grid.innerHTML = `
-      <div class="col-span-full text-center py-10 text-red-500">
-        Ralat memuatkan data.
-      </div>
-    `;
-  }
-};
-
-/* ================= STATISTIK AUTO ================= */
+/* ================= STATISTIK ================= */
 
 function kiraStatistik() {
 
-  const total = semuaSekolah.length;
-  const rendah = semuaSekolah.filter(s => 
-    (s.jenis || "").toLowerCase().includes("sk") ||
-    (s.kategori || "").toLowerCase().includes("rendah")
-  ).length;
+  document.querySelector(".stat-total").textContent = semuaSekolah.length;
 
-  const menengah = semuaSekolah.filter(s => 
-    (s.jenis || "").toLowerCase().includes("sm")
-  ).length;
+  document.querySelector(".stat-rendah").textContent =
+    semuaSekolah.filter(s =>
+      (s.jenis || "").toLowerCase().includes("sk")
+    ).length;
 
-  document.querySelectorAll(".stat-total")[0].textContent = total;
-  document.querySelectorAll(".stat-rendah")[0].textContent = rendah;
-  document.querySelectorAll(".stat-menengah")[0].textContent = menengah;
+  document.querySelector(".stat-menengah").textContent =
+    semuaSekolah.filter(s =>
+      (s.jenis || "").toLowerCase().includes("sm")
+    ).length;
 }
 
 /* ================= DROPDOWN ================= */
 
 function isiDropdown() {
 
-  const dunSet = new Set();
-  const jenisSet = new Set();
-  const kategoriSet = new Set();
-  const lokasiSet = new Set();
+  const fields = ["dun","jenis","kategori","lokasi"];
 
-  semuaSekolah.forEach(s => {
-    if (s.dun) dunSet.add(s.dun);
-    if (s.jenis) jenisSet.add(s.jenis);
-    if (s.kategori) kategoriSet.add(s.kategori);
-    if (s.lokasi) lokasiSet.add(s.lokasi);
-  });
+  fields.forEach(field => {
 
-  isiOption("filterDun", dunSet);
-  isiOption("filterJenis", jenisSet);
-  isiOption("filterKategori", kategoriSet);
-  isiOption("filterLokasi", lokasiSet);
-}
+    const select = document.getElementById("filter" + field.charAt(0).toUpperCase() + field.slice(1));
+    const first = select.options[0].outerHTML;
+    select.innerHTML = first;
 
-function isiOption(id, dataSet) {
-
-  const select = document.getElementById(id);
-
-  const firstOption = select.options[0].outerHTML;
-  select.innerHTML = firstOption;
-
-  [...dataSet].sort().forEach(value => {
-    const option = document.createElement("option");
-    option.value = value;
-    option.textContent = value;
-    select.appendChild(option);
+    [...new Set(semuaSekolah.map(s => s[field]).filter(Boolean))]
+      .sort()
+      .forEach(val => {
+        const opt = document.createElement("option");
+        opt.value = val;
+        opt.textContent = val;
+        select.appendChild(opt);
+      });
   });
 }
 
@@ -314,127 +248,90 @@ function isiOption(id, dataSet) {
 
 function paparSekolah() {
 
-  const grid = document.getElementById("sekolah-grid");
-
   const keyword = document.getElementById("searchInput").value.toLowerCase();
   const dun = document.getElementById("filterDun").value;
   const jenis = document.getElementById("filterJenis").value;
   const kategori = document.getElementById("filterKategori").value;
   const lokasi = document.getElementById("filterLokasi").value;
 
-  const filtered = semuaSekolah.filter(s => {
+  sekolahFiltered = semuaSekolah.filter(s => {
 
     const matchSearch =
       (s.nama || "").toLowerCase().includes(keyword) ||
       (s.kod || "").toLowerCase().includes(keyword) ||
       (s.pgb || "").toLowerCase().includes(keyword);
 
-    const matchDun = !dun || s.dun === dun;
-    const matchJenis = !jenis || s.jenis === jenis;
-    const matchKategori = !kategori || s.kategori === kategori;
-    const matchLokasi = !lokasi || s.lokasi === lokasi;
-
-    return matchSearch && matchDun && matchJenis && matchKategori && matchLokasi;
+    return matchSearch &&
+      (!dun || s.dun === dun) &&
+      (!jenis || s.jenis === jenis) &&
+      (!kategori || s.kategori === kategori) &&
+      (!lokasi || s.lokasi === lokasi);
   });
 
+  const grid = document.getElementById("sekolah-grid");
   grid.innerHTML = "";
 
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div class="col-span-full text-center text-gray-400 py-10">
-        Tiada sekolah dijumpai.
-      </div>
-    `;
+  if (sekolahFiltered.length === 0) {
+    grid.innerHTML = `<div class="col-span-full text-center py-10 text-gray-400">
+      Tiada sekolah dijumpai.
+    </div>`;
     return;
   }
 
-  filtered.forEach(s => {
-
+  sekolahFiltered.forEach((s, i) => {
     grid.innerHTML += `
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6">
-        <div class="flex items-center gap-4">
-          <img src="${s.logo || 'assets/logo.png'}"
-               class="h-14 w-14 object-contain">
-          <div>
-            <h3 class="font-bold text-lg text-slate-800">
-              ${s.nama}
-            </h3>
-            <span class="text-xs bg-yellow-400 text-black px-2 py-1 rounded">
-              ${s.kod}
-            </span>
-          </div>
-        </div>
-
-        <div class="mt-4 text-sm text-gray-700">
-          👤 ${s.pgb || "-"} <br>
-          📞 ${s.telefon_pgb || s.telefon || "-"}
-        </div>
-
-        <div class="mt-4 text-sm text-red-500">
-          📍 ${s.lokasi || "-"}, ${s.dun || "-"}
-        </div>
+      <div onclick="bukaDetail(${i})"
+        class="cursor-pointer bg-white rounded-xl shadow hover:shadow-xl transition p-6">
+        <h3 class="font-bold text-lg text-slate-800">${s.nama}</h3>
+        <span class="text-xs bg-yellow-400 px-2 py-1 rounded">${s.kod}</span>
+        <p class="mt-4 text-sm">👤 ${s.pgb || "-"}</p>
+        <p class="text-sm text-red-500">📍 ${s.lokasi || "-"}, ${s.dun || "-"}</p>
       </div>
     `;
   });
 }
 
-/* ================= IMPORT JSON (OPTIONAL) ================= */
+/* ================= MODAL ================= */
 
-window.importJSON = async function() {
+window.bukaDetail = function(i) {
 
-  if (!confirm("Pastikan koleksi sekolah kosong. Teruskan import?")) return;
+  const s = sekolahFiltered[i];
 
-  try {
+  document.getElementById("detailContent").innerHTML = `
+    <h3 class="text-xl font-bold mb-4">${s.nama}</h3>
+    <p><strong>Kod:</strong> ${s.kod}</p>
+    <p><strong>Kategori:</strong> ${s.kategori}</p>
+    <p><strong>Jenis:</strong> ${s.jenis}</p>
+    <p><strong>DUN:</strong> ${s.dun}</p>
+    <p><strong>Lokasi:</strong> ${s.lokasi}</p>
+    <p><strong>Alamat:</strong> ${s.alamat}</p>
+    <hr class="my-4">
+    <p><strong>Nama PGB:</strong> ${s.pgb}</p>
+    <p><strong>Telefon PGB:</strong> ${s.telefon_pgb}</p>
+    <p><strong>Emel PGB:</strong> ${s.emel_pgb}</p>
+  `;
 
-    const response = await fetch("sekolah.json");
-    const data = await response.json();
-
-    for (const item of data) {
-
-      const sekolah = {
-        kod: item["Kod Sekolah"] || "",
-        nama: item["Nama Sekolah"] || "",
-        kategori: item["Kategori"] || "",
-        jenis: item["Jenis"] || "",
-        dun: item["DUN"] || "",
-        lokasi: item["Lokasi"] || "",
-        alamat: item["Alamat"] || "",
-        telefon: item["Telefon Sekolah"] || "",
-        emel: item["Emel Sekolah"] || "",
-        pgb: item["Nama PGB"] || "",
-        telefon_pgb: item["Telefon PGB"] || "",
-        emel_pgb: item["Emel PGB"] || "",
-        logo: "assets/logo.png"
-      };
-
-      await addDoc(collection(db, "sekolah"), sekolah);
-    }
-
-    alert("✅ Import selesai!");
-    loadSekolah();
-
-  } catch (error) {
-    console.error(error);
-    alert("❌ Ralat import.");
-  }
+  const modal = document.getElementById("modalDetail");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
 };
 
-/* ================= EVENT LISTENER ================= */
+window.tutupDetail = function() {
+  document.getElementById("modalDetail").classList.add("hidden");
+};
 
-document.getElementById("searchInput")
-  .addEventListener("input", paparSekolah);
+/* ================= EVENT ================= */
 
-document.getElementById("filterDun")
-  .addEventListener("change", paparSekolah);
+document.addEventListener("DOMContentLoaded", () => {
 
-document.getElementById("filterJenis")
-  .addEventListener("change", paparSekolah);
+  ["searchInput","filterDun","filterJenis","filterKategori","filterLokasi"]
+  .forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("input", paparSekolah);
+    if (el) el.addEventListener("change", paparSekolah);
+  });
 
-document.getElementById("filterKategori")
-  .addEventListener("change", paparSekolah);
-
-document.getElementById("filterLokasi")
-  .addEventListener("change", paparSekolah);
+});
 
 </script>
 
