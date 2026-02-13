@@ -275,15 +275,17 @@ function kiraStatistik() {
 
   const total = semuaSekolah.length;
 
-  const rendah = semuaSekolah.filter(s => {
-    const jenis = (s.jenis || "").toUpperCase();
-    return ["SK", "SJKC", "SJKT", "SRK"].includes(jenis);
-  }).length;
+  const rendah = semuaSekolah.filter(s =>
+    (s.kategori || "")
+      .toLowerCase()
+      .includes("rendah")
+  ).length;
 
-  const menengah = semuaSekolah.filter(s => {
-    const jenis = (s.jenis || "").toUpperCase();
-    return ["SMK", "SABK", "SBP"].includes(jenis);
-  }).length;
+  const menengah = semuaSekolah.filter(s =>
+    (s.kategori || "")
+      .toLowerCase()
+      .includes("menengah")
+  ).length;
 
   document.querySelector(".stat-total").textContent = total;
   document.querySelector(".stat-rendah").textContent = rendah;
