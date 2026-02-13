@@ -114,11 +114,13 @@
     <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-green-600">
       <h2 class="stat-rendah text-4xl font-bold text-green-600">0</h2>
       <p class="text-sm text-gray-600 mt-2 uppercase">Sekolah Rendah</p>
+      <div id="rendah-breakdown" class="mt-4 border-t pt-3"></div>
     </div>
 
     <div class="bg-white rounded-xl shadow p-6 text-center border-t-4 border-blue-600">
       <h2 class="stat-menengah text-4xl font-bold text-blue-600">0</h2>
       <p class="text-sm text-gray-600 mt-2 uppercase">Sekolah Menengah</p>
+      <div id="menengah-breakdown" class="mt-4 border-t pt-3"></div>
     </div>
 
   </div>
@@ -274,8 +276,11 @@ function kiraStatistik() {
 
   const total = semuaSekolah.length;
 
-  let rendah = 0;
-  let menengah = 0;
+  let rendahCount = 0;
+  let menengahCount = 0;
+
+  const rendahJenis = {};
+  const menengahJenis = {};
 
   semuaSekolah.forEach(s => {
 
@@ -288,21 +293,28 @@ function kiraStatistik() {
       jenis === "SJK(T)" ||
       jenis === "SRK"
     ) {
-      rendah++;
+      rendahCount++;
+
+      rendahJenis[jenis] = (rendahJenis[jenis] || 0) + 1;
     }
 
     // MENENGAH
-    else if (
-      jenis.includes("SM")
-    ) {
-      menengah++;
+    else if (jenis.includes("SM")) {
+      menengahCount++;
+
+      menengahJenis[jenis] = (menengahJenis[jenis] || 0) + 1;
     }
 
   });
 
+  // Set jumlah utama
   document.querySelector(".stat-total").textContent = total;
-  document.querySelector(".stat-rendah").textContent = rendah;
-  document.querySelector(".stat-menengah").textContent = menengah;
+  document.querySelector(".stat-rendah").textContent = rendahCount;
+  document.querySelector(".stat-menengah").textContent = menengahCount;
+
+  // Papar pecahan
+  paparBreakdown("rendah-breakdown", rendahJenis);
+  paparBreakdown("menengah-breakdown", menengahJenis);
 }
 
 /* ================= DROPDOWN ================= */
@@ -374,6 +386,27 @@ function paparSekolah() {
     `;
   });
 }
+
+function paparBreakdown(containerId, data) {
+
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  Object.keys(data).sort().forEach(key => {
+
+    container.innerHTML += `
+      <div class="flex justify-between items-center py-1 text-sm">
+        <span class="text-gray-700">${key}</span>
+        <span class="bg-gray-200 px-2 py-0.5 rounded text-xs font-semibold">
+          ${data[key]}
+        </span>
+      </div>
+    `;
+  });
+}
+
 
 /* ================= MODAL ================= */
 
