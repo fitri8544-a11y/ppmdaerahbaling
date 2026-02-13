@@ -111,6 +111,12 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
 </section>
 
 <!-- ================= DASHBOARD MAKLUMAT SEKOLAH ================= -->
+
+<button onclick="importJSON()"
+  class="mb-6 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded shadow">
+  IMPORT DATA SEKOLAH (JSON)
+</button>
+
 <section id="maklumat-sekolah"
   class="content-section hidden max-w-7xl mx-auto px-6 mt-16">
 
@@ -210,7 +216,12 @@ function hideSection(id) {
 import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
-import { getFirestore, collection, getDocs } 
+import { 
+  getFirestore, 
+  collection, 
+  getDocs, 
+  addDoc 
+} 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -225,7 +236,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Make function global supaya boleh dipanggil dalam showSection
 window.loadSekolah = async function() {
 
   const grid = document.getElementById("sekolah-grid");
@@ -290,7 +300,49 @@ window.loadSekolah = async function() {
     console.error("Firestore Error:", error);
   }
 };
+
+
+window.importJSON = async function() {
+
+  if (!confirm("Pastikan koleksi sekolah kosong. Teruskan import?")) return;
+
+  try {
+    const response = await fetch("sekolah.json");
+    const data = await response.json();
+
+    for (const item of data) {
+
+      const sekolah = {
+        kod: item["Kod Sekolah"] || "",
+        nama: item["Nama Sekolah"] || "",
+        kategori: item["Kategori"] || "",
+        jenis: item["Jenis"] || "",
+        dun: item["DUN"] || "",
+        lokasi: item["Lokasi"] || "",
+        alamat: item["Alamat"] || "",
+        telefon: item["Telefon Sekolah"] || "",
+        emel: item["Emel Sekolah"] || "",
+        pgb: item["Nama PGB"] || "",
+        telefon_pgb: item["Telefon PGB"] || "",
+        emel_pgb: item["Emel PGB"] || "",
+        logo: "assets/logo.png"
+      };
+
+      await addDoc(collection(db, "sekolah"), sekolah);
+    }
+
+    alert("✅ Import selesai!");
+    loadSekolah();
+
+  } catch (error) {
+    console.error(error);
+    alert("❌ Ralat import.");
+  }
+};
+
+
 </script>
+
 
 </body>
 </html>
