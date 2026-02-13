@@ -57,7 +57,7 @@
     Maklumat Sekolah Daerah Baling
   </h3>
 
-  <button onclick="hideSection('maklumat-sekolah')"
+  <button id="btnKembali"
     class="mb-6 text-sm bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">
     ← Kembali
   </button>
@@ -82,14 +82,16 @@
 
   </div>
 
-  <!-- ================= FILTER ================= -->
+  <!-- FILTER -->
   <div class="bg-white rounded-xl shadow p-6 mb-10">
+    
     <input type="text"
       id="searchInput"
       placeholder="🔍 Cari Nama Sekolah, Kod atau PGB..."
       class="w-full border rounded-lg px-4 py-2 mb-4">
 
     <div class="grid md:grid-cols-4 gap-4">
+
       <select id="filterDun" class="border rounded-lg px-4 py-2">
         <option value="">Semua DUN</option>
       </select>
@@ -105,12 +107,13 @@
       <select id="filterLokasi" class="border rounded-lg px-4 py-2">
         <option value="">Semua Lokasi</option>
       </select>
+
     </div>
   </div>
 
-  <!-- ================= GRID ================= -->
+  <!-- GRID SEKOLAH -->
   <div id="sekolah-grid"
-       class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+    class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
   </div>
 
 </section>
@@ -146,6 +149,27 @@ from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
 import { getFirestore, collection, getDocs } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Butang buka maklumat sekolah
+  const btnSekolah = document.getElementById("btnSekolah");
+  if (btnSekolah) {
+    btnSekolah.addEventListener("click", (e) => {
+      e.preventDefault();
+      showSection("maklumat-sekolah");
+    });
+  }
+
+  // Butang kembali
+  const btnKembali = document.getElementById("btnKembali");
+  if (btnKembali) {
+    btnKembali.addEventListener("click", () => {
+      hideSection("maklumat-sekolah");
+    });
+  }
+
+});
 
 /* FIREBASE CONFIG */
 const firebaseConfig = {
@@ -333,6 +357,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+</script>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll(".content-section")
+    .forEach(sec => sec.classList.add("hidden"));
+
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.remove("hidden");
+    target.scrollIntoView({ behavior: "smooth" });
+
+    // Panggil loadSekolah jika wujud
+    if (typeof loadSekolah === "function") {
+      loadSekolah();
+    }
+  }
+}
+
+function hideSection(id) {
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.add("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
 </script>
 
 </body>
