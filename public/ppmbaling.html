@@ -15,19 +15,49 @@
 
 <!-- ================= HEADER ================= -->
 <header class="bg-green-900 text-white sticky top-0 z-50 shadow">
+
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- LOGO -->
     <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo">
+      <img src="assets/logo.png" class="h-12" alt="Logo Pengakap">
       <div>
         <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
         <h1 class="font-bold text-lg md:text-xl">
           Persekutuan Pengakap Daerah Baling
         </h1>
-        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
       </div>
     </div>
+
+    <!-- MENU DESKTOP -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="index.html" class="hover:text-yellow-300">Utama</a>
+      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
+      <a href="ppmbaling.html" class="text-yellow-400">PPMD Baling</a>
+      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
+      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
+      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+    </nav>
+
+    <!-- BUTTON MOBILE -->
+    <button id="menuBtn" class="md:hidden text-2xl">
+      ☰
+    </button>
+
   </div>
+
+  <!-- MENU MOBILE -->
+  <div id="mobileMenu" class="hidden md:hidden bg-green-800 px-6 pb-4 space-y-2 text-sm">
+    <a href="index.html" class="block hover:text-yellow-300">Utama</a>
+    <a href="pengenalan.html" class="block hover:text-yellow-300">Pengenalan</a>
+    <a href="ppmbaling.html" class="block text-yellow-300">PPMD Baling</a>
+    <a href="aktiviti.html" class="block hover:text-yellow-300">Aktiviti</a>
+    <a href="muatturun.html" class="block hover:text-yellow-300">Muat Turun</a>
+    <a href="hubungi.html" class="block hover:text-yellow-300">Hubungi Kami</a>
+  </div>
+
 </header>
+
 
 <!-- ================= DASHBOARD ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
@@ -525,6 +555,15 @@ function hideSection(id) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
+</script>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
 </script>
 
 </body>
