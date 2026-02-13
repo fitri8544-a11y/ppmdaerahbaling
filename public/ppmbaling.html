@@ -276,26 +276,20 @@ function kiraStatistik() {
   const total = semuaSekolah.length;
 
   const rendah = semuaSekolah.filter(s => {
-    const jenis = (s.jenis || "").toLowerCase();
-
-    return (
-      jenis.includes("sk") ||
-      jenis.includes("sjkt") ||
-      jenis.includes("sjkc") ||
-      jenis.includes("srk") ||
-      jenis.includes("rendah")
-    );
+    const jenis = (s.jenis || "").toUpperCase();
+    return ["SK", "SJKC", "SJKT", "SRK"].includes(jenis);
   }).length;
 
   const menengah = semuaSekolah.filter(s => {
-    const jenis = (s.jenis || "").toLowerCase();
-    return jenis.includes("sm");
+    const jenis = (s.jenis || "").toUpperCase();
+    return ["SMK", "SABK", "SBP"].includes(jenis);
   }).length;
 
   document.querySelector(".stat-total").textContent = total;
   document.querySelector(".stat-rendah").textContent = rendah;
   document.querySelector(".stat-menengah").textContent = menengah;
 }
+
 
 /* ================= DROPDOWN ================= */
 
