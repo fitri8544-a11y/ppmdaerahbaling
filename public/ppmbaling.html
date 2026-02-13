@@ -277,45 +277,93 @@ function kiraStatistik() {
 
   const total = semuaSekolah.length;
 
-  let rendahCount = 0;
-  let menengahCount = 0;
+  document.querySelector(".stat-total").textContent = total;
 
-  const rendahJenis = {};
-  const menengahJenis = {};
+  // ================= KATEGORI BREAKDOWN =================
+
+  const kategoriCount = {};
+  const rendahJenisCount = {};
+  const menengahJenisCount = {};
 
   semuaSekolah.forEach(s => {
 
-    const jenis = (s.jenis || "").toUpperCase().trim();
+    // KATEGORI (TOTAL CARD)
+    if (s.kategori) {
+      kategoriCount[s.kategori] = (kategoriCount[s.kategori] || 0) + 1;
+    }
 
     // RENDAH
     if (
-      jenis === "SK" ||
-      jenis === "SJK(C)" ||
-      jenis === "SJK(T)" ||
-      jenis === "SRK"
+      s.jenis === "SK" ||
+      s.jenis === "SJK(C)" ||
+      s.jenis === "SJK(T)" ||
+      s.jenis === "SRK"
     ) {
-      rendahCount++;
-
-      rendahJenis[jenis] = (rendahJenis[jenis] || 0) + 1;
+      rendahJenisCount[s.jenis] =
+        (rendahJenisCount[s.jenis] || 0) + 1;
     }
 
     // MENENGAH
-    else if (jenis.includes("SM")) {
-      menengahCount++;
-
-      menengahJenis[jenis] = (menengahJenis[jenis] || 0) + 1;
+    else {
+      menengahJenisCount[s.jenis] =
+        (menengahJenisCount[s.jenis] || 0) + 1;
     }
 
   });
 
-  // Set jumlah utama
-  document.querySelector(".stat-total").textContent = total;
-  document.querySelector(".stat-rendah").textContent = rendahCount;
-  document.querySelector(".stat-menengah").textContent = menengahCount;
+  // ================= PAPAR TOTAL BREAKDOWN =================
 
-  // Papar pecahan
-  paparBreakdown("rendah-breakdown", rendahJenis);
-  paparBreakdown("menengah-breakdown", menengahJenis);
+  const totalDiv = document.getElementById("total-breakdown");
+  totalDiv.innerHTML = "";
+
+  Object.entries(kategoriCount).forEach(([key, value]) => {
+    totalDiv.innerHTML += `
+      <div class="flex justify-between text-sm text-left py-1">
+        <span>${key}</span>
+        <span class="bg-gray-200 px-2 rounded-full text-xs">${value}</span>
+      </div>
+    `;
+  });
+
+  // ================= PAPAR RENDAH =================
+
+  const rendahDiv = document.getElementById("rendah-breakdown");
+  rendahDiv.innerHTML = "";
+
+  let jumlahRendah = 0;
+
+  Object.entries(rendahJenisCount).forEach(([key, value]) => {
+    jumlahRendah += value;
+
+    rendahDiv.innerHTML += `
+      <div class="flex justify-between text-sm py-1">
+        <span>${key}</span>
+        <span class="bg-gray-200 px-2 rounded-full text-xs">${value}</span>
+      </div>
+    `;
+  });
+
+  document.querySelector(".stat-rendah").textContent = jumlahRendah;
+
+  // ================= PAPAR MENENGAH =================
+
+  const menengahDiv = document.getElementById("menengah-breakdown");
+  menengahDiv.innerHTML = "";
+
+  let jumlahMenengah = 0;
+
+  Object.entries(menengahJenisCount).forEach(([key, value]) => {
+    jumlahMenengah += value;
+
+    menengahDiv.innerHTML += `
+      <div class="flex justify-between text-sm py-1">
+        <span>${key}</span>
+        <span class="bg-gray-200 px-2 rounded-full text-xs">${value}</span>
+      </div>
+    `;
+  });
+
+  document.querySelector(".stat-menengah").textContent = jumlahMenengah;
 }
 
 /* ================= DROPDOWN ================= */
