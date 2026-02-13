@@ -273,17 +273,28 @@ async function loadSekolah() {
 
 function kiraStatistik() {
 
-  document.querySelector(".stat-total").textContent = semuaSekolah.length;
+  const total = semuaSekolah.length;
 
-  document.querySelector(".stat-rendah").textContent =
-    semuaSekolah.filter(s =>
-      (s.jenis || "").toLowerCase().includes("sk")
-    ).length;
+  const rendah = semuaSekolah.filter(s => {
+    const jenis = (s.jenis || "").toLowerCase();
 
-  document.querySelector(".stat-menengah").textContent =
-    semuaSekolah.filter(s =>
-      (s.jenis || "").toLowerCase().includes("sm")
-    ).length;
+    return (
+      jenis.includes("sk") ||
+      jenis.includes("sjkt") ||
+      jenis.includes("sjkc") ||
+      jenis.includes("srk") ||
+      jenis.includes("rendah")
+    );
+  }).length;
+
+  const menengah = semuaSekolah.filter(s => {
+    const jenis = (s.jenis || "").toLowerCase();
+    return jenis.includes("sm");
+  }).length;
+
+  document.querySelector(".stat-total").textContent = total;
+  document.querySelector(".stat-rendah").textContent = rendah;
+  document.querySelector(".stat-menengah").textContent = menengah;
 }
 
 /* ================= DROPDOWN ================= */
