@@ -112,8 +112,8 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
 
 <!-- ================= DASHBOARD MAKLUMAT SEKOLAH ================= -->
 
-<button onclick="importJSON()"
-  class="mb-6 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded shadow">
+<button id="importBtn"
+  class="hidden mb-6 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded shadow">
   IMPORT DATA SEKOLAH (JSON)
 </button>
 
@@ -152,23 +152,28 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
   <!-- FILTER -->
   <div class="bg-white rounded-xl shadow p-6 mb-10">
     <input type="text"
-      placeholder="🔍 Cari Nama Sekolah, Kod atau PGB..."
-      class="w-full border rounded-lg px-4 py-2 mb-4">
+  id="searchInput"
+  placeholder="🔍 Cari Nama Sekolah, Kod atau PGB..."
+  class="w-full border rounded-lg px-4 py-2 mb-4">
 
-    <div class="grid md:grid-cols-4 gap-4">
-      <select class="border rounded-lg px-4 py-2">
-        <option>Semua DUN</option>
-      </select>
-      <select class="border rounded-lg px-4 py-2">
-        <option>Semua Jenis</option>
-      </select>
-      <select class="border rounded-lg px-4 py-2">
-        <option>Semua Kategori</option>
-      </select>
-      <select class="border rounded-lg px-4 py-2">
-        <option>Semua Lokasi</option>
-      </select>
-    </div>
+<div class="grid md:grid-cols-4 gap-4">
+  <select id="filterDun" class="border rounded-lg px-4 py-2">
+    <option value="">Semua DUN</option>
+  </select>
+
+  <select id="filterJenis" class="border rounded-lg px-4 py-2">
+    <option value="">Semua Jenis</option>
+  </select>
+
+  <select id="filterKategori" class="border rounded-lg px-4 py-2">
+    <option value="">Semua Kategori</option>
+  </select>
+
+  <select id="filterLokasi" class="border rounded-lg px-4 py-2">
+    <option value="">Semua Lokasi</option>
+  </select>
+</div>
+
   </div>
 
   <!-- GRID SEKOLAH (🔥 PENTING) -->
@@ -185,33 +190,6 @@ Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas ke
   © 2026 Persekutuan Pengakap Daerah Baling
 </footer>
 
-<script>
-function showSection(id) {
-  document.querySelectorAll('.content-section')
-    .forEach(sec => sec.classList.add('hidden'));
-
-  const target = document.getElementById(id);
-  if (target) {
-    target.classList.remove('hidden');
-    target.scrollIntoView({ behavior: 'smooth' });
-
-    // 🔥 Load sekolah hanya bila buka section
-    if (id === "maklumat-sekolah") {
-      loadSekolah();
-    }
-  }
-}
-
-function hideSection(id) {
-  const target = document.getElementById(id);
-  if (target) {
-    target.classList.add('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-</script>
-
-<!-- Firebase -->
 <script type="module">
 import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -223,6 +201,8 @@ import {
   addDoc 
 } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
   apiKey: "AIzaSyAU-mdQWJkF9tiyrl6ZxJeGTyfHG2TYSVU",
@@ -236,77 +216,176 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+let semuaSekolah = [];
+
+/* ================= LOAD DATA ================= */
+
 window.loadSekolah = async function() {
 
   const grid = document.getElementById("sekolah-grid");
   if (!grid) return;
 
   grid.innerHTML = `
-    <div class="text-center py-10 text-gray-500">
+    <div class="col-span-full text-center py-10 text-gray-500">
       Memuatkan data sekolah...
     </div>
   `;
 
   try {
-    const querySnapshot = await getDocs(collection(db, "sekolah"));
 
-    if (querySnapshot.empty) {
-      grid.innerHTML = `
-        <div class="text-center py-10 text-gray-400">
-          Tiada data sekolah dijumpai.
-        </div>
-      `;
-      return;
-    }
+    const snapshot = await getDocs(collection(db, "sekolah"));
+    semuaSekolah = [];
 
-    grid.innerHTML = "";
-
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-
-      grid.innerHTML += `
-        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6">
-          <div class="flex items-center gap-4">
-            <img src="${data.logo || 'assets/logo.png'}"
-                 class="h-14 w-14 object-contain">
-            <div>
-              <h3 class="font-bold text-lg text-slate-800">
-                ${data.nama || '-'}
-              </h3>
-              <span class="text-xs bg-yellow-400 text-black px-2 py-1 rounded">
-                ${data.kod || '-'}
-              </span>
-            </div>
-          </div>
-
-          <div class="mt-4 text-sm text-gray-700">
-            👤 ${data.pgb || '-'} <br>
-            📞 ${data.telefon || '-'}
-          </div>
-
-          <div class="mt-4 text-sm text-red-500">
-            📍 ${data.lokasi || '-'}, ${data.zon || '-'}
-          </div>
-        </div>
-      `;
+    snapshot.forEach(doc => {
+      semuaSekolah.push(doc.data());
     });
 
+    isiDropdown();
+    paparSekolah();
+    kiraStatistik();
+
   } catch (error) {
+    console.error(error);
     grid.innerHTML = `
-      <div class="text-center py-10 text-red-500">
+      <div class="col-span-full text-center py-10 text-red-500">
         Ralat memuatkan data.
       </div>
     `;
-    console.error("Firestore Error:", error);
   }
 };
 
+/* ================= STATISTIK AUTO ================= */
+
+function kiraStatistik() {
+
+  const total = semuaSekolah.length;
+  const rendah = semuaSekolah.filter(s => 
+    (s.jenis || "").toLowerCase().includes("sk") ||
+    (s.kategori || "").toLowerCase().includes("rendah")
+  ).length;
+
+  const menengah = semuaSekolah.filter(s => 
+    (s.jenis || "").toLowerCase().includes("sm")
+  ).length;
+
+  document.querySelectorAll(".stat-total")[0].textContent = total;
+  document.querySelectorAll(".stat-rendah")[0].textContent = rendah;
+  document.querySelectorAll(".stat-menengah")[0].textContent = menengah;
+}
+
+/* ================= DROPDOWN ================= */
+
+function isiDropdown() {
+
+  const dunSet = new Set();
+  const jenisSet = new Set();
+  const kategoriSet = new Set();
+  const lokasiSet = new Set();
+
+  semuaSekolah.forEach(s => {
+    if (s.dun) dunSet.add(s.dun);
+    if (s.jenis) jenisSet.add(s.jenis);
+    if (s.kategori) kategoriSet.add(s.kategori);
+    if (s.lokasi) lokasiSet.add(s.lokasi);
+  });
+
+  isiOption("filterDun", dunSet);
+  isiOption("filterJenis", jenisSet);
+  isiOption("filterKategori", kategoriSet);
+  isiOption("filterLokasi", lokasiSet);
+}
+
+function isiOption(id, dataSet) {
+
+  const select = document.getElementById(id);
+
+  const firstOption = select.options[0].outerHTML;
+  select.innerHTML = firstOption;
+
+  [...dataSet].sort().forEach(value => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = value;
+    select.appendChild(option);
+  });
+}
+
+/* ================= PAPAR SEKOLAH ================= */
+
+function paparSekolah() {
+
+  const grid = document.getElementById("sekolah-grid");
+
+  const keyword = document.getElementById("searchInput").value.toLowerCase();
+  const dun = document.getElementById("filterDun").value;
+  const jenis = document.getElementById("filterJenis").value;
+  const kategori = document.getElementById("filterKategori").value;
+  const lokasi = document.getElementById("filterLokasi").value;
+
+  const filtered = semuaSekolah.filter(s => {
+
+    const matchSearch =
+      (s.nama || "").toLowerCase().includes(keyword) ||
+      (s.kod || "").toLowerCase().includes(keyword) ||
+      (s.pgb || "").toLowerCase().includes(keyword);
+
+    const matchDun = !dun || s.dun === dun;
+    const matchJenis = !jenis || s.jenis === jenis;
+    const matchKategori = !kategori || s.kategori === kategori;
+    const matchLokasi = !lokasi || s.lokasi === lokasi;
+
+    return matchSearch && matchDun && matchJenis && matchKategori && matchLokasi;
+  });
+
+  grid.innerHTML = "";
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="col-span-full text-center text-gray-400 py-10">
+        Tiada sekolah dijumpai.
+      </div>
+    `;
+    return;
+  }
+
+  filtered.forEach(s => {
+
+    grid.innerHTML += `
+      <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6">
+        <div class="flex items-center gap-4">
+          <img src="${s.logo || 'assets/logo.png'}"
+               class="h-14 w-14 object-contain">
+          <div>
+            <h3 class="font-bold text-lg text-slate-800">
+              ${s.nama}
+            </h3>
+            <span class="text-xs bg-yellow-400 text-black px-2 py-1 rounded">
+              ${s.kod}
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-4 text-sm text-gray-700">
+          👤 ${s.pgb || "-"} <br>
+          📞 ${s.telefon_pgb || s.telefon || "-"}
+        </div>
+
+        <div class="mt-4 text-sm text-red-500">
+          📍 ${s.lokasi || "-"}, ${s.dun || "-"}
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* ================= IMPORT JSON (OPTIONAL) ================= */
 
 window.importJSON = async function() {
 
   if (!confirm("Pastikan koleksi sekolah kosong. Teruskan import?")) return;
 
   try {
+
     const response = await fetch("sekolah.json");
     const data = await response.json();
 
@@ -340,9 +419,24 @@ window.importJSON = async function() {
   }
 };
 
+/* ================= EVENT LISTENER ================= */
+
+document.getElementById("searchInput")
+  .addEventListener("input", paparSekolah);
+
+document.getElementById("filterDun")
+  .addEventListener("change", paparSekolah);
+
+document.getElementById("filterJenis")
+  .addEventListener("change", paparSekolah);
+
+document.getElementById("filterKategori")
+  .addEventListener("change", paparSekolah);
+
+document.getElementById("filterLokasi")
+  .addEventListener("change", paparSekolah);
 
 </script>
-
 
 </body>
 </html>
