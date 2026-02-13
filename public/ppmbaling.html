@@ -447,44 +447,49 @@ function paparSekolah() {
   grid.innerHTML = "";
 
   if (sekolahFiltered.length === 0) {
-    grid.innerHTML = `<div class="col-span-full text-center py-10 text-gray-400">
-      Tiada sekolah dijumpai.
-    </div>`;
+    grid.innerHTML = `
+      <div class="col-span-full text-center py-10 text-gray-400">
+        Tiada sekolah dijumpai.
+      </div>
+    `;
     return;
   }
 
   sekolahFiltered.forEach((s, i) => {
+
     grid.innerHTML += `
       <div onclick="bukaDetail(${i})"
         class="cursor-pointer bg-white rounded-xl shadow hover:shadow-xl transition p-6">
-        <h3 class="font-bold text-lg text-slate-800">${s.nama}</h3>
-        <span class="text-xs bg-yellow-400 px-2 py-1 rounded">${s.kod}</span>
-        <p class="mt-4 text-sm">👤 ${s.pgb || "-"}</p>
-        <p class="text-sm text-red-500">📍 ${s.lokasi || "-"}, ${s.dun || "-"}</p>
+
+        <div class="flex items-center gap-4">
+          <img src="${s.logo || 'assets/logo.png'}"
+               onerror="this.src='assets/logo.png'"
+               class="h-14 w-14 object-contain">
+
+          <div>
+            <h3 class="font-bold text-lg text-slate-800">
+              ${s.nama}
+            </h3>
+
+            <span class="text-xs bg-yellow-400 px-2 py-1 rounded">
+              ${s.kod}
+            </span>
+          </div>
+        </div>
+
+        <p class="mt-4 text-sm text-gray-700">
+          👤 ${s.pgb || "-"}
+        </p>
+
+        <p class="text-sm text-red-500">
+          📍 ${s.lokasi || "-"}, ${s.dun || "-"}
+        </p>
+
       </div>
     `;
   });
 }
 
-function paparBreakdown(containerId, data) {
-
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  container.innerHTML = "";
-
-  Object.keys(data).sort().forEach(key => {
-
-    container.innerHTML += `
-      <div class="flex justify-between items-center py-1 text-sm">
-        <span class="text-gray-700">${key}</span>
-        <span class="bg-gray-200 px-2 py-0.5 rounded text-xs font-semibold">
-          ${data[key]}
-        </span>
-      </div>
-    `;
-  });
-}
 
 
 /* ================= MODAL ================= */
