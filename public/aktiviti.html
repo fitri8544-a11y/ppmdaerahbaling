@@ -73,36 +73,18 @@
   </p>
 </section>
 
+
 <!-- ================= GALERI GAMBAR ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
 
   <h3 class="text-2xl font-bold text-green-900 text-center mb-10">
-  📸 Galeri Aktiviti (Gambar)
-</h3>
+    📸 Galeri Aktiviti (Gambar)
+  </h3>
 
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    <!-- Kad Gambar 1 -->
-    <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4">
-      <img src="images/aktiviti/majlis-anugerah-pengakap-negara.jpg"
-           alt="Majlis Anugerah Pengakap Negara"
-           class="w-full h-40 object-cover rounded">
-
-      <h4 class="text-lg font-semibold text-green-900 mt-3">
-        Perkhemahan Daerah Baling 2026
-      </h4>
-
-      <p class="text-sm text-gray-600 mt-1">16 Disember 2025</p>
-
-      <p class="text-sm text-gray-700 mt-2">
-        Dewan Iltizam, PPD Baling.
-      </p>
-    </div>
-
-  </div>
+  <div id="galeriGambar" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
 </section>
+
 
 <!-- ================= GALERI VIDEO ================= -->
 <section class="max-w-6xl mx-auto px-6 mt-16 mb-20">
@@ -168,6 +150,37 @@
   btn?.addEventListener("click", () => {
     menu.classList.toggle("hidden");
   });
+</script>
+
+<script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
+<!-- AUTO LOAD GALERI GAMBAR -->
+<script>
+const gambarList = [
+  "DSC0367.jpg",
+  "DSC0369.jpg",
+  "DSC0370.jpg",
+  "DSC0372.jpg",
+  "DSC0375.jpg"
+];
+
+const container = document.getElementById("galeriGambar");
+
+gambarList.forEach(file => {
+  container.innerHTML += `
+    <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4">
+      <img src="assets/images/aktiviti/${file}"
+           class="w-full h-56 object-cover rounded hover:scale-105 transition duration-300">
+    </div>
+  `;
+});
 </script>
 
 </body>
