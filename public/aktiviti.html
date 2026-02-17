@@ -164,34 +164,34 @@ function bukaAlbum(folder) {
   tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
   container.innerHTML = "";
 
-  let start = 0;
-  let end = 0;
+  let nomborGambar = [];
 
-  // SET RANGE MENGIKUT FOLDER
+  // SENARAI GAMBAR YANG BETUL-BETUL WUJUD
   if (folder === "anugerah-2025") {
-    start = 367;
-    end = 518;
+    nomborGambar = [
+      367, 369, 370, 372, 375,
+      383, 389, 393, 394, 395,
+      402, 403, 405, 406,
+      408, 409, 411, 412, 413,
+      418, 421, 423, 426,
+      432, 433, 435, 439,
+      441, 501, 502, 504, 505,
+      510, 518
+    ];
   }
 
-  if (folder === "perkhemahan-2026") {
-    start = 401;
-    end = 450;
-  }
+  nomborGambar.forEach(num => {
 
-  // AUTO LOOP GAMBAR
-  for (let i = start; i <= end; i++) {
-
-    let number = i.toString().padStart(4, "0");
+    let number = num.toString().padStart(4, "0");
     let fileName = `_DSC${number}.jpg`;
 
     container.innerHTML += `
       <div class="bg-white rounded-lg shadow p-4">
         <img src="assets/images/aktiviti/${folder}/${fileName}"
-             onerror="this.remove()"
              class="w-full h-56 object-cover rounded hover:scale-105 transition duration-300">
       </div>
     `;
-  }
+  });
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
