@@ -151,7 +151,6 @@ const menu = document.getElementById("mobileMenu");
 btn?.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
-
 function bukaAlbum(folder) {
 
   const folderSection = document.getElementById("folderSection");
@@ -165,25 +164,34 @@ function bukaAlbum(folder) {
   tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
   container.innerHTML = "";
 
-  // Senarai gambar untuk setiap folder
-  let gambarList = [];
+  let start = 0;
+  let end = 0;
 
+  // SET RANGE MENGIKUT FOLDER
   if (folder === "anugerah-2025") {
-    gambarList = ["DSC0367.jpg", "DSC0369.jpg", "DSC0370.jpg"];
+    start = 367;
+    end = 518;
   }
 
   if (folder === "perkhemahan-2026") {
-    gambarList = ["DSC0401.jpg", "DSC0402.jpg", "DSC0403.jpg"];
+    start = 401;
+    end = 450;
   }
 
-  gambarList.forEach(file => {
+  // AUTO LOOP GAMBAR
+  for (let i = start; i <= end; i++) {
+
+    let number = i.toString().padStart(4, "0");
+    let fileName = `_DSC${number}.jpg`;
+
     container.innerHTML += `
       <div class="bg-white rounded-lg shadow p-4">
-        <img src="assets/images/aktiviti/${folder}/${file}"
+        <img src="assets/images/aktiviti/${folder}/${fileName}"
+             onerror="this.remove()"
              class="w-full h-56 object-cover rounded hover:scale-105 transition duration-300">
       </div>
     `;
-  });
+  }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
