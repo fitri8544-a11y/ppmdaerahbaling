@@ -4,112 +4,87 @@
   <meta charset="UTF-8">
   <title>Aktiviti | Persekutuan Pengakap Daerah Baling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/favicon.png">
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-800 scroll-smooth min-h-screen flex flex-col">
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
 <div class="flex-grow">
 
+<!-- ================= HEADER ================= -->
 <header class="bg-green-900 text-white sticky top-0 z-50 shadow">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
+      <img src="assets/logo.png" class="h-14">
       <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <h1 class="font-bold text-lg md:text-xl">
-          Persekutuan Pengakap Daerah Baling
-        </h1>
-        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
+        <h1 class="font-bold text-lg">Persekutuan Pengakap Daerah Baling</h1>
       </div>
     </div>
 
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+    <nav class="hidden md:flex gap-6 text-sm font-semibold">
       <a href="/index.html" class="hover:text-yellow-300">Utama</a>
       <a href="/pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
       <a href="/ppmbaling.html" class="hover:text-yellow-300">PPM Baling</a>
-
-      <!-- MENU AKTIF -->
       <a href="/aktiviti.html"
-         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-         Aktiviti
-      </a>
-
-      <a href="/muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-      <a href="/hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">Aktiviti</a>
     </nav>
 
-    <button class="md:hidden text-2xl focus:outline-none" id="menuBtn">
-      ☰
-    </button>
+    <button class="md:hidden text-2xl" id="menuBtn">☰</button>
   </div>
 
-  <div id="mobileMenu"
-     class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
-  <a href="/index.html" class="block">Utama</a>
-  <a href="/pengenalan.html" class="block">Pengenalan</a>
-  <a href="/aktiviti.html" class="block font-semibold">Aktiviti</a>
-  <a href="/unit.html" class="block">Unit Pengakap</a>
-  <a href="/muatturun.html" class="block">Muat Turun</a>
-  <a href="/hubungi.html" class="block">Hubungi Kami</a>
-</div>
-
+  <div id="mobileMenu" class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
+    <a href="/index.html" class="block">Utama</a>
+    <a href="/aktiviti.html" class="block font-semibold">Aktiviti</a>
+  </div>
 </header>
 
 <!-- ================= TAJUK ================= -->
 <section class="bg-white mx-6 mt-6 rounded shadow p-8">
-  <h2 class="text-2xl font-bold text-green-900 mb-2">
-    Aktiviti
+  <h2 class="text-2xl font-bold text-green-900 mb-2 text-center">
+    📸 Galeri Aktiviti
   </h2>
-  <p class="text-gray-700 max-w-4xl">
-    Bahagian ini memaparkan segala aktiviti Pasukan Pengakap Daerah Baling
-  </p>
 </section>
 
-
-<!-- ================= GALERI GAMBAR ================= -->
-<section class="max-w-7xl mx-auto px-6 mt-10">
-
-  <h3 class="text-2xl font-bold text-green-900 text-center mb-10">
-    📸 Galeri Aktiviti
-  </h3>
+<!-- ================= SENARAI FOLDER ================= -->
+<section id="folderSection" class="max-w-7xl mx-auto px-6 mt-10">
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     <div onclick="bukaAlbum('anugerah-2025')"
          class="bg-white rounded-lg shadow p-6 cursor-pointer hover:shadow-xl text-center">
-      <div class="text-4xl mb-3">📁</div>
+      <div class="text-5xl mb-3">📁</div>
       <p class="font-semibold">Majlis Anugerah Pengakap Negara 2025</p>
     </div>
 
     <div onclick="bukaAlbum('perkhemahan-2026')"
          class="bg-white rounded-lg shadow p-6 cursor-pointer hover:shadow-xl text-center">
-      <div class="text-4xl mb-3">📁</div>
+      <div class="text-5xl mb-3">📁</div>
       <p class="font-semibold">Perkhemahan 2026</p>
     </div>
 
   </div>
-
 </section>
 
-<!-- TEMPAT PAPAR GAMBAR -->
-<section id="paparAlbum"
+<!-- ================= PAPAR ALBUM ================= -->
+<section id="albumSection"
          class="max-w-7xl mx-auto px-6 mt-12 hidden">
-  <h3 id="tajukAlbum"
-      class="text-xl font-bold text-green-900 text-center mb-8"></h3>
+
+  <div class="flex justify-between items-center mb-6">
+    <h3 id="tajukAlbum"
+        class="text-xl font-bold text-green-900"></h3>
+
+    <button onclick="tutupAlbum()"
+            class="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700">
+      ← Kembali
+    </button>
+  </div>
 
   <div id="gambarContainer"
        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
 </section>
 
-
+</div>
 
 <!-- ================= GALERI VIDEO ================= -->
 <section class="max-w-6xl mx-auto px-6 mt-16 mb-20">
@@ -120,7 +95,7 @@
 
   <div class="grid md:grid-cols-2 gap-12 justify-center">
 
-    <!-- ================= VIDEO 1 : TIKTOK ================= -->
+    <!-- VIDEO 1 : TIKTOK -->
     <div class="bg-white rounded-xl shadow-lg p-6">
 
       <h4 class="text-lg font-semibold text-green-900 text-center mb-6">
@@ -138,7 +113,7 @@
 
     </div>
 
-    <!-- ================= VIDEO 2 : FACEBOOK ================= -->
+    <!-- VIDEO 2 : FACEBOOK -->
     <div class="bg-white rounded-xl shadow-lg p-6">
 
       <h4 class="text-lg font-semibold text-green-900 text-center mb-6">
@@ -163,67 +138,43 @@
 
 </section>
 
-
+<!-- ================= FOOTER ================= -->
 <footer class="bg-green-900 text-white text-center text-sm py-6">
   © 2026 Persekutuan Pengakap Daerah Baling
 </footer>
 
+<!-- ================= SCRIPT ================= -->
 <script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("mobileMenu");
 
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
-
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
-
-<!-- AUTO LOAD GALERI GAMBAR -->
-<script>
-const gambarList = [
-  "DSC0367.jpg",
-  "DSC0369.jpg",
-  "DSC0370.jpg",
-  "DSC0372.jpg",
-  "DSC0375.jpg"
-];
-
-const container = document.getElementById("galeriGambar");
-
-gambarList.forEach(file => {
-  container.innerHTML += `
-    <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4">
-      <img src="assets/images/aktiviti/${file}"
-           class="w-full h-56 object-cover rounded hover:scale-105 transition duration-300">
-    </div>
-  `;
+btn?.addEventListener("click", () => {
+  menu.classList.toggle("hidden");
 });
-</script>
 
-<script>
 function bukaAlbum(folder) {
 
+  const folderSection = document.getElementById("folderSection");
+  const albumSection = document.getElementById("albumSection");
   const tajuk = document.getElementById("tajukAlbum");
   const container = document.getElementById("gambarContainer");
-  const section = document.getElementById("paparAlbum");
+
+  folderSection.classList.add("hidden");
+  albumSection.classList.remove("hidden");
 
   tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
   container.innerHTML = "";
-  section.classList.remove("hidden");
 
-  const gambarList = [
-    "DSC0367.jpg",
-    "DSC0369.jpg",
-    "DSC0370.jpg"
-  ];
+  // Senarai gambar untuk setiap folder
+  let gambarList = [];
+
+  if (folder === "anugerah-2025") {
+    gambarList = ["DSC0367.jpg", "DSC0369.jpg", "DSC0370.jpg"];
+  }
+
+  if (folder === "perkhemahan-2026") {
+    gambarList = ["DSC0401.jpg", "DSC0402.jpg", "DSC0403.jpg"];
+  }
 
   gambarList.forEach(file => {
     container.innerHTML += `
@@ -234,7 +185,12 @@ function bukaAlbum(folder) {
     `;
   });
 
-  window.scrollTo({ top: section.offsetTop - 80, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function tutupAlbum() {
+  document.getElementById("folderSection").classList.remove("hidden");
+  document.getElementById("albumSection").classList.add("hidden");
 }
 </script>
 
