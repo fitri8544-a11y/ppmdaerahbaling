@@ -65,6 +65,7 @@
 
 <!-- ================= UTAMA ================= -->
 <section id="utama"></section>
+
 <!-- ================= WAKTU SOLAT PRO ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
 
@@ -238,22 +239,37 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
+
 let prayerTimes = {};
 let countdownInterval = null;
 
+// ================= LOAD WAKTU SOLAT =================
 async function loadWaktuSolat(lat, lng) {
 
-  const res = await fetch(
-    `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=11`
-  );
+  try {
 
-  const data = await res.json();
-  prayerTimes = data.data.timings;
+    const res = await fetch(
+      `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=11&timezonestring=Asia/Kuala_Lumpur`
+    );
 
-  renderWaktu();
-  setHijrah(data.data.date.hijri);
+    const data = await res.json();
+
+    if (data.code !== 200) {
+      throw new Error("API Error");
+    }
+
+    prayerTimes = data.data.timings;
+
+    renderWaktu();
+    setHijrah(); // guna versi Malaysia
+
+  } catch (err) {
+    document.getElementById("waktuContainer").innerHTML =
+      "<p class='text-red-500 text-center col-span-5'>Gagal memuat waktu solat</p>";
+  }
 }
 
+// ================= PAPAR WAKTU =================
 function renderWaktu() {
 
   const container = document.getElementById("waktuContainer");
@@ -283,6 +299,7 @@ function renderWaktu() {
   highlightNextPrayer();
 }
 
+// ================= FORMAT MASA =================
 function formatTime(t){
   const [h,m] = t.split(":");
   const hour = parseInt(h);
@@ -291,6 +308,7 @@ function formatTime(t){
   return `${hour12}:${m}${suffix}`;
 }
 
+// ================= HIGHLIGHT SOLAT SETERUSNYA =================
 function highlightNextPrayer(){
 
   const now = new Date();
@@ -298,6 +316,7 @@ function highlightNextPrayer(){
 
   let nextName = null;
   let nextTime = null;
+  let nextApi = null;
 
   const list = [
     { api: "Fajr", label: "Subuh" },
@@ -307,22 +326,35 @@ function highlightNextPrayer(){
     { api: "Isha", label: "Isyak" }
   ];
 
-  list.forEach(item=>{
+  list.forEach(item => {
+
     const [h,m] = prayerTimes[item.api].split(":");
     const minutes = parseInt(h)*60 + parseInt(m);
 
     if(minutes > currentMinutes && !nextName){
       nextName = item.label;
       nextTime = minutes;
+      nextApi = item.api;
     }
   });
 
   if(nextName){
+
     document.getElementById("nextSolat").innerText = nextName;
+
+    // highlight kad
+    document.querySelectorAll("[id^='card-']").forEach(card=>{
+      card.classList.remove("bg-blue-100","border","border-blue-400");
+    });
+
+    document.getElementById(`card-${nextApi}`)
+      .classList.add("bg-blue-100","border","border-blue-400");
+
     startCountdown(nextTime);
   }
 }
 
+// ================= COUNTDOWN =================
 function startCountdown(targetMinutes){
 
   if(countdownInterval){
@@ -340,16 +372,26 @@ function startCountdown(targetMinutes){
       const m = diff % 60;
       document.getElementById("countdown").innerText =
         `${h} jam ${m} min`;
+    } else {
+      document.getElementById("countdown").innerText = "";
     }
 
   },60000);
 }
 
-function setHijrah(h){
-  document.getElementById("tarikhHijrah").innerText =
-    `${h.day} ${h.month.en} ${h.year}H`;
+// ================= TARIKH HIJRAH MALAYSIA =================
+function setHijrah(){
+
+  const hijrah = new Intl.DateTimeFormat('ms-MY-u-ca-islamic', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(new Date());
+
+  document.getElementById("tarikhHijrah").innerText = hijrah;
 }
 
+// ================= DROPDOWN =================
 const zonSelect = document.getElementById("zonSelect");
 
 zonSelect.addEventListener("change", function(){
@@ -358,7 +400,7 @@ zonSelect.addEventListener("change", function(){
   loadWaktuSolat(lat,lng);
 });
 
-// INIT
+// ================= INIT =================
 const saved = localStorage.getItem("zonSolat");
 if(saved){
   zonSelect.value = saved;
@@ -368,11 +410,16 @@ const [lat,lng] = zonSelect.value.split(",");
 loadWaktuSolat(lat,lng);
 
 const today = new Date().toLocaleDateString("ms-MY",{
-  weekday:"long", day:"numeric", month:"long", year:"numeric"
+  weekday:"long",
+  day:"numeric",
+  month:"long",
+  year:"numeric"
 });
+
 document.getElementById("tarikhMasihi").innerText = today;
 
 </script>
+
 
 
 </body>
