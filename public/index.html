@@ -211,54 +211,58 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-async function loadWaktuSolat() {
-
-  // Kod zon Baling = KDH04
-  const url = "https://api.waktusolat.app/v2/solat/KDH04";
+async function loadWaktuSolat(zon = "KDH04") {
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(`https://api.waktusolat.app/v1/prayer/${zon}`);
     const data = await response.json();
 
-    const waktu = data.prayers;
-
-    const container = document.getElementById("waktuContainer");
+    const waktu = data.data;
 
     const waktuList = [
-      { nama: "Subuh", masa: waktu.fajr },
-      { nama: "Zohor", masa: waktu.dhuhr },
-      { nama: "Asar", masa: waktu.asr },
-      { nama: "Maghrib", masa: waktu.maghrib },
-      { nama: "Isyak", masa: waktu.isha }
+      { nama: "Subuh", masa: waktu.Fajr },
+      { nama: "Zohor", masa: waktu.Dhuhr },
+      { nama: "Asar", masa: waktu.Asr },
+      { nama: "Maghrib", masa: waktu.Maghrib },
+      { nama: "Isyak", masa: waktu.Isha }
     ];
 
+    const container = document.getElementById("waktuContainer");
     container.innerHTML = "";
 
     waktuList.forEach(w => {
       container.innerHTML += `
-        <div class="bg-gray-100 rounded-lg p-3 shadow-sm">
-          <p class="font-semibold text-gray-700">${w.nama}</p>
+        <div class="bg-gray-100 rounded-lg p-4 shadow-sm">
+          <p class="text-gray-500 text-xs font-semibold">${w.nama}</p>
           <p class="text-blue-600 font-bold text-base mt-1">
-            ${w.masa}
+            ${formatTime(w.masa)}
           </p>
         </div>
       `;
     });
 
-    // Tarikh
+    // Tarikh Masihi
     const today = new Date().toLocaleDateString("ms-MY", {
       weekday: "long",
-      year: "numeric",
+      day: "numeric",
       month: "long",
-      day: "numeric"
+      year: "numeric"
     });
 
-    document.getElementById("tarikhSolat").innerText = today;
+    document.getElementById("tarikhMasihi").innerText = today;
 
   } catch (error) {
     document.getElementById("waktuContainer").innerHTML =
       "<p class='text-red-500'>Gagal memuat waktu solat.</p>";
   }
+}
+
+function formatTime(timeString) {
+  const [hour, minute] = timeString.split(":");
+  const h = parseInt(hour);
+  const suffix = h >= 12 ? "pm" : "am";
+  const hour12 = ((h + 11) % 12 + 1);
+  return `${hour12}:${minute}${suffix}`;
 }
 
 loadWaktuSolat();
