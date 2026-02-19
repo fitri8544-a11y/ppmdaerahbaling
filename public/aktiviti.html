@@ -70,6 +70,7 @@ Aktiviti
   </div>
 </section>
 
+
 <!-- ================= PAPAR ALBUM ================= -->
 <section id="albumSection"
          class="max-w-7xl mx-auto px-6 mt-12 hidden">
@@ -220,6 +221,38 @@ function tutupAlbum() {
 }
 </script>
 
+<!-- ================= IMAGE MODAL ================= -->
+<div id="imageModal"
+     class="fixed inset-0 bg-black/80 flex items-center justify-center 
+            opacity-0 invisible transition duration-300 z-50">
+
+  <div class="relative max-w-4xl w-full px-4">
+
+    <button onclick="tutupModal()"
+            class="absolute -top-10 right-4 text-white text-3xl font-bold">
+      ✕
+    </button>
+
+    <img id="modalImage"
+         class="w-full max-h-[80vh] object-contain rounded-lg shadow-2xl">
+
+  </div>
+</div>
+
+<script>
+function bukaModal(src) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+
+  modalImg.src = src;
+  modal.classList.remove("opacity-0", "invisible");
+}
+
+function tutupModal() {
+  const modal = document.getElementById("imageModal");
+  modal.classList.add("opacity-0", "invisible");
+}
+</script>
 
 </body>
 </html>
