@@ -167,12 +167,12 @@ function bukaAlbum(folder) {
   const tajuk = document.getElementById("tajukAlbum");
   const container = document.getElementById("gambarContainer");
 
-  // Hide folder & video
   folderSection.classList.add("hidden");
-  videoSection.classList.add("hidden");
-
-  // Show album
   albumSection.classList.remove("hidden");
+
+  if(videoSection){
+    videoSection.classList.add("hidden");
+  }
 
   tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
   container.innerHTML = "";
@@ -206,7 +206,9 @@ function bukaAlbum(folder) {
     container.innerHTML += `
       <div class="bg-white rounded-lg shadow p-4">
         <img src="assets/images/aktiviti/${folder}/${fileName}"
-             class="w-full h-56 object-cover rounded hover:scale-105 transition duration-300">
+             onclick="bukaModal(this.src)"
+             class="w-full h-56 object-cover rounded cursor-pointer
+                    hover:scale-105 transition duration-300">
       </div>
     `;
   });
@@ -217,29 +219,15 @@ function bukaAlbum(folder) {
 function tutupAlbum() {
   document.getElementById("folderSection").classList.remove("hidden");
   document.getElementById("albumSection").classList.add("hidden");
-  document.getElementById("videoSection").classList.remove("hidden");
+
+  const videoSection = document.getElementById("videoSection");
+  if(videoSection){
+    videoSection.classList.remove("hidden");
+  }
 }
-</script>
 
-<!-- ================= IMAGE MODAL ================= -->
-<div id="imageModal"
-     class="fixed inset-0 bg-black/80 flex items-center justify-center 
-            opacity-0 invisible transition duration-300 z-50">
+/* ================= IMAGE MODAL ================= */
 
-  <div class="relative max-w-4xl w-full px-4">
-
-    <button onclick="tutupModal()"
-            class="absolute -top-10 right-4 text-white text-3xl font-bold">
-      ✕
-    </button>
-
-    <img id="modalImage"
-         class="w-full max-h-[80vh] object-contain rounded-lg shadow-2xl">
-
-  </div>
-</div>
-
-<script>
 function bukaModal(src) {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
@@ -252,7 +240,41 @@ function tutupModal() {
   const modal = document.getElementById("imageModal");
   modal.classList.add("opacity-0", "invisible");
 }
+
+/* Tutup jika klik luar gambar */
+document.getElementById("imageModal").addEventListener("click", function(e){
+  if(e.target.id === "imageModal"){
+    tutupModal();
+  }
+});
+
+/* Tutup jika tekan ESC */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    tutupModal();
+  }
+});
 </script>
+
+
+<!-- ================= IMAGE MODAL ================= -->
+<div id="imageModal"
+     class="fixed inset-0 bg-black/80 flex items-center justify-center 
+            opacity-0 invisible transition duration-300 z-50">
+
+  <div class="relative max-w-5xl w-full px-4">
+
+    <button onclick="tutupModal()"
+            class="absolute -top-12 right-4 text-white text-4xl font-bold">
+      ✕
+    </button>
+
+    <img id="modalImage"
+         class="w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+
+  </div>
+</div>
+
 
 </body>
 </html>
