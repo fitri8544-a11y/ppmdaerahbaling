@@ -66,6 +66,44 @@
 <!-- ================= UTAMA ================= -->
 <section id="utama"></section>
 
+<!-- ================= WAKTU SOLAT ================= -->
+<section class="max-w-7xl mx-auto px-6 mt-10">
+
+  <div class="bg-white rounded-xl shadow p-6 border-l-4 border-blue-500">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-800">
+          🕌 Waktu Solat
+        </h2>
+        <p id="tarikhSolat" class="text-sm text-gray-600"></p>
+      </div>
+
+      <div class="text-sm text-gray-600">
+        Kedah - Baling
+      </div>
+
+    </div>
+
+    <!-- Waktu Grid -->
+    <div id="waktuContainer"
+         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center text-sm">
+    </div>
+
+    <p class="text-xs text-gray-500 mt-4">
+      * Sumber data rasmi dari 
+      <span class="text-blue-600 font-semibold">
+        Jabatan Kemajuan Islam Malaysia (JAKIM)
+      </span>
+    </p>
+
+  </div>
+
+</section>
+
+
 <!-- ================= WELCOME ================= -->
 <section class="bg-white mt-6 mx-6 rounded shadow p-8 text-center">
   <h2 class="text-2xl font-bold text-blue-900 mb-2">
@@ -170,6 +208,60 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 });
+</script>
+
+<script>
+async function loadWaktuSolat() {
+
+  // Kod zon Baling = KDH04
+  const url = "https://api.waktusolat.app/v2/solat/KDH04";
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const waktu = data.prayers;
+
+    const container = document.getElementById("waktuContainer");
+
+    const waktuList = [
+      { nama: "Subuh", masa: waktu.fajr },
+      { nama: "Zohor", masa: waktu.dhuhr },
+      { nama: "Asar", masa: waktu.asr },
+      { nama: "Maghrib", masa: waktu.maghrib },
+      { nama: "Isyak", masa: waktu.isha }
+    ];
+
+    container.innerHTML = "";
+
+    waktuList.forEach(w => {
+      container.innerHTML += `
+        <div class="bg-gray-100 rounded-lg p-3 shadow-sm">
+          <p class="font-semibold text-gray-700">${w.nama}</p>
+          <p class="text-blue-600 font-bold text-base mt-1">
+            ${w.masa}
+          </p>
+        </div>
+      `;
+    });
+
+    // Tarikh
+    const today = new Date().toLocaleDateString("ms-MY", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    document.getElementById("tarikhSolat").innerText = today;
+
+  } catch (error) {
+    document.getElementById("waktuContainer").innerHTML =
+      "<p class='text-red-500'>Gagal memuat waktu solat.</p>";
+  }
+}
+
+loadWaktuSolat();
 </script>
 
 </body>
