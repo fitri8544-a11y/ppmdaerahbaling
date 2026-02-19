@@ -65,7 +65,6 @@
 
 <!-- ================= UTAMA ================= -->
 <section id="utama"></section>
-
 <!-- ================= WAKTU SOLAT PRO ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
 
@@ -83,50 +82,30 @@
         </div>
       </div>
 
-      <!-- DROPDOWN LOKASI -->
       <select id="zonSelect"
               class="border rounded px-3 py-2 text-sm max-h-60 overflow-y-auto">
 
-        <!-- PERLIS -->
-        <optgroup label="Perlis">
-          <option value="6.441,100.198">Kangar</option>
-        </optgroup>
-
-        <!-- KEDAH -->
         <optgroup label="Kedah">
           <option value="5.677,100.917" selected>Baling</option>
           <option value="6.118,100.368">Kota Setar</option>
           <option value="5.647,100.487">Kulim</option>
-          <option value="6.121,100.367">Kubang Pasu</option>
-          <option value="6.260,100.415">Pendang</option>
         </optgroup>
 
-        <!-- SELANGOR -->
-        <optgroup label="Selangor">
-          <option value="3.073,101.518">Shah Alam</option>
-          <option value="3.139,101.686">Petaling Jaya</option>
-          <option value="2.980,101.519">Klang</option>
-        </optgroup>
-
-        <!-- WP -->
         <optgroup label="Wilayah Persekutuan">
           <option value="3.141,101.693">Kuala Lumpur</option>
-          <option value="5.283,115.241">Labuan</option>
           <option value="2.926,101.696">Putrajaya</option>
         </optgroup>
 
-        <!-- SABAH -->
-        <optgroup label="Sabah">
-          <option value="5.980,116.073">Kota Kinabalu</option>
-          <option value="4.399,118.087">Tawau</option>
-          <option value="5.840,118.117">Sandakan</option>
+        <optgroup label="Johor">
+          <option value="1.492,103.741">Johor Bahru</option>
         </optgroup>
 
-        <!-- SARAWAK -->
+        <optgroup label="Sabah">
+          <option value="5.980,116.073">Kota Kinabalu</option>
+        </optgroup>
+
         <optgroup label="Sarawak">
           <option value="1.553,110.359">Kuching</option>
-          <option value="2.290,111.830">Sibu</option>
-          <option value="4.399,113.991">Miri</option>
         </optgroup>
 
       </select>
@@ -278,16 +257,22 @@ function renderWaktu() {
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
 
-  const list = ["SUBUH","ZOHOR","ASAR","MAGHRIB","ISYAK"];
+  const list = [
+    { api: "Fajr", label: "Subuh" },
+    { api: "Dhuhr", label: "Zohor" },
+    { api: "Asr", label: "Asar" },
+    { api: "Maghrib", label: "Maghrib" },
+    { api: "Isha", label: "Isyak" }
+  ];
 
-  list.forEach(name => {
+  list.forEach(item => {
 
-    const time = prayerTimes[name];
+    const time = prayerTimes[item.api];
 
     container.innerHTML += `
-      <div id="card-${name}"
+      <div id="card-${item.api}"
            class="bg-gray-100 rounded-lg p-4 shadow-sm transition">
-        <p class="text-xs font-semibold text-gray-500">${name}</p>
+        <p class="text-xs font-semibold text-gray-500">${item.label}</p>
         <p class="font-bold text-blue-600 mt-1">${formatTime(time)}</p>
       </div>
     `;
@@ -312,12 +297,20 @@ function highlightNextPrayer(){
   let nextName = null;
   let nextTime = null;
 
-  ["SUBUH","ZOHOR","ASAR","MAGHRIB","ISYAK"].forEach(name=>{
-    const [h,m] = prayerTimes[name].split(":");
+  const list = [
+    { api: "Fajr", label: "Subuh" },
+    { api: "Dhuhr", label: "Zohor" },
+    { api: "Asr", label: "Asar" },
+    { api: "Maghrib", label: "Maghrib" },
+    { api: "Isha", label: "Isyak" }
+  ];
+
+  list.forEach(item=>{
+    const [h,m] = prayerTimes[item.api].split(":");
     const minutes = parseInt(h)*60 + parseInt(m);
 
     if(minutes > currentMinutes && !nextName){
-      nextName = name;
+      nextName = item.label;
       nextTime = minutes;
     }
   });
@@ -376,7 +369,9 @@ const today = new Date().toLocaleDateString("ms-MY",{
   weekday:"long", day:"numeric", month:"long", year:"numeric"
 });
 document.getElementById("tarikhMasihi").innerText = today;
+
 </script>
+
 
 </body>
 </html>
