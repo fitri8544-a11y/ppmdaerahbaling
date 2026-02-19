@@ -271,11 +271,11 @@ function renderWaktu(){
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
 
-  const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27); 
-  // Dhuha = anggaran 27 minit selepas Syuruk (standard Malaysia)
+  const imsakTime = subtractMinutes(prayerTimes.Fajr, 10);
+  const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
 
   const list = [
-    { api: "Imsak", label: "Imsak" },
+    { custom: imsakTime, label: "Imsak" },
     { api: "Fajr", label: "Subuh" },
     { api: "Sunrise", label: "Syuruk" },
     { custom: dhuhaTime, label: "Dhuha" },
@@ -301,7 +301,6 @@ function renderWaktu(){
   highlightNextPrayer();
 }
 
-
 function formatTime(t){
   const [h,m] = t.split(":");
   const hour = parseInt(h);
@@ -310,12 +309,12 @@ function formatTime(t){
   return `${hour12}:${m}${suffix}`;
 }
 
-function addMinutes(time, mins){
+function subtractMinutes(time, mins){
 
   const [h,m] = time.split(":");
   let date = new Date();
   date.setHours(parseInt(h));
-  date.setMinutes(parseInt(m) + mins);
+  date.setMinutes(parseInt(m) - mins);
 
   const hour = date.getHours().toString().padStart(2,"0");
   const minute = date.getMinutes().toString().padStart(2,"0");
@@ -323,51 +322,46 @@ function addMinutes(time, mins){
   return `${hour}:${minute}`;
 }
 
-
 function highlightNextPrayer(){
 
   const now = new Date();
   const currentMinutes = now.getHours()*60 + now.getMinutes();
 
-  let nextApi = null;
+  const imsakTime = subtractMinutes(prayerTimes.Fajr, 10);
+  const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
+
+  const list = [
+    { time: imsakTime, label: "Imsak" },
+    { time: prayerTimes.Fajr, label: "Subuh" },
+    { time: prayerTimes.Sunrise, label: "Syuruk" },
+    { time: dhuhaTime, label: "Dhuha" },
+    { time: prayerTimes.Dhuhr, label: "Zohor" },
+    { time: prayerTimes.Asr, label: "Asar" },
+    { time: prayerTimes.Maghrib, label: "Maghrib" },
+    { time: prayerTimes.Isha, label: "Isyak" }
+  ];
+
   let nextLabel = null;
   let nextMinutes = null;
 
-  const list = [
-    { api: "Fajr", label: "Subuh" },
-    { api: "Dhuhr", label: "Zohor" },
-    { api: "Asr", label: "Asar" },
-    { api: "Maghrib", label: "Maghrib" },
-    { api: "Isha", label: "Isyak" }
-  ];
-
   for (let item of list){
 
-    const [h,m] = prayerTimes[item.api].split(":");
+    const [h,m] = item.time.split(":");
     const total = parseInt(h)*60 + parseInt(m);
 
     if(total > currentMinutes){
-      nextApi = item.api;
       nextLabel = item.label;
       nextMinutes = total;
       break;
     }
   }
 
-  if(nextApi){
-
+  if(nextLabel){
     document.getElementById("nextSolat").innerText = nextLabel;
-
-    document.querySelectorAll("[id^='card-']").forEach(card=>{
-      card.classList.remove("bg-blue-100","border","border-blue-400");
-    });
-
-    document.getElementById(`card-${nextApi}`)
-      .classList.add("bg-blue-100","border","border-blue-400");
-
     startCountdown(nextMinutes);
   }
 }
+
 
 function startCountdown(targetMinutes){
 
