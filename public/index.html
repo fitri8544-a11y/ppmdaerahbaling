@@ -66,10 +66,10 @@
 <!-- ================= UTAMA ================= -->
 <section id="utama"></section>
 
-<!-- ================= WAKTU SOLAT ================= -->
+<!-- ================= WAKTU SOLAT PRO ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
 
-  <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
+  <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-600">
 
     <div class="flex justify-between items-center flex-wrap gap-4">
 
@@ -78,104 +78,21 @@
           🕌
         </div>
         <div>
-          <p id="tarikhMasihi" class="font-semibold text-gray-700"></p>
+          <p id="tarikhMasihi" class="font-semibold text-gray-800"></p>
+          <p id="tarikhHijrah" class="text-sm text-gray-500"></p>
         </div>
       </div>
 
-      <select id="zonSelect" class="border rounded px-3 py-2 text-sm">
+      <div class="flex gap-2 items-center">
+        <button onclick="detectLocation()"
+                class="bg-blue-600 text-white px-3 py-2 rounded text-xs hover:bg-blue-700">
+          📍 Auto Detect
+        </button>
 
-<!-- PERLIS -->
-<optgroup label="Perlis">
-  <option value="6.441,100.198">Kangar</option>
-</optgroup>
-
-<!-- KEDAH -->
-<optgroup label="Kedah">
-  <option value="5.677,100.917" selected>Baling</option>
-  <option value="6.118,100.368">Kota Setar (Alor Setar)</option>
-  <option value="5.647,100.487">Kulim</option>
-  <option value="6.121,100.367">Kubang Pasu</option>
-  <option value="6.260,100.415">Pendang</option>
-</optgroup>
-
-<!-- PULAU PINANG -->
-<optgroup label="Pulau Pinang">
-  <option value="5.414,100.329">George Town</option>
-</optgroup>
-
-<!-- PERAK -->
-<optgroup label="Perak">
-  <option value="4.597,101.090">Ipoh</option>
-  <option value="3.769,100.987">Teluk Intan</option>
-  <option value="4.135,100.608">Manjung</option>
-</optgroup>
-
-<!-- SELANGOR -->
-<optgroup label="Selangor">
-  <option value="3.073,101.518">Shah Alam</option>
-  <option value="3.139,101.686">Petaling Jaya</option>
-  <option value="2.980,101.519">Klang</option>
-</optgroup>
-
-<!-- WILAYAH PERSEKUTUAN -->
-<optgroup label="Wilayah Persekutuan">
-  <option value="3.141,101.693">Kuala Lumpur</option>
-  <option value="5.283,115.241">Labuan</option>
-  <option value="2.926,101.696">Putrajaya</option>
-</optgroup>
-
-<!-- NEGERI SEMBILAN -->
-<optgroup label="Negeri Sembilan">
-  <option value="2.729,101.938">Seremban</option>
-</optgroup>
-
-<!-- MELAKA -->
-<optgroup label="Melaka">
-  <option value="2.189,102.250">Melaka Tengah</option>
-</optgroup>
-
-<!-- JOHOR -->
-<optgroup label="Johor">
-  <option value="1.492,103.741">Johor Bahru</option>
-  <option value="2.047,103.318">Muar</option>
-  <option value="2.276,102.545">Segamat</option>
-</optgroup>
-
-<!-- PAHANG -->
-<optgroup label="Pahang">
-  <option value="3.807,103.326">Kuantan</option>
-  <option value="3.490,103.389">Temerloh</option>
-  <option value="3.528,102.503">Jerantut</option>
-</optgroup>
-
-<!-- TERENGGANU -->
-<optgroup label="Terengganu">
-  <option value="5.330,103.140">Kuala Terengganu</option>
-</optgroup>
-
-<!-- KELANTAN -->
-<optgroup label="Kelantan">
-  <option value="6.125,102.238">Kota Bharu</option>
-  <option value="5.839,102.217">Pasir Mas</option>
-</optgroup>
-
-<!-- SABAH -->
-<optgroup label="Sabah">
-  <option value="5.980,116.073">Kota Kinabalu</option>
-  <option value="4.399,118.087">Tawau</option>
-  <option value="5.840,118.117">Sandakan</option>
-</optgroup>
-
-<!-- SARAWAK -->
-<optgroup label="Sarawak">
-  <option value="1.553,110.359">Kuching</option>
-  <option value="2.290,111.830">Sibu</option>
-  <option value="4.399,113.991">Miri</option>
-</optgroup>
-
-</select>
-
-
+        <select id="zonSelect"
+                class="border rounded px-3 py-2 text-sm">
+        </select>
+      </div>
 
     </div>
 
@@ -183,9 +100,13 @@
          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6 text-center text-sm">
     </div>
 
-    <p class="text-xs text-gray-500 mt-4 text-center">
-      * Data dikira berdasarkan kaedah JAKIM (Method 11)
-    </p>
+    <div class="mt-6 text-center">
+      <p class="text-sm font-semibold text-gray-700">
+        ⏳ Solat Seterusnya:
+        <span id="nextSolat" class="text-blue-600"></span>
+      </p>
+      <p id="countdown" class="text-lg font-bold text-gray-800"></p>
+    </div>
 
   </div>
 
@@ -298,82 +219,150 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<script>
-async function loadWaktuSolat(latitude, longitude) {
+><script>
+let prayerTimes = {};
+let currentZone = "5.677,100.917"; // Default Baling
 
-  try {
+const zones = {
+  "Kedah - Baling": "5.677,100.917",
+  "WP - Kuala Lumpur": "3.141,101.693",
+  "Johor - Johor Bahru": "1.492,103.741",
+  "Sabah - Kota Kinabalu": "5.980,116.073",
+  "Sarawak - Kuching": "1.553,110.359"
+};
 
-    const response = await fetch(
-      `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=11`
-    );
+// Populate dropdown
+const zonSelect = document.getElementById("zonSelect");
+for (const [name, coords] of Object.entries(zones)) {
+  zonSelect.innerHTML += `<option value="${coords}">${name}</option>`;
+}
 
-    const result = await response.json();
+// Load waktu solat
+async function loadWaktuSolat(lat, lng) {
 
-    if (result.code !== 200) {
-      throw new Error("API Error");
+  const res = await fetch(
+    `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=11`
+  );
+
+  const data = await res.json();
+  prayerTimes = data.data.timings;
+
+  renderWaktu();
+  setHijrah(data.data.date.hijri);
+}
+
+function renderWaktu() {
+
+  const container = document.getElementById("waktuContainer");
+  container.innerHTML = "";
+
+  const list = [
+    "Fajr","Dhuhr","Asr","Maghrib","Isha"
+  ];
+
+  list.forEach(name => {
+
+    const time = prayerTimes[name];
+
+    container.innerHTML += `
+      <div id="card-${name}"
+           class="bg-gray-100 rounded-lg p-4 shadow-sm transition">
+        <p class="text-xs font-semibold text-gray-500">${name}</p>
+        <p class="font-bold text-blue-600 mt-1">${formatTime(time)}</p>
+      </div>
+    `;
+  });
+
+  highlightCurrentPrayer();
+}
+
+function formatTime(t){
+  const [h,m] = t.split(":");
+  const hour = parseInt(h);
+  const suffix = hour >= 12 ? "pm" : "am";
+  const hour12 = ((hour + 11) % 12 + 1);
+  return `${hour12}:${m}${suffix}`;
+}
+
+function highlightCurrentPrayer(){
+
+  const now = new Date();
+  const currentMinutes = now.getHours()*60 + now.getMinutes();
+
+  let next = null;
+  let nextTime = null;
+
+  Object.entries(prayerTimes).forEach(([name,time])=>{
+    if(["Fajr","Dhuhr","Asr","Maghrib","Isha"].includes(name)){
+      const [h,m] = time.split(":");
+      const minutes = parseInt(h)*60 + parseInt(m);
+
+      if(minutes > currentMinutes && !next){
+        next = name;
+        nextTime = minutes;
+      }
     }
+  });
 
-    const timings = result.data.timings;
-
-    const waktuList = [
-      { nama: "Subuh", masa: timings.Fajr },
-      { nama: "Zohor", masa: timings.Dhuhr },
-      { nama: "Asar", masa: timings.Asr },
-      { nama: "Maghrib", masa: timings.Maghrib },
-      { nama: "Isyak", masa: timings.Isha }
-    ];
-
-    const container = document.getElementById("waktuContainer");
-    container.innerHTML = "";
-
-    waktuList.forEach(w => {
-      container.innerHTML += `
-        <div class="bg-gray-100 rounded-lg p-4 shadow-sm">
-          <p class="text-gray-500 text-xs font-semibold">${w.nama}</p>
-          <p class="text-blue-600 font-bold text-base mt-1">
-            ${formatTime(w.masa)}
-          </p>
-        </div>
-      `;
-    });
-
-    const today = new Date().toLocaleDateString("ms-MY", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    });
-
-    document.getElementById("tarikhMasihi").innerText = today;
-
-  } catch (error) {
-    document.getElementById("waktuContainer").innerHTML =
-      "<p class='text-red-500'>Gagal memuat waktu solat.</p>";
+  if(next){
+    document.getElementById("nextSolat").innerText = next;
+    startCountdown(nextTime);
   }
 }
 
-function formatTime(timeString) {
-  const [hour, minute] = timeString.split(":");
-  const h = parseInt(hour);
-  const suffix = h >= 12 ? "pm" : "am";
-  const hour12 = ((h + 11) % 12 + 1);
-  return `${hour12}:${minute}${suffix}`;
+function startCountdown(targetMinutes){
+
+  setInterval(()=>{
+    const now = new Date();
+    const current = now.getHours()*60 + now.getMinutes();
+    const diff = targetMinutes - current;
+
+    if(diff > 0){
+      const h = Math.floor(diff/60);
+      const m = diff % 60;
+      document.getElementById("countdown").innerText =
+        `${h} jam ${m} min`;
+    }
+  },60000);
 }
 
-/* ================= DROPDOWN ZON ================= */
+function setHijrah(h){
+  document.getElementById("tarikhHijrah").innerText =
+    `${h.day} ${h.month.en} ${h.year}H`;
+}
 
-const zonSelect = document.getElementById("zonSelect");
+function detectLocation(){
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    loadWaktuSolat(lat,lng);
+  });
+}
 
-zonSelect.addEventListener("change", function () {
-  const [lat, lng] = this.value.split(",");
-  loadWaktuSolat(lat, lng);
+zonSelect.addEventListener("change", function(){
+  const [lat,lng] = this.value.split(",");
+  currentZone = this.value;
+  localStorage.setItem("zonSolat", currentZone);
+  loadWaktuSolat(lat,lng);
 });
 
-// Load default zon (first option)
-const [defaultLat, defaultLng] = zonSelect.value.split(",");
-loadWaktuSolat(defaultLat, defaultLng);
+// Init
+const saved = localStorage.getItem("zonSolat");
+if(saved){
+  zonSelect.value = saved;
+  currentZone = saved;
+}
+
+const [lat,lng] = currentZone.split(",");
+loadWaktuSolat(lat,lng);
+
+const today = new Date().toLocaleDateString("ms-MY",{
+  weekday:"long", day:"numeric", month:"long", year:"numeric"
+});
+document.getElementById("tarikhMasihi").innerText = today;
 
 </script>
+
 
 
 </body>
