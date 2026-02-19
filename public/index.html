@@ -319,19 +319,27 @@ function renderWaktu(){
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
 
-  const imsakTime = subtractMinutes(prayerTimes.Fajr, 10);
-  const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
+  // Betulkan Subuh +10 min
+const subuhFixed = addMinutes(prayerTimes.Fajr, 10);
+
+// Imsak = 10 min sebelum Subuh sebenar
+const imsakTime = subtractMinutes(subuhFixed, 10);
+
+// Dhuha = 27 min selepas Syuruk
+const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
+
 
   const list = [
-    { time: imsakTime, label: "Imsak" },
-    { time: prayerTimes.Fajr, label: "Subuh" },
-    { time: prayerTimes.Sunrise, label: "Syuruk" },
-    { time: dhuhaTime, label: "Dhuha" },
-    { time: prayerTimes.Dhuhr, label: "Zohor" },
-    { time: prayerTimes.Asr, label: "Asar" },
-    { time: prayerTimes.Maghrib, label: "Maghrib" },
-    { time: prayerTimes.Isha, label: "Isyak" }
-  ];
+  { time: imsakTime, label: "Imsak" },
+  { time: subuhFixed, label: "Subuh" },
+  { time: prayerTimes.Sunrise, label: "Syuruk" },
+  { time: dhuhaTime, label: "Dhuha" },
+  { time: prayerTimes.Dhuhr, label: "Zohor" },
+  { time: prayerTimes.Asr, label: "Asar" },
+  { time: prayerTimes.Maghrib, label: "Maghrib" },
+  { time: prayerTimes.Isha, label: "Isyak" }
+];
+
 
   list.forEach(item => {
     container.innerHTML += `
