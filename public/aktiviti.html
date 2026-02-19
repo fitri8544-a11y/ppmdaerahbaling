@@ -92,7 +92,9 @@ Aktiviti
 </div>
 
 <!-- ================= GALERI VIDEO ================= -->
-<section class="max-w-6xl mx-auto px-6 mt-16 mb-20">
+<section id="videoSection"
+         class="max-w-6xl mx-auto px-6 mt-16 mb-20">
+
 
   <h3 class="text-3xl font-bold text-green-900 text-center mb-12">
     🎬 Galeri Video
@@ -148,7 +150,6 @@ Aktiviti
   © 2026 Persekutuan Pengakap Daerah Baling
 </footer>
 
-<!-- ================= SCRIPT ================= -->
 <script>
 const btn = document.getElementById("menuBtn");
 const menu = document.getElementById("mobileMenu");
@@ -156,14 +157,20 @@ const menu = document.getElementById("mobileMenu");
 btn?.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
+
 function bukaAlbum(folder) {
 
   const folderSection = document.getElementById("folderSection");
   const albumSection = document.getElementById("albumSection");
+  const videoSection = document.getElementById("videoSection");
   const tajuk = document.getElementById("tajukAlbum");
   const container = document.getElementById("gambarContainer");
 
+  // Hide folder & video
   folderSection.classList.add("hidden");
+  videoSection.classList.add("hidden");
+
+  // Show album
   albumSection.classList.remove("hidden");
 
   tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
@@ -171,7 +178,6 @@ function bukaAlbum(folder) {
 
   let nomborGambar = [];
 
-  // SENARAI GAMBAR YANG BETUL-BETUL WUJUD
   if (folder === "anugerah-2025") {
     nomborGambar = [
       367, 369, 370, 372, 375,
@@ -185,8 +191,11 @@ function bukaAlbum(folder) {
     ];
   }
 
-  nomborGambar.forEach(num => {
+  if (folder === "perkhemahan-2026") {
+    nomborGambar = [401, 402, 403];
+  }
 
+  nomborGambar.forEach(num => {
     let number = num.toString().padStart(4, "0");
     let fileName = `_DSC${number}.jpg`;
 
@@ -204,8 +213,10 @@ function bukaAlbum(folder) {
 function tutupAlbum() {
   document.getElementById("folderSection").classList.remove("hidden");
   document.getElementById("albumSection").classList.add("hidden");
+  document.getElementById("videoSection").classList.remove("hidden");
 }
 </script>
+
 
 </body>
 </html>
