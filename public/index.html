@@ -312,7 +312,7 @@ function highlightNextPrayer(){
   let nextName = null;
   let nextTime = null;
 
-  ["Fajr","Dhuhr","Asr","Maghrib","Isha"].forEach(name=>{
+  ["SUBUH","ZOHOR","ASAR","MAGHRIB","ISYAK"].forEach(name=>{
     const [h,m] = prayerTimes[name].split(":");
     const minutes = parseInt(h)*60 + parseInt(m);
 
