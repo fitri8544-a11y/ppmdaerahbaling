@@ -242,157 +242,107 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-let prayerTimes = {};
 let countdownInterval = null;
+let waktuData = {};
 
-// ================= LOAD API =================
-async function loadWaktuSolat(lat, lng){
+// ================= LOAD JAKIM =================
+async function loadWaktuSolat(zone){
 
   try{
 
     const res = await fetch(
-      `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=11&timezonestring=Asia/Kuala_Lumpur`
+      `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=today&zone=${zone}`
     );
 
     const data = await res.json();
 
-    if(data.code !== 200) throw new Error("API error");
+    if(!data.prayerTime) throw new Error("API Error");
 
-    prayerTimes = data.data.timings;
+    waktuData = data.prayerTime[0];
 
     renderWaktu();
 
   }catch(err){
     document.getElementById("waktuContainer").innerHTML =
-      "<p class='text-red-500 text-center col-span-4'>Gagal memuat waktu solat</p>";
+      "<p class='text-red-500 col-span-4 text-center'>Gagal memuat waktu solat</p>";
   }
 }
 
-// ================= BERSIHKAN FORMAT MASA =================
-function cleanTime(t){
-  return t.split(" ")[0]; // buang (MYT)
-}
-
-// ================= FORMAT 12 JAM =================
+// ================= FORMAT MASA =================
 function formatTime(t){
-
-  t = cleanTime(t);
-
   const [h,m] = t.split(":");
   const hour = parseInt(h);
-
   const suffix = hour >= 12 ? "pm" : "am";
   const hour12 = ((hour + 11) % 12 + 1);
-
   return `${hour12}:${m}${suffix}`;
 }
 
-// ================= TAMBAH MINIT =================
-function addMinutes(time, mins){
-
-  time = cleanTime(time);
-
-  const [h,m] = time.split(":");
-  let date = new Date();
-  date.setHours(parseInt(h));
-  date.setMinutes(parseInt(m) + mins);
-
-  return date.getHours().toString().padStart(2,"0") + ":" +
-         date.getMinutes().toString().padStart(2,"0");
-}
-
-// ================= TOLAK MINIT =================
-function subtractMinutes(time, mins){
-
-  time = cleanTime(time);
-
-  const [h,m] = time.split(":");
-  let date = new Date();
-  date.setHours(parseInt(h));
-  date.setMinutes(parseInt(m) - mins);
-
-  return date.getHours().toString().padStart(2,"0") + ":" +
-         date.getMinutes().toString().padStart(2,"0");
-}
-
-// ================= PAPAR SEMUA WAKTU =================
+// ================= PAPAR WAKTU =================
 function renderWaktu(){
 
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
 
-  // Betulkan Subuh +10 min
-const subuhFixed = addMinutes(prayerTimes.Fajr, 10);
-
-// Imsak = 10 min sebelum Subuh sebenar
-const imsakTime = subtractMinutes(subuhFixed, 10);
-
-// Dhuha = 27 min selepas Syuruk
-const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
-
-
   const list = [
-  { time: imsakTime, label: "Imsak" },
-  { time: subuhFixed, label: "Subuh" },
-  { time: prayerTimes.Sunrise, label: "Syuruk" },
-  { time: dhuhaTime, label: "Dhuha" },
-  { time: prayerTimes.Dhuhr, label: "Zohor" },
-  { time: prayerTimes.Asr, label: "Asar" },
-  { time: prayerTimes.Maghrib, label: "Maghrib" },
-  { time: prayerTimes.Isha, label: "Isyak" }
-];
+    { key:"imsak", label:"Imsak" },
+    { key:"fajr", label:"Subuh" },
+    { key:"syuruk", label:"Syuruk" },
+    { key:"dhuha", label:"Dhuha" },
+    { key:"dhuhr", label:"Zohor" },
+    { key:"asr", label:"Asar" },
+    { key:"maghrib", label:"Maghrib" },
+    { key:"isha", label:"Isyak" }
+  ];
 
-
-  list.forEach(item => {
+  list.forEach(item=>{
+    const time = waktuData[item.key];
     container.innerHTML += `
       <div class="bg-gray-100 rounded-lg p-4 shadow-sm">
         <p class="text-xs font-semibold text-gray-500">${item.label}</p>
-        <p class="font-bold text-blue-600 mt-1">${formatTime(item.time)}</p>
+        <p class="font-bold text-blue-600 mt-1">${formatTime(time)}</p>
       </div>
     `;
   });
 
-  highlightNextPrayer(list);
+  highlightNextPrayer();
 }
 
 // ================= SOLAT SETERUSNYA =================
-function highlightNextPrayer(list){
+function highlightNextPrayer(){
 
   const now = new Date();
   const current = now.getHours()*60 + now.getMinutes();
 
-  let next = null;
-  let nextMinutes = null;
+  const order = [
+    { key:"fajr", label:"Subuh" },
+    { key:"dhuhr", label:"Zohor" },
+    { key:"asr", label:"Asar" },
+    { key:"maghrib", label:"Maghrib" },
+    { key:"isha", label:"Isyak" }
+  ];
 
-  for(let item of list){
+  for(let item of order){
 
-    const clean = cleanTime(item.time);
-    const [h,m] = clean.split(":");
+    const [h,m] = waktuData[item.key].split(":");
     const total = parseInt(h)*60 + parseInt(m);
 
     if(total > current){
-      next = item.label;
-      nextMinutes = total;
+      document.getElementById("nextSolat").innerText = item.label;
+      startCountdown(total);
       break;
     }
-  }
-
-  if(next){
-    document.getElementById("nextSolat").innerText = next;
-    startCountdown(nextMinutes);
   }
 }
 
 // ================= COUNTDOWN =================
-function startCountdown(targetMinutes){
+function startCountdown(target){
 
   if(countdownInterval) clearInterval(countdownInterval);
 
   countdownInterval = setInterval(()=>{
-
     const now = new Date();
     const current = now.getHours()*60 + now.getMinutes();
-    const diff = targetMinutes - current;
+    const diff = target - current;
 
     if(diff > 0){
       const h = Math.floor(diff/60);
@@ -402,7 +352,6 @@ function startCountdown(targetMinutes){
     }else{
       document.getElementById("countdown").innerText = "";
     }
-
   },60000);
 }
 
@@ -411,15 +360,13 @@ const zonSelect = document.getElementById("zonSelect");
 
 zonSelect.addEventListener("change", function(){
   localStorage.setItem("zonSolat", this.value);
-  const [lat,lng] = this.value.split(",");
-  loadWaktuSolat(lat,lng);
+  loadWaktuSolat(this.value);
 });
 
 const saved = localStorage.getItem("zonSolat");
 if(saved) zonSelect.value = saved;
 
-const [lat,lng] = zonSelect.value.split(",");
-loadWaktuSolat(lat,lng);
+loadWaktuSolat(zonSelect.value);
 
 // ================= TARIKH =================
 document.getElementById("tarikhMasihi").innerText =
@@ -432,6 +379,7 @@ document.getElementById("tarikhMasihi").innerText =
 
 });
 </script>
+
 
 </body>
 </html>
