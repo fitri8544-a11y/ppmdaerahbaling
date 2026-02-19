@@ -82,9 +82,21 @@
         </div>
       </div>
 
-      <div class="text-sm text-gray-600">
-        Kedah - Baling
-      </div>
+      <select id="zonSelect"
+        class="border rounded px-3 py-2 text-sm">
+
+  <option value="5.677,100.917">Kedah - Baling</option>
+  <option value="6.118,100.368">Kedah - Kota Setar</option>
+  <option value="6.124,102.237">Kelantan - Kota Bharu</option>
+  <option value="3.139,101.686">Wilayah Persekutuan - Kuala Lumpur</option>
+  <option value="2.189,102.250">Melaka</option>
+  <option value="1.492,103.741">Johor - Johor Bahru</option>
+  <option value="4.597,101.090">Perak - Ipoh</option>
+  <option value="5.414,100.329">Pulau Pinang</option>
+  <option value="3.807,103.326">Pahang - Kuantan</option>
+
+</select>
+
 
     </div>
 
@@ -208,13 +220,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-async function loadWaktuSolat() {
+async function loadWaktuSolat(latitude, longitude) {
 
   try {
-
-    // Koordinat Baling
-    const latitude = 5.677;
-    const longitude = 100.917;
 
     const response = await fetch(
       `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=11`
@@ -250,7 +258,6 @@ async function loadWaktuSolat() {
       `;
     });
 
-    // Papar tarikh hari ini
     const today = new Date().toLocaleDateString("ms-MY", {
       weekday: "long",
       day: "numeric",
@@ -274,8 +281,21 @@ function formatTime(timeString) {
   return `${hour12}:${minute}${suffix}`;
 }
 
-loadWaktuSolat();
+/* ================= DROPDOWN ZON ================= */
+
+const zonSelect = document.getElementById("zonSelect");
+
+zonSelect.addEventListener("change", function () {
+  const [lat, lng] = this.value.split(",");
+  loadWaktuSolat(lat, lng);
+});
+
+// Load default zon (first option)
+const [defaultLat, defaultLng] = zonSelect.value.split(",");
+loadWaktuSolat(defaultLat, defaultLng);
+
 </script>
+
 
 </body>
 </html>
