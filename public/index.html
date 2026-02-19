@@ -142,7 +142,7 @@
     <div class="mt-6">
       <h3 class="font-semibold text-gray-700 mb-3">Waktu Solat</h3>
 
-      <!-- ================= WAKTU SOLAT PRO ================= -->
+<!-- ================= WAKTU SOLAT ================= -->
 <section class="max-w-7xl mx-auto px-6 mt-10">
 
   <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-600">
@@ -159,40 +159,103 @@
       </div>
 
       <select id="zonSelect"
-        class="border rounded px-3 py-2 text-sm">
+              class="border rounded px-3 py-2 text-sm max-h-60 overflow-y-auto">
 
-  <optgroup label="Kedah">
-    <option value="KDH04" selected>Baling</option>
-    <option value="KDH01">Kota Setar</option>
-    <option value="KDH02">Kulim</option>
-    <option value="KDH03">Sungai Petani</option>
-    <option value="KDH05">Padang Terap</option>
-  </optgroup>
+        <!-- PERLIS -->
+        <optgroup label="Perlis">
+          <option value="PLS01">Kangar</option>
+        </optgroup>
 
-  <optgroup label="Wilayah Persekutuan">
-    <option value="WLY01">Kuala Lumpur</option>
-    <option value="WLY02">Putrajaya</option>
-  </optgroup>
+        <!-- KEDAH -->
+        <optgroup label="Kedah">
+          <option value="KDH04" selected>Baling</option>
+          <option value="KDH01">Kota Setar</option>
+          <option value="KDH02">Kulim</option>
+          <option value="KDH03">Sungai Petani</option>
+          <option value="KDH05">Padang Terap</option>
+        </optgroup>
 
-  <optgroup label="Johor">
-    <option value="JHR02">Johor Bahru</option>
-  </optgroup>
+        <!-- PULAU PINANG -->
+        <optgroup label="Pulau Pinang">
+          <option value="PNG01">Seluruh Negeri</option>
+        </optgroup>
 
-  <optgroup label="Sabah">
-    <option value="SBH01">Kota Kinabalu</option>
-  </optgroup>
+        <!-- PERAK -->
+        <optgroup label="Perak">
+          <option value="PRK01">Tapah / Slim River</option>
+          <option value="PRK02">Ipoh</option>
+          <option value="PRK03">Kuala Kangsar</option>
+          <option value="PRK04">Manjung</option>
+        </optgroup>
 
-  <optgroup label="Sarawak">
-    <option value="SWK01">Kuching</option>
-  </optgroup>
+        <!-- SELANGOR -->
+        <optgroup label="Selangor">
+          <option value="SGR01">Gombak / Petaling</option>
+          <option value="SGR02">Kuala Selangor</option>
+          <option value="SGR03">Klang</option>
+        </optgroup>
 
-</select>
+        <!-- WILAYAH -->
+        <optgroup label="Wilayah Persekutuan">
+          <option value="WLY01">Kuala Lumpur</option>
+          <option value="WLY02">Putrajaya</option>
+          <option value="WLY03">Labuan</option>
+        </optgroup>
 
+        <!-- NEGERI SEMBILAN -->
+        <optgroup label="Negeri Sembilan">
+          <option value="NGS01">Seremban</option>
+        </optgroup>
+
+        <!-- MELAKA -->
+        <optgroup label="Melaka">
+          <option value="MLK01">Seluruh Negeri</option>
+        </optgroup>
+
+        <!-- JOHOR -->
+        <optgroup label="Johor">
+          <option value="JHR02">Johor Bahru</option>
+          <option value="JHR03">Muar</option>
+          <option value="JHR04">Segamat</option>
+        </optgroup>
+
+        <!-- PAHANG -->
+        <optgroup label="Pahang">
+          <option value="PHG01">Kuantan</option>
+          <option value="PHG02">Temerloh</option>
+          <option value="PHG03">Jerantut</option>
+        </optgroup>
+
+        <!-- TERENGGANU -->
+        <optgroup label="Terengganu">
+          <option value="TRG01">Kuala Terengganu</option>
+        </optgroup>
+
+        <!-- KELANTAN -->
+        <optgroup label="Kelantan">
+          <option value="KTN01">Kota Bharu</option>
+        </optgroup>
+
+        <!-- SABAH -->
+        <optgroup label="Sabah">
+          <option value="SBH01">Kota Kinabalu</option>
+          <option value="SBH02">Tawau</option>
+          <option value="SBH03">Sandakan</option>
+        </optgroup>
+
+        <!-- SARAWAK -->
+        <optgroup label="Sarawak">
+          <option value="SWK01">Kuching</option>
+          <option value="SWK02">Sibu</option>
+          <option value="SWK03">Miri</option>
+        </optgroup>
+
+      </select>
 
     </div>
 
     <div id="waktuContainer"
-         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6 text-center text-sm">
+         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 mt-6 text-center text-sm">
     </div>
 
     <div class="mt-6 text-center">
@@ -206,6 +269,7 @@
   </div>
 
 </section>
+
 
 <!-- ================= FOOTER ================= -->
 <footer class="bg-green-900 text-white text-center text-sm p-4 mt-10">
@@ -246,18 +310,17 @@ document.addEventListener("DOMContentLoaded", function(){
 let countdownInterval = null;
 let waktuData = {};
 
-// ================= LOAD JAKIM =================
+// ================= LOAD API JAKIM =================
 async function loadWaktuSolat(zone){
 
   try{
-
     const res = await fetch(
       `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=today&zone=${zone}`
     );
 
     const data = await res.json();
 
-    if(!data.prayerTime) throw new Error("API Error");
+    if(!data.prayerTime) throw new Error("API error");
 
     waktuData = data.prayerTime[0];
 
@@ -265,11 +328,11 @@ async function loadWaktuSolat(zone){
 
   }catch(err){
     document.getElementById("waktuContainer").innerHTML =
-      "<p class='text-red-500 col-span-4 text-center'>Gagal memuat waktu solat</p>";
+      "<p class='text-red-500 col-span-8 text-center'>Gagal memuat waktu solat</p>";
   }
 }
 
-// ================= FORMAT MASA =================
+// ================= FORMAT =================
 function formatTime(t){
   const [h,m] = t.split(":");
   const hour = parseInt(h);
@@ -278,7 +341,7 @@ function formatTime(t){
   return `${hour12}:${m}${suffix}`;
 }
 
-// ================= PAPAR WAKTU =================
+// ================= PAPAR =================
 function renderWaktu(){
 
   const container = document.getElementById("waktuContainer");
@@ -380,7 +443,6 @@ document.getElementById("tarikhMasihi").innerText =
 
 });
 </script>
-
 
 </body>
 </html>
