@@ -259,21 +259,133 @@ document.addEventListener("keydown", function(e){
 
 <!-- ================= IMAGE MODAL ================= -->
 <div id="imageModal"
-     class="fixed inset-0 bg-black/80 flex items-center justify-center 
+     class="fixed inset-0 bg-black/90 flex items-center justify-center 
             opacity-0 invisible transition duration-300 z-50">
 
-  <div class="relative max-w-5xl w-full px-4">
+  <button onclick="tutupModal()"
+          class="absolute top-6 right-8 text-white text-4xl font-bold">
+    ✕
+  </button>
 
-    <button onclick="tutupModal()"
-            class="absolute -top-12 right-4 text-white text-4xl font-bold">
-      ✕
-    </button>
+  <!-- PREV BUTTON -->
+  <button onclick="prevImage()"
+          class="absolute left-6 text-white text-5xl font-bold px-3">
+    ‹
+  </button>
 
-    <img id="modalImage"
-         class="w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+  <!-- NEXT BUTTON -->
+  <button onclick="nextImage()"
+          class="absolute right-6 text-white text-5xl font-bold px-3">
+    ›
+  </button>
 
-  </div>
+  <img id="modalImage"
+       class="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl">
 </div>
+
+<script>
+let currentImages = [];
+let currentIndex = 0;
+
+function bukaAlbum(folder) {
+
+  const folderSection = document.getElementById("folderSection");
+  const albumSection = document.getElementById("albumSection");
+  const videoSection = document.getElementById("videoSection");
+  const tajuk = document.getElementById("tajukAlbum");
+  const container = document.getElementById("gambarContainer");
+
+  folderSection.classList.add("hidden");
+  albumSection.classList.remove("hidden");
+
+  if(videoSection){
+    videoSection.classList.add("hidden");
+  }
+
+  tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
+  container.innerHTML = "";
+
+  let nomborGambar = [];
+
+  if (folder === "anugerah-2025") {
+    nomborGambar = [367,369,370,372,375,383,389,393,394,395];
+  }
+
+  if (folder === "perkhemahan-2026") {
+    nomborGambar = [401,402,403];
+  }
+
+  currentImages = [];
+
+  nomborGambar.forEach((num, index) => {
+    let number = num.toString().padStart(4, "0");
+    let fileName = `_DSC${number}.jpg`;
+    let fullPath = `assets/images/aktiviti/${folder}/${fileName}`;
+
+    currentImages.push(fullPath);
+
+    container.innerHTML += `
+      <div class="bg-white rounded-lg shadow p-4">
+        <img src="${fullPath}"
+             onclick="bukaModal(${index})"
+             class="w-full h-56 object-cover rounded cursor-pointer
+                    hover:scale-105 transition duration-300">
+      </div>
+    `;
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function tutupAlbum() {
+  document.getElementById("folderSection").classList.remove("hidden");
+  document.getElementById("albumSection").classList.add("hidden");
+
+  const videoSection = document.getElementById("videoSection");
+  if(videoSection){
+    videoSection.classList.remove("hidden");
+  }
+}
+
+/* ================= MODAL FUNCTIONS ================= */
+
+function bukaModal(index) {
+  currentIndex = index;
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+
+  modalImg.src = currentImages[currentIndex];
+  modal.classList.remove("opacity-0", "invisible");
+}
+
+function tutupModal() {
+  document.getElementById("imageModal")
+          .classList.add("opacity-0", "invisible");
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  document.getElementById("modalImage").src = currentImages[currentIndex];
+}
+
+function prevImage() {
+  currentIndex =
+    (currentIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById("modalImage").src = currentImages[currentIndex];
+}
+
+/* Keyboard Support */
+document.addEventListener("keydown", function(e) {
+  const modal = document.getElementById("imageModal");
+
+  if (!modal.classList.contains("invisible")) {
+
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+    if (e.key === "Escape") tutupModal();
+  }
+});
+</script>
 
 
 </body>
