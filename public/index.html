@@ -238,15 +238,15 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-
 document.addEventListener("DOMContentLoaded", function(){
 
 let prayerTimes = {};
 let countdownInterval = null;
 
-async function loadWaktuSolat(lat, lng) {
+// ================= LOAD API =================
+async function loadWaktuSolat(lat, lng){
 
-  try {
+  try{
 
     const res = await fetch(
       `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=11&timezonestring=Asia/Kuala_Lumpur`
@@ -254,78 +254,70 @@ async function loadWaktuSolat(lat, lng) {
 
     const data = await res.json();
 
-    if (data.code !== 200) throw new Error("API Error");
+    if(data.code !== 200) throw new Error("API error");
 
     prayerTimes = data.data.timings;
 
     renderWaktu();
 
-  } catch (err) {
+  }catch(err){
     document.getElementById("waktuContainer").innerHTML =
-      "<p class='text-red-500 col-span-5'>Gagal memuat waktu solat</p>";
+      "<p class='text-red-500 text-center col-span-4'>Gagal memuat waktu solat</p>";
   }
 }
 
-function renderWaktu(){
-
-  const container = document.getElementById("waktuContainer");
-  container.innerHTML = "";
-
-  const imsakTime = subtractMinutes(prayerTimes.Fajr, 10);
-  const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
-
-  const list = [
-    { custom: imsakTime, label: "Imsak" },
-    { api: "Fajr", label: "Subuh" },
-    { api: "Sunrise", label: "Syuruk" },
-    { custom: dhuhaTime, label: "Dhuha" },
-    { api: "Dhuhr", label: "Zohor" },
-    { api: "Asr", label: "Asar" },
-    { api: "Maghrib", label: "Maghrib" },
-    { api: "Isha", label: "Isyak" }
-  ];
-
-  list.forEach(item => {
-
-    let time = item.api ? prayerTimes[item.api] : item.custom;
-
-    container.innerHTML += `
-      <div id="card-${item.label}"
-           class="bg-gray-100 rounded-lg p-4 shadow-sm transition">
-        <p class="text-xs font-semibold text-gray-500">${item.label}</p>
-        <p class="font-bold text-blue-600 mt-1">${formatTime(time)}</p>
-      </div>
-    `;
-  });
-
-  highlightNextPrayer();
+// ================= BERSIHKAN FORMAT MASA =================
+function cleanTime(t){
+  return t.split(" ")[0]; // buang (MYT)
 }
 
+// ================= FORMAT 12 JAM =================
 function formatTime(t){
+
+  t = cleanTime(t);
+
   const [h,m] = t.split(":");
   const hour = parseInt(h);
+
   const suffix = hour >= 12 ? "pm" : "am";
   const hour12 = ((hour + 11) % 12 + 1);
+
   return `${hour12}:${m}${suffix}`;
 }
 
+// ================= TAMBAH MINIT =================
+function addMinutes(time, mins){
+
+  time = cleanTime(time);
+
+  const [h,m] = time.split(":");
+  let date = new Date();
+  date.setHours(parseInt(h));
+  date.setMinutes(parseInt(m) + mins);
+
+  return date.getHours().toString().padStart(2,"0") + ":" +
+         date.getMinutes().toString().padStart(2,"0");
+}
+
+// ================= TOLAK MINIT =================
 function subtractMinutes(time, mins){
+
+  time = cleanTime(time);
 
   const [h,m] = time.split(":");
   let date = new Date();
   date.setHours(parseInt(h));
   date.setMinutes(parseInt(m) - mins);
 
-  const hour = date.getHours().toString().padStart(2,"0");
-  const minute = date.getMinutes().toString().padStart(2,"0");
-
-  return `${hour}:${minute}`;
+  return date.getHours().toString().padStart(2,"0") + ":" +
+         date.getMinutes().toString().padStart(2,"0");
 }
 
-function highlightNextPrayer(){
+// ================= PAPAR SEMUA WAKTU =================
+function renderWaktu(){
 
-  const now = new Date();
-  const currentMinutes = now.getHours()*60 + now.getMinutes();
+  const container = document.getElementById("waktuContainer");
+  container.innerHTML = "";
 
   const imsakTime = subtractMinutes(prayerTimes.Fajr, 10);
   const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27);
@@ -341,33 +333,50 @@ function highlightNextPrayer(){
     { time: prayerTimes.Isha, label: "Isyak" }
   ];
 
-  let nextLabel = null;
+  list.forEach(item => {
+    container.innerHTML += `
+      <div class="bg-gray-100 rounded-lg p-4 shadow-sm">
+        <p class="text-xs font-semibold text-gray-500">${item.label}</p>
+        <p class="font-bold text-blue-600 mt-1">${formatTime(item.time)}</p>
+      </div>
+    `;
+  });
+
+  highlightNextPrayer(list);
+}
+
+// ================= SOLAT SETERUSNYA =================
+function highlightNextPrayer(list){
+
+  const now = new Date();
+  const current = now.getHours()*60 + now.getMinutes();
+
+  let next = null;
   let nextMinutes = null;
 
-  for (let item of list){
+  for(let item of list){
 
-    const [h,m] = item.time.split(":");
+    const clean = cleanTime(item.time);
+    const [h,m] = clean.split(":");
     const total = parseInt(h)*60 + parseInt(m);
 
-    if(total > currentMinutes){
-      nextLabel = item.label;
+    if(total > current){
+      next = item.label;
       nextMinutes = total;
       break;
     }
   }
 
-  if(nextLabel){
-    document.getElementById("nextSolat").innerText = nextLabel;
+  if(next){
+    document.getElementById("nextSolat").innerText = next;
     startCountdown(nextMinutes);
   }
 }
 
-
+// ================= COUNTDOWN =================
 function startCountdown(targetMinutes){
 
-  if(countdownInterval){
-    clearInterval(countdownInterval);
-  }
+  if(countdownInterval) clearInterval(countdownInterval);
 
   countdownInterval = setInterval(()=>{
 
@@ -380,13 +389,14 @@ function startCountdown(targetMinutes){
       const m = diff % 60;
       document.getElementById("countdown").innerText =
         `${h} jam ${m} min`;
-    } else {
+    }else{
       document.getElementById("countdown").innerText = "";
     }
 
   },60000);
 }
 
+// ================= DROPDOWN =================
 const zonSelect = document.getElementById("zonSelect");
 
 zonSelect.addEventListener("change", function(){
@@ -396,26 +406,22 @@ zonSelect.addEventListener("change", function(){
 });
 
 const saved = localStorage.getItem("zonSolat");
-if(saved){
-  zonSelect.value = saved;
-}
+if(saved) zonSelect.value = saved;
 
 const [lat,lng] = zonSelect.value.split(",");
 loadWaktuSolat(lat,lng);
 
-const today = new Date().toLocaleDateString("ms-MY",{
-  weekday:"long",
-  day:"numeric",
-  month:"long",
-  year:"numeric"
+// ================= TARIKH =================
+document.getElementById("tarikhMasihi").innerText =
+  new Date().toLocaleDateString("ms-MY",{
+    weekday:"long",
+    day:"numeric",
+    month:"long",
+    year:"numeric"
+  });
+
 });
-
-document.getElementById("tarikhMasihi").innerText = today;
-
-});
-
 </script>
-
 
 </body>
 </html>
