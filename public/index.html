@@ -239,10 +239,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 
+document.addEventListener("DOMContentLoaded", function(){
+
 let prayerTimes = {};
 let countdownInterval = null;
 
-// ================= LOAD WAKTU SOLAT =================
 async function loadWaktuSolat(lat, lng) {
 
   try {
@@ -253,23 +254,19 @@ async function loadWaktuSolat(lat, lng) {
 
     const data = await res.json();
 
-    if (data.code !== 200) {
-      throw new Error("API Error");
-    }
+    if (data.code !== 200) throw new Error("API Error");
 
     prayerTimes = data.data.timings;
 
     renderWaktu();
-    setHijrah(); // guna versi Malaysia
 
   } catch (err) {
     document.getElementById("waktuContainer").innerHTML =
-      "<p class='text-red-500 text-center col-span-5'>Gagal memuat waktu solat</p>";
+      "<p class='text-red-500 col-span-5'>Gagal memuat waktu solat</p>";
   }
 }
 
-// ================= PAPAR WAKTU =================
-function renderWaktu() {
+function renderWaktu(){
 
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
@@ -298,7 +295,6 @@ function renderWaktu() {
   highlightNextPrayer();
 }
 
-// ================= FORMAT MASA =================
 function formatTime(t){
   const [h,m] = t.split(":");
   const hour = parseInt(h);
@@ -307,15 +303,14 @@ function formatTime(t){
   return `${hour12}:${m}${suffix}`;
 }
 
-// ================= HIGHLIGHT SOLAT SETERUSNYA =================
 function highlightNextPrayer(){
 
   const now = new Date();
   const currentMinutes = now.getHours()*60 + now.getMinutes();
 
-  let nextName = null;
-  let nextTime = null;
   let nextApi = null;
+  let nextLabel = null;
+  let nextMinutes = null;
 
   const list = [
     { api: "Fajr", label: "Subuh" },
@@ -325,23 +320,23 @@ function highlightNextPrayer(){
     { api: "Isha", label: "Isyak" }
   ];
 
-  list.forEach(item => {
+  for (let item of list){
 
     const [h,m] = prayerTimes[item.api].split(":");
-    const minutes = parseInt(h)*60 + parseInt(m);
+    const total = parseInt(h)*60 + parseInt(m);
 
-    if(minutes > currentMinutes && !nextName){
-      nextName = item.label;
-      nextTime = minutes;
+    if(total > currentMinutes){
       nextApi = item.api;
+      nextLabel = item.label;
+      nextMinutes = total;
+      break;
     }
-  });
+  }
 
-  if(nextName){
+  if(nextApi){
 
-    document.getElementById("nextSolat").innerText = nextName;
+    document.getElementById("nextSolat").innerText = nextLabel;
 
-    // highlight kad
     document.querySelectorAll("[id^='card-']").forEach(card=>{
       card.classList.remove("bg-blue-100","border","border-blue-400");
     });
@@ -349,11 +344,10 @@ function highlightNextPrayer(){
     document.getElementById(`card-${nextApi}`)
       .classList.add("bg-blue-100","border","border-blue-400");
 
-    startCountdown(nextTime);
+    startCountdown(nextMinutes);
   }
 }
 
-// ================= COUNTDOWN =================
 function startCountdown(targetMinutes){
 
   if(countdownInterval){
@@ -378,7 +372,6 @@ function startCountdown(targetMinutes){
   },60000);
 }
 
-// ================= DROPDOWN =================
 const zonSelect = document.getElementById("zonSelect");
 
 zonSelect.addEventListener("change", function(){
@@ -387,7 +380,6 @@ zonSelect.addEventListener("change", function(){
   loadWaktuSolat(lat,lng);
 });
 
-// ================= INIT =================
 const saved = localStorage.getItem("zonSolat");
 if(saved){
   zonSelect.value = saved;
@@ -405,7 +397,10 @@ const today = new Date().toLocaleDateString("ms-MY",{
 
 document.getElementById("tarikhMasihi").innerText = today;
 
+});
+
 </script>
+
 
 </body>
 </html>
