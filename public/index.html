@@ -83,16 +83,53 @@
         </div>
       </div>
 
-      <div class="flex gap-2 items-center">
-        <button onclick="detectLocation()"
-                class="bg-blue-600 text-white px-3 py-2 rounded text-xs hover:bg-blue-700">
-          📍 Auto Detect
-        </button>
+      <!-- DROPDOWN LOKASI -->
+      <select id="zonSelect"
+              class="border rounded px-3 py-2 text-sm max-h-60 overflow-y-auto">
 
-        <select id="zonSelect"
-                class="border rounded px-3 py-2 text-sm">
-        </select>
-      </div>
+        <!-- PERLIS -->
+        <optgroup label="Perlis">
+          <option value="6.441,100.198">Kangar</option>
+        </optgroup>
+
+        <!-- KEDAH -->
+        <optgroup label="Kedah">
+          <option value="5.677,100.917" selected>Baling</option>
+          <option value="6.118,100.368">Kota Setar</option>
+          <option value="5.647,100.487">Kulim</option>
+          <option value="6.121,100.367">Kubang Pasu</option>
+          <option value="6.260,100.415">Pendang</option>
+        </optgroup>
+
+        <!-- SELANGOR -->
+        <optgroup label="Selangor">
+          <option value="3.073,101.518">Shah Alam</option>
+          <option value="3.139,101.686">Petaling Jaya</option>
+          <option value="2.980,101.519">Klang</option>
+        </optgroup>
+
+        <!-- WP -->
+        <optgroup label="Wilayah Persekutuan">
+          <option value="3.141,101.693">Kuala Lumpur</option>
+          <option value="5.283,115.241">Labuan</option>
+          <option value="2.926,101.696">Putrajaya</option>
+        </optgroup>
+
+        <!-- SABAH -->
+        <optgroup label="Sabah">
+          <option value="5.980,116.073">Kota Kinabalu</option>
+          <option value="4.399,118.087">Tawau</option>
+          <option value="5.840,118.117">Sandakan</option>
+        </optgroup>
+
+        <!-- SARAWAK -->
+        <optgroup label="Sarawak">
+          <option value="1.553,110.359">Kuching</option>
+          <option value="2.290,111.830">Sibu</option>
+          <option value="4.399,113.991">Miri</option>
+        </optgroup>
+
+      </select>
 
     </div>
 
@@ -219,25 +256,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-><script>
+<script>
 let prayerTimes = {};
-let currentZone = "5.677,100.917"; // Default Baling
+let countdownInterval = null;
 
-const zones = {
-  "Kedah - Baling": "5.677,100.917",
-  "WP - Kuala Lumpur": "3.141,101.693",
-  "Johor - Johor Bahru": "1.492,103.741",
-  "Sabah - Kota Kinabalu": "5.980,116.073",
-  "Sarawak - Kuching": "1.553,110.359"
-};
-
-// Populate dropdown
-const zonSelect = document.getElementById("zonSelect");
-for (const [name, coords] of Object.entries(zones)) {
-  zonSelect.innerHTML += `<option value="${coords}">${name}</option>`;
-}
-
-// Load waktu solat
 async function loadWaktuSolat(lat, lng) {
 
   const res = await fetch(
@@ -256,9 +278,7 @@ function renderWaktu() {
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
 
-  const list = [
-    "Fajr","Dhuhr","Asr","Maghrib","Isha"
-  ];
+  const list = ["Fajr","Dhuhr","Asr","Maghrib","Isha"];
 
   list.forEach(name => {
 
@@ -273,7 +293,7 @@ function renderWaktu() {
     `;
   });
 
-  highlightCurrentPrayer();
+  highlightNextPrayer();
 }
 
 function formatTime(t){
@@ -284,35 +304,38 @@ function formatTime(t){
   return `${hour12}:${m}${suffix}`;
 }
 
-function highlightCurrentPrayer(){
+function highlightNextPrayer(){
 
   const now = new Date();
   const currentMinutes = now.getHours()*60 + now.getMinutes();
 
-  let next = null;
+  let nextName = null;
   let nextTime = null;
 
-  Object.entries(prayerTimes).forEach(([name,time])=>{
-    if(["Fajr","Dhuhr","Asr","Maghrib","Isha"].includes(name)){
-      const [h,m] = time.split(":");
-      const minutes = parseInt(h)*60 + parseInt(m);
+  ["Fajr","Dhuhr","Asr","Maghrib","Isha"].forEach(name=>{
+    const [h,m] = prayerTimes[name].split(":");
+    const minutes = parseInt(h)*60 + parseInt(m);
 
-      if(minutes > currentMinutes && !next){
-        next = name;
-        nextTime = minutes;
-      }
+    if(minutes > currentMinutes && !nextName){
+      nextName = name;
+      nextTime = minutes;
     }
   });
 
-  if(next){
-    document.getElementById("nextSolat").innerText = next;
+  if(nextName){
+    document.getElementById("nextSolat").innerText = nextName;
     startCountdown(nextTime);
   }
 }
 
 function startCountdown(targetMinutes){
 
-  setInterval(()=>{
+  if(countdownInterval){
+    clearInterval(countdownInterval);
+  }
+
+  countdownInterval = setInterval(()=>{
+
     const now = new Date();
     const current = now.getHours()*60 + now.getMinutes();
     const diff = targetMinutes - current;
@@ -323,6 +346,7 @@ function startCountdown(targetMinutes){
       document.getElementById("countdown").innerText =
         `${h} jam ${m} min`;
     }
+
   },60000);
 }
 
@@ -331,39 +355,28 @@ function setHijrah(h){
     `${h.day} ${h.month.en} ${h.year}H`;
 }
 
-function detectLocation(){
-  navigator.geolocation.getCurrentPosition(pos=>{
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
-    loadWaktuSolat(lat,lng);
-  });
-}
+const zonSelect = document.getElementById("zonSelect");
 
 zonSelect.addEventListener("change", function(){
+  localStorage.setItem("zonSolat", this.value);
   const [lat,lng] = this.value.split(",");
-  currentZone = this.value;
-  localStorage.setItem("zonSolat", currentZone);
   loadWaktuSolat(lat,lng);
 });
 
-// Init
+// INIT
 const saved = localStorage.getItem("zonSolat");
 if(saved){
   zonSelect.value = saved;
-  currentZone = saved;
 }
 
-const [lat,lng] = currentZone.split(",");
+const [lat,lng] = zonSelect.value.split(",");
 loadWaktuSolat(lat,lng);
 
 const today = new Date().toLocaleDateString("ms-MY",{
   weekday:"long", day:"numeric", month:"long", year:"numeric"
 });
 document.getElementById("tarikhMasihi").innerText = today;
-
 </script>
-
-
 
 </body>
 </html>
