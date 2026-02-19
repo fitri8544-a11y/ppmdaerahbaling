@@ -271,8 +271,14 @@ function renderWaktu(){
   const container = document.getElementById("waktuContainer");
   container.innerHTML = "";
 
+  const dhuhaTime = addMinutes(prayerTimes.Sunrise, 27); 
+  // Dhuha = anggaran 27 minit selepas Syuruk (standard Malaysia)
+
   const list = [
+    { api: "Imsak", label: "Imsak" },
     { api: "Fajr", label: "Subuh" },
+    { api: "Sunrise", label: "Syuruk" },
+    { custom: dhuhaTime, label: "Dhuha" },
     { api: "Dhuhr", label: "Zohor" },
     { api: "Asr", label: "Asar" },
     { api: "Maghrib", label: "Maghrib" },
@@ -281,10 +287,10 @@ function renderWaktu(){
 
   list.forEach(item => {
 
-    const time = prayerTimes[item.api];
+    let time = item.api ? prayerTimes[item.api] : item.custom;
 
     container.innerHTML += `
-      <div id="card-${item.api}"
+      <div id="card-${item.label}"
            class="bg-gray-100 rounded-lg p-4 shadow-sm transition">
         <p class="text-xs font-semibold text-gray-500">${item.label}</p>
         <p class="font-bold text-blue-600 mt-1">${formatTime(time)}</p>
@@ -295,6 +301,7 @@ function renderWaktu(){
   highlightNextPrayer();
 }
 
+
 function formatTime(t){
   const [h,m] = t.split(":");
   const hour = parseInt(h);
@@ -302,6 +309,20 @@ function formatTime(t){
   const hour12 = ((hour + 11) % 12 + 1);
   return `${hour12}:${m}${suffix}`;
 }
+
+function addMinutes(time, mins){
+
+  const [h,m] = time.split(":");
+  let date = new Date();
+  date.setHours(parseInt(h));
+  date.setMinutes(parseInt(m) + mins);
+
+  const hour = date.getHours().toString().padStart(2,"0");
+  const minute = date.getMinutes().toString().padStart(2,"0");
+
+  return `${hour}:${minute}`;
+}
+
 
 function highlightNextPrayer(){
 
