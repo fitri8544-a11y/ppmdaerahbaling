@@ -35,11 +35,10 @@
       <a href="index.html" class="hover:text-yellow-300">Utama</a>
       <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
       <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-      <a href="aktiviti.html"
-         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-        Aktiviti
-      </a>
-      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
+      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
+      <a href="muatturun.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
+        Muat Turun
+    </a>
       <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
     </nav>
 
@@ -63,3 +62,60 @@
   </div>
 
 </header>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-green-900 text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+
+    <div class="flex items-center gap-4">
+      <img src="assets/logo.png" class="h-12" alt="Logo">
+      <div>
+        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
+        <p class="font-semibold text-base">
+          Persekutuan Pengakap Daerah Baling
+        </p>
+        <p class="text-xs italic opacity-80">
+          Bersedia · Berkhidmat
+        </p>
+      </div>
+    </div>
+
+    <div class="text-sm opacity-80 text-center md:text-right">
+      © 2026 Persekutuan Pengakap Daerah Baling  
+      <br class="hidden md:block">
+      Hak Cipta Terpelihara
+    </div>
+
+  </div>
+</footer>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const links = document.querySelectorAll("#menuDesktop a");
+  const currentPage = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    const linkPage = link.getAttribute("href").split("/").pop();
+
+    if (linkPage === currentPage || 
+       (currentPage === "" && linkPage === "index.html")) {
+
+      link.classList.add("text-yellow-300");
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>
