@@ -580,5 +580,15 @@ target.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 
+<div id="header"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header").innerHTML = data;
+  });
+</script>
+
 </body>
 </html>
