@@ -41,26 +41,7 @@ Aktiviti
 </nav>
 
 </div>
-
-    <!-- BUTTON MOBILE -->
-    <button id="menuBtn" class="md:hidden text-2xl focus:outline-none">
-      ☰
-    </button>
-
-  </div>
-
-  <!-- MENU MOBILE -->
-  <div id="mobileMenu"
-       class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
-    <a href="index.html" class="block">Utama</a>
-    <a href="pengenalan.html" class="block">Pengenalan</a>
-    <a href="ppmbaling.html" class="block">PPMD Baling</a>
-    <a href="aktiviti.html" class="block">Aktiviti</a>
-    <a href="muatturun.html" class="block">Muat Turun</a>
-    <a href="hubungi.html" class="block">Hubungi Kami</a>
-  </div>
 </header>
-
 
 <!-- ================= TAJUK ================= -->
 <section class="bg-white mx-6 mt-6 rounded shadow p-8">
@@ -428,33 +409,6 @@ document.addEventListener("keydown", function(e) {
 });
 </script>
 
-<!-- ================= SCRIPT ================= -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  const links = document.querySelectorAll("#menuDesktop a");
-  const currentPage = window.location.pathname.split("/").pop();
-
-  links.forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
-
-    if (linkPage === currentPage || 
-       (currentPage === "" && linkPage === "index.html")) {
-
-      link.classList.add("text-yellow-300");
-    }
-  });
-
-});
-</script>
 
 </body>
 </html>
