@@ -1,9 +1,77 @@
-<div id="header"></div>
+<header class="bg-green-900 text-white sticky top-0 z-50 shadow">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <div class="flex items-center gap-4">
+      <img src="assets/logo.png" class="h-12" alt="Logo">
+      <div>
+        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
+        <h1 class="font-bold text-base md:text-lg">
+          Persekutuan Pengakap Daerah Baling
+        </h1>
+        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
+      </div>
+    </div>
+
+    <!-- MENU DESKTOP -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="index.html" data-page="index">Utama</a>
+      <a href="pengenalan.html" data-page="pengenalan">Pengenalan</a>
+      <a href="ppmbaling.html" data-page="ppmbaling">PPMD Baling</a>
+      <a href="aktiviti.html" data-page="aktiviti">Aktiviti</a>
+      <a href="muatturun.html" data-page="muatturun">Muat Turun</a>
+      <a href="hubungi.html" data-page="hubungi">Hubungi Kami</a>
+    </nav>
+
+    <!-- MOBILE BUTTON -->
+    <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+       class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
+    <a href="index.html" data-page="index" class="block">Utama</a>
+    <a href="pengenalan.html" data-page="pengenalan" class="block">Pengenalan</a>
+    <a href="ppmbaling.html" data-page="ppmbaling" class="block">PPMD Baling</a>
+    <a href="aktiviti.html" data-page="aktiviti" class="block">Aktiviti</a>
+    <a href="muatturun.html" data-page="muatturun" class="block">Muat Turun</a>
+    <a href="hubungi.html" data-page="hubungi" class="block">Hubungi Kami</a>
+  </div>
+</header>
 
 <script>
-fetch("header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("header").innerHTML = data;
+document.addEventListener("DOMContentLoaded", function(){
+
+  // MOBILE TOGGLE
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  if(btn){
+    btn.addEventListener("click", function(){
+      menu.classList.toggle("hidden");
+    });
+  }
+
+  // AUTO ACTIVE MENU
+  const currentPage = window.location.pathname
+    .split("/")
+    .pop()
+    .replace(".html","");
+
+  document.querySelectorAll("a[data-page]").forEach(link => {
+
+    if(link.dataset.page === currentPage){
+      link.classList.add(
+        "text-yellow-400",
+        "border-b-2",
+        "border-yellow-400",
+        "pb-1"
+      );
+    } else {
+      link.classList.add("hover:text-yellow-300");
+    }
+
   });
+
+});
 </script>
