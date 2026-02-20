@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<title>Pengenalan | Persekutuan Pengakap Daerah Baling</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Pengenalan | Persekutuan Pengakap Daerah Baling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
 
-<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<div class="flex-grow">
+<body class="bg-gray-100 text-gray-800 scroll-smooth">
 
 <!-- ================= HEADER ================= -->
 <header class="bg-green-900 text-white sticky top-0 z-50 shadow">
-<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-<div class="flex items-center gap-4">
-<img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
-<div>
-<p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-<h1 class="font-bold text-lg md:text-xl">
-Persekutuan Pengakap Daerah Baling
-</h1>
-<p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
-</div>
-</div>
+    <div class="flex items-center gap-4">
+      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
+      <div>
+        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
+        <h1 class="font-bold text-lg md:text-xl">
+          Persekutuan Pengakap Daerah Baling
+        </h1>
+        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
+      </div>
+    </div>
 
-<nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
-<a href="index.html" class="hover:text-yellow-300">Utama</a>
-<a href="pengenalan.html"
-class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-Pengenalan
-</a>
-<a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-<a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
-<a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-<a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
-</nav>
+    <!-- MENU DESKTOP -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="index.html" class="hover:text-yellow-300">Utama</a>
+      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
+      <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
+      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
+      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
+      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+    </nav>
 
-</div>
+    <!-- BUTTON MOBILE -->
+    <button id="menuBtn" class="md:hidden text-2xl focus:outline-none">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MENU MOBILE -->
+  <div id="mobileMenu"
+       class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
+    <a href="index.html" class="block">Utama</a>
+    <a href="pengenalan.html" class="block">Pengenalan</a>
+    <a href="ppmbaling.html" class="block">PPMD Baling</a>
+    <a href="aktiviti.html" class="block">Aktiviti</a>
+    <a href="muatturun.html" class="block">Muat Turun</a>
+    <a href="hubungi.html" class="block">Hubungi Kami</a>
+  </div>
 </header>
 
 <!-- ================= TAJUK ================= -->
