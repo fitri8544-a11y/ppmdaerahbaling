@@ -15,11 +15,10 @@
 
 <body class="bg-gray-100 text-gray-800 scroll-smooth">
 
-<!-- ================= HEADER / NAV ================= -->
+<!-- ================= HEADER ================= -->
 <header class="bg-green-900 text-white sticky top-0 z-50 shadow">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <!-- LOGO & IDENTITI -->
     <div class="flex items-center gap-4">
       <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
       <div>
@@ -32,32 +31,29 @@
     </div>
 
     <!-- MENU DESKTOP -->
-    <nav id="menuDesktop"
-     class="hidden md:flex items-center gap-6 text-sm font-semibold">
-      <a href="/index.html"
-     class="hover:text-yellow-300 transition">
-     Utama
-  </a>
-      <a href="/pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
-      <a href="/ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-      <a href="/aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
-      <a href="/muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-      <a href="/hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="index.html" class="hover:text-yellow-300">Utama</a>
+      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
+      <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
+      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
+      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
+      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
     </nav>
 
-    <!-- MENU MOBILE -->
-    <button class="md:hidden text-2xl focus:outline-none" id="menuBtn">
+    <!-- BUTTON MOBILE -->
+    <button id="menuBtn" class="md:hidden text-2xl focus:outline-none">
       ☰
     </button>
+
   </div>
 
-  <!-- MOBILE MENU -->
+  <!-- MENU MOBILE -->
   <div id="mobileMenu"
        class="hidden md:hidden bg-green-800 px-6 pb-4 text-sm space-y-2">
-    <a href="utama" class="block">Utama</a>
+    <a href="index.html" class="block">Utama</a>
     <a href="pengenalan.html" class="block">Pengenalan</a>
+    <a href="ppmbaling.html" class="block">PPMD Baling</a>
     <a href="aktiviti.html" class="block">Aktiviti</a>
-    <a href="unit.html" class="block">Unit Pengakap</a>
     <a href="muatturun.html" class="block">Muat Turun</a>
     <a href="hubungi.html" class="block">Hubungi Kami</a>
   </div>
@@ -444,5 +440,19 @@ document.getElementById("tarikhMasihi").innerText =
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  if(btn){
+    btn.addEventListener("click", function(){
+      menu.classList.toggle("hidden");
+    });
+  }
+
+});
+</script>
 </body>
 </html>
