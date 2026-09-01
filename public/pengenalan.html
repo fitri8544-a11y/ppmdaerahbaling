@@ -1,187 +1,745 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<title>Pengenalan | Persekutuan Pengakap Daerah Baling</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- =====================================================
+       BASIC META
+  ====================================================== -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Mengenai | Persekutuan Pengakap Daerah Baling</title>
+
+  <meta
+    name="description"
+    content="Maklumat mengenai sejarah, persetiaan, undang-undang, prinsip dan nilai Persekutuan Pengakap."
+  >
+
+
+  <!-- =====================================================
+       FAVICON
+  ====================================================== -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/favicon.png"
+  >
+
+
+  <!-- =====================================================
+       TAILWIND CSS
+  ====================================================== -->
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+
+  <!-- =====================================================
+       LUCIDE ICONS
+  ====================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+
+  <!-- =====================================================
+       GOOGLE FONT
+  ====================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       PORTAL STYLE
+  ====================================================== -->
+
+  <style>
+
+    :root {
+      --green: #166534;
+      --forest: #14532D;
+      --blue: #1E3A8A;
+      --gold: #F59E0B;
+      --ink: #0F172A;
+      --muted: #64748B;
+      --paper: #F8FAFC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+      background: #f8fafc;
+    }
+
+    .nav-scrolled {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .btn {
+      min-height: 44px;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 767px) {
+      .nav-link::after {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal,
+      .btn {
+        transition: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
 <div class="flex-grow">
 
-<!-- ================= HEADER ================= -->
-<header class="bg-gray-500 text-white sticky top-0 z-50 shadow">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<header
+  id="utama"
+  class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+>
 
-    <!-- LOGO + TAJUK -->
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <h1 class="font-bold text-lg md:text-xl">
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8"
+    aria-label="Navigasi utama"
+  >
+
+    <!-- BRAND -->
+    <a
+      href="index.html"
+      class="flex items-center gap-3"
+      aria-label="Ke halaman utama"
+    >
+
+      <img
+        src="assets/logo.png"
+        alt="Logo Persekutuan Pengakap Daerah Baling"
+        class="h-12 w-12 object-contain"
+      >
+
+      <div class="leading-tight">
+
+        <p class="text-sm font-extrabold tracking-tight text-slate-900 sm:text-base">
           Persekutuan Pengakap Daerah Baling
-        </h1>
-        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
+        </p>
+
+        <p class="text-xs font-medium text-slate-500">
+          Portal Rasmi • Bersedia • Berkhidmat
+        </p>
+
       </div>
+
+    </a>
+
+
+    <!-- DESKTOP NAVIGATION -->
+    <div class="hidden items-center gap-6 lg:flex">
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="index.html"
+      >
+        Utama
+      </a>
+
+      <a
+        class="nav-link active text-sm font-semibold text-green-800"
+        href="pengenalan.html"
+      >
+        Mengenai
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="ppmbaling.html"
+      >
+        Organisasi
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="aktiviti.html"
+      >
+        Aktiviti
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="muatturun.html"
+      >
+        Sumber
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="hubungi.html"
+      >
+        Hubungi
+      </a>
+
     </div>
 
-    <!-- MENU DESKTOP -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
-      <a href="index.html" class="hover:text-yellow-300">Utama</a>
-      <a href="pengenalan.html" 
-         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-        Pengenalan
-      </a>
-      <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
-      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
-    </nav>
 
-    <!-- BUTTON MOBILE (MESTI DALAM FLEX CONTAINER) -->
-    <button id="menuBtn"
-      class="md:hidden text-2xl focus:outline-none">
-      ☰
+    <!-- MOBILE BUTTON -->
+    <button
+      id="menuButton"
+      class="btn rounded-lg p-2 text-green-800 lg:hidden"
+      type="button"
+      aria-label="Buka menu navigasi"
+      aria-expanded="false"
+    >
+      <i data-lucide="menu"></i>
     </button>
 
-  </div>
+  </nav>
 
-  <!-- MENU MOBILE -->
-  <div id="mobileMenu"
-       class="hidden md:hidden bg-gray-500 px-6 pb-4 text-sm space-y-2">
-    <a href="index.html" class="block">Utama</a>
-    <a href="pengenalan.html" class="block">Pengenalan</a>
-    <a href="ppmbaling.html" class="block">PPMD Baling</a>
-    <a href="aktiviti.html" class="block">Aktiviti</a>
-    <a href="muatturun.html" class="block">Muat Turun</a>
-    <a href="hubungi.html" class="block">Hubungi Kami</a>
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobileMenu"
+    class="hidden border-t border-slate-100 bg-white px-5 pb-5 lg:hidden"
+  >
+
+    <div class="grid gap-1 pt-3">
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="index.html"
+      >
+        Utama
+      </a>
+
+      <a
+        class="rounded-lg bg-green-50 px-3 py-3 font-semibold text-green-800"
+        href="pengenalan.html"
+      >
+        Mengenai
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="ppmbaling.html"
+      >
+        Organisasi
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="aktiviti.html"
+      >
+        Aktiviti
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="muatturun.html"
+      >
+        Sumber
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="hubungi.html"
+      >
+        Hubungi
+      </a>
+
+    </div>
+
   </div>
 
 </header>
 
-<!-- ================= TAJUK ================= -->
-<section class="max-w-7xl mx-auto px-6 mt-10">
-<h2 class="text-2xl font-bold text-green-900 mb-2">Pengenalan</h2>
-<p class="text-gray-600 mb-8 max-w-3xl">
-Maklumat rasmi berkaitan sejarah, prinsip, struktur organisasi dan nilai asas kepengakapan.
-</p>
+<!-- =====================================================
+     MENGENAI - PAGE INTRO
+===================================================== -->
 
-<!-- ================= GRID DASHBOARD ================= -->
-<div class="grid md:grid-cols-2 gap-6">
+<section class="bg-white">
 
-<a href="#"
-onclick="showSection('sejarah-dunia'); return false;"
-class="bg-slate-900 text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition relative overflow-hidden">
+  <div class="mx-auto max-w-7xl px-5 py-12 sm:py-14 lg:px-8">
 
-  <div class="flex items-center gap-4">
-    <div class="bg-slate-800 p-3 rounded-lg text-xl">
-      🌍
+    <!-- PAGE HEADING -->
+    <div class="reveal max-w-3xl">
+
+      <div class="mb-4 flex items-center gap-3">
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+        <span class="text-xs font-extrabold uppercase tracking-[0.18em] text-green-800">
+          Mengenai Pengakap
+        </span>
+
+      </div>
+
+      <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+        Kenali Dunia Kepengakapan
+      </h1>
+
+      <p class="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+        Ketahui sejarah, persetiaan, undang-undang, prinsip dan nilai
+        yang menjadi asas kepada Pergerakan Pengakap.
+      </p>
+
     </div>
-    <h3 class="text-lg font-semibold">
-      Sejarah Pengakap Dunia
-    </h3>
+
+
+    <!-- CONTENT OPTIONS -->
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+
+      <!-- SEJARAH DUNIA -->
+      <button
+        type="button"
+        onclick="showSection('sejarah-dunia')"
+        class="reveal group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
+      >
+
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-green-800">
+          <i data-lucide="globe-2" class="h-5 w-5"></i>
+        </div>
+
+        <h2 class="mt-5 font-extrabold text-slate-900">
+          Sejarah Dunia
+        </h2>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Asal-usul Pergerakan Pengakap dunia.
+        </p>
+
+        <div class="mt-4 flex items-center gap-1 text-xs font-bold text-green-800">
+          Baca Selanjutnya
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </div>
+
+      </button>
+
+
+      <!-- SEJARAH MALAYSIA -->
+      <button
+        type="button"
+        onclick="showSection('sejarah-malaysia')"
+        class="reveal group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
+        style="transition-delay:.05s"
+      >
+
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-900">
+          <i data-lucide="landmark" class="h-5 w-5"></i>
+        </div>
+
+        <h2 class="mt-5 font-extrabold text-slate-900">
+          Sejarah Malaysia
+        </h2>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Perkembangan Pengakap di Malaysia.
+        </p>
+
+        <div class="mt-4 flex items-center gap-1 text-xs font-bold text-green-800">
+          Baca Selanjutnya
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </div>
+
+      </button>
+
+
+      <!-- PERSETIAAN -->
+      <button
+        type="button"
+        onclick="showSection('persetiaan')"
+        class="reveal group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
+        style="transition-delay:.10s"
+      >
+
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
+          <i data-lucide="hand" class="h-5 w-5"></i>
+        </div>
+
+        <h2 class="mt-5 font-extrabold text-slate-900">
+          Persetiaan
+        </h2>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Persetiaan dan Undang-undang Pengakap.
+        </p>
+
+        <div class="mt-4 flex items-center gap-1 text-xs font-bold text-green-800">
+          Lihat Kandungan
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </div>
+
+      </button>
+
+
+      <!-- LAGU -->
+      <button
+        type="button"
+        onclick="showSection('lagu')"
+        class="reveal group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
+        style="transition-delay:.15s"
+      >
+
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+          <i data-lucide="music-2" class="h-5 w-5"></i>
+        </div>
+
+        <h2 class="mt-5 font-extrabold text-slate-900">
+          Lagu Pengakap
+        </h2>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Lagu rasmi Pengakap Malaysia.
+        </p>
+
+        <div class="mt-4 flex items-center gap-1 text-xs font-bold text-green-800">
+          Lihat Video
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </div>
+
+      </button>
+
+
+      <!-- PRINSIP -->
+      <button
+        type="button"
+        onclick="showSection('prinsip')"
+        class="reveal group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
+        style="transition-delay:.20s"
+      >
+
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
+          <i data-lucide="sparkles" class="h-5 w-5"></i>
+        </div>
+
+        <h2 class="mt-5 font-extrabold text-slate-900">
+          Prinsip & Nilai
+        </h2>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Nilai utama dalam kehidupan seorang Pengakap.
+        </p>
+
+        <div class="mt-4 flex items-center gap-1 text-xs font-bold text-green-800">
+          Lihat Kandungan
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </div>
+
+      </button>
+
+    </div>
+
   </div>
 
-  <p class="text-sm opacity-80 mt-3">
-    Asal-usul dan perkembangan pergerakan Pengakap di peringkat dunia.
-  </p>
-
-  <div class="absolute right-4 top-4 text-yellow-400">
-    ↗
-  </div>
-</a>
-
-
-
-<a href="#"
-onclick="showSection('sejarah-malaysia'); return false;"
-class="bg-slate-900 text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition relative">
-
-<div class="flex items-center gap-4">
-<div class="bg-slate-800 p-3 rounded-lg">🇲🇾</div>
-<h3 class="text-lg font-semibold">
-Sejarah Pengakap Malaysia
-</h3>
-</div>
-
-<p class="text-sm opacity-80 mt-3">
-Perkembangan Pengakap di Tanah Melayu dan Malaysia.
-</p>
-
-<div class="absolute right-4 top-4 text-yellow-400">↗</div>
-</a>
-
-
-<a href="#"
-onclick="showSection('persetiaan'); return false;"
-class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="bg-gray-100 p-3 rounded-lg">✋</div>
-<span class="font-medium">Persetiaan & Undang-Undang</span>
-</div>
-<span class="text-gray-400">›</span>
-</a>
-
-
-<a href="#"
-onclick="showSection('lagu'); return false;"
-class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="bg-gray-100 p-3 rounded-lg text-xl">
-  🎶
-</div>
-<span class="font-medium">Lagu Pengakap Malaysia</span>
-
-</div>
-<span class="text-gray-400">›</span>
-</a>
-
-
-<a href="#"
-onclick="showSection('prinsip'); return false;"
-class="bg-white rounded-xl p-6 shadow hover:shadow-md transition flex items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="bg-gray-100 p-3 rounded-lg">⭐</div>
-<span class="font-medium">Prinsip & Nilai</span>
-</div>
-<span class="text-gray-400">›</span>
-</a>
-
-</div>
 </section>
 
 
-<!-- ================= SEJARAH DUNIA ================= -->
-<section id="sejarah-dunia"
-class="content-section hidden bg-white py-16 mt-12 rounded shadow mx-6 max-w-7xl mx-auto px-6">
+<!-- =====================================================
+     SEJARAH PENGAKAP DUNIA
+===================================================== -->
 
-<h3 class="text-2xl font-bold text-green-900 mb-8 text-center">
-Sejarah Pengakap Dunia
-</h3>
+<section
+  id="sejarah-dunia"
+  class="content-section hidden border-t border-slate-100 bg-slate-50 py-14 sm:py-16"
+>
+
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+    <!-- SECTION HEADER -->
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+
+      <div class="mb-3 flex items-center justify-center gap-3">
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+        <span class="text-xs font-extrabold uppercase tracking-[0.18em] text-green-800">
+          Sejarah Kepengakapan
+        </span>
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+      </div>
+
+      <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+        Sejarah Pengakap Dunia
+      </h2>
+
+      <p class="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
+        Mengenali tokoh pengasas dan perjalanan awal yang membawa
+        kepada perkembangan Pergerakan Pengakap di seluruh dunia.
+      </p>
+
+    </div>
 
 <!-- PASTE ARTIKEL DI SINI -->
 
-<!-- GAMBAR -->
-    <div class="text-center mb-16">
-      <img src="assets/baden-powell.jpg"
-           alt="Lord Robert Baden-Powell"
-           class="mx-auto rounded-lg shadow-lg max-w-xs md:max-w-sm">
+<!-- ================= TOKOH PENGASAS ================= -->
 
-      <p class="mt-4 text-sm font-semibold text-gray-700">
-        Lord Robert Baden-Powell
-      </p>
-      <p class="text-xs text-gray-500">
-        Pengasas Pergerakan Pengakap Dunia
-      </p>
+<div
+  class="
+    mx-auto
+    mb-12
+    grid
+    max-w-5xl
+    overflow-hidden
+    rounded-2xl
+    border
+    border-slate-200
+    bg-white
+    shadow-sm
+    md:grid-cols-[280px_1fr]
+  "
+>
+
+  <!-- IMAGE -->
+  <div class="bg-slate-100">
+
+    <img
+      src="assets/baden-powell.jpg"
+      alt="Lord Robert Baden-Powell"
+      class="h-full min-h-[300px] w-full object-cover"
+    >
+
+  </div>
+
+
+  <!-- PROFILE -->
+  <div class="flex flex-col justify-center p-7 sm:p-9">
+
+    <div
+      class="
+        mb-4
+        inline-flex
+        w-fit
+        items-center
+        gap-2
+        rounded-full
+        bg-green-50
+        px-3
+        py-1.5
+        text-xs
+        font-extrabold
+        text-green-800
+      "
+    >
+
+      <i
+        data-lucide="badge"
+        class="h-4 w-4">
+      </i>
+
+      PENGASAS PENGAKAP DUNIA
+
     </div>
 
-    <!-- ARTIKEL -->
-    <div class="max-w-4xl mx-auto space-y-6 text-justify leading-relaxed">
+    <h3
+      class="
+        text-2xl
+        font-extrabold
+        tracking-tight
+        text-slate-900
+        sm:text-3xl
+      "
+    >
+      Lord Robert Baden-Powell
+    </h3>
+
+    <p class="mt-2 font-semibold text-green-800">
+      Robert Stephenson Smyth Baden-Powell
+    </p>
+
+    <p class="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
+      Tokoh yang mengasaskan Pergerakan Pengakap dan mencetuskan
+      satu gerakan pendidikan belia yang kemudiannya berkembang
+      ke seluruh dunia.
+    </p>
+
+
+    <!-- QUICK FACTS -->
+    <div
+      class="
+        mt-6
+        grid
+        gap-3
+        border-t
+        border-slate-100
+        pt-5
+        sm:grid-cols-2
+      "
+    >
+
+      <div>
+
+        <p
+          class="
+            text-[11px]
+            font-extrabold
+            uppercase
+            tracking-wider
+            text-slate-400
+          "
+        >
+          Dilahirkan
+        </p>
+
+        <p class="mt-1 text-sm font-bold text-slate-800">
+          22 Februari 1857
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <p
+          class="
+            text-[11px]
+            font-extrabold
+            uppercase
+            tracking-wider
+            text-slate-400
+          "
+        >
+          Tempat Lahir
+        </p>
+
+        <p class="mt-1 text-sm font-bold text-slate-800">
+          London, England
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- =====================================================
+     TIMELINE SEJARAH
+===================================================== -->
+
+<div class="relative mx-auto max-w-4xl">
+
+  <!-- TIMELINE LINE -->
+  <div
+    class="
+      absolute
+      bottom-0
+      left-[19px]
+      top-0
+      w-px
+      bg-green-200
+      sm:left-[23px]
+    "
+  ></div>
+
+
+  <!-- ARTICLE CONTENT -->
+  <div
+    class="
+      relative
+      space-y-5
+      pl-14
+      text-left
+      leading-7
+      text-slate-600
+      sm:pl-16
+    "
+  >
 
        <p>
           Pergerakan Pengakap telah diasaskan oleh seorang warganegara British
@@ -212,6 +770,54 @@ Sejarah Pengakap Dunia
           kepengakapannya.
         </p>
 
+        <!-- ================= 1876 ================= -->
+
+<div class="relative">
+
+  <!-- TIMELINE DOT -->
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-1
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i
+      data-lucide="flag"
+      class="h-4 w-4 text-white"
+    ></i>
+  </div>
+
+
+  <!-- YEAR -->
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1876
+  </span>
+
+</div>
+        
         <p>
           Pada tahun <strong>1876</strong>, selepas berjaya dalam peperiksaan
           tentera, Baden-Powell ditauliahkan sebagai
@@ -232,6 +838,54 @@ Sejarah Pengakap Dunia
           iaitu <em>Serigala yang tidak pernah tidur</em>.
         </p>
 
+        <!-- ================= 1897 ================= -->
+
+<div class="relative">
+
+  <!-- TIMELINE DOT -->
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-1
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i
+      data-lucide="shield"
+      class="h-4 w-4 text-white"
+    ></i>
+  </div>
+
+
+  <!-- YEAR -->
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1897
+  </span>
+
+</div>
+
         <p>
           Pada tahun <strong>1897</strong>, Baden-Powell dinaikkan pangkat
           sebagai <strong>Kolonel</strong> dan ditempatkan di India untuk
@@ -240,6 +894,54 @@ Sejarah Pengakap Dunia
           dikenali sebagai <strong>“Scouts”</strong> kepada askar-askar
           yang menunjukkan kebolehan kepimpinan dan peninjauan yang tinggi.
         </p>
+
+        <!-- ================= 1899 ================= -->
+
+<div class="relative">
+
+  <!-- TIMELINE DOT -->
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-1
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i
+      data-lucide="map-pin"
+      class="h-4 w-4 text-white"
+    ></i>
+  </div>
+
+
+  <!-- YEAR -->
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1899
+  </span>
+
+</div>
 
         <p>
           Dalam tahun <strong>1899</strong>, Baden-Powell kembali ke England
@@ -264,6 +966,54 @@ Sejarah Pengakap Dunia
           dalam Tentera British.
         </p>
 
+        <!-- ================= 1907 ================= -->
+
+<div class="relative">
+
+  <!-- TIMELINE DOT -->
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-1
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i
+      data-lucide="tent-tree"
+      class="h-4 w-4 text-white"
+    ></i>
+  </div>
+
+
+  <!-- YEAR -->
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-amber-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-amber-800
+    "
+  >
+    1907
+  </span>
+
+</div>
+
         <p>
           Selepas bersara daripada perkhidmatan tentera, Baden-Powell
           menganjurkan satu <strong>perkhemahan eksperimen selama 10 hari</strong>
@@ -273,6 +1023,54 @@ Sejarah Pengakap Dunia
           Perkhemahan ini menjadi asas kepada penubuhan
           <strong>Pergerakan Pengakap</strong>.
         </p>
+
+        <!-- ================= 1908 ================= -->
+
+<div class="relative">
+
+  <!-- TIMELINE DOT -->
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-1
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i
+      data-lucide="book-open"
+      class="h-4 w-4 text-white"
+    ></i>
+  </div>
+
+
+  <!-- YEAR -->
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-amber-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-amber-800
+    "
+  >
+    1908
+  </span>
+
+</div>
 
         <p>
           Pada tahun <strong>1908</strong>, beliau menerbitkan buku
@@ -285,7 +1083,84 @@ Sejarah Pengakap Dunia
           Tanah Melayu dan Borneo.
         </p>
 
-        
+        <!-- ================= PERKEMBANGAN DUNIA ================= -->
+
+<div class="relative pt-3">
+
+  <!-- TIMELINE DOT -->
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-amber-500
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i
+      data-lucide="globe-2"
+      class="h-4 w-4 text-white"
+    ></i>
+  </div>
+
+
+  <!-- FINAL CARD -->
+  <div
+    class="
+      rounded-2xl
+      border
+      border-green-100
+      bg-white
+      p-5
+      shadow-sm
+      sm:p-6
+    "
+  >
+
+    <span
+      class="
+        text-xs
+        font-extrabold
+        uppercase
+        tracking-[0.15em]
+        text-green-700
+      "
+    >
+      Perkembangan Global
+    </span>
+
+    <h4
+      class="
+        mt-2
+        text-lg
+        font-extrabold
+        text-slate-900
+      "
+    >
+      Pengakap Berkembang ke Seluruh Dunia
+    </h4>
+
+    <p class="mt-2 text-sm leading-6 text-slate-600">
+      Daripada sebuah gerakan kecil di England, kepengakapan
+      berkembang menjadi sebuah pergerakan belia antarabangsa
+      dan seterusnya tersebar ke pelbagai negara termasuk
+      Tanah Melayu dan Borneo.
+    </p>
+
+  </div>
+
+</div>
+
+       </div>  
       </div>
     </div>
   </div>
@@ -297,95 +1172,588 @@ Sejarah Pengakap Dunia
 <section id="sejarah-malaysia"
 class="content-section hidden bg-white py-16 mt-12 rounded shadow mx-6 max-w-7xl mx-auto px-6">
 
-<h3 class="text-2xl font-bold text-green-900 mb-8 text-center">
-Sejarah Pengakap Malaysia
-</h3>
+<!-- ================= SECTION HEADER ================= -->
+
+<div class="mx-auto mb-10 max-w-3xl text-center">
+
+  <div class="mb-3 flex items-center justify-center gap-3">
+
+    <span class="h-px w-8 bg-amber-500"></span>
+
+    <span
+      class="
+        text-xs
+        font-extrabold
+        uppercase
+        tracking-[0.18em]
+        text-green-800
+      "
+    >
+      Kepengakapan Negara
+    </span>
+
+    <span class="h-px w-8 bg-amber-500"></span>
+
+  </div>
+
+  <h2
+    class="
+      text-3xl
+      font-extrabold
+      tracking-tight
+      text-slate-900
+      sm:text-4xl
+    "
+  >
+    Sejarah Pengakap Malaysia
+  </h2>
+
+  <p
+    class="
+      mt-4
+      text-sm
+      leading-6
+      text-slate-600
+      sm:text-base
+    "
+  >
+    Menelusuri perkembangan Pergerakan Pengakap
+    di Tanah Melayu sehingga berkembang sebagai
+    sebuah gerakan kepengakapan di Malaysia.
+  </p>
+
+</div>
 
 <!-- PASTE ARTIKEL DI SINI -->
 
- <div class="max-w-4xl mx-auto space-y-6 text-justify leading-relaxed">
+ <!-- =====================================================
+     TIMELINE SEJARAH MALAYSIA
+===================================================== -->
 
-      <p>
-        Pergerakan Pengakap mula berkembang di <strong>Malaysia (Tanah Melayu)</strong>
-        apabila <strong>F.C. Sands</strong> menubuhkan pasukan
-        <strong>Pengakap Kanak-Kanak (Cubs)</strong> di
-        <strong>Singapura</strong> pada tahun <strong>1910</strong>,
-        iaitu dua tahun selepas Lord Baden-Powell mengasaskan
-        Pergerakan Pengakap di England.
-      </p>
+<div class="relative mx-auto max-w-4xl">
 
-      <p>
-        Pada tahun <strong>1919</strong>, pasukan Pengakap untuk
-        budak-budak Melayu telah diasaskan di Singapura oleh
-        <strong>Kapten N.M. Hashim</strong> dan
-        <strong>Encik A.Z. Alsagoff</strong>.
-        Negeri Melayu pertama yang memulakan Pergerakan Pengakap ialah
-        <strong>Pahang (Pekan)</strong> melalui usaha
-        <strong>G.M. Laidlaw</strong>.
-        Walau bagaimanapun, pergerakan ini terhenti selepas kematian beliau.
-      </p>
+  <!-- TIMELINE LINE -->
+  <div
+    class="
+      absolute
+      bottom-0
+      left-[19px]
+      top-0
+      w-px
+      bg-green-200
+      sm:left-[23px]
+    "
+  ></div>
 
-      <p>
-        Pada tahun <strong>1927</strong>, Pergerakan Pengakap di Pahang
-        telah dihidupkan semula oleh
-        <strong>H.P. Hertslet</strong>, <strong>Frisby</strong> dan
-        <strong>Wheeler</strong> dari Jabatan Pelajaran Pahang.
-        Di <strong>Pulau Pinang</strong>, pergerakan ini diasaskan oleh
-        <strong>H.R. Cheesman</strong> di
-        <strong>Penang Free School</strong> pada tahun <strong>1915</strong>.
-      </p>
 
-      <p>
-        Di negeri <strong>Perak</strong>, Pergerakan Pengakap ditubuhkan
-        di <strong>Maktab Melayu Kuala Kangsar (MCKK)</strong>
-        pada tahun <strong>1926</strong> oleh <strong>I.R. Wheeler</strong>.
-        Pergerakan ini bermula di <strong>Kedah</strong> pada tahun
-        <strong>1922</strong>, manakala di <strong>Johor</strong>,
-        kumpulan pertama ditubuhkan di
-        <strong>Maktab Sultan Abu Bakar</strong> pada tahun <strong>1928</strong>.
-      </p>
+  <!-- ARTICLE CONTENT -->
+  <div
+    class="
+      relative
+      space-y-5
+      pl-14
+      text-left
+      leading-7
+      text-slate-600
+      sm:pl-16
+    "
+  >
 
-      <p>
-        Negeri <strong>Melaka</strong> dan <strong>Negeri Sembilan</strong>
-        memulakan Pergerakan Pengakap pada tahun <strong>1926</strong>
-        melalui <strong>Brunstone</strong>.
-        Di <strong>Selangor</strong>, pergerakan ini diasaskan oleh
-        <strong>Ameen Akbar</strong> pada tahun <strong>1926</strong>.
-        <strong>Terengganu</strong> dan <strong>Kelantan</strong> pula
-        memulakan pergerakan ini pada tahun <strong>1927</strong>,
-        masing-masing diasaskan oleh
-        <strong>A.J. Gracle</strong> dan
-        <strong>YM Tengku Ahmad Temenggong</strong>.
-      </p>
+      <!-- =====================================================
+     TIMELINE CONTENT — SEJARAH PENGAKAP MALAYSIA
+===================================================== -->
 
-      <p>
-        Pergerakan Pengakap di <strong>Perlis</strong> bermula pada tahun
-        <strong>1931</strong> di bawah naungan Kedah.
-        Di <strong>Sarawak</strong>, pergerakan ini ditubuhkan pada tahun
-        <strong>1913</strong>, manakala di <strong>Sabah</strong>
-        pada tahun <strong>1915</strong>, namun kedua-duanya
-        tidak aktif sepenuhnya sehingga sekitar tahun <strong>1930</strong>.
-      </p>
 
-      <p>
-        Selepas <strong>Kemerdekaan Tanah Melayu pada tahun 1957</strong>,
-        <strong>Persekutuan Budak-Budak Pengakap Tanah Melayu</strong>
-        telah diterima sebagai ahli penuh
-        <strong>Persidangan Pengakap Sedunia</strong>
-        pada <strong>1 September 1957</strong>.
-        Dengan penubuhan Malaysia pada tahun <strong>1963</strong>,
-        persekutuan ini dikenali sebagai
-        <strong>Persekutuan Pengakap Malaysia</strong>.
-      </p>
+<!-- ================= 1910 ================= -->
 
-      <p>
-        Pada tahun <strong>1965</strong>, Singapura telah menarik diri
-        daripada Persekutuan Pengakap Malaysia sejajar dengan
-        pemisahan Singapura daripada gagasan Malaysia.
-        Sehingga hari ini, Persekutuan Pengakap Malaysia terus
-        memainkan peranan penting dalam pembangunan sahsiah,
-        kepimpinan dan jati diri generasi muda negara.
-      </p>
+<div class="relative">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-1
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="flag" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-amber-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-amber-800
+    "
+  >
+    1910
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Permulaan Pergerakan Pengakap
+  </h4>
+
+  <p class="mt-2">
+    Pergerakan Pengakap mula berkembang di
+    <strong>Malaysia (Tanah Melayu)</strong>
+    apabila <strong>F.C. Sands</strong> menubuhkan pasukan
+    <strong>Pengakap Kanak-Kanak (Cubs)</strong> di
+    <strong>Singapura</strong> pada tahun <strong>1910</strong>,
+    iaitu dua tahun selepas Lord Baden-Powell mengasaskan
+    Pergerakan Pengakap di England.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1913 – 1915 ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="map-pin" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1913 – 1915
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Perkembangan ke Sarawak, Pulau Pinang dan Sabah
+  </h4>
+
+  <p class="mt-2">
+    Di <strong>Sarawak</strong>, pergerakan ini ditubuhkan pada tahun
+    <strong>1913</strong>. Di <strong>Pulau Pinang</strong>,
+    pergerakan ini diasaskan oleh <strong>H.R. Cheesman</strong>
+    di <strong>Penang Free School</strong> pada tahun
+    <strong>1915</strong>.
+  </p>
+
+  <p class="mt-3">
+    Di <strong>Sabah</strong>, Pergerakan Pengakap bermula pada tahun
+    <strong>1915</strong>. Pergerakan di Sarawak dan Sabah
+    bagaimanapun tidak aktif sepenuhnya sehingga sekitar tahun
+    <strong>1930</strong>.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1919 ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="users" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1919
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Pasukan Pengakap Melayu
+  </h4>
+
+  <p class="mt-2">
+    Pada tahun <strong>1919</strong>, pasukan Pengakap untuk
+    budak-budak Melayu telah diasaskan di Singapura oleh
+    <strong>Kapten N.M. Hashim</strong> dan
+    <strong>Encik A.Z. Alsagoff</strong>.
+  </p>
+
+  <p class="mt-3">
+    Negeri Melayu pertama yang memulakan Pergerakan Pengakap ialah
+    <strong>Pahang (Pekan)</strong> melalui usaha
+    <strong>G.M. Laidlaw</strong>. Walau bagaimanapun,
+    pergerakan ini terhenti selepas kematian beliau.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1922 – 1926 ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="map" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1922 – 1926
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Perkembangan di Negeri-Negeri Melayu
+  </h4>
+
+  <p class="mt-2">
+    Pergerakan Pengakap bermula di <strong>Kedah</strong>
+    pada tahun <strong>1922</strong>.
+  </p>
+
+  <p class="mt-3">
+    Di negeri <strong>Perak</strong>, Pergerakan Pengakap ditubuhkan
+    di <strong>Maktab Melayu Kuala Kangsar (MCKK)</strong>
+    pada tahun <strong>1926</strong> oleh
+    <strong>I.R. Wheeler</strong>.
+  </p>
+
+  <p class="mt-3">
+    Negeri <strong>Melaka</strong> dan
+    <strong>Negeri Sembilan</strong> memulakan Pergerakan Pengakap
+    pada tahun <strong>1926</strong> melalui
+    <strong>Brunstone</strong>.
+    Di <strong>Selangor</strong>, pergerakan ini diasaskan oleh
+    <strong>Ameen Akbar</strong> pada tahun <strong>1926</strong>.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1927 – 1931 ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="milestone" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1927 – 1931
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Gerakan Semakin Meluas
+  </h4>
+
+  <p class="mt-2">
+    Pada tahun <strong>1927</strong>, Pergerakan Pengakap di
+    <strong>Pahang</strong> telah dihidupkan semula oleh
+    <strong>H.P. Hertslet</strong>, <strong>Frisby</strong>
+    dan <strong>Wheeler</strong> dari Jabatan Pelajaran Pahang.
+  </p>
+
+  <p class="mt-3">
+    <strong>Terengganu</strong> dan <strong>Kelantan</strong>
+    turut memulakan pergerakan ini pada tahun <strong>1927</strong>,
+    masing-masing diasaskan oleh
+    <strong>A.J. Gracle</strong> dan
+    <strong>YM Tengku Ahmad Temenggong</strong>.
+  </p>
+
+  <p class="mt-3">
+    Di <strong>Johor</strong>, kumpulan pertama ditubuhkan di
+    <strong>Maktab Sultan Abu Bakar</strong>
+    pada tahun <strong>1928</strong>.
+    Pergerakan Pengakap di <strong>Perlis</strong> pula bermula
+    pada tahun <strong>1931</strong> di bawah naungan Kedah.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1957 ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-amber-500
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="award" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-amber-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-amber-800
+    "
+  >
+    1957
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Pengiktirafan Selepas Kemerdekaan
+  </h4>
+
+  <p class="mt-2">
+    Selepas <strong>Kemerdekaan Tanah Melayu pada tahun 1957</strong>,
+    <strong>Persekutuan Budak-Budak Pengakap Tanah Melayu</strong>
+    telah diterima sebagai ahli penuh
+    <strong>Persidangan Pengakap Sedunia</strong>
+    pada <strong>1 September 1957</strong>.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1963 ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-amber-500
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="flag" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-amber-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-amber-800
+    "
+  >
+    1963
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Persekutuan Pengakap Malaysia
+  </h4>
+
+  <p class="mt-2">
+    Dengan penubuhan Malaysia pada tahun <strong>1963</strong>,
+    persekutuan ini dikenali sebagai
+    <strong>Persekutuan Pengakap Malaysia</strong>.
+  </p>
+
+</div>
+
+
+
+<!-- ================= 1965 – KINI ================= -->
+
+<div class="relative pt-3">
+
+  <div
+    class="
+      absolute
+      -left-[45px]
+      top-4
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-slate-50
+      bg-green-700
+      shadow-sm
+      sm:-left-[49px]
+    "
+  >
+    <i data-lucide="compass" class="h-4 w-4 text-white"></i>
+  </div>
+
+  <span
+    class="
+      inline-flex
+      rounded-full
+      bg-green-100
+      px-3
+      py-1
+      text-xs
+      font-extrabold
+      text-green-800
+    "
+  >
+    1965 – KINI
+  </span>
+
+  <h4 class="mt-3 text-lg font-extrabold text-slate-900">
+    Perkembangan Hingga Kini
+  </h4>
+
+  <p class="mt-2">
+    Pada tahun <strong>1965</strong>, Singapura telah menarik diri
+    daripada Persekutuan Pengakap Malaysia sejajar dengan
+    pemisahan Singapura daripada gagasan Malaysia.
+  </p>
+
+  <p class="mt-3">
+    Sehingga hari ini, Persekutuan Pengakap Malaysia terus
+    memainkan peranan penting dalam pembangunan sahsiah,
+    kepimpinan dan jati diri generasi muda negara.
+  </p>
+
+</div>
 
     </div>
   </div>
@@ -393,30 +1761,234 @@ Sejarah Pengakap Malaysia
 </section>
 
 
-<!-- ================= PERSETIAAN ================= -->
-<section id="persetiaan"
-class="content-section hidden bg-white py-16 mt-12 rounded shadow mx-6 max-w-7xl mx-auto px-6">
+<!-- =====================================================
+     PERSETIAAN & UNDANG-UNDANG PENGAKAP
+===================================================== -->
 
-<h3 class="text-2xl font-bold text-green-900 mb-8 text-center">
-Persetiaan & Undang-Undang
-</h3>
+<section
+  id="persetiaan"
+  class="content-section hidden border-t border-slate-100 bg-slate-50 py-14 sm:py-16"
+>
 
-<!-- PASTE ARTIKEL DI SINI -->
- <div class="grid md:grid-cols-2 gap-12 items-start">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
 
-      <!-- ================= PERSETIAAN ================= -->
-      <div class="text-center">
 
-        <img src="assets/tabik-pengakap.jpg"
-             alt="Tabik Pengakap"
-             class="h-32 md:h-44 mx-auto mb-6 drop-shadow-lg">
+    <!-- =================================================
+         SECTION HEADER
+    ================================================== -->
 
-        <h4 class="text-xl font-semibold text-green-900 mb-6">
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+
+      <div class="mb-3 flex items-center justify-center gap-3">
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-[0.18em]
+            text-green-800
+          "
+        >
+          ASAS KEPENGAKAPAN
+        </span>
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+      </div>
+
+
+      <h2
+        class="
+          text-3xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-4xl
+        "
+      >
+        Persetiaan & Undang-undang Pengakap
+      </h2>
+
+
+      <p
+        class="
+          mt-4
+          text-sm
+          leading-6
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Panduan asas yang menjadi pegangan setiap ahli Pengakap
+        dalam membentuk disiplin, sahsiah, tanggungjawab dan
+        semangat berkhidmat.
+      </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PERSETIAAN
+    ================================================== -->
+
+    <div
+      class="
+        mx-auto
+        mb-12
+        grid
+        max-w-5xl
+        overflow-hidden
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        shadow-sm
+        md:grid-cols-[320px_1fr]
+      "
+    >
+
+
+      <!-- IMAGE -->
+
+      <div
+        class="
+          flex
+          items-center
+          justify-center
+          bg-gradient-to-br
+          from-green-50
+          to-amber-50
+          p-8
+          sm:p-10
+        "
+      >
+
+        <div class="text-center">
+
+          <div
+            class="
+              mx-auto
+              flex
+              h-56
+              w-56
+              items-center
+              justify-center
+              overflow-hidden
+              rounded-full
+              border-8
+              border-white
+              bg-white
+              shadow-lg
+            "
+          >
+
+            <img
+              src="assets/tabik-pengakap.jpg"
+              alt="Tabik Pengakap"
+              class="h-full w-full object-cover"
+            >
+
+          </div>
+
+
+          <div
+            class="
+              mx-auto
+              mt-6
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              bg-green-700
+              px-4
+              py-2
+              text-xs
+              font-extrabold
+              text-white
+              shadow-sm
+            "
+          >
+
+            <i
+              data-lucide="hand"
+              class="h-4 w-4"
+            ></i>
+
+            PERSETIAAN PENGAKAP
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PROMISE -->
+
+      <div
+        class="
+          flex
+          flex-col
+          justify-center
+          p-7
+          sm:p-10
+          lg:p-12
+        "
+      >
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-[0.16em]
+            text-green-700
+          "
+        >
+          Ikrar Seorang Pengakap
+        </span>
+
+
+        <h3
+          class="
+            mt-2
+            text-2xl
+            font-extrabold
+            tracking-tight
+            text-slate-900
+            sm:text-3xl
+          "
+        >
           Persetiaan Pengakap
-        </h4>
+        </h3>
 
-        <div class="bg-gray-50 border-l-4 border-green-700 p-6 rounded shadow-sm">
-          <p class="leading-relaxed font-medium text-gray-800">
+
+        <div
+          class="
+            mt-6
+            rounded-2xl
+            border
+            border-green-100
+            bg-green-50/70
+            p-6
+            sm:p-7
+          "
+        >
+
+          <p
+            class="
+              text-base
+              font-semibold
+              leading-8
+              text-slate-700
+              sm:text-lg
+            "
+          >
             Bahawa dengan sesungguhnya,<br>
             saya berjanji dan bersetia,<br>
             yang saya dengan seberapa daya upaya saya,<br>
@@ -425,222 +1997,1742 @@ Persetiaan & Undang-Undang
             menolong orang pada setiap masa,<br>
             dan menurut Undang-undang Pengakap.
           </p>
+
+        </div>
+
+
+        <!-- VALUES -->
+
+        <div
+          class="
+            mt-6
+            flex
+            flex-wrap
+            gap-2
+          "
+        >
+
+          <span
+            class="
+              rounded-full
+              bg-slate-100
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-slate-600
+            "
+          >
+            Taat
+          </span>
+
+          <span
+            class="
+              rounded-full
+              bg-slate-100
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-slate-600
+            "
+          >
+            Berkhidmat
+          </span>
+
+          <span
+            class="
+              rounded-full
+              bg-slate-100
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-slate-600
+            "
+          >
+            Berdisiplin
+          </span>
+
+          <span
+            class="
+              rounded-full
+              bg-slate-100
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-slate-600
+            "
+          >
+            Bertanggungjawab
+          </span>
+
         </div>
 
       </div>
 
-      <!-- ================= UNDANG-UNDANG ================= -->
-<div>
-
-  <h4 class="text-xl font-semibold text-green-900 mb-6 text-center">
-    Undang-undang Pengakap
-  </h4>
-
-  <div class="bg-gray-50 border-l-4 border-yellow-600 p-6 rounded shadow-sm space-y-4">
-
-    <div>
-      <strong>1. Pengakap adalah seorang yang boleh dipercayai.</strong>
-      <p class="text-sm text-gray-700">
-        Sentiasa bercakap benar, jujur dalam tindakan dan amanah dalam tanggungjawab.
-      </p>
     </div>
 
-    <div>
-      <strong>2. Pengakap adalah seorang yang taat.</strong>
-      <p class="text-sm text-gray-700">
-        Taat kepada Tuhan, Raja, Negara, pemimpin dan ibu bapa.
-      </p>
-    </div>
-
-    <div>
-      <strong>3. Pengakap menolong orang pada setiap masa.</strong>
-      <p class="text-sm text-gray-700">
-        Sentiasa bersedia membantu tanpa mengharapkan balasan.
-      </p>
-    </div>
-
-    <div>
-      <strong>4. Pengakap adalah sahabat kepada semua dan saudara kepada setiap Pengakap.</strong>
-      <p class="text-sm text-gray-700">
-        Menghormati semua orang tanpa mengira bangsa, agama atau latar belakang.
-      </p>
-    </div>
-
-    <div>
-      <strong>5. Pengakap adalah seorang yang berbudi dan sopan.</strong>
-      <p class="text-sm text-gray-700">
-        Beradab dalam tutur kata serta menghormati orang lain.
-      </p>
-    </div>
-
-    <div>
-      <strong>6. Pengakap kasihkan haiwan dan alam sekitar.</strong>
-      <p class="text-sm text-gray-700">
-        Menjaga kebersihan serta memelihara alam sekitar.
-      </p>
-    </div>
-
-    <div>
-      <strong>7. Pengakap menurut perintah.</strong>
-      <p class="text-sm text-gray-700">
-        Patuh kepada arahan yang munasabah demi kebaikan bersama.
-      </p>
-    </div>
-
-    <div>
-      <strong>8. Pengakap tabah hati dan sentiasa ceria.</strong>
-      <p class="text-sm text-gray-700">
-        Tidak mudah putus asa dan sentiasa berfikiran positif.
-      </p>
-    </div>
-
-    <div>
-      <strong>9. Pengakap berjimat cermat.</strong>
-      <p class="text-sm text-gray-700">
-        Mengurus masa, wang dan sumber dengan bijaksana.
-      </p>
-    </div>
-
-    <div>
-      <strong>10. Pengakap bersih dan suci fikiran, perkataan dan perbuatan.</strong>
-      <p class="text-sm text-gray-700">
-        Menjaga akhlak serta menghindari perkara yang tidak bermoral.
-      </p>
-    </div>
-
-  </div>
-</div>
-
-<!-- BUTANG CETAK -->
-<div class="text-center mt-12">
-  <button onclick="printSemua()"
-    class="bg-green-800 hover:bg-green-700 text-white px-8 py-3 rounded shadow">
-    🖨️ Cetak Persetiaan & Undang-undang
-  </button>
-</div>
-
-</section>
 
 
-<!-- ================= LAGU PENGAKAP ================= -->
-<section id="lagu"
-class="content-section hidden bg-white py-20 mt-12 rounded shadow mx-6 max-w-7xl mx-auto px-6">
+    <!-- =================================================
+         UNDANG-UNDANG HEADER
+    ================================================== -->
 
-<h3 class="text-3xl font-bold text-green-900 mb-10 text-center">
-Lagu Pengakap Malaysia
-</h3>
+    <div class="mx-auto mb-8 max-w-3xl text-center">
 
-<div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
+      <div
+        class="
+          mx-auto
+          mb-4
+          flex
+          h-12
+          w-12
+          items-center
+          justify-center
+          rounded-2xl
+          bg-amber-100
+          text-amber-700
+        "
+      >
 
-<iframe class="w-full h-full"
-src="https://www.youtube.com/embed/Gk-7Q6ELp5o"
-title="Lagu Pengakap Malaysia"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen>
-</iframe>
+        <i
+          data-lucide="scroll-text"
+          class="h-6 w-6"
+        ></i>
 
-</div>
-
-</section>
-
-
-
-<!-- ================= PRINSIP ================= -->
-<section id="prinsip"
-class="content-section hidden bg-white py-16 mt-12 rounded shadow mx-6 max-w-7xl mx-auto px-6">
-
-<h3 class="text-2xl font-bold text-green-900 mb-8 text-center">
-Prinsip & Nilai
-</h3>
-
-<!-- PASTE ARTIKEL DI SINI -->
- <section class="bg-white mx-6 mt-6 rounded shadow p-8 text-center">
-
-  <div class="text-5xl mb-4 animate-pulse">
-    🚧
-  </div>
-
-  <h2 class="text-2xl font-bold text-green-900 mb-2">
-    HALAMAN INI SEDANG DIKEMASKINI
-  </h2>
-
-  <p class="text-gray-600 text-sm">
-    🛠️ Harap maklum. Kami sedang menambah baik kandungan untuk kemudahan anda.
-  </p>
-
-</section>
-
-</section>
-
-</div>
-
-<footer class="bg-gray-500 text-white sticky top-0 z-50 shadow">
-  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-12" alt="Logo">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <p class="font-semibold text-base">
-          Persekutuan Pengakap Daerah Baling
-        </p>
-        <p class="text-xs italic opacity-80">
-          Bersedia · Berkhidmat
-        </p>
       </div>
+
+
+      <h3
+        class="
+          text-2xl
+          font-extrabold
+          text-slate-900
+          sm:text-3xl
+        "
+      >
+        10 Undang-undang Pengakap
+      </h3>
+
+
+      <p
+        class="
+          mt-3
+          text-sm
+          leading-6
+          text-slate-600
+        "
+      >
+        Nilai dan prinsip yang membimbing setiap Pengakap
+        dalam kehidupan seharian.
+      </p>
+
     </div>
 
-    <div class="text-sm opacity-80 text-center md:text-right">
-      © 2026 Persekutuan Pengakap Daerah Baling  
-      <br class="hidden md:block">
-      Hak Cipta Terpelihara
+
+
+    <!-- =================================================
+         UNDANG-UNDANG GRID
+    ================================================== -->
+
+    <div
+      class="
+        mx-auto
+        grid
+        max-w-5xl
+        gap-4
+        md:grid-cols-2
+      "
+    >
+
+
+      <!-- 01 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          01
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Boleh dipercayai
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Sentiasa bercakap benar, jujur dalam tindakan
+            dan amanah dalam tanggungjawab.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 02 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          02
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Taat
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Taat kepada Tuhan, Raja, Negara,
+            pemimpin dan ibu bapa.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 03 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          03
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Menolong orang pada setiap masa
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Sentiasa bersedia membantu tanpa
+            mengharapkan balasan.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 04 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          04
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Sahabat kepada semua
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Menghormati semua orang tanpa mengira
+            bangsa, agama atau latar belakang.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 05 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          05
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Berbudi dan sopan
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Beradab dalam tutur kata serta
+            menghormati orang lain.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 06 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          06
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Kasihkan haiwan dan alam sekitar
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Menjaga kebersihan serta memelihara
+            alam sekitar.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 07 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          07
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Menurut perintah
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Patuh kepada arahan yang munasabah
+            demi kebaikan bersama.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 08 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          08
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Tabah hati dan sentiasa ceria
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Tidak mudah putus asa dan sentiasa
+            berfikiran positif.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 09 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-slate-200
+          bg-white
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-700
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          09
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Berjimat cermat
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Mengurus masa, wang dan sumber
+            dengan bijaksana.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 10 -->
+
+      <div
+        class="
+          flex
+          gap-4
+          rounded-2xl
+          border
+          border-amber-200
+          bg-amber-50/50
+          p-5
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-amber-500
+            text-sm
+            font-extrabold
+            text-white
+          "
+        >
+          10
+        </div>
+
+        <div>
+
+          <h4 class="font-extrabold text-slate-900">
+            Bersih dan suci
+          </h4>
+
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Bersih dan suci dalam fikiran, perkataan
+            dan perbuatan serta menjaga akhlak.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PRINT BUTTON
+    ================================================== -->
+
+    <div class="mt-10 text-center">
+
+      <button
+        type="button"
+        onclick="window.print()"
+        class="
+          inline-flex
+          items-center
+          justify-center
+          gap-2
+          rounded-xl
+          bg-green-800
+          px-6
+          py-3
+          text-sm
+          font-extrabold
+          text-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-0.5
+          hover:bg-green-700
+          hover:shadow-md
+        "
+      >
+
+        <i
+          data-lucide="printer"
+          class="h-4 w-4"
+        ></i>
+
+        Cetak Persetiaan & Undang-undang
+
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     LAGU PENGAKAP
+===================================================== -->
+
+<section
+  id="lagu"
+  class="content-section hidden border-t border-slate-100 bg-slate-50 py-14 sm:py-16"
+>
+
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+
+    <!-- ================= SECTION HEADER ================= -->
+
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+
+      <div class="mb-3 flex items-center justify-center gap-3">
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-[0.18em]
+            text-green-800
+          "
+        >
+          IDENTITI PENGAKAP
+        </span>
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+      </div>
+
+
+      <h2
+        class="
+          text-3xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-4xl
+        "
+      >
+        Lagu Pengakap Malaysia
+      </h2>
+
+
+      <p
+        class="
+          mt-4
+          text-sm
+          leading-6
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Hayati semangat kepengakapan melalui lagu yang
+        menjadi salah satu identiti dan penyatuan ahli
+        Pengakap Malaysia.
+      </p>
+
+    </div>
+
+
+
+    <!-- ================= VIDEO CARD ================= -->
+
+    <div
+      class="
+        mx-auto
+        max-w-4xl
+        overflow-hidden
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        shadow-sm
+      "
+    >
+
+      <!-- VIDEO -->
+
+      <div class="aspect-video bg-slate-900">
+
+        <iframe
+          class="h-full w-full"
+          src="https://www.youtube.com/embed/Gk-7Q6ELp5o"
+          title="Lagu Pengakap Malaysia"
+          loading="lazy"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share
+          "
+          allowfullscreen
+        ></iframe>
+
+      </div>
+
+
+
+      <!-- VIDEO INFO -->
+
+      <div class="p-6 sm:p-8">
+
+        <div
+          class="
+            flex
+            flex-col
+            gap-5
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+          "
+        >
+
+          <div>
+
+            <div
+              class="
+                mb-2
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                bg-green-50
+                px-3
+                py-1.5
+                text-xs
+                font-extrabold
+                text-green-800
+              "
+            >
+
+              <i
+                data-lucide="music-2"
+                class="h-4 w-4"
+              ></i>
+
+              LAGU PENGAKAP
+
+            </div>
+
+
+            <h3
+              class="
+                text-xl
+                font-extrabold
+                text-slate-900
+                sm:text-2xl
+              "
+            >
+              Lagu Rasmi Pengakap Malaysia
+            </h3>
+
+
+            <p
+              class="
+                mt-2
+                max-w-2xl
+                text-sm
+                leading-6
+                text-slate-600
+              "
+            >
+              Gunakan pemain video di atas untuk mendengar
+              dan menghayati Lagu Pengakap Malaysia.
+            </p>
+
+          </div>
+
+
+          <!-- ICON -->
+
+          <div
+            class="
+              hidden
+              h-14
+              w-14
+              shrink-0
+              items-center
+              justify-center
+              rounded-2xl
+              bg-amber-100
+              text-amber-700
+              sm:flex
+            "
+          >
+
+            <i
+              data-lucide="music"
+              class="h-7 w-7"
+            ></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= MESSAGE ================= -->
+
+    <div
+      class="
+        mx-auto
+        mt-6
+        flex
+        max-w-4xl
+        items-start
+        gap-4
+        rounded-2xl
+        border
+        border-green-100
+        bg-green-50
+        p-5
+        sm:p-6
+      "
+    >
+
+      <div
+        class="
+          flex
+          h-10
+          w-10
+          shrink-0
+          items-center
+          justify-center
+          rounded-xl
+          bg-green-700
+          text-white
+        "
+      >
+
+        <i
+          data-lucide="volume-2"
+          class="h-5 w-5"
+        ></i>
+
+      </div>
+
+
+      <div>
+
+        <h4 class="font-extrabold text-slate-900">
+          Hayati Semangat Kepengakapan
+        </h4>
+
+        <p class="mt-1 text-sm leading-6 text-slate-600">
+          Lagu Pengakap bukan sekadar nyanyian, malah membantu
+          menyemai semangat persaudaraan, disiplin dan kebersamaan
+          dalam kalangan ahli Pengakap.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     PRINSIP & NILAI
+===================================================== -->
+
+<section
+  id="prinsip"
+  class="content-section hidden border-t border-slate-100 bg-slate-50 py-14 sm:py-16"
+>
+
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+
+    <!-- ================= SECTION HEADER ================= -->
+
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+
+      <div class="mb-3 flex items-center justify-center gap-3">
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-[0.18em]
+            text-green-800
+          "
+        >
+          JATI DIRI PENGAKAP
+        </span>
+
+        <span class="h-px w-8 bg-amber-500"></span>
+
+      </div>
+
+
+      <h2
+        class="
+          text-3xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-4xl
+        "
+      >
+        Prinsip & Nilai Pengakap
+      </h2>
+
+
+      <p
+        class="
+          mt-4
+          text-sm
+          leading-6
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Nilai kepengakapan membantu membentuk ahli yang
+        berdisiplin, bertanggungjawab, berkemahiran dan
+        bersedia memberi khidmat kepada masyarakat.
+      </p>
+
+    </div>
+
+
+
+    <!-- ================= CORE PRINCIPLES ================= -->
+
+    <div
+      class="
+        mx-auto
+        grid
+        max-w-5xl
+        gap-5
+        md:grid-cols-3
+      "
+    >
+
+
+      <!-- 01 -->
+
+      <div
+        class="
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          p-7
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            mb-5
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-2xl
+            bg-green-100
+            text-green-800
+          "
+        >
+          <i data-lucide="heart" class="h-6 w-6"></i>
+        </div>
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-wider
+            text-green-700
+          "
+        >
+          Prinsip 01
+        </span>
+
+        <h3
+          class="
+            mt-2
+            text-xl
+            font-extrabold
+            text-slate-900
+          "
+        >
+          Tanggungjawab kepada Tuhan
+        </h3>
+
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          Menghayati nilai keagamaan, bersyukur dan
+          melaksanakan tanggungjawab berlandaskan
+          pegangan serta kepercayaan masing-masing.
+        </p>
+
+      </div>
+
+
+
+      <!-- 02 -->
+
+      <div
+        class="
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          p-7
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            mb-5
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-2xl
+            bg-amber-100
+            text-amber-700
+          "
+        >
+          <i data-lucide="users" class="h-6 w-6"></i>
+        </div>
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-wider
+            text-green-700
+          "
+        >
+          Prinsip 02
+        </span>
+
+        <h3
+          class="
+            mt-2
+            text-xl
+            font-extrabold
+            text-slate-900
+          "
+        >
+          Tanggungjawab kepada Masyarakat
+        </h3>
+
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          Memberi khidmat, membantu orang lain dan
+          menyumbang kepada kesejahteraan masyarakat,
+          negara serta alam sekitar.
+        </p>
+
+      </div>
+
+
+
+      <!-- 03 -->
+
+      <div
+        class="
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          p-7
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-md
+        "
+      >
+
+        <div
+          class="
+            mb-5
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-2xl
+            bg-green-100
+            text-green-800
+          "
+        >
+          <i data-lucide="compass" class="h-6 w-6"></i>
+        </div>
+
+        <span
+          class="
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-wider
+            text-green-700
+          "
+        >
+          Prinsip 03
+        </span>
+
+        <h3
+          class="
+            mt-2
+            text-xl
+            font-extrabold
+            text-slate-900
+          "
+        >
+          Tanggungjawab kepada Diri
+        </h3>
+
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          Membina disiplin, keyakinan, kemahiran,
+          kepimpinan dan sahsiah yang baik melalui
+          pembelajaran serta pengalaman.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= VALUES ================= -->
+
+    <div
+      class="
+        mx-auto
+        mt-10
+        max-w-5xl
+        rounded-3xl
+        bg-green-900
+        p-7
+        text-white
+        shadow-sm
+        sm:p-9
+      "
+    >
+
+      <div
+        class="
+          flex
+          flex-col
+          gap-7
+          lg:flex-row
+          lg:items-center
+          lg:justify-between
+        "
+      >
+
+        <div class="max-w-xl">
+
+          <span
+            class="
+              text-xs
+              font-extrabold
+              uppercase
+              tracking-[0.16em]
+              text-amber-300
+            "
+          >
+            NILAI SEORANG PENGAKAP
+          </span>
+
+          <h3
+            class="
+              mt-2
+              text-2xl
+              font-extrabold
+              sm:text-3xl
+            "
+          >
+            Membina Jati Diri Melalui Kepengakapan
+          </h3>
+
+          <p
+            class="
+              mt-3
+              text-sm
+              leading-6
+              text-green-100
+            "
+          >
+            Setiap aktiviti Pengakap memberi peluang kepada
+            ahli untuk belajar melalui pengalaman, bekerjasama
+            dan mengamalkan nilai positif dalam kehidupan.
+          </p>
+
+        </div>
+
+
+
+        <!-- VALUE TAGS -->
+
+        <div
+          class="
+            flex
+            max-w-md
+            flex-wrap
+            gap-2
+          "
+        >
+
+          <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
+            Disiplin
+          </span>
+
+          <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
+            Kepimpinan
+          </span>
+
+          <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
+            Kerjasama
+          </span>
+
+          <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
+            Amanah
+          </span>
+
+          <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
+            Berdikari
+          </span>
+
+          <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
+            Khidmat
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= CLOSING ================= -->
+
+    <div
+      class="
+        mx-auto
+        mt-6
+        flex
+        max-w-5xl
+        items-start
+        gap-4
+        rounded-2xl
+        border
+        border-amber-200
+        bg-amber-50
+        p-5
+        sm:p-6
+      "
+    >
+
+      <div
+        class="
+          flex
+          h-10
+          w-10
+          shrink-0
+          items-center
+          justify-center
+          rounded-xl
+          bg-amber-500
+          text-white
+        "
+      >
+        <i data-lucide="sparkles" class="h-5 w-5"></i>
+      </div>
+
+
+      <div>
+
+        <h4 class="font-extrabold text-slate-900">
+          Bersedia • Berkhidmat
+        </h4>
+
+        <p class="mt-1 text-sm leading-6 text-slate-600">
+          Prinsip kepengakapan bukan sekadar untuk dipelajari,
+          tetapi diterjemahkan melalui tindakan, perkhidmatan
+          dan kehidupan seharian.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+</div>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="footer" class="bg-slate-900 text-slate-300">
+
+  <div
+    class="
+      mx-auto
+      grid
+      max-w-7xl
+      gap-8
+      px-5
+      py-10
+      md:grid-cols-[1.4fr_1fr_1fr]
+      lg:px-8
+    "
+  >
+
+    <!-- BRAND -->
+    <div>
+
+      <div class="flex items-center gap-3">
+
+        <img
+          src="assets/logo.png"
+          alt="Logo Persekutuan Pengakap Daerah Baling"
+          class="h-12 w-12 object-contain"
+        >
+
+        <div>
+
+          <h2 class="font-extrabold text-white">
+            Persekutuan Pengakap Daerah Baling
+          </h2>
+
+          <p class="mt-1 text-xs font-semibold text-amber-400">
+            Bersedia • Berkhidmat
+          </p>
+
+        </div>
+
+      </div>
+
+      <p class="mt-4 max-w-md text-sm leading-6 text-slate-400">
+        Portal rasmi bagi perkongsian maklumat, pengurusan,
+        program dan aktiviti kepengakapan di Daerah Baling.
+      </p>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <div>
+
+      <h2 class="font-extrabold text-white">
+        Navigasi
+      </h2>
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a href="index.html" class="transition hover:text-white">
+          Utama
+        </a>
+
+        <a href="pengenalan.html" class="transition hover:text-white">
+          Mengenai
+        </a>
+
+        <a href="ppmbaling.html" class="transition hover:text-white">
+          Organisasi
+        </a>
+
+        <a href="aktiviti.html" class="transition hover:text-white">
+          Aktiviti
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESOURCES -->
+    <div>
+
+      <h2 class="font-extrabold text-white">
+        Pautan
+      </h2>
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a href="muatturun.html" class="transition hover:text-white">
+          Sumber & Muat Turun
+        </a>
+
+        <a href="unit.html" class="transition hover:text-white">
+          Unit & Lencana
+        </a>
+
+        <a href="hubungi.html" class="transition hover:text-white">
+          Hubungi Kami
+        </a>
+
+      </div>
+
     </div>
 
   </div>
+
+
+  <!-- COPYRIGHT -->
+  <div class="border-t border-white/10">
+
+    <div
+      class="
+        mx-auto
+        flex
+        max-w-7xl
+        flex-col
+        gap-2
+        px-5
+        py-5
+        text-xs
+        text-slate-400
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+        lg:px-8
+      "
+    >
+
+      <p>
+        © 2026 Persekutuan Pengakap Daerah Baling.
+        Hak cipta terpelihara.
+      </p>
+
+      <p>
+        Bersedia • Berkhidmat
+      </p>
+
+    </div>
+
+  </div>
+
 </footer>
 
+<!-- =====================================================
+     PORTAL SCRIPT
+===================================================== -->
 
 <script>
-function showSection(id) {
 
-document.querySelectorAll('.content-section')
-.forEach(sec => sec.classList.add('hidden'));
+  // ================= LUCIDE ICONS =================
 
-const target = document.getElementById(id);
-if (target) {
-target.classList.remove('hidden');
-target.scrollIntoView({ behavior: 'smooth' });
-}
-}
-</script>
+  lucide.createIcons();
 
-<!-- ================= SCRIPT ================= -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+  // ================= MOBILE MENU =================
 
-  const links = document.querySelectorAll("#menuDesktop a");
-  const currentPage = window.location.pathname.split("/").pop();
+  const menuButton =
+    document.getElementById("menuButton");
 
-  links.forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
+  const mobileMenu =
+    document.getElementById("mobileMenu");
 
-    if (linkPage === currentPage || 
-       (currentPage === "" && linkPage === "index.html")) {
 
-      link.classList.add("text-yellow-300");
-    }
+  menuButton?.addEventListener("click", () => {
+
+    const open =
+      mobileMenu.classList.toggle("hidden") === false;
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+
   });
 
-});
+
+  mobileMenu
+    ?.querySelectorAll("a")
+    .forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.add("hidden");
+
+        menuButton?.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+
+  // ================= SHOW CONTENT =================
+
+  function showSection(id) {
+
+    document
+      .querySelectorAll(".content-section")
+      .forEach(section => {
+
+        section.classList.add("hidden");
+
+      });
+
+
+    const target =
+      document.getElementById(id);
+
+
+    if (!target) return;
+
+
+    target.classList.remove("hidden");
+
+
+    setTimeout(() => {
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }, 50);
+
+  }
+
+
+  // ================= REVEAL ANIMATION =================
+
+  const observer =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+  document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+      observer.observe(element);
+
+    });
+
 </script>
+
 </body>
 </html>

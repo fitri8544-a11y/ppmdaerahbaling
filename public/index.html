@@ -1,463 +1,1075 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ms">
-<head>
+ <head>
+
+  <!-- =====================================================
+       BASIC META
+  ====================================================== -->
+
   <meta charset="UTF-8">
-  <title>Pengenalan | Persekutuan Pengakap Daerah Baling</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/favicon.png">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Persekutuan Pengakap Daerah Baling</title>
 
-<body class="bg-gray-100 text-gray-800 scroll-smooth">
+  <meta
+    name="description"
+    content="Portal Rasmi Persekutuan Pengakap Daerah Baling - pusat maklumat, pengurusan, program dan aktiviti kepengakapan Daerah Baling."
+  >
 
-<!-- ================= HEADER ================= -->
-<header class="bg-gray-500 text-white sticky top-0 z-50 shadow">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <h1 class="font-bold text-lg md:text-xl">
+  <!-- =====================================================
+       FAVICON
+  ====================================================== -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/favicon.png"
+  >
+
+
+  <!-- =====================================================
+       TAILWIND CSS
+  ====================================================== -->
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+
+  <!-- =====================================================
+       LUCIDE ICONS
+  ====================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+
+  <!-- =====================================================
+       GOOGLE FONT
+  ====================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       PORTAL STYLE
+  ====================================================== -->
+
+  <style>
+
+    :root {
+      --green: #166534;
+      --forest: #14532D;
+      --blue: #1E3A8A;
+      --gold: #F59E0B;
+      --ink: #0F172A;
+      --muted: #64748B;
+      --paper: #F8FAFC;
+    }
+
+
+    /* =====================================================
+       GLOBAL
+    ====================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+
+    .site-shell {
+      width: 100%;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+    ====================================================== */
+
+    .nav-scrolled {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+
+    /* =====================================================
+       HERO
+    ====================================================== */
+
+    .hero-grid {
+      background-image:
+        radial-gradient(
+          circle at 83% 16%,
+          rgba(220, 252, 231, 0.9),
+          transparent 27%
+        ),
+        radial-gradient(
+          circle at 12% 88%,
+          rgba(239, 246, 255, 0.9),
+          transparent 26%
+        );
+    }
+
+
+    /* =====================================================
+       CONTOUR BACKGROUND
+    ====================================================== */
+
+    .contours {
+      background-image:
+        radial-gradient(
+          ellipse at center,
+          transparent 35%,
+          rgba(255, 255, 255, 0.1) 36%,
+          transparent 38%
+        ),
+        radial-gradient(
+          ellipse at center,
+          transparent 53%,
+          rgba(255, 255, 255, 0.08) 54%,
+          transparent 56%
+        );
+
+      background-size: 220px 220px;
+    }
+
+
+    /* =====================================================
+       REVEAL ANIMATION
+    ====================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+
+    /* =====================================================
+       CARD HOVER
+    ====================================================== */
+
+    .lift {
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 34px rgba(15, 23, 42, 0.09);
+      border-color: var(--green);
+    }
+
+
+    /* =====================================================
+       IMAGE EFFECT
+    ====================================================== */
+
+    .image-zoom {
+      transition: transform 0.55s ease;
+    }
+
+    .group:hover .image-zoom {
+      transform: scale(1.07);
+    }
+
+
+    /* =====================================================
+       BUTTON
+    ====================================================== */
+
+    .btn {
+      min-height: 44px;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ====================================================== */
+
+    @media (max-width: 767px) {
+
+      .nav-link::after {
+        display: none;
+      }
+
+    }
+
+
+    /* =====================================================
+       ACCESSIBILITY
+    ====================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal,
+      .lift,
+      .btn,
+      .image-zoom {
+        transition: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+ <body class="site-shell bg-slate-50">
+  <header id="utama"
+  class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8"
+    aria-label="Navigasi utama">
+
+    <!-- BRAND -->
+    <a href="index.html"
+      class="flex items-center gap-3"
+      aria-label="Ke halaman utama">
+
+      <img
+        src="assets/logo.png"
+        alt="Logo Persekutuan Pengakap Daerah Baling"
+        class="h-12 w-12 object-contain">
+
+      <div class="leading-tight">
+
+        <p class="text-sm font-extrabold tracking-tight text-slate-900 sm:text-base">
           Persekutuan Pengakap Daerah Baling
-        </h1>
-        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
+        </p>
+
+        <p class="text-xs font-medium text-slate-500">
+          Portal Rasmi • Bersedia • Berkhidmat
+        </p>
+
       </div>
-    </div>
 
-    <!-- MENU DESKTOP -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
-      <a href="index.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1">Utama</a>
-      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
-      <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
-      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
-    </nav>
+    </a>
 
-    <!-- BUTTON MOBILE -->
-    <button id="menuBtn" class="md:hidden text-2xl focus:outline-none">
-      ☰
+
+    <!-- DESKTOP NAVIGATION -->
+    <div class="hidden items-center gap-6 lg:flex">
+
+      <a
+        class="nav-link active text-sm font-semibold text-green-800"
+        href="index.html">
+        Utama
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="pengenalan.html">
+        Mengenai
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="ppmbaling.html">
+        Organisasi
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="aktiviti.html">
+        Aktiviti
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="muatturun.html">
+        Sumber
+      </a>
+
+      <a
+        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
+        href="hubungi.html">
+        Hubungi
+      </a>
+
+
+    <!-- MOBILE BUTTON -->
+    <button
+      id="menuButton"
+      class="btn rounded-lg p-2 text-green-800 lg:hidden"
+      type="button"
+      aria-label="Buka menu navigasi"
+      aria-expanded="false">
+
+      <i data-lucide="menu"></i>
+
     </button>
 
+  </nav>
+
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobileMenu"
+    class="hidden border-t border-slate-100 bg-white px-5 pb-5 lg:hidden">
+
+    <div class="grid gap-1 pt-3">
+
+      <a
+        class="rounded-lg bg-green-50 px-3 py-3 font-semibold text-green-800"
+        href="index.html">
+        Utama
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="pengenalan.html">
+        Mengenai
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="ppmbaling.html">
+        Organisasi
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="aktiviti.html">
+        Aktiviti
+      </a>
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="muatturun.html">
+        Sumber
+      </a>
+
+
+      <a
+        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+        href="hubungi.html">
+        Hubungi
+      </a>
+
   </div>
 
-  <!-- MENU MOBILE -->
-  <div id="mobileMenu"
-       class="hidden md:hidden bg-gray-500 px-6 pb-4 text-sm space-y-2">
-    <a href="index.html" class="block">Utama</a>
-    <a href="pengenalan.html" class="block">Pengenalan</a>
-    <a href="ppmbaling.html" class="block">PPMD Baling</a>
-    <a href="aktiviti.html" class="block">Aktiviti</a>
-    <a href="muatturun.html" class="block">Muat Turun</a>
-    <a href="hubungi.html" class="block">Hubungi Kami</a>
-  </div>
 </header>
+  <main>
+   
+    <!-- =====================================================
+     HERO SECTION
+===================================================== -->
 
-<!-- ================= UTAMA ================= -->
-<section id="utama"></section>
+<section class="hero-grid relative overflow-hidden bg-white">
 
-<!-- ================= WELCOME ================= -->
-<section class="bg-white mt-6 mx-6 rounded shadow p-8 text-center">
-  <h2 class="text-2xl font-bold text-blue-900 mb-2">
-    SELAMAT DATANG KE PORTAL RASMI
-  </h2>
-  <p class="text-gray-700 max-w-4xl mx-auto">
-    Portal Persekutuan Pengakap Daerah Baling berfungsi sebagai pusat rujukan
-    rasmi bagi pengurusan, dokumentasi dan penyampaian maklumat berkaitan
-    aktiviti kepengakapan di peringkat daerah selaras dengan dasar
-    Kementerian Pendidikan Malaysia.
-  </p>
-</section>
+  <div
+    class="
+      mx-auto
+      grid
+      max-w-7xl
+      items-center
+      gap-12
+      px-5
+      py-16
+      sm:py-20
+      lg:grid-cols-2
+      lg:px-8
+      lg:py-20
+    "
+  >
 
-<!-- ================= KAD SASARAN ================= -->
-<section class="grid md:grid-cols-3 gap-6 mx-6 mt-8">
+    <!-- ================= LEFT CONTENT ================= -->
 
-  <div class="border rounded-lg p-6 bg-blue-50 shadow">
-    <h3 class="font-bold text-blue-900 mb-3">🧭 UNTUK PEMIMPIN</h3>
-    <ul class="list-disc list-inside space-y-1 text-sm">
-      <li>Maklumat pengurusan & pentadbiran pengakap</li>
-      <li>Akses dokumen & pekeliling rasmi</li>
-      <li>Rujukan latihan dan kepimpinan</li>
-    </ul>
-  </div>
+    <div class="reveal relative z-10">
 
-  <div class="border rounded-lg p-6 bg-green-50 shadow">
-    <h3 class="font-bold text-green-900 mb-3">⚜️ UNTUK AHLI PENGAKAP</h3>
-    <ul class="list-disc list-inside space-y-1 text-sm">
-      <li>Maklumat aktiviti & program pengakap</li>
-      <li>Panduan lencana & kemahiran</li>
-      <li>Saluran pembelajaran dan rujukan digital</li>
-    </ul>
-  </div>
+      <!-- BADGE -->
 
-  <div class="border rounded-lg p-6 bg-yellow-50 shadow">
-    <h3 class="font-bold text-yellow-800 mb-3">👥 UNTUK ORANG AWAM</h3>
-    <ul class="list-disc list-inside space-y-1 text-sm">
-      <li>Pengenalan peranan Pengakap Malaysia</li>
-      <li>Maklumat organisasi & struktur daerah</li>
-      <li>Saluran komunikasi rasmi</li>
-    </ul>
-  </div>
+      <p
+        class="
+          mb-5
+          inline-flex
+          items-center
+          gap-2
+          rounded-full
+          border
+          border-green-200
+          bg-green-50
+          px-4
+          py-2
+          text-xs
+          font-extrabold
+          tracking-wider
+          text-green-800
+        "
+      >
 
-</section>
+        <i
+          data-lucide="compass"
+          class="h-4 w-4">
+        </i>
 
-<!-- ================= MAKLUMAN ================= -->
-<section class="bg-white mx-6 mt-10 rounded shadow p-8">
-  <h3 class="text-xl font-bold text-blue-900 mb-6">
-    📢 MAKLUMAN & PENGUMUMAN
-  </h3>
+        PORTAL RASMI PENGAKAP DAERAH BALING
 
-  <div class="border-l-4 border-blue-600 bg-blue-50 p-4 mb-4">
-    <p class="text-sm text-gray-600">20 Januari 2026</p>
-    <p class="font-semibold">
-      PORTAL RASMI PERSEKUTUAN PENGAKAP DAERAH BALING TELAH BEROPERASI SEPENUHNYA.
-    </p>
-    <p class="text-sm">
-      Untuk makluman, ada beberapa menu masing lagi dalam proses kemaskini. Harap maklum
-    </p>
-  </div>
+      </p>
 
-  <div class="border-l-4 border-green-600 bg-green-50 p-4">
-    <p class="text-sm text-gray-600">20 Januari 2026</p>
-    <p class="font-semibold">
-      KEMASKINI VERSI MUDAH ALIH SEDANG DILAKSANAKAN.
-    </p>
-    <p class="text-sm">
-      Sementara itu, sila gunakan pelayar web untuk paparan terbaik.
-      Terima kasih.
-    </p>
-  </div>
 
-<!-- ================= WAKTU SOLAT ================= -->
-  <div>
-    <h3 class="font-semibold text-gray-700 mb-4">
-      🕌 Waktu Solat
-    </h3>
+      <!-- TITLE -->
 
-    <div class="bg-gray-50 rounded-xl shadow-inner p-6 border-l-4 border-blue-600">
+      <h1
+        class="
+          max-w-xl
+          text-4xl
+          font-extrabold
+          leading-[1.15]
+          tracking-tight
+          text-slate-900
+          sm:text-5xl
+          lg:text-6xl
+        "
+      >
 
-      <div class="flex justify-between items-center flex-wrap gap-4">
+        Membina Generasi
+
+        <span class="text-green-800">
+          Berdisiplin,
+        </span>
+
+        Berilmu &amp; Berbakti
+
+      </h1>
+
+
+      <!-- DESCRIPTION -->
+
+      <p
+        class="
+          mt-6
+          max-w-xl
+          text-base
+          leading-8
+          text-slate-600
+          sm:text-lg
+        "
+      >
+
+        Portal rasmi Persekutuan Pengakap Daerah Baling
+        sebagai pusat informasi, pengurusan, dokumentasi
+        dan perkongsian aktiviti kepengakapan di peringkat
+        daerah.
+
+      </p>
+
+
+      <!-- BUTTONS -->
+
+      <div
+        class="
+          mt-8
+          flex
+          flex-col
+          gap-3
+          sm:flex-row
+        "
+      >
+
+        <!-- PRIMARY -->
+
+        <a
+          class="
+            btn
+            inline-flex
+            items-center
+            justify-center
+            gap-2
+            rounded-lg
+            bg-green-800
+            px-5
+            py-3
+            font-bold
+            text-white
+            shadow-sm
+            hover:bg-green-900
+          "
+          href="pengenalan.html"
+        >
+
+          Terokai Portal
+
+          <i
+            data-lucide="arrow-right"
+            class="h-5 w-5">
+          </i>
+
+        </a>
+
+      </div>
+
+
+      <!-- TAGLINE -->
+
+      <div
+        class="
+          mt-7
+          flex
+          items-center
+          gap-3
+          font-bold
+          tracking-wide
+          text-green-800
+        "
+      >
+
+        <span
+          class="
+            block
+            h-px
+            w-8
+            bg-amber-500
+          ">
+        </span>
+
+        Bersedia • Berkhidmat
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT IMAGE ================= -->
+
+    <div
+      class="
+        reveal
+        relative
+        mx-auto
+        w-full
+        max-w-xl
+      "
+      style="transition-delay:.12s"
+    >
+
+      <!-- DECORATION -->
+
+      <div
+        class="
+          absolute
+          -right-8
+          -top-9
+          hidden
+          h-28
+          w-28
+          rounded-full
+          border
+          border-green-200
+          lg:block
+        ">
+      </div>
+
+
+      <!-- IMAGE -->
+
+      <div
+        class="
+          overflow-hidden
+          rounded-2xl
+          bg-green-950
+          p-3
+          shadow-2xl
+          shadow-green-950/20
+        "
+      >
+
+        <img
+          src="assets/tabik-pengakap.jpg"
+          alt="Aktiviti Pengakap Daerah Baling"
+          class="
+            h-[360px]
+            w-full
+            rounded-xl
+            object-cover
+            sm:h-[440px]
+          "
+        >
+
+      </div>
+
+
+      <!-- FLOATING CARD 1 -->
+
+      <div
+        class="
+          absolute
+          -bottom-5
+          -left-2
+          rounded-xl
+          border
+          border-slate-100
+          bg-white
+          px-4
+          py-3
+          shadow-lg
+          sm:-left-8
+        "
+      >
 
         <div class="flex items-center gap-3">
-          <div class="bg-blue-100 p-3 rounded-lg text-blue-600 text-xl">
-            🕌
+
+          <div
+            class="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-lg
+              bg-green-100
+              text-green-800
+            "
+          >
+
+            <i
+              data-lucide="school"
+              class="h-5 w-5">
+            </i>
+
           </div>
-          <p id="tarikhMasihi" class="font-semibold text-gray-800"></p>
+
+          <div>
+
+            <p
+              class="
+                text-lg
+                font-extrabold
+                text-green-800
+              "
+            >
+              22+
+            </p>
+
+            <p
+              class="
+                text-xs
+                font-semibold
+                text-slate-500
+              "
+            >
+              Sekolah
+            </p>
+
+          </div>
+
         </div>
 
-      <select id="zonSelect"
-              class="border rounded px-3 py-2 text-sm max-h-60 overflow-y-auto">
+      </div>
 
-        <!-- PERLIS -->
-        <optgroup label="Perlis">
-          <option value="PLS01">Kangar</option>
-        </optgroup>
 
-        <!-- KEDAH -->
-        <optgroup label="Kedah">
-          <option value="KDH04" selected>Baling</option>
-          <option value="KDH01">Kota Setar</option>
-          <option value="KDH02">Kulim</option>
-          <option value="KDH03">Sungai Petani</option>
-          <option value="KDH05">Padang Terap</option>
-        </optgroup>
+      <!-- FLOATING CARD 2 -->
 
-        <!-- PULAU PINANG -->
-        <optgroup label="Pulau Pinang">
-          <option value="PNG01">Seluruh Negeri</option>
-        </optgroup>
+      <div
+        class="
+          absolute
+          right-0
+          top-8
+          rounded-xl
+          border
+          border-slate-100
+          bg-white
+          px-4
+          py-3
+          shadow-lg
+        "
+      >
 
-        <!-- PERAK -->
-        <optgroup label="Perak">
-          <option value="PRK01">Tapah / Slim River</option>
-          <option value="PRK02">Ipoh</option>
-          <option value="PRK03">Kuala Kangsar</option>
-          <option value="PRK04">Manjung</option>
-        </optgroup>
+        <div class="flex items-center gap-3">
 
-        <!-- SELANGOR -->
-        <optgroup label="Selangor">
-          <option value="SGR01">Gombak / Petaling</option>
-          <option value="SGR02">Kuala Selangor</option>
-          <option value="SGR03">Klang</option>
-        </optgroup>
+          <div
+            class="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-lg
+              bg-blue-100
+              text-blue-900
+            "
+          >
 
-        <!-- WILAYAH -->
-        <optgroup label="Wilayah Persekutuan">
-          <option value="WLY01">Kuala Lumpur</option>
-          <option value="WLY02">Putrajaya</option>
-          <option value="WLY03">Labuan</option>
-        </optgroup>
+            <i
+              data-lucide="calendar-check"
+              class="h-5 w-5">
+            </i>
 
-        <!-- NEGERI SEMBILAN -->
-        <optgroup label="Negeri Sembilan">
-          <option value="NGS01">Seremban</option>
-        </optgroup>
+          </div>
 
-        <!-- MELAKA -->
-        <optgroup label="Melaka">
-          <option value="MLK01">Seluruh Negeri</option>
-        </optgroup>
+          <div>
 
-        <!-- JOHOR -->
-        <optgroup label="Johor">
-          <option value="JHR02">Johor Bahru</option>
-          <option value="JHR03">Muar</option>
-          <option value="JHR04">Segamat</option>
-        </optgroup>
+            <p
+              class="
+                text-lg
+                font-extrabold
+                text-blue-900
+              "
+            >
+              2026
+            </p>
 
-        <!-- PAHANG -->
-        <optgroup label="Pahang">
-          <option value="PHG01">Kuantan</option>
-          <option value="PHG02">Temerloh</option>
-          <option value="PHG03">Jerantut</option>
-        </optgroup>
+            <p
+              class="
+                text-xs
+                font-semibold
+                text-slate-500
+              "
+            >
+              Portal Rasmi
+            </p>
 
-        <!-- TERENGGANU -->
-        <optgroup label="Terengganu">
-          <option value="TRG01">Kuala Terengganu</option>
-        </optgroup>
+          </div>
 
-        <!-- KELANTAN -->
-        <optgroup label="Kelantan">
-          <option value="KTN01">Kota Bharu</option>
-        </optgroup>
+        </div>
 
-        <!-- SABAH -->
-        <optgroup label="Sabah">
-          <option value="SBH01">Kota Kinabalu</option>
-          <option value="SBH02">Tawau</option>
-          <option value="SBH03">Sandakan</option>
-        </optgroup>
+      </div>
 
-        <!-- SARAWAK -->
-        <optgroup label="Sarawak">
-          <option value="SWK01">Kuching</option>
-          <option value="SWK02">Sibu</option>
-          <option value="SWK03">Miri</option>
-        </optgroup>
-
-      </select>
-
-    </div>
-
-    <div id="waktuContainer"
-         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 mt-6 text-center text-sm">
-    </div>
-
-    <div class="mt-6 text-center">
-      <p class="text-sm font-semibold text-gray-700">
-        ⏳ Waktu Seterusnya:
-        <span id="nextSolat" class="text-blue-600"></span>
-      </p>
-      <p id="countdown" class="text-lg font-bold text-gray-800"></p>
     </div>
 
   </div>
-</div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-<footer class="bg-gray-500 text-white sticky top-0 z-50 shadow">
-  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- =====================================================
+     MAKLUMAN TERKINI - COMPACT
+===================================================== -->
 
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-12" alt="Logo">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <p class="font-semibold text-base">
-          Persekutuan Pengakap Daerah Baling
-        </p>
-        <p class="text-xs italic opacity-80">
-          Bersedia · Berkhidmat
-        </p>
+<section id="makluman" class="border-y border-slate-100 bg-slate-50 py-8">
+
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+    <div
+      class="
+        reveal
+        flex
+        flex-col
+        gap-5
+        rounded-2xl
+        border
+        border-green-100
+        bg-white
+        p-5
+        shadow-sm
+        md:flex-row
+        md:items-center
+      "
+    >
+
+      <!-- ICON -->
+
+      <div
+        class="
+          flex
+          h-12
+          w-12
+          shrink-0
+          items-center
+          justify-center
+          rounded-xl
+          bg-green-100
+          text-green-800
+        "
+      >
+        <i data-lucide="megaphone" class="h-6 w-6"></i>
       </div>
-    </div>
 
-    <div class="text-sm opacity-80 text-center md:text-right">
-      © 2026 Persekutuan Pengakap Daerah Baling  
-      <br class="hidden md:block">
-      Hak Cipta Terpelihara
+
+      <!-- CONTENT -->
+
+      <div class="min-w-0 flex-1">
+
+        <div class="flex flex-wrap items-center gap-2">
+
+          <span
+            class="
+              rounded-full
+              bg-green-100
+              px-3
+              py-1
+              text-[10px]
+              font-extrabold
+              uppercase
+              tracking-wider
+              text-green-800
+            "
+          >
+            Makluman Terkini
+          </span>
+
+          <span class="text-xs font-semibold text-slate-500">
+            1 September 2026
+          </span>
+
+        </div>
+
+        <h2 class="mt-2 text-lg font-extrabold text-slate-900">
+          Portal Rasmi Persekutuan Pengakap Daerah Baling
+        </h2>
+
+        <p class="mt-1 text-sm leading-6 text-slate-600">
+          Portal sedang dinaik taraf bagi memberikan pengalaman
+          yang lebih moden, pantas dan mudah digunakan.
+        </p>
+
+      </div>
+
     </div>
 
   </div>
-</footer>
 
-<!-- ================= SCRIPT ================= -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
+</section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
 
-  const links = document.querySelectorAll("#menuDesktop a");
-  const currentPage = window.location.pathname.split("/").pop();
+  </main>
+  <!-- =====================================================
+     FOOTER
+===================================================== -->
 
-  links.forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
+<footer id="footer" class="bg-slate-900 text-slate-300">
 
-    if (linkPage === currentPage || 
-       (currentPage === "" && linkPage === "index.html")) {
+  <div
+    class="
+      mx-auto
+      grid
+      max-w-7xl
+      gap-8
+      px-5
+      py-10
+      md:grid-cols-[1.4fr_1fr_1fr]
+      lg:px-8
+    "
+  >
 
-      link.classList.add("text-yellow-300");
-    }
-  });
+    <!-- BRAND -->
+    <div>
 
-});
-</script>
+      <div class="flex items-center gap-3">
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
+        <img
+          src="assets/logo.png"
+          alt="Logo Persekutuan Pengakap Daerah Baling"
+          class="h-12 w-12 object-contain"
+        >
 
-let countdownInterval = null;
-let waktuData = {};
+        <div>
+          <h2 class="font-extrabold text-white">
+            Persekutuan Pengakap Daerah Baling
+          </h2>
 
-// ================= LOAD API JAKIM =================
-async function loadWaktuSolat(zone){
+          <p class="mt-1 text-xs font-semibold text-amber-400">
+            Bersedia • Berkhidmat
+          </p>
+        </div>
 
-  try{
-    const res = await fetch(
-      `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=today&zone=${zone}`
-    );
-
-    const data = await res.json();
-
-    if(!data.prayerTime) throw new Error("API error");
-
-    waktuData = data.prayerTime[0];
-
-    renderWaktu();
-
-  }catch(err){
-    document.getElementById("waktuContainer").innerHTML =
-      "<p class='text-red-500 col-span-8 text-center'>Gagal memuat waktu solat</p>";
-  }
-}
-
-// ================= FORMAT =================
-function formatTime(t){
-  const [h,m] = t.split(":");
-  const hour = parseInt(h);
-  const suffix = hour >= 12 ? "pm" : "am";
-  const hour12 = ((hour + 11) % 12 + 1);
-  return `${hour12}:${m}${suffix}`;
-}
-
-// ================= PAPAR =================
-function renderWaktu(){
-
-  const container = document.getElementById("waktuContainer");
-  container.innerHTML = "";
-
-  const list = [
-    { key:"imsak", label:"Imsak" },
-    { key:"fajr", label:"Subuh" },
-    { key:"syuruk", label:"Syuruk" },
-    { key:"dhuha", label:"Dhuha" },
-    { key:"dhuhr", label:"Zohor" },
-    { key:"asr", label:"Asar" },
-    { key:"maghrib", label:"Maghrib" },
-    { key:"isha", label:"Isyak" }
-  ];
-
-  list.forEach(item=>{
-    const time = waktuData[item.key];
-    container.innerHTML += `
-      <div class="bg-gray-100 rounded-lg p-4 shadow-sm">
-        <p class="text-xs font-semibold text-gray-500">${item.label}</p>
-        <p class="font-bold text-blue-600 mt-1">${formatTime(time)}</p>
       </div>
-    `;
-  });
 
-  highlightNextPrayer();
-}
+      <p class="mt-4 max-w-md text-sm leading-6 text-slate-400">
+        Portal rasmi bagi perkongsian maklumat, pengurusan,
+        program dan aktiviti kepengakapan di Daerah Baling.
+      </p>
 
-// ================= SOLAT SETERUSNYA =================
-function highlightNextPrayer(){
+    </div>
 
-  const now = new Date();
-  const current = now.getHours()*60 + now.getMinutes();
 
-  const order = [
-    { key:"fajr", label:"Subuh" },
-    { key:"dhuhr", label:"Zohor" },
-    { key:"asr", label:"Asar" },
-    { key:"maghrib", label:"Maghrib" },
-    { key:"isha", label:"Isyak" }
-  ];
+    <!-- NAVIGATION -->
+    <div>
 
-  for(let item of order){
+      <h2 class="font-extrabold text-white">
+        Navigasi
+      </h2>
 
-    const [h,m] = waktuData[item.key].split(":");
-    const total = parseInt(h)*60 + parseInt(m);
+      <div class="mt-4 grid gap-2.5 text-sm">
 
-    if(total > current){
-      document.getElementById("nextSolat").innerText = item.label;
-      startCountdown(total);
-      break;
-    }
-  }
-}
+        <a
+          href="index.html"
+          class="transition hover:text-white">
+          Utama
+        </a>
 
-// ================= COUNTDOWN =================
-function startCountdown(target){
+        <a
+          href="pengenalan.html"
+          class="transition hover:text-white">
+          Mengenai
+        </a>
 
-  if(countdownInterval) clearInterval(countdownInterval);
+        <a
+          href="ppmbaling.html"
+          class="transition hover:text-white">
+          Organisasi
+        </a>
 
-  countdownInterval = setInterval(()=>{
-    const now = new Date();
-    const current = now.getHours()*60 + now.getMinutes();
-    const diff = target - current;
+        <a
+          href="aktiviti.html"
+          class="transition hover:text-white">
+          Aktiviti
+        </a>
 
-    if(diff > 0){
-      const h = Math.floor(diff/60);
-      const m = diff % 60;
-      document.getElementById("countdown").innerText =
-        `${h} jam ${m} min`;
-    }else{
-      document.getElementById("countdown").innerText = "";
-    }
-  },60000);
-}
+      </div>
 
-// ================= DROPDOWN =================
-const zonSelect = document.getElementById("zonSelect");
+    </div>
 
-zonSelect.addEventListener("change", function(){
-  localStorage.setItem("zonSolat", this.value);
-  loadWaktuSolat(this.value);
-});
 
-const saved = localStorage.getItem("zonSolat");
-if(saved) zonSelect.value = saved;
+    <!-- RESOURCES -->
+    <div>
 
-loadWaktuSolat(zonSelect.value);
+      <h2 class="font-extrabold text-white">
+        Pautan
+      </h2>
 
-// ================= TARIKH =================
-document.getElementById("tarikhMasihi").innerText =
-  new Date().toLocaleDateString("ms-MY",{
-    weekday:"long",
-    day:"numeric",
-    month:"long",
-    year:"numeric"
-  });
+      <div class="mt-4 grid gap-2.5 text-sm">
 
-});
-</script>
+        <a
+          href="muatturun.html"
+          class="transition hover:text-white">
+          Sumber & Muat Turun
+        </a>
 
-</body>
+        <a
+          href="unit.html"
+          class="transition hover:text-white">
+          Unit & Lencana
+        </a>
+
+        <a
+          href="hubungi.html"
+          class="transition hover:text-white">
+          Hubungi Kami
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COPYRIGHT -->
+
+  <div class="border-t border-white/10">
+
+    <div
+      class="
+        mx-auto
+        flex
+        max-w-7xl
+        flex-col
+        gap-2
+        px-5
+        py-5
+        text-xs
+        text-slate-400
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+        lg:px-8
+      "
+    >
+
+      <p>
+        © 2026 Persekutuan Pengakap Daerah Baling.
+        Hak cipta terpelihara.
+      </p>
+
+      <p>
+        Bersedia • Berkhidmat
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+  <button id="backToTop" class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 rounded-full bg-green-800 text-white shadow-lg transition hover:bg-green-900" type="button" aria-label="Kembali ke atas"><i data-lucide="arrow-up" class="mx-auto h-5 w-5"></i></button>
+  
+  <script>
+    lucide.createIcons();
+    const menuButton=document.getElementById("menuButton"),mobileMenu=document.getElementById("mobileMenu"),backToTop=document.getElementById("backToTop"),header=document.querySelector("header");
+    menuButton.addEventListener("click",()=>{const open=mobileMenu.classList.toggle("hidden")===false;menuButton.setAttribute("aria-expanded",String(open));});
+    mobileMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mobileMenu.classList.add("hidden");menuButton.setAttribute("aria-expanded","false")}));
+    window.addEventListener("scroll",()=>{header.classList.toggle("nav-scrolled",window.scrollY>10);backToTop.classList.toggle("hidden",window.scrollY<500)},{passive:true});
+    backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+    
+  </script>
+ </body>
 </html>
