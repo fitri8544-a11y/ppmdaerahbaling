@@ -1,137 +1,3579 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<title>Pengenalan | Persekutuan Pengakap Daerah Baling</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Sumber | Persekutuan Pengakap Daerah Baling
+  </title>
+
+  <meta
+    name="description"
+    content="Sumber, dokumen dan bahan muat turun rasmi Persekutuan Pengakap Daerah Baling."
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/favicon.png"
+  >
+
+
+  <!-- ================= TAILWIND ================= -->
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+
+  <!-- ================= LUCIDE ICONS ================= -->
+
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+
+  <!-- ================= GOOGLE FONT ================= -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- ================= PORTAL STYLE ================= -->
+
+  <style>
+
+    :root {
+      --green: #166534;
+      --green-dark: #14532d;
+      --gold: #f59e0b;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+
+      font-family:
+        "Plus Jakarta Sans",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+
+    /* ================= NAVIGATION ================= */
+
+    .nav-scrolled {
+      box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+
+    .nav-link {
+      position: relative;
+    }
+
+
+    .nav-link::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: -8px;
+
+      height: 2px;
+
+      border-radius: 999px;
+
+      background: var(--green);
+
+      transform: scaleX(0);
+
+      transform-origin: center;
+
+      transition:
+        transform 0.2s ease;
+    }
+
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+
+    /* ================= BUTTON ================= */
+
+    .btn {
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+
+      outline:
+        3px solid var(--gold);
+
+      outline-offset: 3px;
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 767px) {
+
+      .nav-link::after {
+        display: none;
+      }
+
+    }
+
+
+    /* ================= REDUCED MOTION ================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn {
+        transition: none;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<!-- ================= HEADER ================= -->
-<header class="bg-gray-500 text-white sticky top-0 z-50 shadow">
+<header
+  id="siteHeader"
+  class="
+    sticky top-0 z-50
+    border-b border-slate-200/80
+    bg-white/95
+    backdrop-blur
+    transition-shadow
+  "
+>
 
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div
+    class="
+      mx-auto flex
+      max-w-7xl
+      items-center
+      justify-between
+      px-6
+      py-4
+    "
+  >
 
-    <!-- LOGO + TAJUK -->
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <h1 class="font-bold text-lg md:text-xl">
+    <!-- ================= BRAND ================= -->
+
+    <a
+      href="index.html"
+      class="flex items-center gap-3"
+      aria-label="Persekutuan Pengakap Daerah Baling"
+    >
+
+      <img
+        src="assets/logo.png"
+        alt="Logo Persekutuan Pengakap Daerah Baling"
+        class="
+          h-12
+          w-12
+          object-contain
+          sm:h-14
+          sm:w-14
+        "
+      >
+
+      <div class="min-w-0">
+
+        <p
+          class="
+            text-[10px]
+            font-extrabold
+            uppercase
+            tracking-[0.18em]
+            text-green-700
+            sm:text-xs
+          "
+        >
+          Portal Rasmi
+        </p>
+
+        <p
+          class="
+            max-w-[210px]
+            truncate
+            text-sm
+            font-extrabold
+            leading-tight
+            text-slate-900
+            sm:max-w-none
+            sm:text-base
+          "
+        >
           Persekutuan Pengakap Daerah Baling
-        </h1>
-        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
-      </div>
-    </div>
+        </p>
 
-    <!-- MENU DESKTOP -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
-      <a href="index.html" class="hover:text-yellow-300">Utama</a>
-      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
-      <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-      <a href="aktiviti.html" class="hover:text-yellow-300">Aktiviti</a>
-      <a href="muatturun.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
-        Muat Turun
+        <p
+          class="
+            hidden
+            text-xs
+            font-medium
+            text-slate-500
+            sm:block
+          "
+        >
+          Bersedia · Berkhidmat
+        </p>
+
+      </div>
+
     </a>
-      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+
+
+    <!-- ================= DESKTOP NAV ================= -->
+
+    <nav
+      class="
+        hidden
+        items-center
+        gap-7
+        text-sm
+        font-bold
+        text-slate-600
+        lg:flex
+      "
+      aria-label="Navigasi utama"
+    >
+
+      <a
+        href="index.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Utama
+      </a>
+
+      <a
+        href="pengenalan.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Mengenai
+      </a>
+
+      <a
+        href="ppmbaling.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Organisasi
+      </a>
+
+      <a
+        href="aktiviti.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Aktiviti
+      </a>
+
+      <a
+        href="muatturun.html"
+        class="
+          nav-link active
+          text-green-800
+        "
+        aria-current="page"
+      >
+        Sumber
+      </a>
+
+      <a
+        href="hubungi.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Hubungi
+      </a>
+
     </nav>
 
-    <!-- BUTTON MOBILE (MESTI DALAM FLEX CONTAINER) -->
-    <button id="menuBtn"
-      class="md:hidden text-2xl focus:outline-none">
-      ☰
+
+    <!-- ================= MOBILE BUTTON ================= -->
+
+    <button
+      id="menuButton"
+      type="button"
+      class="
+        inline-flex
+        h-11
+        w-11
+        items-center
+        justify-center
+        rounded-xl
+        border
+        border-slate-200
+        bg-white
+        text-slate-700
+        transition
+        hover:bg-slate-50
+        lg:hidden
+      "
+      aria-label="Buka menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+
+      <i
+        data-lucide="menu"
+        class="h-5 w-5"
+      ></i>
+
     </button>
 
   </div>
 
-  <!-- MENU MOBILE -->
-  <div id="mobileMenu"
-       class="hidden md:hidden bg-gray-500 px-6 pb-4 text-sm space-y-2">
-    <a href="index.html" class="block">Utama</a>
-    <a href="pengenalan.html" class="block">Pengenalan</a>
-    <a href="ppmbaling.html" class="block">PPMD Baling</a>
-    <a href="aktiviti.html" class="block">Aktiviti</a>
-    <a href="muatturun.html" class="block">Muat Turun</a>
-    <a href="hubungi.html" class="block">Hubungi Kami</a>
+
+  <!-- ================= MOBILE MENU ================= -->
+
+  <div
+    id="mobileMenu"
+    class="
+      hidden
+      border-t
+      border-slate-100
+      bg-white
+      lg:hidden
+    "
+  >
+
+    <nav
+      class="
+        mx-auto
+        grid
+        max-w-7xl
+        gap-1
+        px-6
+        py-4
+        text-sm
+        font-bold
+      "
+      aria-label="Navigasi mudah alih"
+    >
+
+      <a
+        href="index.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Utama
+      </a>
+
+      <a
+        href="pengenalan.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Mengenai
+      </a>
+
+      <a
+        href="ppmbaling.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Organisasi
+      </a>
+
+      <a
+        href="aktiviti.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Aktiviti
+      </a>
+
+      <a
+        href="muatturun.html"
+        class="
+          rounded-xl
+          bg-green-50
+          px-4
+          py-3
+          text-green-800
+        "
+        aria-current="page"
+      >
+        Sumber
+      </a>
+
+      <a
+        href="hubungi.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Hubungi
+      </a>
+
+    </nav>
+
   </div>
 
 </header>
 
-<!-- ================= TAJUK ================= -->
-<section class="bg-white mx-6 mt-6 rounded shadow p-8 text-center">
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
 
-  <div class="text-5xl mb-4 animate-pulse">
-    🚧
+<section
+  class="
+    relative
+    overflow-hidden
+    border-b
+    border-slate-200
+    bg-white
+  "
+>
+
+  <!-- ================= DECORATION ================= -->
+
+  <div
+    class="
+      pointer-events-none
+      absolute
+      -right-24
+      -top-24
+      h-72
+      w-72
+      rounded-full
+      bg-green-100/60
+      blur-3xl
+    "
+  ></div>
+
+  <div
+    class="
+      pointer-events-none
+      absolute
+      -bottom-28
+      left-1/4
+      h-64
+      w-64
+      rounded-full
+      bg-amber-100/60
+      blur-3xl
+    "
+  ></div>
+
+
+  <div
+    class="
+      relative
+      mx-auto
+      max-w-7xl
+      px-6
+      py-16
+      text-center
+      md:py-20
+    "
+  >
+
+    <!-- ================= BADGE ================= -->
+
+    <div
+      class="
+        mx-auto
+        mb-5
+        inline-flex
+        items-center
+        gap-2
+        rounded-full
+        border
+        border-green-200
+        bg-green-50
+        px-4
+        py-2
+        text-xs
+        font-extrabold
+        uppercase
+        tracking-[0.14em]
+        text-green-700
+      "
+    >
+
+      <i
+        data-lucide="library"
+        class="h-4 w-4"
+      ></i>
+
+      Pusat Sumber
+
+    </div>
+
+
+    <!-- ================= TITLE ================= -->
+
+    <h1
+      class="
+        mx-auto
+        max-w-3xl
+        text-3xl
+        font-extrabold
+        tracking-tight
+        text-slate-900
+        sm:text-4xl
+        md:text-5xl
+      "
+    >
+      Sumber &
+      <span class="text-green-700">
+        Muat Turun
+      </span>
+    </h1>
+
+
+    <!-- ================= DESCRIPTION ================= -->
+
+    <p
+      class="
+        mx-auto
+        mt-5
+        max-w-2xl
+        text-sm
+        leading-7
+        text-slate-600
+        sm:text-base
+      "
+    >
+      Akses dokumen, borang, panduan dan bahan rujukan
+      berkaitan Persekutuan Pengakap Daerah Baling
+      melalui satu pusat sumber yang tersusun.
+    </p>
+
+
+    <!-- ================= INFO ================= -->
+
+    <div
+      class="
+        mt-8
+        flex
+        flex-wrap
+        items-center
+        justify-center
+        gap-3
+      "
+    >
+
+      <span
+        class="
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2.5
+          text-sm
+          font-bold
+          text-slate-600
+          shadow-sm
+        "
+      >
+
+        <i
+          data-lucide="file-text"
+          class="h-4 w-4 text-green-700"
+        ></i>
+
+        Dokumen
+
+      </span>
+
+
+      <span
+        class="
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2.5
+          text-sm
+          font-bold
+          text-slate-600
+          shadow-sm
+        "
+      >
+
+        <i
+          data-lucide="clipboard-list"
+          class="h-4 w-4 text-green-700"
+        ></i>
+
+        Borang
+
+      </span>
+
+
+      <span
+        class="
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2.5
+          text-sm
+          font-bold
+          text-slate-600
+          shadow-sm
+        "
+      >
+
+        <i
+          data-lucide="download"
+          class="h-4 w-4 text-green-700"
+        ></i>
+
+        Muat Turun
+
+      </span>
+
+    </div>
+
   </div>
-
-  <h2 class="text-2xl font-bold text-green-900 mb-2">
-    HALAMAN INI SEDANG DIKEMASKINI
-  </h2>
-
-  <p class="text-gray-600 text-sm">
-    🛠️ Harap maklum. Kami sedang menambah baik kandungan untuk kemudahan anda.
-  </p>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-<footer class="bg-gray-500 text-white mt-auto">
-  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- =====================================================
+     KATEGORI SUMBER
+===================================================== -->
 
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-12" alt="Logo">
+<section
+  id="kategori-sumber"
+  class="scroll-mt-24 bg-slate-50"
+>
+
+  <div class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+
+    <!-- ================= SECTION HEADER ================= -->
+
+    <div
+      class="
+        mb-10
+        flex
+        flex-col
+        gap-4
+        md:flex-row
+        md:items-end
+        md:justify-between
+      "
+    >
+
       <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <p class="font-semibold text-base">
-          Persekutuan Pengakap Daerah Baling
+
+        <div
+          class="
+            mb-3
+            inline-flex
+            items-center
+            gap-2
+            text-sm
+            font-extrabold
+            text-green-700
+          "
+        >
+          <i
+            data-lucide="folder-open"
+            class="h-4 w-4"
+          ></i>
+
+          Koleksi Sumber
+        </div>
+
+
+        <h2
+          class="
+            text-2xl
+            font-extrabold
+            tracking-tight
+            text-slate-900
+            sm:text-3xl
+          "
+        >
+          Kategori Sumber
+        </h2>
+
+
+        <p
+          class="
+            mt-3
+            max-w-2xl
+            text-sm
+            leading-7
+            text-slate-600
+            sm:text-base
+          "
+        >
+          Pilih kategori untuk mendapatkan dokumen,
+          borang, panduan dan bahan rujukan yang diperlukan.
         </p>
-        <p class="text-xs italic opacity-80">
-          Bersedia · Berkhidmat
-        </p>
+
       </div>
+
     </div>
 
-    <div class="text-sm opacity-80 text-center md:text-right">
-      © 2026 Persekutuan Pengakap Daerah Baling
-      <br class="hidden md:block">
-      Hak Cipta Terpelihara
+
+    <!-- ================= CATEGORY GRID ================= -->
+
+    <div
+      class="
+        grid
+        gap-6
+        sm:grid-cols-2
+        lg:grid-cols-3
+      "
+    >
+
+      <!-- ================= DOKUMEN RASMI ================= -->
+
+      <a
+        href="#dokumen-rasmi"
+        class="
+          group
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          p-7
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-green-200
+          hover:shadow-xl
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-14
+            w-14
+            items-center
+            justify-center
+            rounded-2xl
+            bg-green-100
+            text-green-700
+          "
+        >
+          <i
+            data-lucide="file-text"
+            class="h-7 w-7"
+          ></i>
+        </div>
+
+        <h3
+          class="
+            mt-6
+            text-lg
+            font-extrabold
+            text-slate-900
+          "
+        >
+          Dokumen Rasmi
+        </h3>
+
+        <p
+          class="
+            mt-3
+            text-sm
+            leading-6
+            text-slate-600
+          "
+        >
+          Dokumen rasmi, perundangan, perlembagaan
+          dan peraturan berkaitan kepengakapan.
+        </p>
+
+        <div
+          class="
+            mt-6
+            flex
+            items-center
+            gap-2
+            text-sm
+            font-extrabold
+            text-green-700
+          "
+        >
+          <i
+            data-lucide="arrow-down"
+            class="h-4 w-4"
+          ></i>
+
+          Lihat Dokumen
+        </div>
+
+      </a>
+
+
+      <!-- ================= BORANG ================= -->
+
+<a
+  href="#borang"
+  class="
+    group
+    rounded-3xl
+    border
+    border-slate-200
+    bg-white
+    p-7
+    shadow-sm
+    transition
+    duration-300
+    hover:-translate-y-1
+    hover:border-amber-200
+    hover:shadow-xl
+  "
+>
+
+  <!-- ICON -->
+
+  <div
+    class="
+      flex
+      h-14
+      w-14
+      items-center
+      justify-center
+      rounded-2xl
+      bg-amber-100
+      text-amber-700
+      transition
+      duration-300
+      group-hover:bg-amber-200
+    "
+  >
+    <i
+      data-lucide="clipboard-list"
+      class="h-7 w-7"
+    ></i>
+  </div>
+
+
+  <!-- TITLE -->
+
+  <h3
+    class="
+      mt-6
+      text-lg
+      font-extrabold
+      text-slate-900
+    "
+  >
+    Borang
+  </h3>
+
+
+  <!-- DESCRIPTION -->
+
+  <p
+    class="
+      mt-3
+      text-sm
+      leading-6
+      text-slate-600
+    "
+  >
+    Himpunan borang rasmi PPM untuk pendaftaran
+    kumpulan, pasukan dan persaudaraan Pengakap.
+  </p>
+
+
+  <!-- ACTION -->
+
+  <div
+    class="
+      mt-6
+      flex
+      items-center
+      gap-2
+      text-sm
+      font-extrabold
+      text-amber-700
+    "
+  >
+
+    <i
+      data-lucide="arrow-down"
+      class="
+        h-4
+        w-4
+        transition-transform
+        duration-300
+        group-hover:translate-y-1
+      "
+    ></i>
+
+    Lihat Borang
+
+  </div>
+
+</a>
+
+
+      <!-- ================= PANDUAN & MODUL ================= -->
+
+<a
+  href="#panduan-modul"
+  class="
+    group
+    rounded-3xl
+    border
+    border-slate-200
+    bg-white
+    p-7
+    shadow-sm
+    transition
+    duration-300
+    hover:-translate-y-1
+    hover:border-blue-200
+    hover:shadow-xl
+  "
+>
+
+  <div
+    class="
+      flex
+      h-14
+      w-14
+      items-center
+      justify-center
+      rounded-2xl
+      bg-blue-100
+      text-blue-700
+      transition
+      duration-300
+      group-hover:bg-blue-200
+    "
+  >
+    <i
+      data-lucide="book-open"
+      class="h-7 w-7"
+    ></i>
+  </div>
+
+
+  <h3
+    class="
+      mt-6
+      text-lg
+      font-extrabold
+      text-slate-900
+    "
+  >
+    Panduan & Modul
+  </h3>
+
+
+  <p
+    class="
+      mt-3
+      text-sm
+      leading-6
+      text-slate-600
+    "
+  >
+    Panduan, modul dan bahan sokongan untuk
+    pelaksanaan program serta aktiviti Pengakap.
+  </p>
+
+
+  <div
+    class="
+      mt-6
+      flex
+      items-center
+      gap-2
+      text-sm
+      font-extrabold
+      text-blue-700
+    "
+  >
+    <i
+      data-lucide="arrow-down"
+      class="
+        h-4
+        w-4
+        transition-transform
+        duration-300
+        group-hover:translate-y-1
+      "
+    ></i>
+
+    Lihat Panduan
+  </div>
+
+</a>
+
     </div>
 
   </div>
+
+</section>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PANDUAN & MODUL
+===================================================== -->
+
+<section
+  id="panduan-modul"
+  class="
+    hidden
+    scroll-mt-24
+    border-t
+    border-slate-200
+    bg-white
+  "
+>
+
+  <div class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+
+    <!-- ================= CLOSE BUTTON ================= -->
+
+    <div class="mb-8 flex justify-end">
+
+      <button
+        type="button"
+        data-close-sumber
+        aria-label="Tutup Panduan dan Modul"
+        class="
+          btn
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-red-200
+          bg-red-50
+          px-4
+          py-2.5
+          text-sm
+          font-extrabold
+          text-red-600
+          shadow-sm
+          hover:border-red-300
+          hover:bg-red-100
+          hover:text-red-700
+        "
+      >
+
+        <i
+          data-lucide="x"
+          class="h-4 w-4"
+        ></i>
+
+        Tutup
+
+      </button>
+
+    </div>
+
+
+    <!-- ================= UPDATE CARD ================= -->
+
+    <div
+      class="
+        relative
+        mx-auto
+        max-w-4xl
+        overflow-hidden
+        rounded-[2rem]
+        border
+        border-amber-200
+        bg-white
+        px-6
+        py-12
+        text-center
+        shadow-xl
+        shadow-slate-200/60
+        sm:px-10
+        md:py-16
+      "
+    >
+
+      <!-- DECORATION -->
+
+      <div
+        class="
+          absolute
+          -left-16
+          -top-16
+          h-40
+          w-40
+          rounded-full
+          bg-amber-100/60
+          blur-2xl
+        "
+      ></div>
+
+      <div
+        class="
+          absolute
+          -bottom-20
+          -right-16
+          h-48
+          w-48
+          rounded-full
+          bg-yellow-100/70
+          blur-2xl
+        "
+      ></div>
+
+
+      <div class="relative">
+
+        <!-- CONSTRUCTION ICON -->
+
+        <div
+          class="
+            mx-auto
+            flex
+            h-28
+            w-28
+            items-center
+            justify-center
+            rounded-3xl
+            border
+            border-amber-200
+            bg-amber-50
+            text-amber-600
+            shadow-sm
+          "
+        >
+
+          <i
+            data-lucide="construction"
+            class="h-16 w-16"
+          ></i>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div
+          class="
+            mt-8
+            inline-flex
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-amber-200
+            bg-amber-50
+            px-4
+            py-2
+            text-xs
+            font-extrabold
+            uppercase
+            tracking-[0.14em]
+            text-amber-700
+          "
+        >
+
+          <i
+            data-lucide="settings"
+            class="h-4 w-4"
+          ></i>
+
+          Sedang Dikemaskini
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h2
+          class="
+            mt-6
+            text-3xl
+            font-extrabold
+            tracking-tight
+            text-slate-900
+            sm:text-4xl
+          "
+        >
+          Halaman Sedang Dikemaskini
+        </h2>
+
+
+        <!-- DESCRIPTION -->
+
+        <p
+          class="
+            mx-auto
+            mt-5
+            max-w-2xl
+            text-sm
+            leading-7
+            text-slate-600
+            sm:text-base
+          "
+        >
+          Kandungan bagi bahagian
+          <strong class="font-extrabold text-slate-800">
+            Panduan & Modul
+          </strong>
+          sedang dalam proses penyediaan dan akan
+          dikemaskini dari semasa ke semasa.
+        </p>
+
+
+        <!-- INFO BOX -->
+
+        <div
+          class="
+            mx-auto
+            mt-9
+            flex
+            max-w-2xl
+            flex-col
+            items-center
+            gap-4
+            rounded-2xl
+            border
+            border-amber-200
+            bg-amber-50/70
+            p-6
+            text-left
+            sm:flex-row
+          "
+        >
+
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              shrink-0
+              items-center
+              justify-center
+              rounded-2xl
+              bg-amber-100
+              text-amber-700
+            "
+          >
+
+            <i
+              data-lucide="calendar-clock"
+              class="h-7 w-7"
+            ></i>
+
+          </div>
+
+
+          <div>
+
+            <h3
+              class="
+                text-base
+                font-extrabold
+                text-slate-900
+              "
+            >
+              Akan Datang Tidak Lama Lagi
+            </h3>
+
+            <p
+              class="
+                mt-1
+                text-sm
+                leading-6
+                text-slate-600
+              "
+            >
+              Panduan, modul latihan dan bahan rujukan
+              berkaitan kepengakapan akan disediakan
+              di ruangan ini.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- FOOT NOTE -->
+
+        <div
+          class="
+            mt-8
+            flex
+            items-center
+            justify-center
+            gap-2
+            text-sm
+            font-semibold
+            text-slate-500
+          "
+        >
+
+          <i
+            data-lucide="hard-hat"
+            class="h-5 w-5 text-amber-600"
+          ></i>
+
+          Terima kasih atas kesabaran anda.
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= CONSTRUCTION STRIPE ================= -->
+
+      <div
+        class="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          flex
+          h-2
+          overflow-hidden
+        "
+      >
+
+        <div class="w-1/6 bg-amber-400"></div>
+        <div class="w-1/6 bg-slate-800"></div>
+        <div class="w-1/6 bg-amber-400"></div>
+        <div class="w-1/6 bg-slate-800"></div>
+        <div class="w-1/6 bg-amber-400"></div>
+        <div class="w-1/6 bg-slate-800"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     DOKUMEN RASMI
+===================================================== -->
+
+<section
+  id="dokumen-rasmi"
+  class="
+    hidden
+    scroll-mt-24
+    border-t
+    border-slate-200
+    bg-white
+  "
+>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-16 md:py-20">
+
+    <!-- =================================================
+         BUTTON TUTUP
+    ================================================== -->
+
+    <div class="mb-8 flex justify-end">
+
+      <button
+        type="button"
+        data-close-sumber
+        aria-label="Tutup Dokumen Rasmi"
+        class="
+          btn
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-red-200
+          bg-red-50
+          px-4
+          py-2.5
+          text-sm
+          font-extrabold
+          text-red-600
+          shadow-sm
+          transition
+          duration-200
+          hover:border-red-300
+          hover:bg-red-100
+          hover:text-red-700
+          hover:shadow-md
+        "
+      >
+
+        <i
+          data-lucide="x"
+          class="h-4 w-4"
+        ></i>
+
+        <span>Tutup</span>
+
+      </button>
+
+    </div>
+
+
+    <!-- =================================================
+         SECTION HEADER
+    ================================================== -->
+
+    <div class="mb-10 text-center">
+
+      <div
+        class="
+          mx-auto
+          mb-4
+          inline-flex
+          items-center
+          gap-2
+          rounded-full
+          border
+          border-green-200
+          bg-green-50
+          px-4
+          py-2
+          text-xs
+          font-extrabold
+          uppercase
+          tracking-[0.14em]
+          text-green-700
+        "
+      >
+
+        <i
+          data-lucide="file-text"
+          class="h-4 w-4"
+        ></i>
+
+        Dokumen Rasmi
+
+      </div>
+
+
+      <h2
+        class="
+          text-2xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-3xl
+        "
+      >
+        Dokumen Rujukan Utama
+      </h2>
+
+
+      <p
+        class="
+          mx-auto
+          mt-3
+          max-w-2xl
+          text-sm
+          leading-7
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Dokumen utama berkaitan perundangan,
+        perlembagaan, organisasi dan peraturan
+        Persekutuan Pengakap-Pengakap Malaysia.
+      </p>
+
+    </div>
+
+
+    <!-- =================================================
+         DOCUMENT GRID
+    ================================================== -->
+
+    <div
+      class="
+        grid
+        gap-6
+        md:grid-cols-2
+        lg:grid-cols-3
+      "
+    >
+
+
+      <!-- =================================================
+           AKTA 784
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-xl
+        "
+      >
+
+        <div class="flex w-full flex-col">
+
+          <!-- CARD HEADER -->
+
+          <div
+            class="
+              relative
+              overflow-hidden
+              bg-green-700
+              px-6
+              py-8
+              text-white
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -bottom-5
+                -right-3
+                opacity-20
+              "
+            >
+              <i
+                data-lucide="scale"
+                class="h-24 w-24"
+              ></i>
+            </div>
+
+
+            <div class="relative">
+
+              <p
+                class="
+                  text-xs
+                  font-bold
+                  uppercase
+                  tracking-[0.16em]
+                  text-green-200
+                "
+              >
+                Perundangan
+              </p>
+
+              <h3
+                class="
+                  mt-2
+                  text-2xl
+                  font-extrabold
+                "
+              >
+                AKTA 784
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <!-- CARD BODY -->
+
+          <div
+            class="
+              flex
+              flex-1
+              flex-col
+              p-6
+            "
+          >
+
+            <h4
+              class="
+                text-lg
+                font-extrabold
+                leading-7
+                text-green-800
+              "
+            >
+              Akta PPM (Pemerbadanan) 1968
+            </h4>
+
+
+            <p
+              class="
+                mt-3
+                flex-1
+                text-sm
+                leading-7
+                text-slate-600
+              "
+            >
+              Akta Persekutuan Pengakap-Pengakap
+              Malaysia (Pemerbadanan) 1968
+              [Akta 784], disemak 2016.
+            </p>
+
+
+            <a
+              href="assets/documents/dokumen-rasmi/akta-784-ppm.pdf"
+              download
+              class="
+                btn
+                mt-7
+                inline-flex
+                w-full
+                items-center
+                justify-center
+                gap-2
+                rounded-xl
+                bg-green-700
+                px-5
+                py-3.5
+                text-sm
+                font-extrabold
+                text-white
+                shadow-sm
+                hover:bg-green-800
+                hover:shadow-lg
+              "
+            >
+
+              <i
+                data-lucide="download"
+                class="h-5 w-5"
+              ></i>
+
+              Muat Turun
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           PERLEMBAGAAN
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-xl
+        "
+      >
+
+        <div class="flex w-full flex-col">
+
+          <!-- CARD HEADER -->
+
+          <div
+            class="
+              relative
+              overflow-hidden
+              bg-emerald-600
+              px-6
+              py-8
+              text-white
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -bottom-5
+                -right-3
+                opacity-20
+              "
+            >
+              <i
+                data-lucide="book-open"
+                class="h-24 w-24"
+              ></i>
+            </div>
+
+
+            <div class="relative">
+
+              <p
+                class="
+                  text-xs
+                  font-bold
+                  uppercase
+                  tracking-[0.16em]
+                  text-emerald-100
+                "
+              >
+                Tadbir Urus
+              </p>
+
+              <h3
+                class="
+                  mt-2
+                  text-2xl
+                  font-extrabold
+                "
+              >
+                PERLEMBAGAAN
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <!-- CARD BODY -->
+
+          <div
+            class="
+              flex
+              flex-1
+              flex-col
+              p-6
+            "
+          >
+
+            <h4
+              class="
+                text-lg
+                font-extrabold
+                leading-7
+                text-green-800
+              "
+            >
+              Perlembagaan Persekutuan Pengakap
+            </h4>
+
+
+            <p
+              class="
+                mt-3
+                flex-1
+                text-sm
+                leading-7
+                text-slate-600
+              "
+            >
+              Perlembagaan Persekutuan
+              Pengakap-Pengakap Malaysia,
+              Edisi 1 (2025).
+            </p>
+
+
+            <a
+              href="assets/documents/dokumen-rasmi/perlembagaan-ppm-2025.pdf"
+              download
+              class="
+                btn
+                mt-7
+                inline-flex
+                w-full
+                items-center
+                justify-center
+                gap-2
+                rounded-xl
+                bg-green-700
+                px-5
+                py-3.5
+                text-sm
+                font-extrabold
+                text-white
+                shadow-sm
+                hover:bg-green-800
+                hover:shadow-lg
+              "
+            >
+
+              <i
+                data-lucide="download"
+                class="h-5 w-5"
+              ></i>
+
+              Muat Turun
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           POR 2025
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-xl
+        "
+      >
+
+        <div class="flex w-full flex-col">
+
+          <!-- CARD HEADER -->
+
+          <div
+            class="
+              relative
+              overflow-hidden
+              bg-green-700
+              px-6
+              py-8
+              text-white
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -bottom-5
+                -right-3
+                opacity-20
+              "
+            >
+              <i
+                data-lucide="clipboard-list"
+                class="h-24 w-24"
+              ></i>
+            </div>
+
+
+            <div class="relative">
+
+              <p
+                class="
+                  text-xs
+                  font-bold
+                  uppercase
+                  tracking-[0.16em]
+                  text-green-200
+                "
+              >
+                Operasi & Peraturan
+              </p>
+
+              <h3
+                class="
+                  mt-2
+                  text-2xl
+                  font-extrabold
+                "
+              >
+                POR (2025)
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <!-- CARD BODY -->
+
+          <div
+            class="
+              flex
+              flex-1
+              flex-col
+              p-6
+            "
+          >
+
+            <h4
+              class="
+                text-lg
+                font-extrabold
+                leading-7
+                text-green-800
+              "
+            >
+              Prosedur Organisasi & Peraturan
+            </h4>
+
+
+            <p
+              class="
+                mt-3
+                flex-1
+                text-sm
+                leading-7
+                text-slate-600
+              "
+            >
+              Prosedur Organisasi dan Peraturan
+              Persekutuan Pengakap Malaysia,
+              Edisi Pindaan 2025.
+            </p>
+
+
+            <a
+              href="assets/documents/dokumen-rasmi/por-ppm-2025.pdf"
+              download
+              class="
+                btn
+                mt-7
+                inline-flex
+                w-full
+                items-center
+                justify-center
+                gap-2
+                rounded-xl
+                bg-green-700
+                px-5
+                py-3.5
+                text-sm
+                font-extrabold
+                text-white
+                shadow-sm
+                hover:bg-green-800
+                hover:shadow-lg
+              "
+            >
+
+              <i
+                data-lucide="download"
+                class="h-5 w-5"
+              ></i>
+
+              Muat Turun
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     BORANG RASMI PPM
+===================================================== -->
+
+<section
+  id="borang"
+  class="
+    hidden
+    scroll-mt-24
+    border-t
+    border-slate-200
+    bg-slate-50
+  "
+>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-16 md:py-20">
+
+    <!-- =================================================
+         BUTTON TUTUP
+    ================================================== -->
+
+    <div class="mb-8 flex justify-end">
+
+      <button
+        type="button"
+        data-close-sumber
+        aria-label="Tutup Borang Rasmi"
+        class="
+          btn
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-red-200
+          bg-red-50
+          px-4
+          py-2.5
+          text-sm
+          font-extrabold
+          text-red-600
+          shadow-sm
+          transition
+          duration-200
+          hover:border-red-300
+          hover:bg-red-100
+          hover:text-red-700
+          hover:shadow-md
+        "
+      >
+
+        <i
+          data-lucide="x"
+          class="h-4 w-4"
+        ></i>
+
+        <span>Tutup</span>
+
+      </button>
+
+    </div>
+
+
+    <!-- ================= SECTION HEADER ================= -->
+
+    <div class="mb-10 text-center">
+
+      <div
+        class="
+          mx-auto
+          mb-4
+          inline-flex
+          items-center
+          gap-2
+          rounded-full
+          border
+          border-amber-200
+          bg-amber-50
+          px-4
+          py-2
+          text-xs
+          font-extrabold
+          uppercase
+          tracking-[0.14em]
+          text-amber-700
+        "
+      >
+
+        <i
+          data-lucide="clipboard-list"
+          class="h-4 w-4"
+        ></i>
+
+        Borang Rasmi
+
+      </div>
+
+
+      <h2
+        class="
+          text-2xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-3xl
+        "
+      >
+        Borang Pendaftaran PPM
+      </h2>
+
+
+      <p
+        class="
+          mx-auto
+          mt-3
+          max-w-2xl
+          text-sm
+          leading-7
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Muat turun borang rasmi Persekutuan
+        Pengakap-Pengakap Malaysia bagi urusan
+        pendaftaran kumpulan, pasukan dan persaudaraan.
+      </p>
+
+
+      <!-- VERSION -->
+
+      <div
+        class="
+          mt-5
+          inline-flex
+          items-center
+          gap-2
+          rounded-full
+          bg-white
+          px-4
+          py-2
+          text-xs
+          font-bold
+          text-slate-500
+          shadow-sm
+          ring-1
+          ring-slate-200
+        "
+      >
+
+        <i
+          data-lucide="calendar-check"
+          class="h-4 w-4 text-amber-600"
+        ></i>
+
+        Pindaan Tahun 2026
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= BORANG GRID ================= -->
+
+    <div
+      class="
+        grid
+        gap-6
+        md:grid-cols-2
+        lg:grid-cols-3
+      "
+    >
+
+
+      <!-- =================================================
+           PPM-3A
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-amber-200
+          hover:shadow-xl
+        "
+      >
+
+        <!-- CARD HEADER -->
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            bg-amber-600
+            px-6
+            py-7
+            text-white
+          "
+        >
+
+          <i
+            data-lucide="school"
+            class="
+              absolute
+              -bottom-4
+              -right-2
+              h-24
+              w-24
+              text-white
+              opacity-20
+            "
+          ></i>
+
+
+          <div class="relative">
+
+            <p
+              class="
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.16em]
+                text-amber-100
+              "
+            >
+              Kumpulan Dianjur
+            </p>
+
+            <h3 class="mt-2 text-2xl font-extrabold">
+              PPM-3A
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <!-- CARD BODY -->
+
+        <div class="flex flex-1 flex-col p-6">
+
+          <h4
+            class="
+              text-lg
+              font-extrabold
+              leading-7
+              text-slate-900
+            "
+          >
+            Pendaftaran Kumpulan Dianjur
+          </h4>
+
+
+          <p
+            class="
+              mt-3
+              flex-1
+              text-sm
+              leading-7
+              text-slate-600
+            "
+          >
+            Permohonan pendaftaran kumpulan Pengakap
+            yang dianjur termasuk kumpulan sekolah.
+          </p>
+
+
+          <div
+            class="
+              mt-5
+              flex
+              items-center
+              gap-2
+              text-xs
+              font-bold
+              text-slate-500
+            "
+          >
+            <i
+              data-lucide="file-type-2"
+              class="h-4 w-4"
+            ></i>
+
+            DOCX · Pindaan 2026
+          </div>
+
+
+          <a
+            href="assets/documents/borang/ppm-3a-pendaftaran-kumpulan-dianjur-2026.docx"
+            download
+            class="
+              btn
+              mt-6
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-amber-600
+              px-5
+              py-3.5
+              text-sm
+              font-extrabold
+              text-white
+              shadow-sm
+              hover:bg-amber-700
+              hover:shadow-lg
+            "
+          >
+
+            <i
+              data-lucide="download"
+              class="h-5 w-5"
+            ></i>
+
+            Muat Turun DOCX
+
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           PPM-3B
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-amber-200
+          hover:shadow-xl
+        "
+      >
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            bg-amber-500
+            px-6
+            py-7
+            text-white
+          "
+        >
+
+          <i
+            data-lucide="users"
+            class="
+              absolute
+              -bottom-4
+              -right-2
+              h-24
+              w-24
+              text-white
+              opacity-20
+            "
+          ></i>
+
+
+          <div class="relative">
+
+            <p
+              class="
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.16em]
+                text-amber-50
+              "
+            >
+              Kumpulan Terbuka
+            </p>
+
+            <h3 class="mt-2 text-2xl font-extrabold">
+              PPM-3B
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="flex flex-1 flex-col p-6">
+
+          <h4
+            class="
+              text-lg
+              font-extrabold
+              leading-7
+              text-slate-900
+            "
+          >
+            Pendaftaran Kumpulan Terbuka
+          </h4>
+
+
+          <p
+            class="
+              mt-3
+              flex-1
+              text-sm
+              leading-7
+              text-slate-600
+            "
+          >
+            Permohonan pendaftaran bagi Kumpulan
+            Pengakap Terbuka.
+          </p>
+
+
+          <div
+            class="
+              mt-5
+              flex
+              items-center
+              gap-2
+              text-xs
+              font-bold
+              text-slate-500
+            "
+          >
+            <i
+              data-lucide="file-type-2"
+              class="h-4 w-4"
+            ></i>
+
+            DOCX · Pindaan 2026
+          </div>
+
+
+          <a
+            href="assets/documents/borang/ppm-3b-pendaftaran-kumpulan-terbuka-2026.docx"
+            download
+            class="
+              btn
+              mt-6
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-amber-600
+              px-5
+              py-3.5
+              text-sm
+              font-extrabold
+              text-white
+              shadow-sm
+              hover:bg-amber-700
+              hover:shadow-lg
+            "
+          >
+
+            <i
+              data-lucide="download"
+              class="h-5 w-5"
+            ></i>
+
+            Muat Turun DOCX
+
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           PPM-3C
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-amber-200
+          hover:shadow-xl
+        "
+      >
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            bg-orange-500
+            px-6
+            py-7
+            text-white
+          "
+        >
+
+          <i
+            data-lucide="compass"
+            class="
+              absolute
+              -bottom-4
+              -right-2
+              h-24
+              w-24
+              text-white
+              opacity-20
+            "
+          ></i>
+
+
+          <div class="relative">
+
+            <p
+              class="
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.16em]
+                text-orange-50
+              "
+            >
+              Pengakap Kelana
+            </p>
+
+            <h3 class="mt-2 text-2xl font-extrabold">
+              PPM-3C
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="flex flex-1 flex-col p-6">
+
+          <h4
+            class="
+              text-lg
+              font-extrabold
+              leading-7
+              text-slate-900
+            "
+          >
+            Pendaftaran Pasukan Pengakap Kelana
+          </h4>
+
+
+          <p
+            class="
+              mt-3
+              flex-1
+              text-sm
+              leading-7
+              text-slate-600
+            "
+          >
+            Permohonan pendaftaran Pasukan
+            Pengakap Kelana baharu kategori terbuka.
+          </p>
+
+
+          <div
+            class="
+              mt-5
+              flex
+              items-center
+              gap-2
+              text-xs
+              font-bold
+              text-slate-500
+            "
+          >
+            <i
+              data-lucide="file-type-2"
+              class="h-4 w-4"
+            ></i>
+
+            DOCX · Pindaan 2026
+          </div>
+
+
+          <a
+            href="assets/documents/borang/ppm-3c-pendaftaran-pengakap-kelana-terbuka-2026.docx"
+            download
+            class="
+              btn
+              mt-6
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-amber-600
+              px-5
+              py-3.5
+              text-sm
+              font-extrabold
+              text-white
+              shadow-sm
+              hover:bg-amber-700
+              hover:shadow-lg
+            "
+          >
+
+            <i
+              data-lucide="download"
+              class="h-5 w-5"
+            ></i>
+
+            Muat Turun DOCX
+
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           PPM-3D
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-amber-200
+          hover:shadow-xl
+        "
+      >
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            bg-yellow-600
+            px-6
+            py-7
+            text-white
+          "
+        >
+
+          <i
+            data-lucide="award"
+            class="
+              absolute
+              -bottom-4
+              -right-2
+              h-24
+              w-24
+              text-white
+              opacity-20
+            "
+          ></i>
+
+
+          <div class="relative">
+
+            <p
+              class="
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.16em]
+                text-yellow-100
+              "
+            >
+              Pengakap Raja
+            </p>
+
+            <h3 class="mt-2 text-2xl font-extrabold">
+              PPM-3D
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="flex flex-1 flex-col p-6">
+
+          <h4
+            class="
+              text-lg
+              font-extrabold
+              leading-7
+              text-slate-900
+            "
+          >
+            Pendaftaran Persaudaraan Pengakap Raja
+          </h4>
+
+
+          <p
+            class="
+              mt-3
+              flex-1
+              text-sm
+              leading-7
+              text-slate-600
+            "
+          >
+            Permohonan pendaftaran Persaudaraan
+            Pengakap Raja.
+          </p>
+
+
+          <div
+            class="
+              mt-5
+              flex
+              items-center
+              gap-2
+              text-xs
+              font-bold
+              text-slate-500
+            "
+          >
+            <i
+              data-lucide="file-type-2"
+              class="h-4 w-4"
+            ></i>
+
+            DOCX · Pindaan 2026
+          </div>
+
+
+          <a
+            href="assets/documents/borang/ppm-3d-pendaftaran-persaudaraan-pengakap-raja-2026.docx"
+            download
+            class="
+              btn
+              mt-6
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-amber-600
+              px-5
+              py-3.5
+              text-sm
+              font-extrabold
+              text-white
+              shadow-sm
+              hover:bg-amber-700
+              hover:shadow-lg
+            "
+          >
+
+            <i
+              data-lucide="download"
+              class="h-5 w-5"
+            ></i>
+
+            Muat Turun DOCX
+
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           PPM-3E
+      ================================================== -->
+
+      <article
+        class="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          shadow-sm
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-amber-200
+          hover:shadow-xl
+        "
+      >
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            bg-amber-700
+            px-6
+            py-7
+            text-white
+          "
+        >
+
+          <i
+            data-lucide="handshake"
+            class="
+              absolute
+              -bottom-4
+              -right-2
+              h-24
+              w-24
+              text-white
+              opacity-20
+            "
+          ></i>
+
+
+          <div class="relative">
+
+            <p
+              class="
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.16em]
+                text-amber-100
+              "
+            >
+              Persaudaraan B-P
+            </p>
+
+            <h3 class="mt-2 text-2xl font-extrabold">
+              PPM-3E
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="flex flex-1 flex-col p-6">
+
+          <h4
+            class="
+              text-lg
+              font-extrabold
+              leading-7
+              text-slate-900
+            "
+          >
+            Pendaftaran Persaudaraan B-P
+          </h4>
+
+
+          <p
+            class="
+              mt-3
+              flex-1
+              text-sm
+              leading-7
+              text-slate-600
+            "
+          >
+            Permohonan pendaftaran Persaudaraan
+            B-P di peringkat negeri atau daerah.
+          </p>
+
+
+          <div
+            class="
+              mt-5
+              flex
+              items-center
+              gap-2
+              text-xs
+              font-bold
+              text-slate-500
+            "
+          >
+            <i
+              data-lucide="file-type-2"
+              class="h-4 w-4"
+            ></i>
+
+            DOCX · Pindaan 2026
+          </div>
+
+
+          <a
+            href="assets/documents/borang/ppm-3e-pendaftaran-persaudaraan-bp-2026.docx"
+            download
+            class="
+              btn
+              mt-6
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-amber-600
+              px-5
+              py-3.5
+              text-sm
+              font-extrabold
+              text-white
+              shadow-sm
+              hover:bg-amber-700
+              hover:shadow-lg
+            "
+          >
+
+            <i
+              data-lucide="download"
+              class="h-5 w-5"
+            ></i>
+
+            Muat Turun DOCX
+
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           INFO CARD
+      ================================================== -->
+
+      <div
+        class="
+          flex
+          min-h-[280px]
+          flex-col
+          items-center
+          justify-center
+          rounded-3xl
+          border
+          border-dashed
+          border-amber-300
+          bg-amber-50/70
+          p-8
+          text-center
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-14
+            w-14
+            items-center
+            justify-center
+            rounded-2xl
+            bg-amber-100
+            text-amber-700
+          "
+        >
+          <i
+            data-lucide="info"
+            class="h-7 w-7"
+          ></i>
+        </div>
+
+
+        <h3
+          class="
+            mt-5
+            text-lg
+            font-extrabold
+            text-slate-900
+          "
+        >
+          Borang Tambahan
+        </h3>
+
+
+        <p
+          class="
+            mt-3
+            max-w-xs
+            text-sm
+            leading-6
+            text-slate-600
+          "
+        >
+          Borang rasmi tambahan akan dimasukkan
+          ke pusat sumber ini dari semasa ke semasa.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="footer" class="bg-slate-900 text-slate-300">
+
+  <div
+    class="
+      mx-auto
+      grid
+      max-w-7xl
+      gap-8
+      px-5
+      py-10
+      md:grid-cols-[1.4fr_1fr_1fr]
+      lg:px-8
+    "
+  >
+
+    <!-- BRAND -->
+    <div>
+
+      <div class="flex items-center gap-3">
+
+        <img
+          src="assets/logo.png"
+          alt="Logo Persekutuan Pengakap Daerah Baling"
+          class="h-12 w-12 object-contain"
+        >
+
+        <div>
+
+          <h2 class="font-extrabold text-white">
+            Persekutuan Pengakap Daerah Baling
+          </h2>
+
+          <p class="mt-1 text-xs font-semibold text-amber-400">
+            Bersedia • Berkhidmat
+          </p>
+
+        </div>
+
+      </div>
+
+      <p class="mt-4 max-w-md text-sm leading-6 text-slate-400">
+        Portal rasmi bagi perkongsian maklumat, pengurusan,
+        program dan aktiviti kepengakapan di Daerah Baling.
+      </p>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <div>
+
+      <h2 class="font-extrabold text-white">
+        Navigasi
+      </h2>
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a href="index.html" class="transition hover:text-white">
+          Utama
+        </a>
+
+        <a href="pengenalan.html" class="transition hover:text-white">
+          Mengenai
+        </a>
+
+        <a href="ppmbaling.html" class="transition hover:text-white">
+          Organisasi
+        </a>
+
+        <a href="aktiviti.html" class="transition hover:text-white">
+          Aktiviti
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESOURCES -->
+    <div>
+
+      <h2 class="font-extrabold text-white">
+        Pautan
+      </h2>
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a href="muatturun.html" class="transition hover:text-white">
+          Sumber & Muat Turun
+        </a>
+
+        <a href="unit.html" class="transition hover:text-white">
+          Unit & Lencana
+        </a>
+
+        <a href="hubungi.html" class="transition hover:text-white">
+          Hubungi Kami
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COPYRIGHT -->
+  <div class="border-t border-white/10">
+
+    <div
+      class="
+        mx-auto
+        flex
+        max-w-7xl
+        flex-col
+        gap-2
+        px-5
+        py-5
+        text-xs
+        text-slate-400
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+        lg:px-8
+      "
+    >
+
+      <p>
+        © 2026 Persekutuan Pengakap Daerah Baling.
+        Hak cipta terpelihara.
+      </p>
+
+      <p>
+        Bersedia • Berkhidmat
+      </p>
+
+    </div>
+
+  </div>
+
 </footer>
 
-<!-- ================= SCRIPT ================= -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
+<!-- =====================================================
+     PORTAL UI SCRIPT
+===================================================== -->
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
 
-  const links = document.querySelectorAll("#menuDesktop a");
-  const currentPage = window.location.pathname.split("/").pop();
+document.addEventListener("DOMContentLoaded", () => {
 
-  links.forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
+  /* =====================================================
+     LUCIDE ICONS
+  ===================================================== */
 
-    if (linkPage === currentPage || 
-       (currentPage === "" && linkPage === "index.html")) {
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 
-      link.classList.add("text-yellow-300");
+
+  /* =====================================================
+     MOBILE MENU
+  ===================================================== */
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+  const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener("click", () => {
+
+      const isOpen =
+        !mobileMenu.classList.contains("hidden");
+
+      mobileMenu.classList.toggle("hidden");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
+
+    });
+
+
+    /* Tutup menu selepas pautan dipilih */
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.add("hidden");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+  }
+
+
+  /* =====================================================
+     HEADER SCROLL EFFECT
+  ===================================================== */
+
+  const siteHeader =
+    document.getElementById("siteHeader");
+
+
+  function updateHeader() {
+
+    if (!siteHeader) return;
+
+    siteHeader.classList.toggle(
+      "nav-scrolled",
+      window.scrollY > 10
+    );
+
+  }
+
+
+  updateHeader();
+
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    {
+      passive: true
     }
+  );
+
+
+  /* =====================================================
+     SUMBER SECTIONS
+  ===================================================== */
+
+  const kategoriSumber =
+    document.getElementById("kategori-sumber");
+
+  const dokumenSection =
+    document.getElementById("dokumen-rasmi");
+
+  const borangSection =
+    document.getElementById("borang");
+
+  const panduanSection =
+    document.getElementById("panduan-modul");
+
+
+  const sumberSections = [
+    dokumenSection,
+    borangSection,
+    panduanSection
+  ].filter(Boolean);
+
+
+  /* =====================================================
+     HIDE ALL SECTIONS
+  ===================================================== */
+
+  function hideAllSumberSections() {
+
+    sumberSections.forEach(section => {
+
+      section.classList.add("hidden");
+
+    });
+
+  }
+
+
+  /* =====================================================
+     SHOW SECTION
+  ===================================================== */
+
+  function showSumberSection(section) {
+
+    if (!section) return;
+
+
+    /* Tutup section lain */
+
+    hideAllSumberSections();
+
+
+    /* Buka section dipilih */
+
+    section.classList.remove("hidden");
+
+
+    /* Render Lucide */
+
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+
+    /* Scroll ke section */
+
+    setTimeout(() => {
+
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }, 50);
+
+  }
+
+
+  /* =====================================================
+     CATEGORY LINKS
+  ===================================================== */
+
+  const sumberLinks =
+    document.querySelectorAll(
+      'a[href="#dokumen-rasmi"],' +
+      'a[href="#borang"],' +
+      'a[href="#panduan-modul"]'
+    );
+
+
+  sumberLinks.forEach(link => {
+
+    link.addEventListener(
+      "click",
+      event => {
+
+        event.preventDefault();
+
+
+        const targetId =
+          link.getAttribute("href");
+
+
+        const targetSection =
+          document.querySelector(targetId);
+
+
+        showSumberSection(
+          targetSection
+        );
+
+      }
+    );
+
   });
+
+
+  /* =====================================================
+     CLOSE BUTTONS
+  ===================================================== */
+
+  const closeButtons =
+    document.querySelectorAll(
+      "[data-close-sumber]"
+    );
+
+
+  closeButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        /* Tutup semua section */
+
+        hideAllSumberSections();
+
+
+        /* Kembali ke Kategori Sumber */
+
+        setTimeout(() => {
+
+          if (kategoriSumber) {
+
+            kategoriSumber.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+
+        }, 50);
+
+      }
+    );
+
+  });
+
+
+  /* =====================================================
+     DIRECT HASH ACCESS
+  ===================================================== */
+
+  const currentHash =
+    window.location.hash;
+
+
+  if (currentHash === "#dokumen-rasmi") {
+
+    showSumberSection(
+      dokumenSection
+    );
+
+  }
+
+
+  else if (currentHash === "#borang") {
+
+    showSumberSection(
+      borangSection
+    );
+
+  }
+
+
+  else if (currentHash === "#panduan-modul") {
+
+    showSumberSection(
+      panduanSection
+    );
+
+  }
 
 });
+
 </script>
 
 </body>

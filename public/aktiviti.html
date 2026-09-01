@@ -1,169 +1,1784 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<title>Pengenalan | Persekutuan Pengakap Daerah Baling</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Aktiviti | Persekutuan Pengakap Daerah Baling
+  </title>
+
+  <meta
+    name="description"
+    content="Aktiviti, program, galeri foto dan video Persekutuan Pengakap Daerah Baling."
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/favicon.png"
+  >
+
+
+  <!-- ================= TAILWIND ================= -->
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+
+  <!-- ================= LUCIDE ICONS ================= -->
+
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+
+  <!-- ================= GOOGLE FONT ================= -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- ================= PORTAL STYLE ================= -->
+
+  <style>
+
+    :root {
+      --green: #166534;
+      --green-dark: #14532d;
+      --gold: #f59e0b;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+
+      font-family:
+        "Plus Jakarta Sans",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+
+    /* ================= NAVIGATION ================= */
+
+    .nav-scrolled {
+      box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+
+    .nav-link {
+      position: relative;
+    }
+
+
+    .nav-link::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: -8px;
+
+      height: 2px;
+
+      border-radius: 999px;
+
+      background: var(--green);
+
+      transform: scaleX(0);
+
+      transform-origin: center;
+
+      transition:
+        transform 0.2s ease;
+    }
+
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+
+    /* ================= BUTTON ================= */
+
+    .btn {
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+
+      outline:
+        3px solid var(--gold);
+
+      outline-offset: 3px;
+    }
+
+
+    /* ================= IMAGE ================= */
+
+    .gallery-image {
+
+      transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+    }
+
+
+    .gallery-image:hover {
+      transform: scale(1.03);
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 767px) {
+
+      .nav-link::after {
+        display: none;
+      }
+
+    }
+
+
+    /* ================= REDUCED MOTION ================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn,
+      .gallery-image {
+        transition: none;
+      }
+
+    }
+
+  </style>
+
 </head>
 
-<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+<body class="min-h-screen">
 
-<div class="flex-grow">
 
-<!-- ================= HEADER ================= -->
-<header class="bg-gray-500 text-white sticky top-0 z-50 shadow">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<header
+  id="siteHeader"
+  class="
+    sticky top-0 z-50
+    border-b border-slate-200/80
+    bg-white/95
+    backdrop-blur
+    transition-shadow
+  "
+>
 
-    <!-- LOGO + TAJUK -->
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-14" alt="Logo Pengakap">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <h1 class="font-bold text-lg md:text-xl">
+  <div
+    class="
+      mx-auto flex
+      max-w-7xl
+      items-center
+      justify-between
+      px-6
+      py-4
+    "
+  >
+
+    <!-- ================= BRAND ================= -->
+
+    <a
+      href="index.html"
+      class="flex items-center gap-3"
+      aria-label="Persekutuan Pengakap Daerah Baling"
+    >
+
+      <img
+        src="assets/logo.png"
+        alt="Logo Persekutuan Pengakap Daerah Baling"
+        class="
+          h-12
+          w-12
+          object-contain
+          sm:h-14
+          sm:w-14
+        "
+      >
+
+      <div class="min-w-0">
+
+        <p
+          class="
+            text-[10px]
+            font-extrabold
+            uppercase
+            tracking-[0.18em]
+            text-green-700
+            sm:text-xs
+          "
+        >
+          Portal Rasmi
+        </p>
+
+        <p
+          class="
+            max-w-[210px]
+            truncate
+            text-sm
+            font-extrabold
+            leading-tight
+            text-slate-900
+            sm:max-w-none
+            sm:text-base
+          "
+        >
           Persekutuan Pengakap Daerah Baling
-        </h1>
-        <p class="text-xs italic opacity-90">Bersedia · Berkhidmat</p>
-      </div>
-    </div>
+        </p>
 
-    <!-- MENU DESKTOP -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
-      <a href="index.html" class="hover:text-yellow-300">Utama</a>
-      <a href="pengenalan.html" class="hover:text-yellow-300">Pengenalan</a>
-      <a href="ppmbaling.html" class="hover:text-yellow-300">PPMD Baling</a>
-      <a href="aktiviti.html"
-         class="text-yellow-400 border-b-2 border-yellow-400 pb-1">
+        <p
+          class="
+            hidden
+            text-xs
+            font-medium
+            text-slate-500
+            sm:block
+          "
+        >
+          Bersedia · Berkhidmat
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <!-- ================= DESKTOP NAV ================= -->
+
+    <nav
+      class="
+        hidden
+        items-center
+        gap-7
+        text-sm
+        font-bold
+        text-slate-600
+        lg:flex
+      "
+      aria-label="Navigasi utama"
+    >
+
+      <a
+        href="index.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Utama
+      </a>
+
+      <a
+        href="pengenalan.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Mengenai
+      </a>
+
+      <a
+        href="ppmbaling.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Organisasi
+      </a>
+
+      <a
+        href="aktiviti.html"
+        class="
+          nav-link active
+          text-green-800
+        "
+        aria-current="page"
+      >
         Aktiviti
       </a>
-      <a href="muatturun.html" class="hover:text-yellow-300">Muat Turun</a>
-      <a href="hubungi.html" class="hover:text-yellow-300">Hubungi Kami</a>
+
+      <a
+        href="muatturun.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Sumber
+      </a>
+
+      <a
+        href="hubungi.html"
+        class="
+          nav-link
+          transition
+          hover:text-green-800
+        "
+      >
+        Hubungi
+      </a>
+
     </nav>
 
-    <!-- BUTTON MOBILE (MESTI DALAM FLEX CONTAINER) -->
-    <button id="menuBtn"
-      class="md:hidden text-2xl focus:outline-none">
-      ☰
+
+    <!-- ================= MOBILE BUTTON ================= -->
+
+    <button
+      id="menuButton"
+      type="button"
+      class="
+        inline-flex
+        h-11
+        w-11
+        items-center
+        justify-center
+        rounded-xl
+        border
+        border-slate-200
+        bg-white
+        text-slate-700
+        transition
+        hover:bg-slate-50
+        lg:hidden
+      "
+      aria-label="Buka menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+
+      <i
+        data-lucide="menu"
+        class="h-5 w-5"
+      ></i>
+
     </button>
 
   </div>
 
-  <!-- MENU MOBILE -->
-  <div id="mobileMenu"
-       class="hidden md:hidden bg-gray-500 px-6 pb-4 text-sm space-y-2">
-    <a href="index.html" class="block">Utama</a>
-    <a href="pengenalan.html" class="block">Pengenalan</a>
-    <a href="ppmbaling.html" class="block">PPMD Baling</a>
-    <a href="aktiviti.html" class="block">Aktiviti</a>
-    <a href="muatturun.html" class="block">Muat Turun</a>
-    <a href="hubungi.html" class="block">Hubungi Kami</a>
+
+  <!-- ================= MOBILE MENU ================= -->
+
+  <div
+    id="mobileMenu"
+    class="
+      hidden
+      border-t
+      border-slate-100
+      bg-white
+      lg:hidden
+    "
+  >
+
+    <nav
+      class="
+        mx-auto
+        grid
+        max-w-7xl
+        gap-1
+        px-6
+        py-4
+        text-sm
+        font-bold
+      "
+      aria-label="Navigasi mudah alih"
+    >
+
+      <a
+        href="index.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Utama
+      </a>
+
+      <a
+        href="pengenalan.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Mengenai
+      </a>
+
+      <a
+        href="ppmbaling.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Organisasi
+      </a>
+
+      <a
+        href="aktiviti.html"
+        class="
+          rounded-xl
+          bg-green-50
+          px-4
+          py-3
+          text-green-800
+        "
+        aria-current="page"
+      >
+        Aktiviti
+      </a>
+
+      <a
+        href="muatturun.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Sumber
+      </a>
+
+      <a
+        href="hubungi.html"
+        class="
+          rounded-xl
+          px-4
+          py-3
+          text-slate-600
+          hover:bg-slate-50
+          hover:text-green-800
+        "
+      >
+        Hubungi
+      </a>
+
+    </nav>
+
   </div>
 
 </header>
 
-<!-- ================= TAJUK ================= -->
-<section class="bg-white mx-6 mt-6 rounded shadow p-8">
-  <h2 class="text-2xl font-bold text-green-900 mb-2 text-center">
-    📸 Galeri Aktiviti
-  </h2>
-</section>
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
 
-<!-- ================= SENARAI FOLDER ================= -->
-<section id="folderSection" class="max-w-7xl mx-auto px-6 mt-10">
+<section
+  class="
+    relative
+    overflow-hidden
+    border-b
+    border-slate-200
+    bg-white
+  "
+>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  <!-- DECORATION -->
 
-    <div onclick="bukaAlbum('anugerah-2025')"
-         class="bg-white rounded-lg shadow p-6 cursor-pointer hover:shadow-xl text-center">
-      <div class="text-5xl mb-3">📁</div>
-      <p class="font-semibold">Majlis Anugerah Ketua Pengakap Negara 2025</p>
-      <p class="font-semibold">16 Disember 2025</p>
-      <p class="font-semibold">Dewan Iltizam, PPD Baling</p>
+  <div
+    class="
+      pointer-events-none
+      absolute
+      -right-24
+      -top-24
+      h-72
+      w-72
+      rounded-full
+      bg-green-100/60
+      blur-3xl
+    "
+  ></div>
+
+  <div
+    class="
+      pointer-events-none
+      absolute
+      -bottom-28
+      left-1/4
+      h-64
+      w-64
+      rounded-full
+      bg-amber-100/60
+      blur-3xl
+    "
+  ></div>
+
+
+  <div
+    class="
+      relative
+      mx-auto
+      max-w-7xl
+      px-6
+      py-16
+      text-center
+      md:py-20
+    "
+  >
+
+    <!-- BADGE -->
+
+    <div
+      class="
+        mx-auto
+        mb-5
+        inline-flex
+        items-center
+        gap-2
+        rounded-full
+        border
+        border-green-200
+        bg-green-50
+        px-4
+        py-2
+        text-xs
+        font-extrabold
+        uppercase
+        tracking-[0.14em]
+        text-green-700
+      "
+    >
+
+      <i
+        data-lucide="calendar-days"
+        class="h-4 w-4"
+      ></i>
+
+      Aktiviti & Dokumentasi
+
     </div>
 
-    <div onclick="bukaAlbum('pengujian-2025')"
-         class="bg-white rounded-lg shadow p-6 cursor-pointer hover:shadow-xl text-center">
-      <div class="text-5xl mb-3">📁</div>
-      <p class="font-semibold">Kem Pengujian Lencana Pengakap Daerah Baling 2025</p>
-      <p class="font-semibold">4 - 6 Disember 2025</p>
-      <p class="font-semibold">Pusat Kokurikulum Baling</p>
+
+    <!-- TITLE -->
+
+    <h1
+      class="
+        mx-auto
+        max-w-3xl
+        text-3xl
+        font-extrabold
+        tracking-tight
+        text-slate-900
+        sm:text-4xl
+        md:text-5xl
+      "
+    >
+      Aktiviti
+      <span class="text-green-700">
+        Pengakap Daerah Baling
+      </span>
+    </h1>
+
+
+    <!-- DESCRIPTION -->
+
+    <p
+      class="
+        mx-auto
+        mt-5
+        max-w-2xl
+        text-sm
+        leading-7
+        text-slate-600
+        sm:text-base
+      "
+    >
+      Sorotan program, aktiviti dan dokumentasi
+      Persekutuan Pengakap Daerah Baling melalui
+      koleksi foto dan video.
+    </p>
+
+
+    <!-- INFO -->
+
+    <div
+      class="
+        mt-8
+        flex
+        flex-wrap
+        items-center
+        justify-center
+        gap-3
+      "
+    >
+
+      <span
+        class="
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2.5
+          text-sm
+          font-bold
+          text-slate-600
+          shadow-sm
+        "
+      >
+
+        <i
+          data-lucide="images"
+          class="h-4 w-4 text-green-700"
+        ></i>
+
+        Galeri Foto
+
+      </span>
+
+
+      <span
+        class="
+          inline-flex
+          items-center
+          gap-2
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2.5
+          text-sm
+          font-bold
+          text-slate-600
+          shadow-sm
+        "
+      >
+
+        <i
+          data-lucide="video"
+          class="h-4 w-4 text-green-700"
+        ></i>
+
+        Galeri Video
+
+      </span>
+
     </div>
 
   </div>
+
 </section>
 
+<!-- =====================================================
+     GALERI FOTO
+===================================================== -->
 
-<!-- ================= PAPAR ALBUM ================= -->
-<section id="albumSection"
-         class="max-w-7xl mx-auto px-6 mt-12 hidden">
+<section
+  id="folderSection"
+  class="
+    mx-auto
+    max-w-7xl
+    px-6
+    py-16
+    md:py-20
+  "
+>
 
-  <div class="flex justify-between items-center mb-6">
-    <h3 id="tajukAlbum"
-        class="text-xl font-bold text-green-900"></h3>
+  <!-- ================= SECTION HEADER ================= -->
 
-    <button onclick="tutupAlbum()"
-            class="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700">
-      ← Kembali
+  <div
+    class="
+      mb-10
+      flex
+      flex-col
+      gap-4
+      md:flex-row
+      md:items-end
+      md:justify-between
+    "
+  >
+
+    <div>
+
+      <div
+        class="
+          mb-3
+          inline-flex
+          items-center
+          gap-2
+          text-sm
+          font-extrabold
+          text-green-700
+        "
+      >
+
+        <i
+          data-lucide="images"
+          class="h-4 w-4"
+        ></i>
+
+        Koleksi Foto
+
+      </div>
+
+      <h2
+        class="
+          text-2xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-3xl
+        "
+      >
+        Galeri Aktiviti
+      </h2>
+
+      <p
+        class="
+          mt-3
+          max-w-2xl
+          text-sm
+          leading-7
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Pilih album untuk melihat koleksi foto
+        program dan aktiviti Pengakap Daerah Baling.
+      </p>
+
+    </div>
+
+
+    <div
+      class="
+        inline-flex
+        w-fit
+        items-center
+        gap-2
+        rounded-full
+        bg-green-50
+        px-4
+        py-2
+        text-xs
+        font-extrabold
+        text-green-700
+      "
+    >
+
+      <i
+        data-lucide="folder-open"
+        class="h-4 w-4"
+      ></i>
+
+      2 Album
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= ALBUM GRID ================= -->
+
+  <div
+    class="
+      grid
+      gap-6
+      md:grid-cols-2
+    "
+  >
+
+
+    <!-- ================= ALBUM 1 ================= -->
+
+    <button
+      type="button"
+      onclick="bukaAlbum('anugerah-2025')"
+      class="
+        group
+        overflow-hidden
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        text-left
+        shadow-sm
+        transition
+        duration-300
+        hover:-translate-y-1
+        hover:border-green-200
+        hover:shadow-xl
+      "
+    >
+
+      <div
+        class="
+          relative
+          overflow-hidden
+          bg-gradient-to-br
+          from-green-800
+          to-green-950
+          p-7
+          text-white
+        "
+      >
+
+        <div
+          class="
+            absolute
+            -right-10
+            -top-10
+            h-36
+            w-36
+            rounded-full
+            bg-white/10
+          "
+        ></div>
+
+        <div
+          class="
+            relative
+            flex
+            items-start
+            justify-between
+            gap-4
+          "
+        >
+
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              items-center
+              justify-center
+              rounded-2xl
+              bg-white/15
+              backdrop-blur
+            "
+          >
+
+            <i
+              data-lucide="award"
+              class="h-7 w-7"
+            ></i>
+
+          </div>
+
+          <span
+            class="
+              rounded-full
+              bg-amber-400
+              px-3
+              py-1.5
+              text-xs
+              font-extrabold
+              text-amber-950
+            "
+          >
+            2025
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="p-7">
+
+        <h3
+          class="
+            text-lg
+            font-extrabold
+            leading-7
+            text-slate-900
+            transition
+            group-hover:text-green-800
+          "
+        >
+          Majlis Anugerah Ketua Pengakap Negara 2025
+        </h3>
+
+
+        <div
+          class="
+            mt-5
+            space-y-3
+            text-sm
+            text-slate-600
+          "
+        >
+
+          <div
+            class="
+              flex
+              items-center
+              gap-3
+            "
+          >
+
+            <i
+              data-lucide="calendar"
+              class="
+                h-4
+                w-4
+                shrink-0
+                text-green-700
+              "
+            ></i>
+
+            <span>
+              16 Disember 2025
+            </span>
+
+          </div>
+
+
+          <div
+            class="
+              flex
+              items-center
+              gap-3
+            "
+          >
+
+            <i
+              data-lucide="map-pin"
+              class="
+                h-4
+                w-4
+                shrink-0
+                text-green-700
+              "
+            ></i>
+
+            <span>
+              Dewan Iltizam, PPD Baling
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="
+            mt-7
+            flex
+            items-center
+            justify-between
+            border-t
+            border-slate-100
+            pt-5
+          "
+        >
+
+          <span
+            class="
+              text-sm
+              font-extrabold
+              text-green-700
+            "
+          >
+            Buka Album
+          </span>
+
+          <span
+            class="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              bg-green-50
+              text-green-700
+              transition
+              group-hover:bg-green-700
+              group-hover:text-white
+            "
+          >
+
+            <i
+              data-lucide="arrow-right"
+              class="h-4 w-4"
+            ></i>
+
+          </span>
+
+        </div>
+
+      </div>
+
     </button>
-  </div>
 
-  <div id="gambarContainer"
-       class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+    <!-- ================= ALBUM 2 ================= -->
+
+    <button
+      type="button"
+      onclick="bukaAlbum('pengujian-2025')"
+      class="
+        group
+        overflow-hidden
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        text-left
+        shadow-sm
+        transition
+        duration-300
+        hover:-translate-y-1
+        hover:border-green-200
+        hover:shadow-xl
+      "
+    >
+
+      <div
+        class="
+          relative
+          overflow-hidden
+          bg-gradient-to-br
+          from-amber-500
+          to-amber-700
+          p-7
+          text-white
+        "
+      >
+
+        <div
+          class="
+            absolute
+            -right-10
+            -top-10
+            h-36
+            w-36
+            rounded-full
+            bg-white/10
+          "
+        ></div>
+
+        <div
+          class="
+            relative
+            flex
+            items-start
+            justify-between
+            gap-4
+          "
+        >
+
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              items-center
+              justify-center
+              rounded-2xl
+              bg-white/15
+              backdrop-blur
+            "
+          >
+
+            <i
+              data-lucide="tent-tree"
+              class="h-7 w-7"
+            ></i>
+
+          </div>
+
+          <span
+            class="
+              rounded-full
+              bg-white/90
+              px-3
+              py-1.5
+              text-xs
+              font-extrabold
+              text-amber-800
+            "
+          >
+            2025
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="p-7">
+
+        <h3
+          class="
+            text-lg
+            font-extrabold
+            leading-7
+            text-slate-900
+            transition
+            group-hover:text-green-800
+          "
+        >
+          Kem Pengujian Lencana Pengakap Daerah Baling 2025
+        </h3>
+
+
+        <div
+          class="
+            mt-5
+            space-y-3
+            text-sm
+            text-slate-600
+          "
+        >
+
+          <div
+            class="
+              flex
+              items-center
+              gap-3
+            "
+          >
+
+            <i
+              data-lucide="calendar"
+              class="
+                h-4
+                w-4
+                shrink-0
+                text-green-700
+              "
+            ></i>
+
+            <span>
+              4 – 6 Disember 2025
+            </span>
+
+          </div>
+
+
+          <div
+            class="
+              flex
+              items-center
+              gap-3
+            "
+          >
+
+            <i
+              data-lucide="map-pin"
+              class="
+                h-4
+                w-4
+                shrink-0
+                text-green-700
+              "
+            ></i>
+
+            <span>
+              Pusat Kokurikulum Baling
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="
+            mt-7
+            flex
+            items-center
+            justify-between
+            border-t
+            border-slate-100
+            pt-5
+          "
+        >
+
+          <span
+            class="
+              text-sm
+              font-extrabold
+              text-green-700
+            "
+          >
+            Buka Album
+          </span>
+
+          <span
+            class="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              bg-green-50
+              text-green-700
+              transition
+              group-hover:bg-green-700
+              group-hover:text-white
+            "
+          >
+
+            <i
+              data-lucide="arrow-right"
+              class="h-4 w-4"
+            ></i>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </button>
+
+  </div>
 
 </section>
 
-</div>
 
-<!-- ================= GALERI VIDEO ================= -->
-<section id="videoSection"
-         class="max-w-6xl mx-auto px-6 mt-16 mb-20">
+<!-- =====================================================
+     PAPAR ALBUM
+===================================================== -->
+
+<section
+  id="albumSection"
+  class="
+    mx-auto
+    hidden
+    max-w-7xl
+    px-6
+    py-16
+    md:py-20
+  "
+>
+
+  <!-- ================= ALBUM HEADER ================= -->
+
+  <div
+    class="
+      mb-10
+      rounded-3xl
+      border
+      border-slate-200
+      bg-white
+      p-6
+      shadow-sm
+      md:p-8
+    "
+  >
+
+    <div
+      class="
+        flex
+        flex-col
+        gap-6
+        md:flex-row
+        md:items-center
+        md:justify-between
+      "
+    >
+
+      <div class="flex items-start gap-4">
+
+        <div
+          class="
+            flex
+            h-12
+            w-12
+            shrink-0
+            items-center
+            justify-center
+            rounded-2xl
+            bg-green-100
+            text-green-700
+          "
+        >
+
+          <i
+            data-lucide="images"
+            class="h-6 w-6"
+          ></i>
+
+        </div>
 
 
-  <h3 class="text-3xl font-bold text-green-900 text-center mb-12">
-    🎬 Galeri Video
-  </h3>
+        <div>
 
-  <div class="grid md:grid-cols-2 gap-12 justify-center">
+          <p
+            class="
+              mb-1
+              text-xs
+              font-extrabold
+              uppercase
+              tracking-[0.14em]
+              text-green-700
+            "
+          >
+            Galeri Foto
+          </p>
 
-    <!-- VIDEO 1 : TIKTOK -->
-    <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2
+            id="tajukAlbum"
+            class="
+              text-xl
+              font-extrabold
+              leading-8
+              text-slate-900
+              sm:text-2xl
+            "
+          ></h2>
 
-      <h4 class="text-lg font-semibold text-green-900 text-center mb-6">
-        Majlis Anugerah Ketua Pengakap Negara
-      </h4>
+          <p
+            class="
+              mt-2
+              text-sm
+              leading-6
+              text-slate-500
+            "
+          >
+            Klik pada mana-mana gambar untuk paparan penuh.
+          </p>
 
-      <div class="flex justify-center">
-        <iframe 
-          src="https://www.tiktok.com/embed/7584413020286160148"
-          class="w-full max-w-md rounded-lg"
-          style="height: 720px;"
-          allowfullscreen>
-        </iframe>
+        </div>
+
       </div>
+
+
+      <!-- BACK BUTTON -->
+
+      <button
+        type="button"
+        onclick="tutupAlbum()"
+        class="
+          btn
+          inline-flex
+          w-fit
+          items-center
+          justify-center
+          gap-2
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          px-5
+          py-3
+          text-sm
+          font-extrabold
+          text-slate-700
+          shadow-sm
+          hover:border-green-200
+          hover:bg-green-50
+          hover:text-green-800
+        "
+      >
+
+        <i
+          data-lucide="arrow-left"
+          class="h-4 w-4"
+        ></i>
+
+        Kembali ke Aktiviti
+
+      </button>
 
     </div>
 
-    <!-- VIDEO 2 : FACEBOOK -->
-    <div class="bg-white rounded-xl shadow-lg p-6">
+  </div>
 
-      <h4 class="text-lg font-semibold text-green-900 text-center mb-6">
-        Kem Pengujian Lencana 2025
-      </h4>
 
-      <div class="flex justify-center">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=720&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F25603755729313218%2F&show_text=false&width=400"
-          class="w-full max-w-md rounded-lg"
-          style="height: 720px;"
-          scrolling="no"
-          frameborder="0"
-          allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
+  <!-- ================= IMAGE GRID ================= -->
+
+  <div
+    id="gambarContainer"
+    class="
+      grid
+      grid-cols-1
+      gap-5
+      sm:grid-cols-2
+      lg:grid-cols-3
+      xl:grid-cols-4
+    "
+  ></div>
+
+</section>
+
+<!-- =====================================================
+     GALERI VIDEO
+===================================================== -->
+
+<section
+  id="videoSection"
+  class="
+    border-t
+    border-slate-200
+    bg-white
+  "
+>
+
+  <div
+    class="
+      mx-auto
+      max-w-7xl
+      px-6
+      py-16
+      md:py-20
+    "
+  >
+
+    <!-- ================= SECTION HEADER ================= -->
+
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+
+      <div
+        class="
+          mx-auto
+          mb-4
+          inline-flex
+          items-center
+          gap-2
+          rounded-full
+          bg-green-50
+          px-4
+          py-2
+          text-xs
+          font-extrabold
+          uppercase
+          tracking-[0.14em]
+          text-green-700
+        "
+      >
+
+        <i
+          data-lucide="video"
+          class="h-4 w-4"
+        ></i>
+
+        Dokumentasi Video
+
       </div>
+
+
+      <h2
+        class="
+          text-2xl
+          font-extrabold
+          tracking-tight
+          text-slate-900
+          sm:text-3xl
+        "
+      >
+        Galeri Video
+      </h2>
+
+
+      <p
+        class="
+          mt-4
+          text-sm
+          leading-7
+          text-slate-600
+          sm:text-base
+        "
+      >
+        Saksikan sorotan program dan aktiviti
+        Persekutuan Pengakap Daerah Baling.
+      </p>
+
+    </div>
+
+
+    <!-- ================= VIDEO GRID ================= -->
+
+    <div
+      class="
+        grid
+        gap-8
+        lg:grid-cols-2
+      "
+    >
+
+
+      <!-- ================= VIDEO 1 ================= -->
+
+      <article
+        class="
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-slate-50
+          shadow-sm
+        "
+      >
+
+        <div class="border-b border-slate-200 bg-white p-6">
+
+          <div class="flex items-start gap-4">
+
+            <div
+              class="
+                flex
+                h-11
+                w-11
+                shrink-0
+                items-center
+                justify-center
+                rounded-2xl
+                bg-slate-900
+                text-white
+              "
+            >
+
+              <i
+                data-lucide="play"
+                class="h-5 w-5"
+              ></i>
+
+            </div>
+
+
+            <div>
+
+              <p
+                class="
+                  text-xs
+                  font-extrabold
+                  uppercase
+                  tracking-wider
+                  text-slate-400
+                "
+              >
+                Sorotan Aktiviti
+              </p>
+
+              <h3
+                class="
+                  mt-1
+                  font-extrabold
+                  leading-6
+                  text-slate-900
+                "
+              >
+                Majlis Anugerah Ketua Pengakap Negara
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="
+            flex
+            justify-center
+            bg-slate-100
+            p-4
+            sm:p-6
+          "
+        >
+
+          <iframe
+            src="https://www.tiktok.com/embed/7584413020286160148"
+            title="Majlis Anugerah Ketua Pengakap Negara"
+            class="
+              w-full
+              max-w-[400px]
+              rounded-2xl
+              bg-white
+            "
+            style="height: 720px;"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- ================= VIDEO 2 ================= -->
+
+      <article
+        class="
+          overflow-hidden
+          rounded-3xl
+          border
+          border-slate-200
+          bg-slate-50
+          shadow-sm
+        "
+      >
+
+        <div class="border-b border-slate-200 bg-white p-6">
+
+          <div class="flex items-start gap-4">
+
+            <div
+              class="
+                flex
+                h-11
+                w-11
+                shrink-0
+                items-center
+                justify-center
+                rounded-2xl
+                bg-blue-600
+                text-white
+              "
+            >
+
+              <i
+                data-lucide="play"
+                class="h-5 w-5"
+              ></i>
+
+            </div>
+
+
+            <div>
+
+              <p
+                class="
+                  text-xs
+                  font-extrabold
+                  uppercase
+                  tracking-wider
+                  text-slate-400
+                "
+              >
+                Sorotan Aktiviti
+              </p>
+
+              <h3
+                class="
+                  mt-1
+                  font-extrabold
+                  leading-6
+                  text-slate-900
+                "
+              >
+                Kem Pengujian Lencana 2025
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="
+            flex
+            justify-center
+            bg-slate-100
+            p-4
+            sm:p-6
+          "
+        >
+
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?height=720&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F25603755729313218%2F&show_text=false&width=400"
+            title="Kem Pengujian Lencana 2025"
+            class="
+              w-full
+              max-w-[400px]
+              rounded-2xl
+              bg-white
+            "
+            style="height: 720px;"
+            scrolling="no"
+            frameborder="0"
+            loading="lazy"
+            allowfullscreen="true"
+            allow="
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              picture-in-picture;
+              web-share
+            "
+          ></iframe>
+
+        </div>
+
+      </article>
 
     </div>
 
@@ -171,180 +1786,319 @@
 
 </section>
 
-<footer class="bg-gray-500 text-white sticky top-0 z-50 shadow">
-  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-    <div class="flex items-center gap-4">
-      <img src="assets/logo.png" class="h-12" alt="Logo">
-      <div>
-        <p class="text-xs uppercase opacity-80">Portal Rasmi</p>
-        <p class="font-semibold text-base">
-          Persekutuan Pengakap Daerah Baling
-        </p>
-        <p class="text-xs italic opacity-80">
-          Bersedia · Berkhidmat
-        </p>
+<footer id="footer" class="bg-slate-900 text-slate-300">
+
+  <div
+    class="
+      mx-auto
+      grid
+      max-w-7xl
+      gap-8
+      px-5
+      py-10
+      md:grid-cols-[1.4fr_1fr_1fr]
+      lg:px-8
+    "
+  >
+
+    <!-- BRAND -->
+    <div>
+
+      <div class="flex items-center gap-3">
+
+        <img
+          src="assets/logo.png"
+          alt="Logo Persekutuan Pengakap Daerah Baling"
+          class="h-12 w-12 object-contain"
+        >
+
+        <div>
+
+          <h2 class="font-extrabold text-white">
+            Persekutuan Pengakap Daerah Baling
+          </h2>
+
+          <p class="mt-1 text-xs font-semibold text-amber-400">
+            Bersedia • Berkhidmat
+          </p>
+
+        </div>
+
       </div>
+
+      <p class="mt-4 max-w-md text-sm leading-6 text-slate-400">
+        Portal rasmi bagi perkongsian maklumat, pengurusan,
+        program dan aktiviti kepengakapan di Daerah Baling.
+      </p>
+
     </div>
 
-    <div class="text-sm opacity-80 text-center md:text-right">
-      © 2026 Persekutuan Pengakap Daerah Baling  
-      <br class="hidden md:block">
-      Hak Cipta Terpelihara
+
+    <!-- NAVIGATION -->
+    <div>
+
+      <h2 class="font-extrabold text-white">
+        Navigasi
+      </h2>
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a href="index.html" class="transition hover:text-white">
+          Utama
+        </a>
+
+        <a href="pengenalan.html" class="transition hover:text-white">
+          Mengenai
+        </a>
+
+        <a href="ppmbaling.html" class="transition hover:text-white">
+          Organisasi
+        </a>
+
+        <a href="aktiviti.html" class="transition hover:text-white">
+          Aktiviti
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESOURCES -->
+    <div>
+
+      <h2 class="font-extrabold text-white">
+        Pautan
+      </h2>
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a href="muatturun.html" class="transition hover:text-white">
+          Sumber & Muat Turun
+        </a>
+
+        <a href="unit.html" class="transition hover:text-white">
+          Unit & Lencana
+        </a>
+
+        <a href="hubungi.html" class="transition hover:text-white">
+          Hubungi Kami
+        </a>
+
+      </div>
+
     </div>
 
   </div>
+
+
+  <!-- COPYRIGHT -->
+  <div class="border-t border-white/10">
+
+    <div
+      class="
+        mx-auto
+        flex
+        max-w-7xl
+        flex-col
+        gap-2
+        px-5
+        py-5
+        text-xs
+        text-slate-400
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+        lg:px-8
+      "
+    >
+
+      <p>
+        © 2026 Persekutuan Pengakap Daerah Baling.
+        Hak cipta terpelihara.
+      </p>
+
+      <p>
+        Bersedia • Berkhidmat
+      </p>
+
+    </div>
+
+  </div>
+
 </footer>
 
-<script>
+<!-- =====================================================
+     IMAGE MODAL
+===================================================== -->
 
-function bukaAlbum(folder) {
+<div
+  id="imageModal"
+  class="
+    fixed
+    inset-0
+    z-[100]
+    flex
+    items-center
+    justify-center
+    bg-slate-950/95
+    p-4
+    opacity-0
+    invisible
+    backdrop-blur-sm
+    transition
+    duration-300
+  "
+  role="dialog"
+  aria-modal="true"
+  aria-label="Paparan gambar aktiviti"
+>
 
-  const folderSection = document.getElementById("folderSection");
-  const albumSection = document.getElementById("albumSection");
-  const videoSection = document.getElementById("videoSection");
-  const tajuk = document.getElementById("tajukAlbum");
-  const container = document.getElementById("gambarContainer");
+  <!-- ================= CLOSE ================= -->
 
-  folderSection.classList.add("hidden");
-  albumSection.classList.remove("hidden");
-
-  if(videoSection){
-    videoSection.classList.add("hidden");
-  }
-
-  tajuk.innerText = "Album: " + folder.replace("-", " ").toUpperCase();
-  container.innerHTML = "";
-
-  let nomborGambar = [];
-
-  if (folder === "anugerah-2025") {
-    nomborGambar = [
-      367, 369, 370, 372, 375,
-      383, 389, 393, 394, 395,
-      402, 403, 405, 406,
-      408, 409, 411, 412, 413,
-      418, 421, 423, 426,
-      432, 433, 435, 439,
-      441, 501, 502, 504, 505,
-      510, 518, 519, 522,
-      523, 543, 544, 547,
-      548, 551, 610, 611, 613,
-      617, 654
-    ];
-  }
-
-  if (folder === "pengujian-2025") {
-    nomborGambar = [
-      1,2,3,4,5,
-      6,7,8,9,10,
-      11,12,13,14,
-      15,16,17,18,19,
-      20,21,22,23,
-      24,25,26,27,
-      28,29,30,31,32,
-      33,34,35,36,
-      37,38,39,40,
-      41,42,43,44,45,
-      46,47,48,49,
-      50,51,52,53,
-      54,55,56,57,58,
-      59,60,61,62,
-      63,64,65,66,
-      67,68,69,70,71,
-      72,73,74,75,
-      76,77,78,79,
-      80,81,82,83,84,
-      85,86,87,88,
-      89,90,91,92,
-      93,94,95,96,97,
-      98,99,100
-
-    ];
-  }
-
-  nomborGambar.forEach(num => {
-    let number = num.toString().padStart(4, "0");
-    let fileName = `_DSC${number}.jpg`;
-
-    container.innerHTML += `
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="assets/images/aktiviti/${folder}/${fileName}"
-             onclick="bukaModal(this.src)"
-             class="w-full h-56 object-cover rounded cursor-pointer
-                    hover:scale-105 transition duration-300">
-      </div>
-    `;
-  });
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function tutupAlbum() {
-  document.getElementById("folderSection").classList.remove("hidden");
-  document.getElementById("albumSection").classList.add("hidden");
-
-  const videoSection = document.getElementById("videoSection");
-  if(videoSection){
-    videoSection.classList.remove("hidden");
-  }
-}
-
-/* ================= IMAGE MODAL ================= */
-
-function bukaModal(src) {
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImage");
-
-  modalImg.src = src;
-  modal.classList.remove("opacity-0", "invisible");
-}
-
-function tutupModal() {
-  const modal = document.getElementById("imageModal");
-  modal.classList.add("opacity-0", "invisible");
-}
-
-/* Tutup jika klik luar gambar */
-document.getElementById("imageModal").addEventListener("click", function(e){
-  if(e.target.id === "imageModal"){
-    tutupModal();
-  }
-});
-
-/* Tutup jika tekan ESC */
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape"){
-    tutupModal();
-  }
-});
-</script>
-
-
-<!-- ================= IMAGE MODAL ================= -->
-<div id="imageModal"
-     class="fixed inset-0 bg-black/90 flex items-center justify-center 
-            opacity-0 invisible transition duration-300 z-50">
-
-  <button onclick="tutupModal()"
-          class="absolute top-6 right-8 text-white text-4xl font-bold">
-    ✕
+  <button
+    type="button"
+    onclick="tutupModal()"
+    class="
+      absolute
+      right-4
+      top-4
+      z-20
+      flex
+      h-11
+      w-11
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-white/20
+      bg-white/10
+      text-white
+      backdrop-blur
+      transition
+      hover:bg-white
+      hover:text-slate-900
+      sm:right-6
+      sm:top-6
+    "
+    aria-label="Tutup gambar"
+  >
+    <i
+      data-lucide="x"
+      class="h-5 w-5"
+    ></i>
   </button>
 
-  <!-- PREV BUTTON -->
-  <button onclick="prevImage()"
-          class="absolute left-6 text-white text-5xl font-bold px-3">
-    ‹
+
+  <!-- ================= PREVIOUS ================= -->
+
+  <button
+    type="button"
+    onclick="prevImage()"
+    class="
+      absolute
+      left-3
+      top-1/2
+      z-20
+      flex
+      h-11
+      w-11
+      -translate-y-1/2
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-white/20
+      bg-white/10
+      text-white
+      backdrop-blur
+      transition
+      hover:bg-white
+      hover:text-slate-900
+      sm:left-6
+      sm:h-12
+      sm:w-12
+    "
+    aria-label="Gambar sebelumnya"
+  >
+    <i
+      data-lucide="chevron-left"
+      class="h-6 w-6"
+    ></i>
   </button>
 
-  <!-- NEXT BUTTON -->
-  <button onclick="nextImage()"
-          class="absolute right-6 text-white text-5xl font-bold px-3">
-    ›
+
+  <!-- ================= IMAGE ================= -->
+
+  <div
+    class="
+      flex
+      max-h-[88vh]
+      max-w-[92vw]
+      items-center
+      justify-center
+      overflow-hidden
+      rounded-2xl
+      bg-black
+      shadow-2xl
+    "
+  >
+
+    <img
+      id="modalImage"
+      src=""
+      alt="Paparan penuh aktiviti"
+      class="
+        max-h-[88vh]
+        max-w-[92vw]
+        object-contain
+      "
+    >
+
+  </div>
+
+
+  <!-- ================= NEXT ================= -->
+
+  <button
+    type="button"
+    onclick="nextImage()"
+    class="
+      absolute
+      right-3
+      top-1/2
+      z-20
+      flex
+      h-11
+      w-11
+      -translate-y-1/2
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-white/20
+      bg-white/10
+      text-white
+      backdrop-blur
+      transition
+      hover:bg-white
+      hover:text-slate-900
+      sm:right-6
+      sm:h-12
+      sm:w-12
+    "
+    aria-label="Gambar seterusnya"
+  >
+    <i
+      data-lucide="chevron-right"
+      class="h-6 w-6"
+    ></i>
   </button>
 
-  <img id="modalImage"
-       class="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl">
 </div>
 
 <script>
@@ -395,26 +2149,162 @@ function bukaAlbum(folder) {
     currentImages.push(fullPath);
 
     container.innerHTML += `
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="${fullPath}"
-             onclick="bukaModal(${index})"
-             class="w-full h-56 object-cover rounded cursor-pointer
-                    hover:scale-105 transition duration-300">
+  <button
+    type="button"
+    onclick="bukaModal(${index})"
+    class="
+      group
+      relative
+      overflow-hidden
+      rounded-2xl
+      border
+      border-slate-200
+      bg-white
+      shadow-sm
+      transition
+      duration-300
+      hover:-translate-y-1
+      hover:shadow-xl
+    "
+    aria-label="Buka gambar ${index + 1}"
+  >
+
+    <div
+      class="
+        relative
+        aspect-[4/3]
+        overflow-hidden
+        bg-slate-100
+      "
+    >
+
+      <img
+        src="${fullPath}"
+        alt="Foto aktiviti ${index + 1}"
+        loading="lazy"
+        class="
+          gallery-image
+          h-full
+          w-full
+          object-cover
+        "
+      >
+
+      <!-- HOVER OVERLAY -->
+
+      <div
+        class="
+          absolute
+          inset-0
+          flex
+          items-center
+          justify-center
+          bg-slate-950/0
+          opacity-0
+          transition
+          duration-300
+          group-hover:bg-slate-950/35
+          group-hover:opacity-100
+        "
+      >
+
+        <span
+          class="
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-white
+            text-green-700
+            shadow-lg
+          "
+        >
+
+          <i
+            data-lucide="maximize-2"
+            class="h-5 w-5"
+          ></i>
+
+        </span>
+
       </div>
-    `;
+
+    </div>
+
+
+    <div
+      class="
+        flex
+        items-center
+        justify-between
+        px-4
+        py-3
+      "
+    >
+
+      <span
+        class="
+          text-xs
+          font-bold
+          text-slate-500
+        "
+      >
+        Foto ${index + 1}
+      </span>
+
+      <span
+        class="
+          text-xs
+          font-extrabold
+          text-green-700
+        "
+      >
+        Lihat
+      </span>
+
+    </div>
+
+  </button>
+`;
   });
+
+  lucide.createIcons();
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function tutupAlbum() {
-  document.getElementById("folderSection").classList.remove("hidden");
-  document.getElementById("albumSection").classList.add("hidden");
 
-  const videoSection = document.getElementById("videoSection");
-  if(videoSection){
-    videoSection.classList.remove("hidden");
-  }
+  const folderSection =
+    document.getElementById("folderSection");
+
+  const albumSection =
+    document.getElementById("albumSection");
+
+  const videoSection =
+    document.getElementById("videoSection");
+
+
+  folderSection?.classList.remove("hidden");
+
+  albumSection?.classList.add("hidden");
+
+  videoSection?.classList.remove("hidden");
+
+
+  /* Kembali ke bahagian galeri foto */
+
+  setTimeout(() => {
+
+    folderSection?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }, 50);
+
 }
 
 /* ================= MODAL FUNCTIONS ================= */
@@ -457,32 +2347,104 @@ document.addEventListener("keydown", function(e) {
 });
 </script>
 
-<!-- ================= SCRIPT ================= -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-  btn?.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
+<!-- =====================================================
+     PORTAL UI SCRIPT
+===================================================== -->
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
 
-  const links = document.querySelectorAll("#menuDesktop a");
-  const currentPage = window.location.pathname.split("/").pop();
+document.addEventListener("DOMContentLoaded", () => {
 
-  links.forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
+  /* =====================================================
+     LUCIDE ICONS
+  ===================================================== */
 
-    if (linkPage === currentPage || 
-       (currentPage === "" && linkPage === "index.html")) {
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 
-      link.classList.add("text-yellow-300");
-    }
-  });
+
+  /* =====================================================
+     MOBILE MENU
+  ===================================================== */
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+  const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener("click", () => {
+
+      const isOpen =
+        !mobileMenu.classList.contains("hidden");
+
+      mobileMenu.classList.toggle("hidden");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
+
+    });
+
+
+    /* Tutup menu selepas pengguna pilih halaman */
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.add("hidden");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+  }
+
+
+  /* =====================================================
+     HEADER SHADOW
+  ===================================================== */
+
+  const siteHeader =
+    document.getElementById("siteHeader");
+
+
+  function updateHeader() {
+
+    if (!siteHeader) return;
+
+    siteHeader.classList.toggle(
+      "nav-scrolled",
+      window.scrollY > 10
+    );
+
+  }
+
+
+  updateHeader();
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
 
 });
+
 </script>
+
 </body>
 </html>

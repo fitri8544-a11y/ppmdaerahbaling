@@ -292,30 +292,75 @@
 
 </head>
  <body class="site-shell bg-slate-50">
-  <header id="utama"
-  class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+
+  <header
+  id="utama"
+  class="
+    sticky
+    top-0
+    z-50
+    w-full
+    border-b
+    border-slate-200/80
+    bg-white/90
+    backdrop-blur-xl
+  "
+>
 
   <nav
-    class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8"
-    aria-label="Navigasi utama">
+    class="
+      mx-auto
+      flex
+      max-w-7xl
+      items-center
+      justify-between
+      px-5
+      py-3
+      lg:px-8
+    "
+    aria-label="Navigasi utama"
+  >
 
-    <!-- BRAND -->
-    <a href="index.html"
-      class="flex items-center gap-3"
-      aria-label="Ke halaman utama">
+    <!-- =====================================================
+         BRAND
+    ====================================================== -->
+
+    <a
+      href="index.html"
+      class="flex min-w-0 items-center gap-3"
+      aria-label="Ke halaman utama"
+    >
 
       <img
         src="assets/logo.png"
         alt="Logo Persekutuan Pengakap Daerah Baling"
-        class="h-12 w-12 object-contain">
+        class="h-12 w-12 shrink-0 object-contain"
+      >
 
-      <div class="leading-tight">
+      <div class="min-w-0 leading-tight">
 
-        <p class="text-sm font-extrabold tracking-tight text-slate-900 sm:text-base">
+        <p
+          class="
+            truncate
+            text-xs
+            font-extrabold
+            tracking-tight
+            text-slate-900
+            sm:text-base
+          "
+        >
           Persekutuan Pengakap Daerah Baling
         </p>
 
-        <p class="text-xs font-medium text-slate-500">
+        <p
+          class="
+            truncate
+            text-[10px]
+            font-medium
+            text-slate-500
+            sm:text-xs
+          "
+        >
           Portal Rasmi • Bersedia • Berkhidmat
         </p>
 
@@ -324,108 +369,398 @@
     </a>
 
 
-    <!-- DESKTOP NAVIGATION -->
+    <!-- =====================================================
+         DESKTOP NAVIGATION
+    ====================================================== -->
+
     <div class="hidden items-center gap-6 lg:flex">
 
       <a
-        class="nav-link active text-sm font-semibold text-green-800"
-        href="index.html">
-        Utama
-      </a>
+  class="
+    nav-link
+    active
+    text-sm
+    font-semibold
+    text-green-800
+  "
+  href="index.html"
+  data-i18n="navHome"
+>
+  Utama
+</a>
 
-      <a
-        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
-        href="pengenalan.html">
-        Mengenai
-      </a>
+<a
+  class="
+    nav-link
+    text-sm
+    font-semibold
+    text-slate-600
+    hover:text-green-800
+  "
+  href="pengenalan.html"
+  data-i18n="navAbout"
+>
+  Mengenai
+</a>
 
-      <a
-        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
-        href="ppmbaling.html">
-        Organisasi
-      </a>
+<a
+  class="
+    nav-link
+    text-sm
+    font-semibold
+    text-slate-600
+    hover:text-green-800
+  "
+  href="ppmbaling.html"
+  data-i18n="navOrganization"
+>
+  Organisasi
+</a>
 
-      <a
-        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
-        href="aktiviti.html">
-        Aktiviti
-      </a>
+<a
+  class="
+    nav-link
+    text-sm
+    font-semibold
+    text-slate-600
+    hover:text-green-800
+  "
+  href="aktiviti.html"
+  data-i18n="navActivities"
+>
+  Aktiviti
+</a>
 
-      <a
-        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
-        href="muatturun.html">
-        Sumber
-      </a>
+<a
+  class="
+    nav-link
+    text-sm
+    font-semibold
+    text-slate-600
+    hover:text-green-800
+  "
+  href="muatturun.html"
+  data-i18n="navResources"
+>
+  Sumber
+</a>
 
-      <a
-        class="nav-link text-sm font-semibold text-slate-600 hover:text-green-800"
-        href="hubungi.html">
-        Hubungi
-      </a>
+<a
+  class="
+    nav-link
+    text-sm
+    font-semibold
+    text-slate-600
+    hover:text-green-800
+  "
+  href="hubungi.html"
+  data-i18n="navContact"
+>
+  Hubungi
+</a>
 
 
-    <!-- MOBILE BUTTON -->
+      <!-- ================= LANGUAGE SWITCH ================= -->
+
+      <div
+        id="languageSwitch"
+        class="
+          ml-1
+          flex
+          items-center
+          rounded-full
+          bg-slate-800
+          p-1
+          shadow-sm
+        "
+        aria-label="Pilihan bahasa"
+      >
+
+        <button
+          id="langBM"
+          type="button"
+          class="
+            flex
+            h-8
+            min-w-[50px]
+            items-center
+            justify-center
+            rounded-full
+            bg-yellow-400
+            px-3
+            text-xs
+            font-extrabold
+            text-slate-900
+            transition
+            duration-200
+          "
+        >
+          BM
+        </button>
+
+        <button
+          id="langEN"
+          type="button"
+          class="
+            flex
+            h-8
+            min-w-[50px]
+            items-center
+            justify-center
+            rounded-full
+            px-3
+            text-xs
+            font-extrabold
+            text-white
+            transition
+            duration-200
+            hover:bg-white/10
+          "
+        >
+          EN
+        </button>
+
+      </div>
+
+    </div>
+    <!-- ================= END DESKTOP NAVIGATION ================= -->
+
+
+    <!-- =====================================================
+         MOBILE BUTTON
+    ====================================================== -->
+
     <button
       id="menuButton"
-      class="btn rounded-lg p-2 text-green-800 lg:hidden"
+      class="
+        btn
+        ml-3
+        shrink-0
+        rounded-lg
+        p-2
+        text-green-800
+        lg:hidden
+      "
       type="button"
       aria-label="Buka menu navigasi"
-      aria-expanded="false">
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
 
-      <i data-lucide="menu"></i>
+      <i
+        data-lucide="menu"
+        class="h-6 w-6"
+      ></i>
 
     </button>
 
   </nav>
 
 
-  <!-- MOBILE MENU -->
+  <!-- =====================================================
+       MOBILE MENU
+  ====================================================== -->
+
   <div
     id="mobileMenu"
-    class="hidden border-t border-slate-100 bg-white px-5 pb-5 lg:hidden">
+    class="
+      hidden
+      border-t
+      border-slate-100
+      bg-white
+      px-5
+      pb-5
+      lg:hidden
+    "
+  >
 
     <div class="grid gap-1 pt-3">
 
       <a
-        class="rounded-lg bg-green-50 px-3 py-3 font-semibold text-green-800"
-        href="index.html">
-        Utama
-      </a>
+  class="
+    rounded-lg
+    bg-green-50
+    px-3
+    py-3
+    font-semibold
+    text-green-800
+  "
+  href="index.html"
+  data-i18n="navHome"
+>
+  Utama
+</a>
 
-      <a
-        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
-        href="pengenalan.html">
-        Mengenai
-      </a>
+<a
+  class="
+    rounded-lg
+    px-3
+    py-3
+    font-semibold
+    text-slate-700
+    hover:bg-slate-50
+  "
+  href="pengenalan.html"
+  data-i18n="navAbout"
+>
+  Mengenai
+</a>
 
-      <a
-        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
-        href="ppmbaling.html">
-        Organisasi
-      </a>
+<a
+  class="
+    rounded-lg
+    px-3
+    py-3
+    font-semibold
+    text-slate-700
+    hover:bg-slate-50
+  "
+  href="ppmbaling.html"
+  data-i18n="navOrganization"
+>
+  Organisasi
+</a>
 
-      <a
-        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
-        href="aktiviti.html">
-        Aktiviti
-      </a>
+<a
+  class="
+    rounded-lg
+    px-3
+    py-3
+    font-semibold
+    text-slate-700
+    hover:bg-slate-50
+  "
+  href="aktiviti.html"
+  data-i18n="navActivities"
+>
+  Aktiviti
+</a>
 
-      <a
-        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
-        href="muatturun.html">
-        Sumber
-      </a>
+<a
+  class="
+    rounded-lg
+    px-3
+    py-3
+    font-semibold
+    text-slate-700
+    hover:bg-slate-50
+  "
+  href="muatturun.html"
+  data-i18n="navResources"
+>
+  Sumber
+</a>
+
+<a
+  class="
+    rounded-lg
+    px-3
+    py-3
+    font-semibold
+    text-slate-700
+    hover:bg-slate-50
+  "
+  href="hubungi.html"
+  data-i18n="navContact"
+>
+  Hubungi
+</a>
 
 
-      <a
-        class="rounded-lg px-3 py-3 font-semibold text-slate-700 hover:bg-slate-50"
-        href="hubungi.html">
-        Hubungi
-      </a>
+      <!-- ================= MOBILE LANGUAGE ================= -->
+
+      <div
+        class="
+          mt-3
+          flex
+          items-center
+          justify-between
+          border-t
+          border-slate-100
+          pt-4
+        "
+      >
+
+        <span
+  class="
+    text-xs
+    font-bold
+    uppercase
+    tracking-wider
+    text-slate-500
+  "
+  data-i18n="languageLabel"
+>
+  Bahasa
+</span>
+
+
+        <div
+          id="mobileLanguageSwitch"
+          class="
+            flex
+            items-center
+            rounded-full
+            bg-slate-800
+            p-1
+            shadow-sm
+          "
+        >
+
+          <button
+            id="mobileLangBM"
+            type="button"
+            class="
+              flex
+              h-8
+              min-w-[50px]
+              items-center
+              justify-center
+              rounded-full
+              bg-yellow-400
+              px-3
+              text-xs
+              font-extrabold
+              text-slate-900
+              transition
+              duration-200
+            "
+          >
+            BM
+          </button>
+
+          <button
+            id="mobileLangEN"
+            type="button"
+            class="
+              flex
+              h-8
+              min-w-[50px]
+              items-center
+              justify-center
+              rounded-full
+              px-3
+              text-xs
+              font-extrabold
+              text-white
+              transition
+              duration-200
+              hover:bg-white/10
+            "
+          >
+            EN
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
 </header>
+
   <main>
    
     <!-- =====================================================
@@ -480,7 +815,9 @@
           class="h-4 w-4">
         </i>
 
-        PORTAL RASMI PENGAKAP DAERAH BALING
+        <span data-i18n="heroBadge">
+          PORTAL RASMI PENGAKAP DAERAH BALING
+        </span>
 
       </p>
 
@@ -488,48 +825,52 @@
       <!-- TITLE -->
 
       <h1
-        class="
-          max-w-xl
-          text-4xl
-          font-extrabold
-          leading-[1.15]
-          tracking-tight
-          text-slate-900
-          sm:text-5xl
-          lg:text-6xl
-        "
-      >
+  class="
+    max-w-xl
+    text-4xl
+    font-extrabold
+    leading-[1.15]
+    tracking-tight
+    text-slate-900
+    sm:text-5xl
+    lg:text-6xl
+  "
+>
+  <span data-i18n="heroTitle1">
+    Membina Generasi
+  </span>
 
-        Membina Generasi
+  <span
+    class="text-green-800"
+    data-i18n="heroTitle2"
+  >
+    Berdisiplin,
+  </span>
 
-        <span class="text-green-800">
-          Berdisiplin,
-        </span>
-
-        Berilmu &amp; Berbakti
-
-      </h1>
+  <span data-i18n="heroTitle3">
+    Berilmu &amp; Berbakti
+  </span>
+</h1>
 
 
       <!-- DESCRIPTION -->
 
       <p
-        class="
-          mt-6
-          max-w-xl
-          text-base
-          leading-8
-          text-slate-600
-          sm:text-lg
-        "
-      >
-
-        Portal rasmi Persekutuan Pengakap Daerah Baling
-        sebagai pusat informasi, pengurusan, dokumentasi
-        dan perkongsian aktiviti kepengakapan di peringkat
-        daerah.
-
-      </p>
+  class="
+    mt-6
+    max-w-xl
+    text-base
+    leading-8
+    text-slate-600
+    sm:text-lg
+  "
+  data-i18n="heroDescription"
+>
+  Portal rasmi Persekutuan Pengakap Daerah Baling
+  sebagai pusat informasi, pengurusan, dokumentasi
+  dan perkongsian aktiviti kepengakapan di peringkat
+  daerah.
+</p>
 
 
       <!-- BUTTONS -->
@@ -565,7 +906,9 @@
           href="pengenalan.html"
         >
 
-          Terokai Portal
+          <span data-i18n="explorePortal">
+            Terokai Portal
+          </span>
 
           <i
             data-lucide="arrow-right"
@@ -600,7 +943,9 @@
           ">
         </span>
 
-        Bersedia • Berkhidmat
+        <span data-i18n="tagline">
+          Bersedia • Berkhidmat
+        </span>
 
       </div>
 
@@ -1070,6 +1415,223 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});
     document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
     
+    /* =====================================================
+   LANGUAGE SYSTEM
+===================================================== */
+
+const translations = {
+
+  bm: {
+    navHome: "Utama",
+    navAbout: "Mengenai",
+    navOrganization: "Organisasi",
+    navActivities: "Aktiviti",
+    navResources: "Sumber",
+    navContact: "Hubungi",
+    languageLabel: "Bahasa",
+
+    heroBadge: "PORTAL RASMI PENGAKAP DAERAH BALING",
+    heroTitle1: "Membina Generasi",
+    heroTitle2: "Berdisiplin,",
+    heroTitle3: "Berilmu & Berbakti",
+    heroDescription: "Portal rasmi Persekutuan Pengakap Daerah Baling sebagai pusat informasi, pengurusan, dokumentasi dan perkongsian aktiviti kepengakapan di peringkat daerah.",
+    explorePortal: "Terokai Portal",
+    tagline: "Bersedia • Berkhidmat"
+  },
+
+  en: {
+    navHome: "Home",
+    navAbout: "About",
+    navOrganization: "Organization",
+    navActivities: "Activities",
+    navResources: "Resources",
+    navContact: "Contact",
+    languageLabel: "Language",
+
+    heroBadge: "OFFICIAL PORTAL OF BALING DISTRICT SCOUTS",
+    heroTitle1: "Building a Generation",
+    heroTitle2: "Disciplined,",
+    heroTitle3: "Knowledgeable & Dedicated",
+    heroDescription: "The official portal of the Baling District Scouts, serving as a centre for information, management, documentation and the sharing of Scouting activities at district level.",
+    explorePortal: "Explore Portal",
+    tagline: "Be Prepared • Serve"
+  }
+
+};
+
+
+/* =====================================================
+   LANGUAGE BUTTONS
+===================================================== */
+
+const langBM =
+  document.getElementById("langBM");
+
+const langEN =
+  document.getElementById("langEN");
+
+const mobileLangBM =
+  document.getElementById("mobileLangBM");
+
+const mobileLangEN =
+  document.getElementById("mobileLangEN");
+
+
+/* =====================================================
+   BUTTON STYLE
+===================================================== */
+
+function setLanguageButtonState(language) {
+
+  const bmButtons = [
+    langBM,
+    mobileLangBM
+  ].filter(Boolean);
+
+  const enButtons = [
+    langEN,
+    mobileLangEN
+  ].filter(Boolean);
+
+
+  bmButtons.forEach(button => {
+
+    button.classList.toggle(
+      "bg-yellow-400",
+      language === "bm"
+    );
+
+    button.classList.toggle(
+      "text-slate-900",
+      language === "bm"
+    );
+
+    button.classList.toggle(
+      "text-white",
+      language !== "bm"
+    );
+
+  });
+
+
+  enButtons.forEach(button => {
+
+    button.classList.toggle(
+      "bg-yellow-400",
+      language === "en"
+    );
+
+    button.classList.toggle(
+      "text-slate-900",
+      language === "en"
+    );
+
+    button.classList.toggle(
+      "text-white",
+      language !== "en"
+    );
+
+  });
+
+}
+
+
+/* =====================================================
+   CHANGE LANGUAGE
+===================================================== */
+
+function changeLanguage(language) {
+
+  const selectedLanguage =
+    translations[language]
+      ? language
+      : "bm";
+
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(element => {
+
+      const key =
+        element.dataset.i18n;
+
+      const translatedText =
+        translations[selectedLanguage][key];
+
+      if (translatedText !== undefined) {
+        element.textContent = translatedText;
+      }
+
+    });
+
+
+  /* HTML LANGUAGE */
+
+  document.documentElement.lang =
+    selectedLanguage === "en"
+      ? "en"
+      : "ms";
+
+
+  /* SAVE SELECTION */
+
+  localStorage.setItem(
+    "ppmLanguage",
+    selectedLanguage
+  );
+
+
+  /* UPDATE BUTTON */
+
+  setLanguageButtonState(
+    selectedLanguage
+  );
+
+}
+
+
+/* =====================================================
+   LANGUAGE EVENTS
+===================================================== */
+
+if (langBM) {
+  langBM.addEventListener(
+    "click",
+    () => changeLanguage("bm")
+  );
+}
+
+if (langEN) {
+  langEN.addEventListener(
+    "click",
+    () => changeLanguage("en")
+  );
+}
+
+if (mobileLangBM) {
+  mobileLangBM.addEventListener(
+    "click",
+    () => changeLanguage("bm")
+  );
+}
+
+if (mobileLangEN) {
+  mobileLangEN.addEventListener(
+    "click",
+    () => changeLanguage("en")
+  );
+}
+
+
+/* =====================================================
+   LOAD SAVED LANGUAGE
+===================================================== */
+
+const savedLanguage =
+  localStorage.getItem("ppmLanguage") || "bm";
+
+changeLanguage(savedLanguage);
+
   </script>
  </body>
 </html>
