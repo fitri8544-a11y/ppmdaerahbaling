@@ -1013,72 +1013,76 @@
 
       <!-- FLOATING CARD 1 -->
 
-      <div
+<div
+  id="schoolCard"
+  class="
+    absolute
+    -bottom-5
+    -left-2
+    rounded-xl
+    border
+    border-slate-100
+    bg-white
+    px-4
+    py-3
+    shadow-lg
+    sm:-left-8
+    cursor-pointer
+    transition
+    duration-300
+    hover:-translate-y-1
+    hover:shadow-xl
+  "
+>
+
+  <div class="flex items-center gap-3">
+
+    <div
+      class="
+        flex
+        h-9
+        w-9
+        items-center
+        justify-center
+        rounded-lg
+        bg-green-100
+        text-green-800
+      "
+    >
+
+      <i
+        data-lucide="school"
+        class="h-5 w-5"
+      ></i>
+
+    </div>
+
+    <div>
+
+      <p
+        id="schoolCount"
+        class="text-2xl font-extrabold text-slate-900"
+      >
+        --
+      </p>
+
+      <p
         class="
-          absolute
-          -bottom-5
-          -left-2
-          rounded-xl
-          border
-          border-slate-100
-          bg-white
-          px-4
-          py-3
-          shadow-lg
-          sm:-left-8
+          text-xs
+          font-semibold
+          text-slate-500
         "
       >
+        <span data-i18n="schools">
+          Sekolah
+        </span>
+      </p>
 
-        <div class="flex items-center gap-3">
+    </div>
 
-          <div
-            class="
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
-              rounded-lg
-              bg-green-100
-              text-green-800
-            "
-          >
+  </div>
 
-            <i
-              data-lucide="school"
-              class="h-5 w-5">
-            </i>
-
-          </div>
-
-          <div>
-
-            <p
-              class="
-                text-lg
-                font-extrabold
-                text-green-800
-              "
-            >
-              22+
-            </p>
-
-            <p
-              class="
-                text-xs
-                font-semibold
-                text-slate-500
-              "
-            >
-              Sekolah
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
+</div>
 
       <!-- FLOATING CARD 2 -->
 
@@ -1138,7 +1142,9 @@
                 text-slate-500
               "
             >
-              Portal Rasmi
+              <span data-i18n="officialPortal">
+                Portal Rasmi
+              </span>
             </p>
 
           </div>
@@ -1217,23 +1223,201 @@
               text-green-800
             "
           >
-            Makluman Terkini
+            <span data-i18n="latestNotice">
+              Makluman Terkini
+            </span>
+
           </span>
 
-          <span class="text-xs font-semibold text-slate-500">
+          <span
+            class="text-xs font-semibold text-slate-500"
+            data-i18n="noticeDate"
+          >
             1 September 2026
           </span>
 
         </div>
 
-        <h2 class="mt-2 text-lg font-extrabold text-slate-900">
+        <h2
+          class="mt-2 text-lg font-extrabold text-slate-900"
+          data-i18n="noticeTitle"
+        >
           Portal Rasmi Persekutuan Pengakap Daerah Baling
         </h2>
 
-        <p class="mt-1 text-sm leading-6 text-slate-600">
+        <p
+          class="mt-1 text-sm leading-6 text-slate-600"
+          data-i18n="noticeDescription"
+        >
           Portal sedang dinaik taraf bagi memberikan pengalaman
           yang lebih moden, pantas dan mudah digunakan.
         </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     MAKLUMAN TERKINI - COMPACT
+===================================================== -->
+
+<section id="makluman" class="border-y border-slate-100 bg-slate-50 py-8">
+
+  <!-- semua code Makluman Portal anda -->
+
+</section>
+
+
+<!-- =====================================================
+     MAKLUMAN 2 - JAMBORI PENGAKAP MALAYSIA 2026
+===================================================== -->
+
+<section class="bg-slate-50 pb-8">
+
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+    <!-- KAD JAMBORI -->
+
+    <div
+      class="
+        reveal
+        overflow-hidden
+        rounded-2xl
+        border
+        border-amber-200
+        bg-white
+        shadow-sm
+      "
+    >
+
+      <!-- CONTENT -->
+
+      <div class="p-5 sm:p-6">
+
+        <div class="flex items-start gap-4">
+
+          <!-- ICON -->
+
+          <div
+            class="
+              hidden
+              h-12
+              w-12
+              shrink-0
+              items-center
+              justify-center
+              rounded-xl
+              bg-amber-100
+              text-amber-700
+              sm:flex
+            "
+          >
+            <i
+              data-lucide="tent-tree"
+              class="h-6 w-6"
+            ></i>
+          </div>
+
+
+          <!-- TEXT -->
+
+          <div class="min-w-0 flex-1">
+
+            <div class="flex flex-wrap items-center gap-2">
+
+              <span
+                class="
+                  rounded-full
+                  bg-amber-100
+                  px-3
+                  py-1
+                  text-[10px]
+                  font-extrabold
+                  uppercase
+                  tracking-wider
+                  text-amber-800
+                "
+              >
+                JAMBORI 2026
+              </span>
+
+              <span data-i18n="jamboreeLabel">
+                Jambori Pengakap Malaysia
+              </span>
+
+            </div>
+
+
+            <h2
+              class="
+              mt-3
+              text-xl
+              font-extrabold
+              text-slate-900
+              sm:text-2xl
+            "
+              data-i18n="jamboreeTitle"
+            >
+              Jambori Pengakap Malaysia 2026
+            </h2>
+
+
+            <p
+              class="
+              mt-2
+              max-w-3xl
+              text-sm
+              leading-6
+              text-slate-600
+            "
+              data-i18n="jamboreeDescription"
+            >
+              Saksikan video Jambori Pengakap Malaysia 2026
+              dan hayati semangat persaudaraan, perpaduan serta
+              pengembaraan Pengakap Malaysia.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- VIDEO -->
+
+      <div
+        class="
+          border-t
+          border-amber-100
+          bg-slate-950
+        "
+      >
+
+        <video
+          class="
+            aspect-video
+            w-full
+            bg-black
+            object-contain
+          "
+          controls
+          preload="metadata"
+          playsinline
+        >
+
+          <source
+            src="assets/videos/jambori-pengakap-2026.mp4"
+            type="video/mp4"
+          >
+
+          Pelayar anda tidak menyokong paparan video.
+
+        </video>
 
       </div>
 
@@ -1280,14 +1464,20 @@
             Persekutuan Pengakap Daerah Baling
           </h2>
 
-          <p class="mt-1 text-xs font-semibold text-amber-400">
+          <p
+            class="mt-1 text-xs font-semibold text-amber-400"
+            data-i18n="footerTagline"
+          >
             Bersedia • Berkhidmat
           </p>
         </div>
 
       </div>
 
-      <p class="mt-4 max-w-md text-sm leading-6 text-slate-400">
+      <p
+        class="mt-4 max-w-md text-sm leading-6 text-slate-400"
+        data-i18n="footerDescription"
+      >
         Portal rasmi bagi perkongsian maklumat, pengurusan,
         program dan aktiviti kepengakapan di Daerah Baling.
       </p>
@@ -1298,7 +1488,10 @@
     <!-- NAVIGATION -->
     <div>
 
-      <h2 class="font-extrabold text-white">
+      <h2
+        class="font-extrabold text-white"
+        data-i18n="footerNavigation"
+      >
         Navigasi
       </h2>
 
@@ -1306,25 +1499,33 @@
 
         <a
           href="index.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="navHome"
+        >
           Utama
         </a>
 
         <a
           href="pengenalan.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="navAbout"
+        >
           Mengenai
         </a>
 
         <a
           href="ppmbaling.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="navOrganization"
+        >
           Organisasi
         </a>
 
         <a
           href="aktiviti.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="navActivities"
+        >
           Aktiviti
         </a>
 
@@ -1336,7 +1537,10 @@
     <!-- RESOURCES -->
     <div>
 
-      <h2 class="font-extrabold text-white">
+      <h2
+        class="font-extrabold text-white"
+        data-i18n="footerLinks"
+      >
         Pautan
       </h2>
 
@@ -1344,19 +1548,25 @@
 
         <a
           href="muatturun.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="footerResources"
+        >
           Sumber & Muat Turun
         </a>
 
         <a
           href="unit.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="footerUnits"
+        >
           Unit & Lencana
         </a>
 
         <a
           href="hubungi.html"
-          class="transition hover:text-white">
+          class="transition hover:text-white"
+          data-i18n="footerContact"
+        >
           Hubungi Kami
         </a>
 
@@ -1389,12 +1599,11 @@
       "
     >
 
-      <p>
-        © 2026 Persekutuan Pengakap Daerah Baling.
-        Hak cipta terpelihara.
+      <p data-i18n="copyright">
+        © 2026 Persekutuan Pengakap Daerah Baling. Hak cipta terpelihara.
       </p>
 
-      <p>
+      <p data-i18n="footerTagline">
         Bersedia • Berkhidmat
       </p>
 
@@ -1436,7 +1645,26 @@ const translations = {
     heroTitle3: "Berilmu & Berbakti",
     heroDescription: "Portal rasmi Persekutuan Pengakap Daerah Baling sebagai pusat informasi, pengurusan, dokumentasi dan perkongsian aktiviti kepengakapan di peringkat daerah.",
     explorePortal: "Terokai Portal",
-    tagline: "Bersedia • Berkhidmat"
+    tagline: "Bersedia • Berkhidmat",
+    schools: "Sekolah",
+    officialPortal: "Portal Rasmi",
+
+    latestNotice: "Makluman Terkini",
+    noticeDate: "1 September 2026",
+    noticeTitle: "Portal Rasmi Persekutuan Pengakap Daerah Baling",
+    noticeDescription: "Portal sedang dinaik taraf bagi memberikan pengalaman yang lebih moden, pantas dan mudah digunakan.",
+    footerTagline: "Bersedia • Berkhidmat",
+    footerDescription: "Portal rasmi bagi perkongsian maklumat, pengurusan, program dan aktiviti kepengakapan di Daerah Baling.",
+    footerNavigation: "Navigasi",
+    footerLinks: "Pautan",
+    footerResources: "Sumber & Muat Turun",
+    footerUnits: "Unit & Lencana",
+    footerContact: "Hubungi Kami",
+    copyright: "© 2026 Persekutuan Pengakap Daerah Baling. Hak cipta terpelihara.",
+
+    jamboreeLabel: "Jambori Pengakap Malaysia",
+    jamboreeTitle: "Jambori Pengakap Malaysia 2026",
+    jamboreeDescription: "Saksikan video Jambori Pengakap Malaysia 2026 dan hayati semangat persaudaraan, perpaduan serta pengembaraan Pengakap Malaysia.",
   },
 
   en: {
@@ -1454,7 +1682,26 @@ const translations = {
     heroTitle3: "Knowledgeable & Dedicated",
     heroDescription: "The official portal of the Baling District Scouts, serving as a centre for information, management, documentation and the sharing of Scouting activities at district level.",
     explorePortal: "Explore Portal",
-    tagline: "Be Prepared • Serve"
+    tagline: "Be Prepared • Serve",
+    schools: "Schools",
+    officialPortal: "Official Portal",
+
+    latestNotice: "Latest Notice",
+    noticeDate: "1 September 2026",
+    noticeTitle: "Official Portal of Baling District Scouts",
+    noticeDescription: "The portal is currently being upgraded to provide a more modern, faster and user-friendly experience.",
+    footerTagline: "Be Prepared • Serve",
+    footerDescription: "The official portal for sharing information, management, programmes and Scouting activities in the Baling District.",
+    footerNavigation: "Navigation",
+    footerLinks: "Links",
+    footerResources: "Resources & Downloads",
+    footerUnits: "Units & Badges",
+    footerContact: "Contact Us",
+    copyright: "© 2026 Baling District Scouts. All rights reserved.",
+
+    jamboreeLabel: "Malaysia Scout Jamboree",
+    jamboreeTitle: "Malaysia Scout Jamboree 2026",
+    jamboreeDescription: "Watch the Malaysia Scout Jamboree 2026 video and experience the spirit of friendship, unity and Scouting adventure.",
   }
 
 };
@@ -1633,5 +1880,20 @@ const savedLanguage =
 changeLanguage(savedLanguage);
 
   </script>
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+<!-- =====================================================
+     FIRESTORE ENGINE
+===================================================== -->
+
+<script src="main.js"></script>
+
  </body>
 </html>
