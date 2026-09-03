@@ -1,0 +1,18 @@
+{
+  "name": "Persekutuan Pengakap Daerah Baling",
+  "short_name": "Pengakap Baling",
+  "description": "Portal Rasmi Persekutuan Pengakap Daerah Baling",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#14532d",
+  "icons": [
+    {
+      "src": "/assets/icons/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
