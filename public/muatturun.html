@@ -362,6 +362,63 @@
         Hubungi
       </a>
 
+      <!-- ================= DATE & TIME ================= -->
+
+<div
+  class="
+    hidden
+    xl:flex
+    min-w-[175px]
+    items-center
+    gap-2
+    rounded-xl
+    border
+    border-green-100
+    bg-green-50
+    px-3
+    py-1.5
+  "
+>
+
+  <div
+    class="
+      flex
+      h-8
+      w-8
+      shrink-0
+      items-center
+      justify-center
+      rounded-lg
+      bg-green-700
+      text-white
+    "
+  >
+    <i
+      data-lucide="calendar-clock"
+      class="h-4 w-4"
+    ></i>
+  </div>
+
+  <div class="min-w-0 whitespace-nowrap leading-tight">
+
+    <div
+      id="currentDate"
+      class="text-[10px] font-semibold text-slate-500"
+    >
+      --
+    </div>
+
+    <div
+      id="currentTime"
+      class="mt-0.5 text-[11px] font-bold text-green-800 tabular-nums"
+    >
+      --
+    </div>
+
+  </div>
+
+</div>
+
     </nav>
 
 
@@ -510,6 +567,62 @@
       >
         Hubungi
       </a>
+
+      <!-- ================= MOBILE DATE & TIME ================= -->
+
+<div
+  class="
+    mt-3
+    flex
+    items-center
+    gap-3
+    rounded-xl
+    border
+    border-green-100
+    bg-green-50
+    px-4
+    py-3
+  "
+>
+
+  <div
+    class="
+      flex
+      h-10
+      w-10
+      shrink-0
+      items-center
+      justify-center
+      rounded-lg
+      bg-green-700
+      text-white
+    "
+  >
+    <i
+      data-lucide="calendar-clock"
+      class="h-5 w-5"
+    ></i>
+  </div>
+
+  <div class="leading-tight">
+
+    <div
+      id="mobileCurrentDate"
+      class="text-xs font-semibold text-slate-500"
+    >
+      --
+    </div>
+
+    <div
+      id="mobileCurrentTime"
+      class="mt-1 text-sm font-bold text-green-800 tabular-nums"
+    >
+      --
+    </div>
+
+  </div>
+
+</div>
 
     </nav>
 
@@ -3575,6 +3688,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+
+<script src="assets/datetime.js"></script>
 
 </body>
 </html>
