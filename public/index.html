@@ -528,6 +528,38 @@
 
 </div>
 
+<!-- ================= ADMIN LOGIN ================= -->
+
+<button
+  id="adminLoginBtn"
+  type="button"
+  class="
+    flex
+    h-9
+    w-9
+    shrink-0
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-slate-200
+    bg-white
+    text-slate-500
+    transition
+    duration-200
+    hover:border-green-200
+    hover:bg-green-50
+    hover:text-green-700
+  "
+  title="Login Admin"
+  aria-label="Login Admin"
+>
+  <i
+    data-lucide="lock"
+    class="h-4 w-4"
+></i>
+</button>
+
 
 <!-- ================= LANGUAGE SWITCH ================= -->
 
@@ -885,6 +917,672 @@
   </div>
 
 </header>
+
+<!-- =====================================================
+     ADMIN LOGIN MODAL
+===================================================== -->
+
+<div
+  id="adminLoginModal"
+  class="
+    fixed
+    inset-0
+    z-[100]
+    hidden
+    items-center
+    justify-center
+    bg-slate-950/60
+    px-4
+    backdrop-blur-sm
+  "
+>
+
+  <div
+    class="
+      relative
+      w-full
+      max-w-md
+      overflow-hidden
+      rounded-3xl
+      bg-white
+      shadow-2xl
+    "
+  >
+
+    <!-- HEADER -->
+
+    <div
+      class="
+        bg-gradient-to-br
+        from-green-800
+        to-green-950
+        px-7
+        py-7
+        text-white
+      "
+    >
+
+      <button
+        id="adminLoginClose"
+        type="button"
+        class="
+          absolute
+          right-5
+          top-5
+          flex
+          h-9
+          w-9
+          items-center
+          justify-center
+          rounded-full
+          bg-white/10
+          transition
+          hover:bg-white/20
+        "
+        aria-label="Tutup"
+      >
+        <i data-lucide="x" class="h-5 w-5"></i>
+      </button>
+
+      <div
+        class="
+          mb-4
+          flex
+          h-12
+          w-12
+          items-center
+          justify-center
+          rounded-2xl
+          bg-yellow-400
+          text-green-950
+        "
+      >
+        <i data-lucide="shield-check" class="h-6 w-6"></i>
+      </div>
+
+      <h2 class="text-2xl font-extrabold">
+        Login Admin
+      </h2>
+
+      <p class="mt-1 text-sm text-green-100">
+        Pengurusan Makluman Terkini
+      </p>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <form
+      id="adminLoginForm"
+      class="space-y-5 p-7"
+    >
+
+      <!-- EMAIL -->
+
+      <div>
+
+        <label
+          for="adminEmail"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          E-mel Admin
+        </label>
+
+        <input
+          id="adminEmail"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="admin@email.com"
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+      </div>
+
+
+      <!-- PASSWORD -->
+
+      <div>
+
+        <label
+          for="adminPassword"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Kata Laluan
+        </label>
+
+        <input
+          id="adminPassword"
+          type="password"
+          autocomplete="current-password"
+          required
+          placeholder="Masukkan kata laluan"
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+      </div>
+
+
+      <!-- ERROR MESSAGE -->
+
+      <div
+        id="adminLoginError"
+        class="
+          hidden
+          rounded-xl
+          border
+          border-red-200
+          bg-red-50
+          px-4
+          py-3
+          text-sm
+          font-semibold
+          text-red-700
+        "
+      ></div>
+
+
+      <!-- LOGIN BUTTON -->
+
+      <button
+        type="submit"
+        class="
+          flex
+          w-full
+          items-center
+          justify-center
+          gap-2
+          rounded-xl
+          bg-green-700
+          px-5
+          py-3
+          text-sm
+          font-bold
+          text-white
+          transition
+          hover:bg-green-800
+        "
+      >
+
+        <i data-lucide="log-in" class="h-4 w-4"></i>
+
+        Log Masuk
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     ADD NOTICE MODAL
+===================================================== -->
+
+<div
+  id="addNoticeModal"
+  class="
+    fixed
+    inset-0
+    z-[110]
+    hidden
+    items-center
+    justify-center
+    bg-slate-950/60
+    px-4
+    py-6
+    backdrop-blur-sm
+  "
+>
+
+  <div
+    class="
+      relative
+      max-h-[90vh]
+      w-full
+      max-w-lg
+      overflow-y-auto
+      rounded-3xl
+      bg-white
+      shadow-2xl
+    "
+  >
+
+    <!-- ================= HEADER ================= -->
+
+    <div
+      class="
+        relative
+        bg-gradient-to-br
+        from-green-800
+        to-green-950
+        px-7
+        py-7
+        text-white
+      "
+    >
+
+      <button
+        id="addNoticeClose"
+        type="button"
+        class="
+          absolute
+          right-5
+          top-5
+          flex
+          h-9
+          w-9
+          items-center
+          justify-center
+          rounded-full
+          bg-white/10
+          transition
+          hover:bg-white/20
+        "
+        aria-label="Tutup"
+      >
+        <i
+          data-lucide="x"
+          class="h-5 w-5"
+        ></i>
+      </button>
+
+
+      <div
+        class="
+          mb-4
+          flex
+          h-12
+          w-12
+          items-center
+          justify-center
+          rounded-2xl
+          bg-yellow-400
+          text-green-950
+        "
+      >
+        <i
+          data-lucide="megaphone"
+          class="h-6 w-6"
+        ></i>
+      </div>
+
+
+      <h2 class="text-2xl font-extrabold">
+        Tambah Makluman Terkini
+      </h2>
+
+      <p class="mt-1 text-sm text-green-100">
+        Sistem Hebahan • PPM Daerah Baling
+      </p>
+
+    </div>
+
+
+    <!-- ================= FORM ================= -->
+
+    <form
+      id="addNoticeForm"
+      class="space-y-5 p-7"
+    >
+
+      <!-- TAJUK -->
+
+      <div>
+
+        <label
+          for="noticeTitle"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Tajuk Makluman
+        </label>
+
+        <input
+          id="noticeTitle"
+          type="text"
+          maxlength="120"
+          required
+          placeholder="Contoh: Kursus Kepimpinan Pengakap 2026"
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+      </div>
+
+
+      <!-- JENIS MAKLUMAN -->
+
+      <div>
+
+        <label
+          for="noticeType"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Jenis Makluman
+        </label>
+
+        <select
+          id="noticeType"
+          required
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            bg-white
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+          <option value="">
+            Pilih jenis makluman
+          </option>
+
+          <option value="announcement">
+            Pengumuman
+          </option>
+
+          <option value="activity">
+            Aktiviti / Program
+          </option>
+
+          <option value="document">
+            Dokumen / Surat
+          </option>
+
+          <option value="link">
+            Pautan
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- KETERANGAN -->
+
+      <div>
+
+        <label
+          for="noticeDescription"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Keterangan
+        </label>
+
+        <textarea
+          id="noticeDescription"
+          rows="4"
+          maxlength="500"
+          required
+          placeholder="Masukkan keterangan ringkas makluman..."
+          class="
+            w-full
+            resize-none
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        ></textarea>
+
+      </div>
+
+
+      <!-- PAUTAN -->
+
+      <div>
+
+        <label
+          for="noticeUrl"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Pautan
+          <span class="font-medium text-slate-400">
+            (Pilihan)
+          </span>
+        </label>
+
+        <input
+          id="noticeUrl"
+          type="url"
+          placeholder="https://..."
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+        <p class="mt-2 text-xs text-slate-400">
+          Boleh digunakan untuk Google Drive, borang,
+          surat, laman web atau pautan berkaitan.
+        </p>
+
+      </div>
+
+
+      <!-- TARIKH LUPUT -->
+
+      <div>
+
+        <label
+          for="noticeExpiry"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Tarikh Luput
+        </label>
+
+        <input
+          id="noticeExpiry"
+          type="date"
+          required
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-600
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+        <p class="mt-2 text-xs text-slate-400">
+          Makluman akan disembunyikan secara automatik
+          selepas tarikh ini.
+        </p>
+
+      </div>
+
+
+      <!-- ================= SAVE BUTTON ================= -->
+
+      <button
+        type="submit"
+        class="
+          flex
+          w-full
+          items-center
+          justify-center
+          gap-2
+          rounded-xl
+          bg-green-700
+          px-5
+          py-3.5
+          text-sm
+          font-bold
+          text-white
+          shadow-lg
+          shadow-green-900/10
+          transition
+          hover:bg-green-800
+        "
+      >
+
+        <i
+          data-lucide="save"
+          class="h-4 w-4"
+        ></i>
+
+        Simpan Makluman
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     ADMIN FLOATING ADD BUTTON
+===================================================== -->
+
+<button
+  id="adminAddNoticeBtn"
+  type="button"
+  class="
+    fixed
+    bottom-7
+    right-7
+    z-[90]
+    hidden
+    h-16
+    w-16
+    items-center
+    justify-center
+    rounded-full
+    border-4
+    border-white
+    bg-green-700
+    text-yellow-300
+    shadow-2xl
+    transition
+    duration-300
+    hover:scale-110
+    hover:bg-green-800
+  "
+  title="Tambah Makluman Terkini"
+  aria-label="Tambah Makluman Terkini"
+>
+
+  <i
+    data-lucide="plus"
+    class="h-8 w-8"
+  ></i>
+
+</button>
 
   <main>
    
@@ -1331,68 +2029,277 @@
 
       <!-- CONTENT -->
 
-      <div class="min-w-0 flex-1">
+      <!-- =====================================================
+     DYNAMIC NOTICE CONTENT
+===================================================== -->
 
-        <div class="flex flex-wrap items-center gap-2">
+<div
+  id="latestNoticeContent"
+  class="min-w-0 flex-1"
+>
 
-          <span
-            class="
-              rounded-full
-              bg-green-100
-              px-3
-              py-1
-              text-[10px]
-              font-extrabold
-              uppercase
-              tracking-wider
-              text-green-800
-            "
-          >
-            <span data-i18n="latestNotice">
-              Makluman Terkini
-            </span>
+  <!-- ================= LOADING ================= -->
 
-          </span>
+  <div
+    id="noticeLoading"
+    class="flex items-center gap-3 text-sm text-slate-500"
+  >
 
-          <span
-            class="text-xs font-semibold text-slate-500"
-            data-i18n="noticeDate"
-          >
-            1 September 2026
-          </span>
+    <div
+      class="
+        h-4
+        w-4
+        animate-spin
+        rounded-full
+        border-2
+        border-green-200
+        border-t-green-700
+      "
+    ></div>
 
-        </div>
+    <span>
+      Memuatkan makluman terkini...
+    </span>
 
-        <h2
-          class="mt-2 text-lg font-extrabold text-slate-900"
-          data-i18n="noticeTitle"
-        >
-          Portal Rasmi Persekutuan Pengakap Daerah Baling
-        </h2>
+  </div>
 
-        <p
-          class="mt-1 text-sm leading-6 text-slate-600"
-          data-i18n="noticeDescription"
-        >
-          Portal sedang dinaik taraf bagi memberikan pengalaman
-          yang lebih moden, pantas dan mudah digunakan.
-        </p>
 
-      </div>
+  <!-- ================= NOTICE DATA ================= -->
+
+  <div
+    id="noticeData"
+    class="hidden"
+  >
+
+    <div class="flex flex-wrap items-center gap-2">
+
+      <span
+        id="noticeBadge"
+        class="
+          rounded-full
+          bg-green-100
+          px-3
+          py-1
+          text-[10px]
+          font-extrabold
+          uppercase
+          tracking-wider
+          text-green-800
+        "
+      >
+        Makluman Terkini
+      </span>
+
+
+      <span
+        id="noticeDisplayDate"
+        class="text-xs font-semibold text-slate-500"
+      >
+        --
+      </span>
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h2
+      id="noticeDisplayTitle"
+      class="mt-2 text-lg font-extrabold text-slate-900"
+    >
+      --
+    </h2>
+
+
+    <!-- DESCRIPTION -->
+
+    <p
+      id="noticeDisplayDescription"
+      class="mt-1 text-sm leading-6 text-slate-600"
+    >
+      --
+    </p>
+
+
+    <!-- LINK -->
+
+    <a
+      id="noticeDisplayLink"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="
+        mt-3
+        hidden
+        w-fit
+        items-center
+        gap-2
+        text-sm
+        font-bold
+        text-green-700
+        transition
+        hover:text-green-900
+      "
+    >
+
+      Lihat Selanjutnya
+
+      <i
+        data-lucide="arrow-up-right"
+        class="h-4 w-4"
+      ></i>
+
+    </a>
+
+    <!-- =====================================================
+     ADMIN NOTICE ACTIONS
+===================================================== -->
+
+<div
+  id="noticeAdminActions"
+  class="
+    mt-4
+    hidden
+    items-center
+    gap-2
+    border-t
+    border-slate-100
+    pt-3
+  "
+>
+
+  <!-- ADMIN LABEL -->
+
+  <span
+    class="
+      mr-1
+      text-[10px]
+      font-bold
+      uppercase
+      tracking-wider
+      text-slate-400
+    "
+  >
+    Admin
+  </span>
+
+
+  <!-- ================= EDIT ================= -->
+
+  <button
+    id="editNoticeBtn"
+    type="button"
+    class="
+      inline-flex
+      items-center
+      gap-1.5
+      rounded-lg
+      border
+      border-green-200
+      bg-green-50
+      px-3
+      py-2
+      text-xs
+      font-bold
+      text-green-700
+      transition
+      hover:bg-green-100
+    "
+  >
+
+    <i
+      data-lucide="pencil"
+      class="h-3.5 w-3.5"
+    ></i>
+
+    Edit
+
+  </button>
+
+
+  <!-- ================= DELETE ================= -->
+
+  <button
+    id="deleteNoticeBtn"
+    type="button"
+    class="
+      inline-flex
+      items-center
+      gap-1.5
+      rounded-lg
+      border
+      border-red-200
+      bg-red-50
+      px-3
+      py-2
+      text-xs
+      font-bold
+      text-red-700
+      transition
+      hover:bg-red-100
+    "
+  >
+
+    <i
+      data-lucide="trash-2"
+      class="h-3.5 w-3.5"
+    ></i>
+
+    Padam
+
+  </button>
+
+</div>
+
+  </div>
+
+
+  <!-- ================= NO NOTICE ================= -->
+
+  <div
+    id="noticeEmpty"
+    class="hidden"
+  >
+
+    <div class="flex flex-wrap items-center gap-2">
+
+      <span
+        class="
+          rounded-full
+          bg-slate-100
+          px-3
+          py-1
+          text-[10px]
+          font-extrabold
+          uppercase
+          tracking-wider
+          text-slate-500
+        "
+      >
+        Makluman Terkini
+      </span>
+
+    </div>
+
+    <h2
+      class="mt-2 text-lg font-extrabold text-slate-900"
+    >
+      Tiada makluman terkini
+    </h2>
+
+    <p
+      class="mt-1 text-sm leading-6 text-slate-600"
+    >
+      Tiada hebahan atau makluman aktif buat masa ini.
+    </p>
+
+  </div>
+
+</div>
 
     </div>
 
   </div>
-
-</section>
-
-<!-- =====================================================
-     MAKLUMAN TERKINI - COMPACT
-===================================================== -->
-
-<section id="makluman" class="border-y border-slate-100 bg-slate-50 py-8">
-
-  <!-- semua code Makluman Portal anda -->
 
 </section>
 
@@ -2012,13 +2919,17 @@ changeLanguage(savedLanguage);
 
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
 
 <!-- =====================================================
      FIRESTORE ENGINE
 ===================================================== -->
 
 <script src="main.js"></script>
+
 <script src="assets/datetime.js"></script>
 
  </body>
