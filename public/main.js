@@ -164,139 +164,188 @@ document.addEventListener(
 );
 
 /* =========================================================
-   ADMIN LOGIN MODAL
+   ADMIN CONTROLS
+   DESKTOP + MOBILE
+========================================================= */
+
+const mobileAdminLoginBtn =
+  document.getElementById(
+    "mobileAdminLoginBtn"
+  );
+
+const mobileAdminIconBox =
+  document.getElementById(
+    "mobileAdminIconBox"
+  );
+
+const mobileAdminTitle =
+  document.getElementById(
+    "mobileAdminTitle"
+  );
+
+const mobileAdminStatus =
+  document.getElementById(
+    "mobileAdminStatus"
+  );
+
+
+/* =========================================================
+   ADMIN LOGIN MODAL ELEMENTS
 ========================================================= */
 
 const adminLoginBtn =
-  document.getElementById("adminLoginBtn");
+  document.getElementById(
+    "adminLoginBtn"
+  );
 
 const adminLoginModal =
-  document.getElementById("adminLoginModal");
+  document.getElementById(
+    "adminLoginModal"
+  );
 
 const adminLoginClose =
-  document.getElementById("adminLoginClose");
+  document.getElementById(
+    "adminLoginClose"
+  );
 
 const adminLoginForm =
-  document.getElementById("adminLoginForm");
+  document.getElementById(
+    "adminLoginForm"
+  );
 
 const adminEmail =
-  document.getElementById("adminEmail");
+  document.getElementById(
+    "adminEmail"
+  );
 
 const adminPassword =
-  document.getElementById("adminPassword");
+  document.getElementById(
+    "adminPassword"
+  );
 
 const adminLoginError =
-  document.getElementById("adminLoginError");
+  document.getElementById(
+    "adminLoginError"
+  );
 
+
+/* =========================================================
+   OPEN ADMIN LOGIN MODAL
+========================================================= */
 
 function openAdminLoginModal() {
 
-  if (!adminLoginModal) return;
+  if (!adminLoginModal) {
 
-  adminLoginModal.classList.remove("hidden");
-  adminLoginModal.classList.add("flex");
+    console.error(
+      "adminLoginModal tidak ditemui."
+    );
 
-}
+    return;
+
+  }
 
 
-function closeAdminLoginModal() {
+  /* RESET ERROR */
 
-  if (!adminLoginModal) return;
+  if (adminLoginError) {
 
-  adminLoginModal.classList.add("hidden");
-  adminLoginModal.classList.remove("flex");
+    adminLoginError.classList.add(
+      "hidden"
+    );
+
+    adminLoginError.textContent = "";
+
+  }
+
+
+  /* CLEAR PASSWORD */
+
+  if (adminPassword) {
+
+    adminPassword.value = "";
+
+  }
+
+
+  /* SHOW MODAL */
+
+  adminLoginModal.classList.remove(
+    "hidden"
+  );
+
+  adminLoginModal.classList.add(
+    "flex"
+  );
+
+
+  /* FOCUS EMAIL */
+
+  if (adminEmail) {
+
+    setTimeout(
+      () => {
+
+        adminEmail.focus();
+
+      },
+      100
+    );
+
+  }
 
 }
 
 
 /* =========================================================
-   ADMIN LOGIN / LOGOUT BUTTON
+   CLOSE ADMIN LOGIN MODAL
 ========================================================= */
 
-if (adminLoginBtn) {
+function closeAdminLoginModal() {
 
-  adminLoginBtn.addEventListener(
-    "click",
-    async () => {
+  if (!adminLoginModal) {
 
-      /* =====================================================
-         BELUM LOGIN
-      ===================================================== */
+    return;
 
-      if (!auth.currentUser) {
-
-        openAdminLoginModal();
-
-        return;
-
-      }
+  }
 
 
-      /* =====================================================
-         SUDAH LOGIN
-      ===================================================== */
-
-      const confirmed = confirm(
-        "Log keluar daripada akaun Admin?"
-      );
-
-
-      if (!confirmed) {
-        return;
-      }
-
-
-      try {
-
-        await auth.signOut();
-
-        console.log(
-          "Admin berjaya logout."
-        );
-
-
-        /*
-          Tutup semua modal sekiranya
-          masih terbuka ketika logout.
-        */
-
-        closeAdminLoginModal();
-
-
-        if (
-          typeof closeAddNoticeModal ===
-          "function"
-        ) {
-
-          closeAddNoticeModal();
-
-        }
-
-
-        alert(
-          "Anda telah log keluar daripada akaun Admin."
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          "Ralat logout admin:",
-          error
-        );
-
-        alert(
-          "Logout tidak berjaya. Sila cuba lagi."
-        );
-
-      }
-
-    }
+  adminLoginModal.classList.add(
+    "hidden"
   );
+
+  adminLoginModal.classList.remove(
+    "flex"
+  );
+
+
+  /* RESET ERROR */
+
+  if (adminLoginError) {
+
+    adminLoginError.classList.add(
+      "hidden"
+    );
+
+    adminLoginError.textContent = "";
+
+  }
+
+
+  /* CLEAR PASSWORD */
+
+  if (adminPassword) {
+
+    adminPassword.value = "";
+
+  }
 
 }
 
+
+/* =========================================================
+   CLOSE LOGIN BUTTON
+========================================================= */
 
 if (adminLoginClose) {
 
@@ -307,8 +356,191 @@ if (adminLoginClose) {
 
 }
 
+
 /* =========================================================
-   ADMIN LOGIN
+   MOBILE MENU HELPER
+========================================================= */
+
+function closeMobileMenu() {
+
+  const mobileMenu =
+    document.getElementById(
+      "mobileMenu"
+    );
+
+  const menuButton =
+    document.getElementById(
+      "menuButton"
+    );
+
+
+  /* =====================================================
+     CLOSE MOBILE MENU
+  ===================================================== */
+
+  if (mobileMenu) {
+
+    mobileMenu.classList.add(
+      "hidden"
+    );
+
+  }
+
+
+  /* =====================================================
+     RESET MENU STATE
+  ===================================================== */
+
+  if (menuButton) {
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+
+  /* =====================================================
+     REFRESH ICONS
+  ===================================================== */
+
+  if (window.lucide) {
+
+    lucide.createIcons();
+
+  }
+
+}
+
+
+/* =========================================================
+   ADMIN LOGIN / LOGOUT ACTION
+========================================================= */
+
+async function handleAdminLoginLogout() {
+
+  /* =====================================================
+     BELUM LOGIN
+  ===================================================== */
+
+  if (!auth.currentUser) {
+
+    openAdminLoginModal();
+
+    return;
+
+  }
+
+
+  /* =====================================================
+     SUDAH LOGIN
+  ===================================================== */
+
+  const confirmed =
+    confirm(
+      "Log keluar daripada akaun Admin?"
+    );
+
+
+  if (!confirmed) {
+
+    return;
+
+  }
+
+
+  try {
+
+    /* ===================================================
+       FIREBASE LOGOUT
+    =================================================== */
+
+    await auth.signOut();
+
+
+    console.log(
+      "Admin berjaya logout."
+    );
+
+
+    /* ===================================================
+       CLOSE MODALS
+    =================================================== */
+
+    closeAdminLoginModal();
+
+
+    if (
+      typeof closeAddNoticeModal ===
+      "function"
+    ) {
+
+      closeAddNoticeModal();
+
+    }
+
+
+    /* ===================================================
+       CLOSE MOBILE MENU
+    =================================================== */
+
+    closeMobileMenu();
+
+
+    alert(
+      "Anda telah log keluar daripada akaun Admin."
+    );
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Ralat logout admin:",
+      error
+    );
+
+
+    alert(
+      "Logout tidak berjaya. Sila cuba lagi."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   DESKTOP ADMIN BUTTON
+========================================================= */
+
+if (adminLoginBtn) {
+
+  adminLoginBtn.addEventListener(
+    "click",
+    handleAdminLoginLogout
+  );
+
+}
+
+
+/* =========================================================
+   MOBILE ADMIN BUTTON
+========================================================= */
+
+if (mobileAdminLoginBtn) {
+
+  mobileAdminLoginBtn.addEventListener(
+    "click",
+    handleAdminLoginLogout
+  );
+
+}
+
+
+/* =========================================================
+   ADMIN LOGIN FORM
 ========================================================= */
 
 if (adminLoginForm) {
@@ -319,31 +551,65 @@ if (adminLoginForm) {
 
       event.preventDefault();
 
+
+      /* =====================================================
+         GET LOGIN DATA
+      ===================================================== */
+
       const email =
         adminEmail.value.trim();
 
       const password =
         adminPassword.value;
 
-      /* RESET ERROR */
 
-      adminLoginError.classList.add("hidden");
-      adminLoginError.textContent = "";
+      /* =====================================================
+         RESET ERROR
+      ===================================================== */
+
+      if (adminLoginError) {
+
+        adminLoginError.classList.add(
+          "hidden"
+        );
+
+        adminLoginError.textContent = "";
+
+      }
+
 
       try {
+
+        /* ===================================================
+           FIREBASE LOGIN
+        =================================================== */
 
         await auth.signInWithEmailAndPassword(
           email,
           password
         );
 
-        /* CLEAR PASSWORD */
+
+        /* ===================================================
+           CLEAR PASSWORD
+        =================================================== */
 
         adminPassword.value = "";
 
-        /* CLOSE LOGIN MODAL */
+
+        /* ===================================================
+           CLOSE LOGIN MODAL
+        =================================================== */
 
         closeAdminLoginModal();
+
+
+        /* ===================================================
+           CLOSE MOBILE MENU
+        =================================================== */
+
+        closeMobileMenu();
+
 
         console.log(
           "Admin berjaya login."
@@ -358,12 +624,18 @@ if (adminLoginForm) {
           error
         );
 
-        adminLoginError.textContent =
-          "E-mel atau kata laluan tidak betul.";
 
-        adminLoginError.classList.remove(
-          "hidden"
-        );
+        if (adminLoginError) {
+
+          adminLoginError.textContent =
+            "E-mel atau kata laluan tidak betul.";
+
+
+          adminLoginError.classList.remove(
+            "hidden"
+          );
+
+        }
 
       }
 
@@ -1469,15 +1741,11 @@ if (deleteNoticeBtn) {
 
 /* =========================================================
    ADMIN AUTH STATE
+   DESKTOP + MOBILE
 ========================================================= */
 
 auth.onAuthStateChanged(
   (user) => {
-
-
-    if (!adminLoginBtn) {
-      return;
-    }
 
 
     /* =====================================================
@@ -1486,43 +1754,131 @@ auth.onAuthStateChanged(
 
     if (user) {
 
-      adminLoginBtn.innerHTML = `
-        <i
-          data-lucide="shield-check"
-          class="h-4 w-4"
-        ></i>
-      `;
+
+      /* ===================================================
+         DESKTOP ADMIN
+      =================================================== */
+
+      if (adminLoginBtn) {
+
+        adminLoginBtn.innerHTML = `
+          <i
+            data-lucide="shield-check"
+            class="h-4 w-4"
+          ></i>
+        `;
 
 
-      adminLoginBtn.classList.remove(
-        "text-slate-500"
-      );
+        adminLoginBtn.classList.remove(
+          "text-slate-500"
+        );
 
 
-      adminLoginBtn.classList.add(
-        "bg-green-50",
-        "border-green-200",
-        "text-green-700"
-      );
+        adminLoginBtn.classList.add(
+          "bg-green-50",
+          "border-green-200",
+          "text-green-700"
+        );
 
 
-      adminLoginBtn.title =
-        "Admin Aktif";
+        adminLoginBtn.title =
+          "Admin Aktif";
 
 
-      adminLoginBtn.setAttribute(
-        "aria-label",
-        "Admin Aktif"
-      );
+        adminLoginBtn.setAttribute(
+          "aria-label",
+          "Admin Aktif"
+        );
+
+      }
 
 
-      /* SHOW ADD BUTTON */
+      /* ===================================================
+         MOBILE ADMIN
+      =================================================== */
+
+      if (mobileAdminLoginBtn) {
+
+        mobileAdminLoginBtn.classList.remove(
+          "border-slate-200",
+          "bg-slate-50"
+        );
+
+
+        mobileAdminLoginBtn.classList.add(
+          "border-green-200",
+          "bg-green-50"
+        );
+
+
+        mobileAdminLoginBtn.setAttribute(
+          "aria-label",
+          "Admin Aktif - Klik untuk Logout"
+        );
+
+      }
+
+
+      if (mobileAdminIconBox) {
+
+        mobileAdminIconBox.innerHTML = `
+          <i
+            data-lucide="shield-check"
+            class="h-5 w-5"
+          ></i>
+        `;
+
+
+        mobileAdminIconBox.classList.remove(
+          "bg-white",
+          "text-slate-500"
+        );
+
+
+        mobileAdminIconBox.classList.add(
+          "bg-green-700",
+          "text-white"
+        );
+
+      }
+
+
+      if (mobileAdminTitle) {
+
+        mobileAdminTitle.textContent =
+          "Admin Aktif";
+
+
+        mobileAdminTitle.classList.remove(
+          "text-slate-800"
+        );
+
+
+        mobileAdminTitle.classList.add(
+          "text-green-800"
+        );
+
+      }
+
+
+      if (mobileAdminStatus) {
+
+        mobileAdminStatus.textContent =
+          "Klik untuk log keluar";
+
+      }
+
+
+      /* ===================================================
+         SHOW ADD NOTICE
+      =================================================== */
 
       if (adminAddNoticeBtn) {
 
         adminAddNoticeBtn.classList.remove(
           "hidden"
         );
+
 
         adminAddNoticeBtn.classList.add(
           "flex"
@@ -1531,13 +1887,16 @@ auth.onAuthStateChanged(
       }
 
 
-      /* SHOW NOTICE ACTIONS */
+      /* ===================================================
+         SHOW EDIT / DELETE
+      =================================================== */
 
       if (noticeAdminActions) {
 
         noticeAdminActions.classList.remove(
           "hidden"
         );
+
 
         noticeAdminActions.classList.add(
           "flex"
@@ -1554,43 +1913,131 @@ auth.onAuthStateChanged(
 
     else {
 
-      adminLoginBtn.innerHTML = `
-        <i
-          data-lucide="lock"
-          class="h-4 w-4"
-        ></i>
-      `;
+
+      /* ===================================================
+         DESKTOP ADMIN
+      =================================================== */
+
+      if (adminLoginBtn) {
+
+        adminLoginBtn.innerHTML = `
+          <i
+            data-lucide="lock"
+            class="h-4 w-4"
+          ></i>
+        `;
 
 
-      adminLoginBtn.classList.remove(
-        "bg-green-50",
-        "border-green-200",
-        "text-green-700"
-      );
+        adminLoginBtn.classList.remove(
+          "bg-green-50",
+          "border-green-200",
+          "text-green-700"
+        );
 
 
-      adminLoginBtn.classList.add(
-        "text-slate-500"
-      );
+        adminLoginBtn.classList.add(
+          "text-slate-500"
+        );
 
 
-      adminLoginBtn.title =
-        "Login Admin";
+        adminLoginBtn.title =
+          "Login Admin";
 
 
-      adminLoginBtn.setAttribute(
-        "aria-label",
-        "Login Admin"
-      );
+        adminLoginBtn.setAttribute(
+          "aria-label",
+          "Login Admin"
+        );
+
+      }
 
 
-      /* HIDE ADD BUTTON */
+      /* ===================================================
+         MOBILE ADMIN
+      =================================================== */
+
+      if (mobileAdminLoginBtn) {
+
+        mobileAdminLoginBtn.classList.remove(
+          "border-green-200",
+          "bg-green-50"
+        );
+
+
+        mobileAdminLoginBtn.classList.add(
+          "border-slate-200",
+          "bg-slate-50"
+        );
+
+
+        mobileAdminLoginBtn.setAttribute(
+          "aria-label",
+          "Login Admin"
+        );
+
+      }
+
+
+      if (mobileAdminIconBox) {
+
+        mobileAdminIconBox.innerHTML = `
+          <i
+            data-lucide="lock"
+            class="h-5 w-5"
+          ></i>
+        `;
+
+
+        mobileAdminIconBox.classList.remove(
+          "bg-green-700",
+          "text-white"
+        );
+
+
+        mobileAdminIconBox.classList.add(
+          "bg-white",
+          "text-slate-500"
+        );
+
+      }
+
+
+      if (mobileAdminTitle) {
+
+        mobileAdminTitle.textContent =
+          "Login Admin";
+
+
+        mobileAdminTitle.classList.remove(
+          "text-green-800"
+        );
+
+
+        mobileAdminTitle.classList.add(
+          "text-slate-800"
+        );
+
+      }
+
+
+      if (mobileAdminStatus) {
+
+        mobileAdminStatus.textContent =
+          "Akses pengurusan portal";
+
+      }
+
+
+      /* ===================================================
+         HIDE ADD NOTICE
+      =================================================== */
 
       if (adminAddNoticeBtn) {
 
         adminAddNoticeBtn.classList.add(
           "hidden"
         );
+
 
         adminAddNoticeBtn.classList.remove(
           "flex"
@@ -1599,13 +2046,16 @@ auth.onAuthStateChanged(
       }
 
 
-      /* HIDE NOTICE ACTIONS */
+      /* ===================================================
+         HIDE EDIT / DELETE
+      =================================================== */
 
       if (noticeAdminActions) {
 
         noticeAdminActions.classList.add(
           "hidden"
         );
+
 
         noticeAdminActions.classList.remove(
           "flex"
@@ -1616,8 +2066,14 @@ auth.onAuthStateChanged(
     }
 
 
+    /* =====================================================
+       REFRESH ICONS
+    ===================================================== */
+
     if (window.lucide) {
+
       lucide.createIcons();
+
     }
 
   }

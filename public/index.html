@@ -304,7 +304,11 @@
 </head>
  <body class="site-shell bg-slate-50">
 
-  <header
+<!-- =====================================================
+     SITE HEADER
+====================================================== -->
+
+<header
   id="utama"
   class="
     sticky
@@ -313,10 +317,14 @@
     w-full
     border-b
     border-slate-200/80
-    bg-white/90
+    bg-white/95
     backdrop-blur-xl
   "
 >
+
+  <!-- =====================================================
+       MAIN HEADER BAR
+  ====================================================== -->
 
   <nav
     class="
@@ -325,12 +333,15 @@
       max-w-7xl
       items-center
       justify-between
-      px-5
+      gap-4
+      px-4
       py-3
+      sm:px-5
       lg:px-8
     "
     aria-label="Navigasi utama"
   >
+
 
     <!-- =====================================================
          BRAND
@@ -338,41 +349,103 @@
 
     <a
       href="index.html"
-      class="flex min-w-0 items-center gap-3"
+      class="
+        flex
+        min-w-0
+        flex-1
+        items-center
+        gap-2.5
+        sm:gap-3
+        lg:flex-none
+        lg:shrink-0
+      "
       aria-label="Ke halaman utama"
     >
 
       <img
         src="assets/logo.png"
         alt="Logo Persekutuan Pengakap Daerah Baling"
-        class="h-12 w-12 shrink-0 object-contain"
+        class="
+          h-10
+          w-10
+          shrink-0
+          object-contain
+          sm:h-12
+          sm:w-12
+        "
       >
 
-      <div class="min-w-0 leading-tight">
+
+      <div
+        class="
+          min-w-0
+          leading-tight
+        "
+      >
+
+        <!-- DESKTOP / TABLET NAME -->
 
         <p
           class="
-            truncate
-            text-xs
+            hidden
+            whitespace-nowrap
+            text-sm
             font-extrabold
             tracking-tight
             text-slate-900
-            sm:text-base
+            sm:block
+            lg:text-base
           "
         >
           Persekutuan Pengakap Daerah Baling
         </p>
 
+
+        <!-- MOBILE NAME -->
+
         <p
           class="
             truncate
+            text-[13px]
+            font-extrabold
+            tracking-tight
+            text-slate-900
+            sm:hidden
+          "
+        >
+          Pengakap Daerah Baling
+        </p>
+
+
+        <!-- DESKTOP / TABLET SUBTITLE -->
+
+        <p
+          class="
+            hidden
+            whitespace-nowrap
             text-[10px]
             font-medium
             text-slate-500
-            sm:text-xs
+            sm:block
+            lg:text-xs
           "
         >
           Portal Rasmi • Bersedia • Berkhidmat
+        </p>
+
+
+        <!-- MOBILE SUBTITLE -->
+
+        <p
+          class="
+            truncate
+            text-[9px]
+            font-medium
+            text-slate-500
+            sm:hidden
+          "
+        >
+          Portal Rasmi
         </p>
 
       </div>
@@ -381,265 +454,358 @@
 
 
     <!-- =====================================================
-         DESKTOP NAVIGATION
+         DESKTOP AREA
     ====================================================== -->
 
-    <div class="hidden items-center gap-6 lg:flex">
-
-      <a
-  class="
-    nav-link
-    active
-    text-sm
-    font-semibold
-    text-green-800
-  "
-  href="index.html"
-  data-i18n="navHome"
->
-  Utama
-</a>
-
-<a
-  class="
-    nav-link
-    text-sm
-    font-semibold
-    text-slate-600
-    hover:text-green-800
-  "
-  href="pengenalan.html"
-  data-i18n="navAbout"
->
-  Mengenai
-</a>
-
-<a
-  class="
-    nav-link
-    text-sm
-    font-semibold
-    text-slate-600
-    hover:text-green-800
-  "
-  href="ppmbaling.html"
-  data-i18n="navOrganization"
->
-  Organisasi
-</a>
-
-<a
-  class="
-    nav-link
-    text-sm
-    font-semibold
-    text-slate-600
-    hover:text-green-800
-  "
-  href="aktiviti.html"
-  data-i18n="navActivities"
->
-  Aktiviti
-</a>
-
-<a
-  class="
-    nav-link
-    text-sm
-    font-semibold
-    text-slate-600
-    hover:text-green-800
-  "
-  href="muatturun.html"
-  data-i18n="navResources"
->
-  Sumber
-</a>
-
-<a
-  class="
-    nav-link
-    text-sm
-    font-semibold
-    text-slate-600
-    hover:text-green-800
-  "
-  href="hubungi.html"
-  data-i18n="navContact"
->
-  Hubungi
-</a>
-
-
-<!-- ================= DATE & TIME ================= -->
-
-<div
-  class="
-    hidden
-    xl:flex
-    min-w-[175px]
-    items-center
-    gap-2
-    rounded-xl
-    border
-    border-green-100
-    bg-green-50
-    px-3
-    py-1.5
-  "
->
-
-  <div
-    class="
-      flex
-      h-8
-      w-8
-      shrink-0
-      items-center
-      justify-center
-      rounded-lg
-      bg-green-700
-      text-white
-    "
-  >
-    <i
-      data-lucide="calendar-clock"
-      class="h-4 w-4"
-    ></i>
-  </div>
-
-  <div class="min-w-0 whitespace-nowrap leading-tight">
-
     <div
-      id="currentDate"
-      class="text-[10px] font-semibold text-slate-500"
+      class="
+        hidden
+        min-w-0
+        flex-1
+        items-center
+        justify-end
+        lg:flex
+      "
     >
-      --
-    </div>
-
-    <div
-      id="currentTime"
-      class="mt-0.5 text-[11px] font-bold text-green-800 tabular-nums"
-    >
-      --
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ================= ADMIN LOGIN ================= -->
-
-<button
-  id="adminLoginBtn"
-  type="button"
-  class="
-    flex
-    h-9
-    w-9
-    shrink-0
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-slate-200
-    bg-white
-    text-slate-500
-    transition
-    duration-200
-    hover:border-green-200
-    hover:bg-green-50
-    hover:text-green-700
-  "
-  title="Login Admin"
-  aria-label="Login Admin"
->
-  <i
-    data-lucide="lock"
-    class="h-4 w-4"
-></i>
-</button>
 
 
-<!-- ================= LANGUAGE SWITCH ================= -->
+      <!-- ===================================================
+           DESKTOP NAVIGATION
+      ==================================================== -->
 
       <div
-        id="languageSwitch"
         class="
-          ml-1
+          ml-10
           flex
           items-center
-          rounded-full
-          bg-slate-800
-          p-1
-          shadow-sm
+          gap-5
+          xl:ml-12
+          xl:gap-6
         "
-        aria-label="Pilihan bahasa"
       >
 
-        <button
-          id="langBM"
-          type="button"
+        <a
           class="
-            flex
-            h-8
-            min-w-[50px]
-            items-center
-            justify-center
-            rounded-full
-            bg-yellow-400
-            px-3
-            text-xs
-            font-extrabold
-            text-slate-900
+            nav-link
+            active
+            whitespace-nowrap
+            text-sm
+            font-semibold
+            text-green-800
+          "
+          href="index.html"
+          data-i18n="navHome"
+        >
+          Utama
+        </a>
+
+
+        <a
+          class="
+            nav-link
+            whitespace-nowrap
+            text-sm
+            font-semibold
+            text-slate-600
             transition
-            duration-200
+            hover:text-green-800
+          "
+          href="pengenalan.html"
+          data-i18n="navAbout"
+        >
+          Mengenai
+        </a>
+
+
+        <a
+          class="
+            nav-link
+            whitespace-nowrap
+            text-sm
+            font-semibold
+            text-slate-600
+            transition
+            hover:text-green-800
+          "
+          href="ppmbaling.html"
+          data-i18n="navOrganization"
+        >
+          Organisasi
+        </a>
+
+
+        <a
+          class="
+            nav-link
+            whitespace-nowrap
+            text-sm
+            font-semibold
+            text-slate-600
+            transition
+            hover:text-green-800
+          "
+          href="aktiviti.html"
+          data-i18n="navActivities"
+        >
+          Aktiviti
+        </a>
+
+
+        <a
+          class="
+            nav-link
+            whitespace-nowrap
+            text-sm
+            font-semibold
+            text-slate-600
+            transition
+            hover:text-green-800
+          "
+          href="muatturun.html"
+          data-i18n="navResources"
+        >
+          Sumber
+        </a>
+
+
+        <a
+          class="
+            nav-link
+            whitespace-nowrap
+            text-sm
+            font-semibold
+            text-slate-600
+            transition
+            hover:text-green-800
+          "
+          href="hubungi.html"
+          data-i18n="navContact"
+        >
+          Hubungi
+        </a>
+
+      </div>
+
+
+      <!-- ===================================================
+           DESKTOP UTILITIES
+      ==================================================== -->
+
+      <div
+        class="
+          ml-5
+          flex
+          shrink-0
+          items-center
+          gap-3
+          xl:ml-6
+        "
+      >
+
+
+        <!-- ================= DATE & TIME ================= -->
+
+        <div
+          class="
+            hidden
+            min-w-[175px]
+            items-center
+            gap-2
+            rounded-xl
+            border
+            border-green-100
+            bg-green-50
+            px-3
+            py-1.5
+            xl:flex
           "
         >
-          BM
-        </button>
+
+          <div
+            class="
+              flex
+              h-8
+              w-8
+              shrink-0
+              items-center
+              justify-center
+              rounded-lg
+              bg-green-700
+              text-white
+            "
+          >
+
+            <i
+              data-lucide="calendar-clock"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="
+              min-w-0
+              whitespace-nowrap
+              leading-tight
+            "
+          >
+
+            <div
+              id="currentDate"
+              class="
+                text-[10px]
+                font-semibold
+                text-slate-500
+              "
+            >
+              --
+            </div>
+
+
+            <div
+              id="currentTime"
+              class="
+                mt-0.5
+                text-[11px]
+                font-bold
+                text-green-800
+                tabular-nums
+              "
+            >
+              --
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= ADMIN LOGIN ================= -->
 
         <button
-          id="langEN"
+          id="adminLoginBtn"
           type="button"
           class="
             flex
-            h-8
-            min-w-[50px]
+            h-9
+            w-9
+            shrink-0
             items-center
             justify-center
             rounded-full
-            px-3
-            text-xs
-            font-extrabold
-            text-white
+            border
+            border-slate-200
+            bg-white
+            text-slate-500
+            shadow-sm
             transition
             duration-200
-            hover:bg-white/10
+            hover:border-green-200
+            hover:bg-green-50
+            hover:text-green-700
           "
+          title="Login Admin"
+          aria-label="Login Admin"
         >
-          EN
+
+          <i
+            data-lucide="lock"
+            class="h-4 w-4"
+          ></i>
+
         </button>
+
+
+        <!-- ================= LANGUAGE SWITCH ================= -->
+
+        <div
+          id="languageSwitch"
+          class="
+            flex
+            items-center
+            rounded-full
+            bg-slate-800
+            p-1
+            shadow-sm
+          "
+          aria-label="Pilihan bahasa"
+        >
+
+          <button
+            id="langBM"
+            type="button"
+            class="
+              flex
+              h-8
+              min-w-[48px]
+              items-center
+              justify-center
+              rounded-full
+              bg-yellow-400
+              px-3
+              text-xs
+              font-extrabold
+              text-slate-900
+              transition
+              duration-200
+            "
+          >
+            BM
+          </button>
+
+
+          <button
+            id="langEN"
+            type="button"
+            class="
+              flex
+              h-8
+              min-w-[48px]
+              items-center
+              justify-center
+              rounded-full
+              px-3
+              text-xs
+              font-extrabold
+              text-white
+              transition
+              duration-200
+              hover:bg-white/10
+            "
+          >
+            EN
+          </button>
+
+        </div>
 
       </div>
 
     </div>
-    <!-- ================= END DESKTOP NAVIGATION ================= -->
 
 
     <!-- =====================================================
-         MOBILE BUTTON
+         MOBILE MENU BUTTON
     ====================================================== -->
 
     <button
       id="menuButton"
       class="
         btn
-        ml-3
+        flex
+        h-10
+        w-10
         shrink-0
-        rounded-lg
-        p-2
+        items-center
+        justify-center
+        rounded-xl
+        border
+        border-slate-200
+        bg-white
         text-green-800
+        shadow-sm
+        transition
+        hover:bg-green-50
         lg:hidden
       "
       type="button"
@@ -650,7 +816,7 @@
 
       <i
         data-lucide="menu"
-        class="h-6 w-6"
+        class="h-5 w-5"
       ></i>
 
     </button>
@@ -669,166 +835,394 @@
       border-t
       border-slate-100
       bg-white
-      px-5
-      pb-5
+      shadow-lg
       lg:hidden
     "
   >
 
-    <div class="grid gap-1 pt-3">
-
-      <a
-  class="
-    rounded-lg
-    bg-green-50
-    px-3
-    py-3
-    font-semibold
-    text-green-800
-  "
-  href="index.html"
-  data-i18n="navHome"
->
-  Utama
-</a>
-
-<a
-  class="
-    rounded-lg
-    px-3
-    py-3
-    font-semibold
-    text-slate-700
-    hover:bg-slate-50
-  "
-  href="pengenalan.html"
-  data-i18n="navAbout"
->
-  Mengenai
-</a>
-
-<a
-  class="
-    rounded-lg
-    px-3
-    py-3
-    font-semibold
-    text-slate-700
-    hover:bg-slate-50
-  "
-  href="ppmbaling.html"
-  data-i18n="navOrganization"
->
-  Organisasi
-</a>
-
-<a
-  class="
-    rounded-lg
-    px-3
-    py-3
-    font-semibold
-    text-slate-700
-    hover:bg-slate-50
-  "
-  href="aktiviti.html"
-  data-i18n="navActivities"
->
-  Aktiviti
-</a>
-
-<a
-  class="
-    rounded-lg
-    px-3
-    py-3
-    font-semibold
-    text-slate-700
-    hover:bg-slate-50
-  "
-  href="muatturun.html"
-  data-i18n="navResources"
->
-  Sumber
-</a>
-
-<a
-  class="
-    rounded-lg
-    px-3
-    py-3
-    font-semibold
-    text-slate-700
-    hover:bg-slate-50
-  "
-  href="hubungi.html"
-  data-i18n="navContact"
->
-  Hubungi
-</a>
-
-<!-- ================= MOBILE DATE & TIME ================= -->
-
-<div
-  class="
-    mt-3
-    flex
-    items-center
-    gap-3
-    rounded-xl
-    border
-    border-green-100
-    bg-green-50
-    px-4
-    py-3
-  "
->
-
-  <div
-    class="
-      flex
-      h-10
-      w-10
-      shrink-0
-      items-center
-      justify-center
-      rounded-lg
-      bg-green-700
-      text-white
-    "
-  >
-    <i
-      data-lucide="calendar-clock"
-      class="h-5 w-5"
-    ></i>
-  </div>
-
-  <div class="leading-tight">
-
     <div
-      id="mobileCurrentDate"
-      class="text-xs font-semibold text-slate-500"
+      class="
+        mx-auto
+        max-w-7xl
+        px-4
+        pb-5
+        pt-3
+        sm:px-5
+      "
     >
-      --
-    </div>
-
-    <div
-      id="mobileCurrentTime"
-      class="mt-1 text-sm font-bold text-green-800 tabular-nums"
-    >
-      --
-    </div>
-
-  </div>
-
-</div>
 
 
-      <!-- ================= MOBILE LANGUAGE ================= -->
+      <!-- ===================================================
+           MOBILE NAVIGATION
+      ==================================================== -->
 
       <div
         class="
-          mt-3
+          grid
+          gap-1
+        "
+      >
+
+        <a
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            bg-green-50
+            px-4
+            py-3
+            font-semibold
+            text-green-800
+          "
+          href="index.html"
+          data-i18n="navHome"
+        >
+
+          <i
+            data-lucide="home"
+            class="h-4 w-4"
+          ></i>
+
+          <span>Utama</span>
+
+        </a>
+
+
+        <a
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            font-semibold
+            text-slate-700
+            transition
+            hover:bg-slate-50
+          "
+          href="pengenalan.html"
+          data-i18n="navAbout"
+        >
+
+          <i
+            data-lucide="info"
+            class="h-4 w-4 text-slate-400"
+          ></i>
+
+          <span>Mengenai</span>
+
+        </a>
+
+
+        <a
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            font-semibold
+            text-slate-700
+            transition
+            hover:bg-slate-50
+          "
+          href="ppmbaling.html"
+          data-i18n="navOrganization"
+        >
+
+          <i
+            data-lucide="network"
+            class="h-4 w-4 text-slate-400"
+          ></i>
+
+          <span>Organisasi</span>
+
+        </a>
+
+
+        <a
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            font-semibold
+            text-slate-700
+            transition
+            hover:bg-slate-50
+          "
+          href="aktiviti.html"
+          data-i18n="navActivities"
+        >
+
+          <i
+            data-lucide="calendar-days"
+            class="h-4 w-4 text-slate-400"
+          ></i>
+
+          <span>Aktiviti</span>
+
+        </a>
+
+
+        <a
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            font-semibold
+            text-slate-700
+            transition
+            hover:bg-slate-50
+          "
+          href="muatturun.html"
+          data-i18n="navResources"
+        >
+
+          <i
+            data-lucide="folder-down"
+            class="h-4 w-4 text-slate-400"
+          ></i>
+
+          <span>Sumber</span>
+
+        </a>
+
+
+        <a
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            font-semibold
+            text-slate-700
+            transition
+            hover:bg-slate-50
+          "
+          href="hubungi.html"
+          data-i18n="navContact"
+        >
+
+          <i
+            data-lucide="mail"
+            class="h-4 w-4 text-slate-400"
+          ></i>
+
+          <span>Hubungi</span>
+
+        </a>
+
+      </div>
+
+
+      <!-- ===================================================
+           MOBILE INFO AREA
+      ==================================================== -->
+
+      <div
+        class="
+          mt-4
+          grid
+          gap-3
+          border-t
+          border-slate-100
+          pt-4
+          sm:grid-cols-2
+        "
+      >
+
+
+        <!-- ================= MOBILE DATE & TIME ================= -->
+
+        <div
+          class="
+            flex
+            items-center
+            gap-3
+            rounded-xl
+            border
+            border-green-100
+            bg-green-50
+            px-4
+            py-3
+          "
+        >
+
+          <div
+            class="
+              flex
+              h-10
+              w-10
+              shrink-0
+              items-center
+              justify-center
+              rounded-lg
+              bg-green-700
+              text-white
+            "
+          >
+
+            <i
+              data-lucide="calendar-clock"
+              class="h-5 w-5"
+            ></i>
+
+          </div>
+
+
+          <div class="min-w-0 leading-tight">
+
+            <div
+              id="mobileCurrentDate"
+              class="
+                text-xs
+                font-semibold
+                text-slate-500
+              "
+            >
+              --
+            </div>
+
+
+            <div
+              id="mobileCurrentTime"
+              class="
+                mt-1
+                text-sm
+                font-bold
+                text-green-800
+                tabular-nums
+              "
+            >
+              --
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= MOBILE ADMIN ================= -->
+
+        <button
+          id="mobileAdminLoginBtn"
+          type="button"
+          class="
+            flex
+            w-full
+            items-center
+            justify-between
+            gap-3
+            rounded-xl
+            border
+            border-slate-200
+            bg-slate-50
+            px-4
+            py-3
+            text-left
+            transition
+            hover:border-green-200
+            hover:bg-green-50
+          "
+          aria-label="Login Admin"
+        >
+
+          <div
+            class="
+              flex
+              min-w-0
+              items-center
+              gap-3
+            "
+          >
+
+            <div
+              id="mobileAdminIconBox"
+              class="
+                flex
+                h-10
+                w-10
+                shrink-0
+                items-center
+                justify-center
+                rounded-lg
+                bg-white
+                text-slate-500
+                shadow-sm
+              "
+            >
+
+              <i
+                id="mobileAdminIcon"
+                data-lucide="lock"
+                class="h-5 w-5"
+              ></i>
+
+            </div>
+
+
+            <div class="min-w-0">
+
+              <div
+                id="mobileAdminTitle"
+                class="
+                  text-sm
+                  font-bold
+                  text-slate-800
+                "
+              >
+                Login Admin
+              </div>
+
+              <div
+                id="mobileAdminStatus"
+                class="
+                  mt-0.5
+                  text-xs
+                  text-slate-500
+                "
+              >
+                Akses pengurusan portal
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <i
+            data-lucide="chevron-right"
+            class="
+              h-4
+              w-4
+              shrink-0
+              text-slate-400
+            "
+          ></i>
+
+        </button>
+
+      </div>
+
+
+      <!-- ===================================================
+           MOBILE LANGUAGE
+      ==================================================== -->
+
+      <div
+        class="
+          mt-4
           flex
           items-center
           justify-between
@@ -838,24 +1232,39 @@
         "
       >
 
-        <span
-  class="
-    text-xs
-    font-bold
-    uppercase
-    tracking-wider
-    text-slate-500
-  "
-  data-i18n="languageLabel"
->
-  Bahasa
-</span>
+        <div>
+
+          <div
+            class="
+              text-xs
+              font-bold
+              uppercase
+              tracking-wider
+              text-slate-500
+            "
+            data-i18n="languageLabel"
+          >
+            Bahasa
+          </div>
+
+          <div
+            class="
+              mt-0.5
+              text-[11px]
+              text-slate-400
+            "
+          >
+            Pilih bahasa portal
+          </div>
+
+        </div>
 
 
         <div
           id="mobileLanguageSwitch"
           class="
             flex
+            shrink-0
             items-center
             rounded-full
             bg-slate-800
@@ -885,6 +1294,7 @@
           >
             BM
           </button>
+
 
           <button
             id="mobileLangEN"
