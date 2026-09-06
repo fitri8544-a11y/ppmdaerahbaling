@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Makluman | Persekutuan Pengakap Daerah Baling
+  </title>
+
+  <meta
+    name="description"
+    content="Makluman dan hebahan rasmi Persekutuan Pengakap Daerah Baling."
+  >
+
+
+  <!-- =====================================================
+       FAVICON
+  ====================================================== -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/logo.png"
+  >
+
+
+  <!-- =====================================================
+       TAILWIND
+  ====================================================== -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <!-- =====================================================
+       LUCIDE
+  ====================================================== -->
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+
+  <!-- =====================================================
+       FIREBASE
+  ====================================================== -->
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js">
+  </script>
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js">
+  </script>
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js">
+  </script>
+
+
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+  </style>
+
+</head>
+
+
+<body
+  class="
+    min-h-screen
+    bg-slate-50
+    text-slate-900
+  "
+>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header
+  class="
+    sticky
+    top-0
+    z-50
+    border-b
+    border-slate-200/80
+    bg-white/95
+    backdrop-blur-xl
+  "
+>
+
+  <nav
+    class="
+      mx-auto
+      flex
+      max-w-7xl
+      items-center
+      justify-between
+      gap-4
+      px-4
+      py-3
+      sm:px-5
+      lg:px-8
+    "
+  >
+
+
+    <!-- ================= BRAND ================= -->
+
+    <a
+      href="index.html"
+      class="
+        flex
+        min-w-0
+        items-center
+        gap-3
+      "
+    >
+
+      <img
+        src="assets/logo.png"
+        alt="Logo Pengakap Daerah Baling"
+        class="
+          h-10
+          w-10
+          shrink-0
+          object-contain
+          sm:h-12
+          sm:w-12
+        "
+      >
+
+
+      <div class="min-w-0">
+
+        <div
+          class="
+            truncate
+            text-sm
+            font-extrabold
+            tracking-tight
+            sm:whitespace-nowrap
+            sm:text-base
+          "
+        >
+          Persekutuan Pengakap Daerah Baling
+        </div>
+
+        <div
+          class="
+            truncate
+            text-[10px]
+            font-medium
+            text-slate-500
+            sm:text-xs
+          "
+        >
+          Portal Rasmi • Bersedia • Berkhidmat
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <!-- ================= DESKTOP BACK ================= -->
+
+    <a
+      href="index.html"
+      class="
+        hidden
+        items-center
+        gap-2
+        rounded-xl
+        border
+        border-slate-200
+        bg-white
+        px-4
+        py-2.5
+        text-sm
+        font-bold
+        text-slate-700
+        shadow-sm
+        transition
+        hover:border-green-200
+        hover:bg-green-50
+        hover:text-green-800
+        sm:inline-flex
+      "
+    >
+
+      <i
+        data-lucide="arrow-left"
+        class="h-4 w-4"
+      ></i>
+
+      Halaman Utama
+
+    </a>
+
+
+    <!-- ================= MOBILE BACK ================= -->
+
+    <a
+      href="index.html"
+      class="
+        flex
+        h-10
+        w-10
+        shrink-0
+        items-center
+        justify-center
+        rounded-xl
+        border
+        border-slate-200
+        bg-white
+        text-green-800
+        shadow-sm
+        sm:hidden
+      "
+      aria-label="Kembali ke halaman utama"
+    >
+
+      <i
+        data-lucide="arrow-left"
+        class="h-5 w-5"
+      ></i>
+
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     PAGE HERO
+====================================================== -->
+
+<section
+  class="
+    border-b
+    border-green-100
+    bg-gradient-to-br
+    from-green-950
+    via-green-900
+    to-green-800
+  "
+>
+
+  <div
+    class="
+      mx-auto
+      max-w-7xl
+      px-5
+      py-12
+      sm:py-14
+      lg:px-8
+      lg:py-16
+    "
+  >
+
+    <div
+      class="
+        max-w-3xl
+      "
+    >
+
+      <div
+        class="
+          inline-flex
+          items-center
+          gap-2
+          rounded-full
+          border
+          border-white/15
+          bg-white/10
+          px-3
+          py-1.5
+          text-xs
+          font-bold
+          uppercase
+          tracking-wider
+          text-green-100
+        "
+      >
+
+        <i
+          data-lucide="megaphone"
+          class="h-4 w-4"
+        ></i>
+
+        Pusat Makluman
+
+      </div>
+
+
+      <h1
+        class="
+          mt-5
+          text-3xl
+          font-black
+          tracking-tight
+          text-white
+          sm:text-4xl
+          lg:text-5xl
+        "
+      >
+        Makluman & Hebahan
+      </h1>
+
+
+      <p
+        class="
+          mt-4
+          max-w-2xl
+          text-sm
+          leading-7
+          text-green-100/90
+          sm:text-base
+        "
+      >
+        Dapatkan makluman, pengumuman, aktiviti,
+        dokumen dan pautan terkini daripada
+        Persekutuan Pengakap Daerah Baling.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main
+  class="
+    mx-auto
+    max-w-7xl
+    px-5
+    py-8
+    lg:px-8
+    lg:py-12
+  "
+>
+
+
+  <!-- ===================================================
+       TOP BAR
+  ==================================================== -->
+
+  <div
+    class="
+      mb-7
+      flex
+      flex-col
+      gap-4
+      sm:flex-row
+      sm:items-center
+      sm:justify-between
+    "
+  >
+
+    <div>
+
+      <h2
+        class="
+          text-xl
+          font-black
+          tracking-tight
+          text-slate-900
+          sm:text-2xl
+        "
+      >
+        Semua Makluman
+      </h2>
+
+      <p
+        class="
+          mt-1
+          text-sm
+          text-slate-500
+        "
+      >
+        Makluman terkini dipaparkan terlebih dahulu.
+      </p>
+
+    </div>
+
+
+    <!-- ================= ADMIN ADD ================= -->
+
+    <button
+      id="archiveAddNoticeBtn"
+      type="button"
+      class="
+        hidden
+        items-center
+        justify-center
+        gap-2
+        rounded-xl
+        bg-green-700
+        px-4
+        py-3
+        text-sm
+        font-bold
+        text-white
+        shadow-lg
+        shadow-green-900/10
+        transition
+        hover:bg-green-800
+      "
+    >
+
+      <i
+        data-lucide="plus"
+        class="h-4 w-4"
+      ></i>
+
+      Tambah Makluman
+
+    </button>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       FILTER
+  ==================================================== -->
+
+  <div
+    class="
+      mb-7
+      overflow-x-auto
+      pb-1
+    "
+  >
+
+    <div
+      class="
+        flex
+        min-w-max
+        items-center
+        gap-2
+      "
+    >
+
+      <button
+        type="button"
+        data-notice-filter="all"
+        class="
+          notice-filter
+          rounded-full
+          bg-green-700
+          px-4
+          py-2
+          text-xs
+          font-bold
+          text-white
+        "
+      >
+        Semua
+      </button>
+
+
+      <button
+        type="button"
+        data-notice-filter="announcement"
+        class="
+          notice-filter
+          rounded-full
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2
+          text-xs
+          font-bold
+          text-slate-600
+        "
+      >
+        Pengumuman
+      </button>
+
+
+      <button
+        type="button"
+        data-notice-filter="activity"
+        class="
+          notice-filter
+          rounded-full
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2
+          text-xs
+          font-bold
+          text-slate-600
+        "
+      >
+        Aktiviti / Program
+      </button>
+
+
+      <button
+        type="button"
+        data-notice-filter="document"
+        class="
+          notice-filter
+          rounded-full
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2
+          text-xs
+          font-bold
+          text-slate-600
+        "
+      >
+        Dokumen / Surat
+      </button>
+
+
+      <button
+        type="button"
+        data-notice-filter="link"
+        class="
+          notice-filter
+          rounded-full
+          border
+          border-slate-200
+          bg-white
+          px-4
+          py-2
+          text-xs
+          font-bold
+          text-slate-600
+        "
+      >
+        Pautan
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       LOADING
+  ==================================================== -->
+
+  <div
+    id="archiveLoading"
+    class="
+      flex
+      min-h-[250px]
+      items-center
+      justify-center
+    "
+  >
+
+    <div
+      class="
+        flex
+        flex-col
+        items-center
+        gap-3
+        text-center
+      "
+    >
+
+      <div
+        class="
+          h-9
+          w-9
+          animate-spin
+          rounded-full
+          border-4
+          border-green-100
+          border-t-green-700
+        "
+      ></div>
+
+      <div
+        class="
+          text-sm
+          font-semibold
+          text-slate-500
+        "
+      >
+        Memuatkan makluman...
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       NOTICE LIST
+  ==================================================== -->
+
+  <div
+    id="archiveNoticeList"
+    class="
+      hidden
+      grid
+      gap-5
+    "
+  >
+  </div>
+
+
+
+  <!-- ===================================================
+       EMPTY
+  ==================================================== -->
+
+  <div
+    id="archiveEmpty"
+    class="
+      hidden
+      rounded-3xl
+      border
+      border-dashed
+      border-slate-300
+      bg-white
+      px-6
+      py-16
+      text-center
+    "
+  >
+
+    <div
+      class="
+        mx-auto
+        flex
+        h-14
+        w-14
+        items-center
+        justify-center
+        rounded-2xl
+        bg-slate-100
+        text-slate-400
+      "
+    >
+
+      <i
+        data-lucide="inbox"
+        class="h-7 w-7"
+      ></i>
+
+    </div>
+
+
+    <h3
+      class="
+        mt-5
+        text-lg
+        font-extrabold
+        text-slate-900
+      "
+    >
+      Tiada makluman
+    </h3>
+
+
+    <p
+      class="
+        mx-auto
+        mt-2
+        max-w-md
+        text-sm
+        leading-6
+        text-slate-500
+      "
+    >
+      Tiada makluman untuk kategori ini buat masa sekarang.
+    </p>
+
+  </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     NOTICE FORM MODAL
+     ADMIN ONLY
+====================================================== -->
+
+<div
+  id="archiveNoticeModal"
+  class="
+    fixed
+    inset-0
+    z-[100]
+    hidden
+    items-center
+    justify-center
+    bg-slate-950/60
+    p-4
+    backdrop-blur-sm
+  "
+>
+
+  <div
+    class="
+      max-h-[90vh]
+      w-full
+      max-w-lg
+      overflow-y-auto
+      rounded-3xl
+      bg-white
+      shadow-2xl
+    "
+  >
+
+
+    <!-- ================= MODAL HEADER ================= -->
+
+    <div
+      class="
+        flex
+        items-center
+        justify-between
+        gap-4
+        border-b
+        border-slate-100
+        px-5
+        py-4
+        sm:px-6
+      "
+    >
+
+      <div
+        class="
+          flex
+          items-center
+          gap-3
+        "
+      >
+
+        <div
+          class="
+            flex
+            h-10
+            w-10
+            items-center
+            justify-center
+            rounded-xl
+            bg-green-100
+            text-green-800
+          "
+        >
+
+          <i
+            data-lucide="megaphone"
+            class="h-5 w-5"
+          ></i>
+
+        </div>
+
+
+        <div>
+
+          <h3
+            id="archiveModalTitle"
+            class="
+              font-extrabold
+              text-slate-900
+            "
+          >
+            Tambah Makluman
+          </h3>
+
+          <p
+            class="
+              text-xs
+              text-slate-500
+            "
+          >
+            Pengurusan Makluman Portal
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="archiveModalClose"
+        type="button"
+        class="
+          flex
+          h-9
+          w-9
+          items-center
+          justify-center
+          rounded-full
+          text-slate-400
+          transition
+          hover:bg-slate-100
+          hover:text-slate-700
+        "
+        aria-label="Tutup"
+      >
+
+        <i
+          data-lucide="x"
+          class="h-5 w-5"
+        ></i>
+
+      </button>
+
+    </div>
+
+
+
+    <!-- ================= FORM ================= -->
+
+    <form
+      id="archiveNoticeForm"
+      class="
+        space-y-5
+        p-5
+        sm:p-6
+      "
+    >
+
+
+      <!-- TITLE -->
+
+      <div>
+
+        <label
+          for="archiveNoticeTitle"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Tajuk Makluman
+          <span class="text-red-500">*</span>
+        </label>
+
+        <input
+          id="archiveNoticeTitle"
+          type="text"
+          maxlength="120"
+          required
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-500
+            focus:ring-4
+            focus:ring-green-100
+          "
+          placeholder="Masukkan tajuk makluman"
+        >
+
+      </div>
+
+
+      <!-- TYPE -->
+
+      <div>
+
+        <label
+          for="archiveNoticeType"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Jenis
+          <span class="text-red-500">*</span>
+        </label>
+
+        <select
+          id="archiveNoticeType"
+          required
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            bg-white
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-500
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+          <option value="">
+            Pilih jenis makluman
+          </option>
+
+          <option value="announcement">
+            Pengumuman
+          </option>
+
+          <option value="activity">
+            Aktiviti / Program
+          </option>
+
+          <option value="document">
+            Dokumen / Surat
+          </option>
+
+          <option value="link">
+            Pautan
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- DESCRIPTION -->
+
+      <div>
+
+        <label
+          for="archiveNoticeDescription"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Keterangan
+          <span class="text-red-500">*</span>
+        </label>
+
+        <textarea
+          id="archiveNoticeDescription"
+          maxlength="500"
+          required
+          rows="5"
+          class="
+            w-full
+            resize-none
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            leading-6
+            outline-none
+            transition
+            focus:border-green-500
+            focus:ring-4
+            focus:ring-green-100
+          "
+          placeholder="Masukkan keterangan makluman"
+        ></textarea>
+
+      </div>
+
+
+      <!-- URL -->
+
+      <div>
+
+        <label
+          for="archiveNoticeUrl"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Pautan
+          <span
+            class="
+              font-normal
+              text-slate-400
+            "
+          >
+            (Pilihan)
+          </span>
+        </label>
+
+        <input
+          id="archiveNoticeUrl"
+          type="url"
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-500
+            focus:ring-4
+            focus:ring-green-100
+          "
+          placeholder="https://..."
+        >
+
+      </div>
+
+
+      <!-- EXPIRY -->
+
+      <div>
+
+        <label
+          for="archiveNoticeExpiry"
+          class="
+            mb-2
+            block
+            text-sm
+            font-bold
+            text-slate-700
+          "
+        >
+          Tarikh Luput
+          <span class="text-red-500">*</span>
+        </label>
+
+        <input
+          id="archiveNoticeExpiry"
+          type="date"
+          required
+          class="
+            w-full
+            rounded-xl
+            border
+            border-slate-200
+            px-4
+            py-3
+            text-sm
+            outline-none
+            transition
+            focus:border-green-500
+            focus:ring-4
+            focus:ring-green-100
+          "
+        >
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div
+        class="
+          flex
+          flex-col-reverse
+          gap-3
+          border-t
+          border-slate-100
+          pt-5
+          sm:flex-row
+          sm:justify-end
+        "
+      >
+
+        <button
+          id="archiveCancelBtn"
+          type="button"
+          class="
+            rounded-xl
+            border
+            border-slate-200
+            px-5
+            py-3
+            text-sm
+            font-bold
+            text-slate-600
+            transition
+            hover:bg-slate-50
+          "
+        >
+          Batal
+        </button>
+
+
+        <button
+          id="archiveSubmitBtn"
+          type="submit"
+          class="
+            inline-flex
+            items-center
+            justify-center
+            gap-2
+            rounded-xl
+            bg-green-700
+            px-5
+            py-3
+            text-sm
+            font-bold
+            text-white
+            transition
+            hover:bg-green-800
+          "
+        >
+
+          <i
+            data-lucide="save"
+            class="h-4 w-4"
+          ></i>
+
+          <span id="archiveSubmitLabel">
+            Simpan Makluman
+          </span>
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer
+  id="footer"
+  class="bg-slate-900 text-slate-300"
+>
+
+  <div
+    class="
+      mx-auto
+      grid
+      max-w-7xl
+      gap-8
+      px-5
+      py-10
+      md:grid-cols-[1.4fr_1fr_1fr]
+      lg:px-8
+    "
+  >
+
+    <!-- =================================================
+         BRAND
+    ================================================== -->
+
+    <div>
+
+      <div class="flex items-center gap-3">
+
+        <img
+          src="assets/logo.png"
+          alt="Logo Persekutuan Pengakap Daerah Baling"
+          class="h-12 w-12 object-contain"
+        >
+
+        <div>
+
+          <h2 class="font-extrabold text-white">
+            Persekutuan Pengakap Daerah Baling
+          </h2>
+
+          <p
+            class="
+              mt-1
+              text-xs
+              font-semibold
+              text-amber-400
+            "
+            data-i18n="footerTagline"
+          >
+            Bersedia • Berkhidmat
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <p
+        class="
+          mt-4
+          max-w-md
+          text-sm
+          leading-6
+          text-slate-400
+        "
+        data-i18n="footerDescription"
+      >
+        Portal rasmi bagi perkongsian maklumat, pengurusan,
+        program dan aktiviti kepengakapan di Daerah Baling.
+      </p>
+
+    </div>
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <div>
+
+      <h2
+        class="font-extrabold text-white"
+        data-i18n="footerNavigation"
+      >
+        Navigasi
+      </h2>
+
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a
+          href="index.html"
+          class="transition hover:text-white"
+          data-i18n="navHome"
+        >
+          Utama
+        </a>
+
+
+        <a
+          href="pengenalan.html"
+          class="transition hover:text-white"
+          data-i18n="navAbout"
+        >
+          Mengenai
+        </a>
+
+
+        <a
+          href="ppmbaling.html"
+          class="transition hover:text-white"
+          data-i18n="navOrganization"
+        >
+          Organisasi
+        </a>
+
+
+        <a
+          href="aktiviti.html"
+          class="transition hover:text-white"
+          data-i18n="navActivities"
+        >
+          Aktiviti
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RESOURCES
+    ================================================== -->
+
+    <div>
+
+      <h2
+        class="font-extrabold text-white"
+        data-i18n="footerLinks"
+      >
+        Pautan
+      </h2>
+
+
+      <div class="mt-4 grid gap-2.5 text-sm">
+
+        <a
+          href="muatturun.html"
+          class="transition hover:text-white"
+          data-i18n="footerResources"
+        >
+          Sumber & Muat Turun
+        </a>
+
+
+        <a
+          href="unit.html"
+          class="transition hover:text-white"
+          data-i18n="footerUnits"
+        >
+          Unit & Lencana
+        </a>
+
+
+        <a
+          href="hubungi.html"
+          class="transition hover:text-white"
+          data-i18n="footerContact"
+        >
+          Hubungi Kami
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       COPYRIGHT
+  ================================================== -->
+
+  <div class="border-t border-white/10">
+
+    <div
+      class="
+        mx-auto
+        flex
+        max-w-7xl
+        flex-col
+        gap-2
+        px-5
+        py-5
+        text-xs
+        text-slate-400
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+        lg:px-8
+      "
+    >
+
+      <p data-i18n="copyright">
+        © 2026 Persekutuan Pengakap Daerah Baling.
+        Hak cipta terpelihara.
+      </p>
+
+      <p data-i18n="footerTagline">
+        Bersedia • Berkhidmat
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     PAGE SCRIPT
+====================================================== -->
+
+<script>
+
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+
+</script>
+
+
+<script src="assets/makluman.js"></script>
+
+
+</body>
+
+</html>
