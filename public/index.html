@@ -2216,32 +2216,54 @@
       </div>
 
 
-      <!-- IMAGE -->
+      <!-- =====================================================
+     HERO VIDEO
+===================================================== -->
 
-      <div
-        class="
-          overflow-hidden
-          rounded-2xl
-          bg-green-950
-          p-3
-          shadow-2xl
-          shadow-green-950/20
-        "
-      >
+<div
+  class="
+    overflow-hidden
+    rounded-2xl
+    bg-green-950
+    p-3
+    shadow-2xl
+    shadow-green-950/20
+  "
+>
 
-        <img
-          src="assets/tabik-pengakap.jpg"
-          alt="Aktiviti Pengakap Daerah Baling"
-          class="
-            h-[360px]
-            w-full
-            rounded-xl
-            object-cover
-            sm:h-[440px]
-          "
-        >
+  <video
+    class="
+      h-[360px]
+      w-full
+      rounded-xl
+      bg-green-950
+      object-cover
+      sm:h-[440px]
+    "
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="assets/tabik-pengakap.jpg"
+    aria-label="Video pengenalan Persekutuan Pengakap Malaysia Daerah Baling"
+  >
 
-      </div>
+    <source
+      src="assets/videos/intro-pengakap-baling.mp4"
+      type="video/mp4"
+    >
+
+    <!-- FALLBACK -->
+    <img
+      src="assets/tabik-pengakap.jpg"
+      alt="Aktiviti Pengakap Daerah Baling"
+      class="h-full w-full object-cover"
+    >
+
+  </video>
+
+</div>
 
 
       <!-- FLOATING CARD 1 -->
